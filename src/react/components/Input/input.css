@@ -1,5 +1,4 @@
 .input {
-  /* overflow: hidden; */
   width: 285px;
   display: flex;
   align-items: center;
@@ -10,8 +9,9 @@
 
 .input input {
   border: 1px solid black;
-  border-radius: 5px;
+  border-radius: 8px;
   height: 30px;
   width: 100px;
-  font-size: 1.4em;
+  font-size: 1em;
+  padding: 4px;
 }

@@ -1,9 +1,12 @@
 .inputSection {
+  margin: 24px;
   padding: 24px;
+  background-color: #e9f3f8;
+  border-radius: 10px;
 }
 
 .inputSection h2 {
-  font-size: 2.5em;
+  font-size: 2.2em;
   font-weight: bold;
   margin-bottom: 20px;
 }
@@ -15,6 +18,5 @@
 .inputSection .inputs {
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: space-between; */
   align-content: space-between;
 }
