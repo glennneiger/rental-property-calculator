@@ -1,12 +1,12 @@
-.InputSection {
+.inputSection {
   padding: 24px;
 }
 
-.InputSection h2 {
+.inputSection h2 {
   font-size: 2.5em;
   font-weight: bold;
 }
 
-.InputSection textarea {
+.inputSection textarea {
   resize: none;
 }

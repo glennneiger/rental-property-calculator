@@ -5,7 +5,7 @@ const InputSection = ({
   children,
   title
 }) => (
-  <div className='InputSection' >
+  <div className='inputSection' >
     <h2>{ title }</h2>
     { children }
   </div>
