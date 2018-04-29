@@ -11,10 +11,6 @@
   margin-bottom: 20px;
 }
 
-.inputSection textarea {
-  resize: none;
-}
-
 .inputSection .inputs {
   display: flex;
   flex-wrap: wrap;
