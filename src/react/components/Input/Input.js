@@ -6,7 +6,7 @@ const Input = ({
   inputType,
   label
 }) => (
-  <div className='Input'>
+  <div className='input'>
     <label htmlFor={inputId}>{label}:</label>
     <input type={inputType} id={inputId}/>
   </div>

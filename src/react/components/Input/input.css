@@ -1,0 +1,17 @@
+.input {
+  /* overflow: hidden; */
+  width: 285px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 12px;
+  font-size: 1.4em;
+}
+
+.input input {
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 30px;
+  width: 100px;
+  font-size: 1.4em;
+}

@@ -18,7 +18,7 @@ const generalInfoInputProps = [
   {
     inputId: 'sqftInput',
     inputType: 'number',
-    label: 'Sqft'
+    label: 'Square Feet'
   }
 ]
 
@@ -41,7 +41,7 @@ const initialPurchaseInputProps = [
   {
     inputId:'arvInput',
     inputType:'number',
-    label:'ARV'
+    label:'After Repair Value'
   },
   {
     inputId:'repairCostsInput',
@@ -59,7 +59,7 @@ const operatingIncomeInputProps = [
   {
     inputId:'rentInput',
     inputType:'number',
-    label:'Rent'
+    label:'Rental Income'
   },
   {
     inputId:'otherIncomeInput',
@@ -87,7 +87,7 @@ const operatingExpensesInputProps = [
   {
     inputId: 'PMIInput',
     inputType: 'number',
-    label: 'PMI'
+    label: 'Private Mortgage Insurance'
   },
   {
     inputId: 'garbageInput',
@@ -97,7 +97,7 @@ const operatingExpensesInputProps = [
   {
     inputId: 'hoaInput',
     inputType: 'number',
-    label: 'HOA'
+    label: 'HOA Fees'
   },
   {
     inputId: 'insuranceInput',
@@ -117,7 +117,7 @@ const operatingExpensesInputProps = [
   {
     inputId: 'r&mInput',
     inputType: 'number',
-    label: 'R&M (%)'
+    label: 'Repairs & Maintenance (%)'
   },
   {
     inputId: 'capExInput',

@@ -7,7 +7,8 @@ const {
 
 const createWindow = () => {
   mainWindow = new BrowserWindow({
-    height: 800
+    height: 825,
+    width: 1025
   })
 
   mainWindow.loadURL('http://localhost:3000')
