@@ -13,9 +13,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "electron": "electron ."
+    "electron": "electron .",
+    "dev": "npm-run-all --parallel start electron"
   },
   "devDependencies": {
-    "electron": "^1.8.6"
+    "electron": "^1.8.6",
+    "npm-run-all": "^4.1.2"
   }
 }
