@@ -3,12 +3,11 @@ import './numericInput.css'
 
 const NumericInput = ({
   inputId,
-  inputType,
   label
 }) => (
   <div className='numericInput'>
     <label htmlFor={ inputId }>{ label }:</label>
-    <input type={ inputType } id={ inputId }/>
+    <input type='number' id={ inputId }/>
   </div>
 )
 
