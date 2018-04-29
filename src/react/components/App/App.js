@@ -2,15 +2,17 @@ import React, { Component } from 'react'
 import './app.css'
 
 import InputSection from '../InputSection'
-import NumericInput from '../NumericInput'
+import Input from '../Input'
 
 const generalInfoInputProps = [
   {
     inputId: 'neighborhoodInput',
+    inputType: 'text',
     label: 'Neighborhood'
   },
   {
     inputId: 'addressInput',
+    inputType: 'text',
     label: 'Address'
   },
   {
@@ -110,6 +112,10 @@ const operatingExpensesInputProps = [
 
 const inputSectionData = [
   {
+    title: 'General Info',
+    childProps: generalInfoInputProps
+  },
+  {
     title: "Initial Purchase",
     childProps: initialPurchaseInputProps
   },
@@ -127,16 +133,10 @@ class App extends Component {
   render() {
     return (
       <div className='app'>
-        <InputSection title='General Info'>
-          { generalInfoInputProps.map(props => (
-            <NumericInput key={ props.inputId } { ...props }/>
-          )) }
-        </InputSection>
-
         { inputSectionData.map(data => (
           <InputSection title={ data.title }>
             { data.childProps.map(props => (
-              <NumericInput key={ props.inputId } { ...props }/>
+              <Input key={ props.inputId } { ...props }/>
             )) }
           </InputSection>
         )) }
