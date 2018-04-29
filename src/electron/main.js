@@ -6,7 +6,9 @@ const {
 } = electron
 
 const createWindow = () => {
-  mainWindow = new BrowserWindow()
+  mainWindow = new BrowserWindow({
+    height: 800
+  })
 
   mainWindow.loadURL('http://localhost:3000')
 
