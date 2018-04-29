@@ -1,4 +1,4 @@
-.input {
+.numericInput {
   width: 285px;
   display: flex;
   align-items: center;
@@ -7,7 +7,7 @@
   font-size: 1.4em;
 }
 
-.input input {
+.numericInput input {
   border: 1px solid black;
   border-radius: 8px;
   height: 30px;

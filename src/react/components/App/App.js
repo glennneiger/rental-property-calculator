@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './app.css'
 
 import InputSection from '../InputSection'
-import Input from '../Input'
+import NumericInput from '../NumericInput'
 
 const generalInfoInputProps = [
   {
@@ -131,30 +131,38 @@ const operatingExpensesInputProps = [
   },
 ]
 
+const inputSectionData = [
+  {
+    title: "Initial Purchase",
+    childProps: initialPurchaseInputProps
+  },
+  {
+    title: "Operating Income",
+    childProps: operatingIncomeInputProps
+  },
+  {
+    title: "Operating Expenses",
+    childProps: operatingExpensesInputProps
+  }
+]
+
 class App extends Component {
   render() {
     return (
       <div className='app'>
         <InputSection title='General Info'>
           { generalInfoInputProps.map(props => (
-            <Input key={ props.inputId } { ...props }/>
+            <NumericInput key={ props.inputId } { ...props }/>
           )) }
         </InputSection>
-        <InputSection title='Initial Purchase'>
-          { initialPurchaseInputProps.map(props => (
-            <Input key={ props.inputId } { ...props }/>
-          )) }
-        </InputSection>
-        <InputSection title='Monthly Operating Income'>
-          { operatingIncomeInputProps.map(props => (
-            <Input key={ props.inputId } { ...props }/>
-          )) }
-        </InputSection>
-        <InputSection title='Monthly Operating Expenses'>
-          { operatingExpensesInputProps.map(props => (
-            <Input key={ props.inputId } { ...props }/>
-          )) }
-        </InputSection>
+
+        { inputSectionData.map(data => (
+          <InputSection title={ data.title }>
+            { data.childProps.map(props => (
+              <NumericInput key={ props.inputId } { ...props }/>
+            )) }
+          </InputSection>
+        )) }
       </div>
     )
   }
