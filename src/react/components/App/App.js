@@ -137,6 +137,10 @@ const operatingExpensesInputProps = [
     inputId: 'managementInput',
     label: 'Management (%)'
   },
+  {
+    inputId: 'otherExpensestInput',
+    label: 'Other Expenses'
+  },
 ]
 
 const inputSectionData = [
