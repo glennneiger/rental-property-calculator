@@ -8,12 +8,41 @@ const generalInfoInputProps = [
   {
     inputId: 'neighborhoodInput',
     inputType: 'text',
-    label: 'Neighborhood'
+    label: 'Neighborhood',
+    textInputWidth: 200
   },
   {
-    inputId: 'addressInput',
+    inputId: 'streetAddressInput',
     inputType: 'text',
-    label: 'Address'
+    label: 'Street Address',
+    textInputWidth: 300
+  },
+  {
+    inputId: 'unitNumberInput',
+    inputType: 'text',
+    label: 'Unit',
+  },
+  {
+    inputId: 'cityInput',
+    inputType: 'text',
+    label: 'City',
+    textInputWidth: 200
+  },
+  {
+    inputId: 'provinceOrStateInput',
+    inputType: 'text',
+    label: 'Province/State'
+  },
+  {
+    inputId: 'countryInput',
+    inputType: 'text',
+    label: 'Country',
+    textInputWidth: 200
+  },
+  {
+    inputId: 'postalOrZipCodeInput',
+    inputType: 'text',
+    label: 'Postal/Zip Code'
   },
   {
     inputId: 'sqftInput',
