@@ -13,6 +13,12 @@ class App extends Component {
     }
   }
 
+  handleKeyDown = (event, section, inputId) => {
+    const inputContent = this.state.inputContent
+    inputContent[section][inputId] = event.target.value
+    this.forceUpdate()
+  }
+
   getInputState = () => {
     let inputContent = {}
     inputSectionData.forEach(inputSection => {
@@ -37,7 +43,9 @@ class App extends Component {
               <Input
                 content={ this.state.inputContent[section.title][props.inputId] }
                 key={ props.inputId }
-                { ...props }/>
+                { ...props }
+                handleKeyDown={ this.handleKeyDown }
+                section={ section.title }/>
             )) }
           </InputSection>
         )) }
