@@ -30,11 +30,14 @@ class App extends Component {
   render() {
     return (
       <div className='app'>
-        { inputSectionData.map(data => (
-          <InputSection key={ data.title }
-            title={ data.title }>
-            { data.childProps.map(props => (
-              <Input content='456' key={ props.inputId } { ...props }/>
+        { inputSectionData.map(section => (
+          <InputSection key={ section.title }
+            title={ section.title }>
+            { section.childProps.map(props => (
+              <Input
+                content={ this.state.inputContent[section.title][props.inputId] }
+                key={ props.inputId }
+                { ...props }/>
             )) }
           </InputSection>
         )) }
