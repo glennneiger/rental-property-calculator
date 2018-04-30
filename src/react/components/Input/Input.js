@@ -5,6 +5,7 @@ const DEFAULT_TOTAL_WIDTH = 100
 const LABEL_WIDTH = 185
 
 const Input = ({
+  content,
   inputId,
   inputType='number',
   label,
@@ -16,7 +17,8 @@ const Input = ({
       <label htmlFor={ inputId }>{ label }:</label>
       <input type={ inputType }
         id={ inputId }
-        style={ { width: textInputWidth } }/>
+        style={ { width: textInputWidth } }
+        value={ content }/>
     </div>
   )
 }

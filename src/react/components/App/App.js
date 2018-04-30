@@ -12,7 +12,7 @@ class App extends Component {
         { inputSectionData.map(data => (
           <InputSection title={ data.title }>
             { data.childProps.map(props => (
-              <Input key={ props.inputId } { ...props }/>
+              <Input content='456' key={ props.inputId } { ...props }/>
             )) }
           </InputSection>
         )) }
