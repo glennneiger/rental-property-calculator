@@ -18,7 +18,8 @@ const Input = ({
       <input type={ inputType }
         id={ inputId }
         style={ { width: textInputWidth } }
-        value={ content }/>
+        value={ content }
+        onChange={ () => null }/>
     </div>
   )
 }

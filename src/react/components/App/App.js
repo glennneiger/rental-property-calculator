@@ -6,11 +6,33 @@ import { inputSectionData } from './childProps'
 import './app.css'
 
 class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      inputContent: this.getInputState()
+    }
+  }
+
+  getInputState = () => {
+    let inputContent = {}
+    inputSectionData.forEach(inputSection => {
+      const section = inputSection.title
+      inputSection.childProps.forEach(props => {
+        const input = props.inputId
+        if (!inputContent[section]) {
+          inputContent[section] = {}
+        }
+        inputContent[section][input] = ''
+      })
+    })
+    return inputContent
+  }
   render() {
     return (
       <div className='app'>
         { inputSectionData.map(data => (
-          <InputSection title={ data.title }>
+          <InputSection key={ data.title }
+            title={ data.title }>
             { data.childProps.map(props => (
               <Input content='456' key={ props.inputId } { ...props }/>
             )) }
