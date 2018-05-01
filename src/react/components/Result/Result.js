@@ -5,6 +5,7 @@ import YearResult from '../YearResult'
 
 const Result = ({
   getCashFlowForYear,
+  getCashOnCashReturnForYear,
   getEquityAfterYears,
   getInvestmentAfterYears
 }) => (
@@ -14,6 +15,7 @@ const Result = ({
     <p>Initial Equity: { getEquityAfterYears(0) }</p>
     <YearResult
       getCashFlowForYear={ getCashFlowForYear }
+      getCashOnCashReturnForYear={ getCashOnCashReturnForYear }
       year={ 1 }/>
   </div>
 )

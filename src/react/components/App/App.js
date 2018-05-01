@@ -49,6 +49,16 @@ class App extends Component {
     return (incomeForYear - expensesForYear) * MONTHS_PER_YEAR
 
   }
+  /* Cash on cash return = (cash flow / initialInvestment) * 100% */
+  getCashOnCashReturnForYear = year => {
+    const cashFlow = this.getCashFlowForYear(year)
+    const initialInvestment = this.getInitialInvestment()
+    if (initialInvestment === 0) {
+      return 0
+    }
+
+    return parseFloat(cashFlow / initialInvestment * 100).toFixed(2)
+  }
   /* Initial equity = down payment + after repair value + purchase price */
   getInitialEquity = () => {
     const inputContent = this.state.inputContent
@@ -125,6 +135,7 @@ class App extends Component {
         )) }
         <Result
           getCashFlowForYear={ this.getCashFlowForYear }
+          getCashOnCashReturnForYear={ this.getCashOnCashReturnForYear }
           getInvestmentAfterYears={ this.getInvestmentAfterYears }
           getEquityAfterYears={ this.getEquityAfterYears }/>
       </div>
