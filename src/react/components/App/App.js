@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+import Result from '../Result'
 import CalculateButton from '../CalculateButton'
 import InputSection from '../InputSection'
 import Input from '../Input'
@@ -15,6 +16,17 @@ class App extends Component {
   }
   calculateResult = () => {
 
+  }
+  getInvestmentAfterYears = years => {
+    // down payment + repair cost + closing costs = total investment
+    // const inputContent = this.state.inputContent
+    // TODO: somehow map this to childprops initial purchase so if it changes it still works
+    // const downPayment = inputContent['']
+    // let investment = downPayment
+    // if (years === 0) {
+    //   return investment;
+    // }
+    // return investment + 5
   }
   handleKeyDown = (event, section, inputId) => {
     const inputContent = this.state.inputContent
@@ -52,6 +64,7 @@ class App extends Component {
           </InputSection>
         )) }
         <CalculateButton handleClick={ this.calculateResult } />
+        <Result getInvestmentAfterYears={ this.getInvestmentAfterYears }/>
       </div>
     )
   }
