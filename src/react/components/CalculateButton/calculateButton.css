@@ -1,0 +1,14 @@
+.calculateButton {
+  display: inline-block;
+  width: 300px;
+  padding: 20px 20px 30px 20px;
+  background-color: #c7eafc;
+  border: 1px solid black;
+  margin: 4px 24px 24px 24px;
+  border-radius: 5px;
+}
+
+.calculateButton:hover {
+  cursor: pointer;
+  background-color: #99dcff;
+}
