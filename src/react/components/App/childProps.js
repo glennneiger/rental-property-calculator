@@ -50,24 +50,32 @@ const initialPurchaseInputProps = [
     label: 'Purchase Price'
   },
   {
-    inputId:'downPaymentInput',
-    label:'Down Payment'
+    inputId: 'downPaymentInput',
+    label: 'Down Payment'
   },
   {
-    inputId:'loanAmountInput',
-    label:'Loan Amount'
+    inputId: 'loanAmountInput',
+    label: 'Loan Amount'
   },
   {
-    inputId:'arvInput',
-    label:'After Repair Value'
+    inputId: 'interestRateInput',
+    label: 'Interest Rate (%)'
   },
   {
-    inputId:'repairCostsInput',
-    label:'Repair Costs'
+    inputId: 'amortizationPeriodInput',
+    label: 'Amortization Period (years)'
   },
   {
-    inputId:'closingCostsInput',
-    label:'Closing Costs'
+    inputId: 'arvInput',
+    label: 'After Repair Value'
+  },
+  {
+    inputId: 'repairCostsInput',
+    label: 'Repair Costs'
+  },
+  {
+    inputId: 'closingCostsInput',
+    label: 'Closing Costs'
   }
 ]
 
@@ -147,11 +155,11 @@ export const inputSectionData = [
     childProps: initialPurchaseInputProps
   },
   {
-    title: "Operating Income",
+    title: "Monthly Operating Income",
     childProps: operatingIncomeInputProps
   },
   {
-    title: "Operating Expenses",
+    title: "Monthly Operating Expenses",
     childProps: operatingExpensesInputProps
   }
 ]
