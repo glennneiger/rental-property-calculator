@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 
 import Result from '../Result'
-import CalculateButton from '../CalculateButton'
 import InputSection from '../InputSection'
 import Input from '../Input'
-import { inputSectionData, operatingExpensesInputProps } from './childProps'
+import {
+  inputSectionData,
+  expensesInputProps,
+  incomeInputProps
+} from './childProps'
 import './app.css'
 import {
   INPUT_ID_AFTER_REPAIR_VALUE,
@@ -14,8 +17,8 @@ import {
   INPUT_ID_PURCHASE_PRICE,
   INPUT_ID_REPAIR_COSTS,
   TITLE_INITIAL_PURCHASE,
-  TITLE_MONTHLY_OPERATING_EXPENSES,
-  TITLE_MONTHLY_OPERATING_INCOME,
+  TITLE_MONTHLY_EXPENSES,
+  TITLE_MONTHLY_INCOME,
   INPUT_ID_RENTAL_INCOME,
   INPUT_ID_OTHER_INCOME,
   INPUT_ID_MORTGAGE,
@@ -30,7 +33,8 @@ import {
   INPUT_ID_REPAIRS_AND_MAINTENANCE,
   INPUT_ID_CAP_EX,
   INPUT_ID_MANAGEMENT,
-  INPUT_ID_OTHER_EXPENSES
+  INPUT_ID_OTHER_EXPENSES,
+  MONTHS_PER_YEAR
 } from '../../../constants'
 
 class App extends Component {
@@ -40,29 +44,23 @@ class App extends Component {
       inputContent: this.getInputState()
     }
   }
-  calculateResult = () => {
-    // TODO: delete because using live updating
-  }
+  /* Cash flow = Income - Expenses */
   getCashFlowForYear = year => {
-    /* (rental income + other income) - (mortgage + electricity + water and sewer +
-      PMI + garbage + hoa + insurance + property tax + vacancy + repairs and maintenance + cap ex
-      + management + other expenses */
     const inputContent = this.state.inputContent
-    const monthlyOperatingIncome = inputContent[TITLE_MONTHLY_OPERATING_INCOME]
-    const monthlyOperatingExpenses = inputContent[TITLE_MONTHLY_OPERATING_EXPENSES]
+    const monthlyIncome = inputContent[TITLE_MONTHLY_INCOME]
+    const monthlyExpenses = inputContent[TITLE_MONTHLY_EXPENSES]
 
-    let incomes = [];
-    incomes.push(monthlyOperatingIncome[INPUT_ID_RENTAL_INCOME])
-    incomes.push(monthlyOperatingIncome[INPUT_ID_OTHER_INCOME])
+    const incomesSum = incomeInputProps.reduce((total, current) => {
+      const income = monthlyIncome[current.inputId]
+      return total + +income
+    }, 0)
 
-    let incomesSum = incomes.reduce((acc, current) => +acc + +current)
-
-    const expensesSum = operatingExpensesInputProps.reduce((total, current) => {
-      const expense = monthlyOperatingExpenses[current.inputId]
+    const expensesSum = expensesInputProps.reduce((total, current) => {
+      const expense = monthlyExpenses[current.inputId]
       return total + +expense
     }, 0)
 
-    return (incomesSum - expensesSum) * 12
+    return (incomesSum - expensesSum) * MONTHS_PER_YEAR
 
   }
   getInitialEquity = () => {
@@ -137,7 +135,6 @@ class App extends Component {
             )) }
           </InputSection>
         )) }
-        <CalculateButton handleClick={ this.calculateResult } />
         <Result
           getCashFlowForYear={ this.getCashFlowForYear }
           getInvestmentAfterYears={ this.getInvestmentAfterYears }

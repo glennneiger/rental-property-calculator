@@ -31,7 +31,9 @@ export const INPUT_ID_UNIT_NUMBER = 'unitNumberInput'
 export const INPUT_ID_VACANCY = 'vacancyInput'
 export const INPUT_ID_WATER_AND_SEWER = 'waterAndSewerInput'
 
+export const MONTHS_PER_YEAR = 12
+
 export const TITLE_GENERAL_INFO = 'General Info'
 export const TITLE_INITIAL_PURCHASE = 'Initial Purchase'
-export const TITLE_MONTHLY_OPERATING_INCOME = 'Monthly Operating Income'
-export const TITLE_MONTHLY_OPERATING_EXPENSES = 'Monthly Operating Expenses'
+export const TITLE_MONTHLY_INCOME = 'Monthly Income'
+export const TITLE_MONTHLY_EXPENSES = 'Monthly Operating Expenses'

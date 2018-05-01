@@ -33,8 +33,8 @@ import {
   INPUT_ID_WATER_AND_SEWER,
   TITLE_GENERAL_INFO,
   TITLE_INITIAL_PURCHASE,
-  TITLE_MONTHLY_OPERATING_EXPENSES,
-  TITLE_MONTHLY_OPERATING_INCOME
+  TITLE_MONTHLY_EXPENSES,
+  TITLE_MONTHLY_INCOME
 } from '../../../constants'
 
 const generalInfoInputProps = [
@@ -122,7 +122,8 @@ const initialPurchaseInputProps = [
   }
 ]
 
-const operatingIncomeInputProps = [
+/* Only add stuff here to calculate income */
+export const incomeInputProps = [
   {
     inputId: INPUT_ID_RENTAL_INCOME,
     label: 'Rental Income'
@@ -133,8 +134,8 @@ const operatingIncomeInputProps = [
   }
 ]
 
-/* Only add stuff here to calculate operating expenses */
-export const operatingExpensesInputProps = [
+/* Only add stuff here to calculate expenses */
+export const expensesInputProps = [
   {
     inputId: INPUT_ID_MORTGAGE,
     label: 'Mortgage'
@@ -199,11 +200,11 @@ export const inputSectionData = [
     childProps: initialPurchaseInputProps
   },
   {
-    title: TITLE_MONTHLY_OPERATING_INCOME,
-    childProps: operatingIncomeInputProps
+    title: TITLE_MONTHLY_INCOME,
+    childProps: incomeInputProps
   },
   {
-    title: TITLE_MONTHLY_OPERATING_EXPENSES,
-    childProps: operatingExpensesInputProps
+    title: TITLE_MONTHLY_EXPENSES,
+    childProps: expensesInputProps
   }
 ]
