@@ -14,7 +14,7 @@ class App extends Component {
     }
   }
   calculateResult = () => {
-    alert('calculating')
+
   }
   handleKeyDown = (event, section, inputId) => {
     const inputContent = this.state.inputContent

@@ -12,3 +12,7 @@
   cursor: pointer;
   background-color: #99dcff;
 }
+
+.calculateButton:active {
+  background-color: #84ff86;
+}
