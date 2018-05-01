@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+import CalculateButton from '../CalculateButton'
 import InputSection from '../InputSection'
 import Input from '../Input'
 import { inputSectionData } from './childProps'
@@ -11,6 +12,9 @@ class App extends Component {
     this.state = {
       inputContent: this.getInputState()
     }
+  }
+  calculateResult = () => {
+
   }
   handleKeyDown = (event, section, inputId) => {
     const inputContent = this.state.inputContent
@@ -47,6 +51,7 @@ class App extends Component {
             )) }
           </InputSection>
         )) }
+        <CalculateButton handleClick={ this.calculateResult } />
       </div>
     )
   }
