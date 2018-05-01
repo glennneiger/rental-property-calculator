@@ -16,25 +16,10 @@ import {
   INPUT_ID_OTHER_INITIAL_COSTS,
   INPUT_ID_PURCHASE_PRICE,
   INPUT_ID_REPAIR_COSTS,
+  MONTHS_PER_YEAR,
   TITLE_INITIAL_PURCHASE,
   TITLE_MONTHLY_EXPENSES,
-  TITLE_MONTHLY_INCOME,
-  INPUT_ID_RENTAL_INCOME,
-  INPUT_ID_OTHER_INCOME,
-  INPUT_ID_MORTGAGE,
-  INPUT_ID_ELECTRICITY,
-  INPUT_ID_WATER_AND_SEWER,
-  INPUT_ID_PRIVATE_MORTGAGE_INSURANCE,
-  INPUT_ID_GARBAGE,
-  INPUT_ID_HOA,
-  INPUT_ID_INSURANCE,
-  INPUT_ID_PROPERTY_TAX,
-  INPUT_ID_VACANCY,
-  INPUT_ID_REPAIRS_AND_MAINTENANCE,
-  INPUT_ID_CAP_EX,
-  INPUT_ID_MANAGEMENT,
-  INPUT_ID_OTHER_EXPENSES,
-  MONTHS_PER_YEAR
+  TITLE_MONTHLY_INCOME
 } from '../../../constants'
 
 class App extends Component {
@@ -46,23 +31,25 @@ class App extends Component {
   }
   /* Cash flow = Income - Expenses */
   getCashFlowForYear = year => {
+    // TODO: deal with all numbers of years that aren't 0
     const inputContent = this.state.inputContent
     const monthlyIncome = inputContent[TITLE_MONTHLY_INCOME]
     const monthlyExpenses = inputContent[TITLE_MONTHLY_EXPENSES]
 
-    const incomesSum = incomeInputProps.reduce((total, current) => {
+    const incomeForYear = incomeInputProps.reduce((total, current) => {
       const income = monthlyIncome[current.inputId]
       return total + +income
     }, 0)
 
-    const expensesSum = expensesInputProps.reduce((total, current) => {
+    const expensesForYear = expensesInputProps.reduce((total, current) => {
       const expense = monthlyExpenses[current.inputId]
       return total + +expense
     }, 0)
 
-    return (incomesSum - expensesSum) * MONTHS_PER_YEAR
+    return (incomeForYear - expensesForYear) * MONTHS_PER_YEAR
 
   }
+  /* Initial equity = down payment + after repair value + purchase price */
   getInitialEquity = () => {
     const inputContent = this.state.inputContent
     const initialPurchase = inputContent[TITLE_INITIAL_PURCHASE]
@@ -73,6 +60,7 @@ class App extends Component {
 
     return +downPayment + (+afterRepairValue - +purchasePrice)
   }
+  /* Initial investment = down payment + repair costs + closing costs + other initial costs */
   getInitialInvestment = () => {
     const inputContent = this.state.inputContent
     const initialPurchase = inputContent[TITLE_INITIAL_PURCHASE]
@@ -86,7 +74,7 @@ class App extends Component {
   }
   getEquityAfterYears = years => {
     let equity = this.getInitialEquity()
-
+  // TODO: deal with all numbers of years that aren't 0
     if (years === 0) {
       return equity
     }
@@ -94,7 +82,7 @@ class App extends Component {
   }
   getInvestmentAfterYears = years => {
     let investment = this.getInitialInvestment()
-
+    // TODO: deal with all numbers of years that aren't 0
     if (years === 0) {
       return investment;
     }
