@@ -29,6 +29,7 @@ class App extends Component {
   getInitialEquity = () => {
     const inputContent = this.state.inputContent
     const initialPurchase = inputContent[TITLE_INITIAL_PURCHASE]
+
     const downPayment = initialPurchase[INPUT_ID_DOWN_PAYMENT]
     const afterRepairValue = initialPurchase[INPUT_ID_AFTER_REPAIR_VALUE]
     const purchasePrice = initialPurchase[INPUT_ID_PURCHASE_PRICE]
@@ -38,10 +39,12 @@ class App extends Component {
   getInitialInvestment = () => {
     const inputContent = this.state.inputContent
     const initialPurchase = inputContent[TITLE_INITIAL_PURCHASE]
+
     const downPayment = initialPurchase[INPUT_ID_DOWN_PAYMENT]
     const repairCosts = initialPurchase[INPUT_ID_REPAIR_COSTS]
     const closingCosts = initialPurchase[INPUT_ID_CLOSING_COSTS]
     const otherCosts = initialPurchase[INPUT_ID_OTHER_INITIAL_COSTS]
+
     return +downPayment + +repairCosts + +closingCosts + +otherCosts
   }
   getEquityAfterYears = years => {
