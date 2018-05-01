@@ -133,7 +133,8 @@ const operatingIncomeInputProps = [
   }
 ]
 
-const operatingExpensesInputProps = [
+/* Only add stuff here to calculate operating expenses */
+export const operatingExpensesInputProps = [
   {
     inputId: INPUT_ID_MORTGAGE,
     label: 'Mortgage'
@@ -206,4 +207,3 @@ export const inputSectionData = [
     childProps: operatingExpensesInputProps
   }
 ]
-

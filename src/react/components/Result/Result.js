@@ -4,6 +4,7 @@ import './result.css'
 import YearResult from '../YearResult'
 
 const Result = ({
+  getCashFlowForYear,
   getEquityAfterYears,
   getInvestmentAfterYears
 }) => (
@@ -11,7 +12,9 @@ const Result = ({
     <h2>Live Results</h2>
     <p>Initial Investment: { getInvestmentAfterYears(0) }</p>
     <p>Initial Equity: { getEquityAfterYears(0) }</p>
-    <YearResult year={ 1 }/>
+    <YearResult
+      getCashFlowForYear={ getCashFlowForYear }
+      year={ 1 }/>
   </div>
 )
 
