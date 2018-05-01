@@ -12,13 +12,11 @@ class App extends Component {
       inputContent: this.getInputState()
     }
   }
-
   handleKeyDown = (event, section, inputId) => {
     const inputContent = this.state.inputContent
     inputContent[section][inputId] = event.target.value
     this.forceUpdate()
   }
-
   getInputState = () => {
     let inputContent = {}
     inputSectionData.forEach(inputSection => {
