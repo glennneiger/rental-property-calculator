@@ -9,8 +9,11 @@ import './app.css'
 import {
   INPUT_ID_CLOSING_COSTS,
   INPUT_ID_DOWN_PAYMENT,
+  INPUT_ID_OTHER_INITIAL_COSTS,
   INPUT_ID_REPAIR_COSTS,
-  TITLE_INITIAL_PURCHASE
+  TITLE_INITIAL_PURCHASE,
+  INPUT_ID_AFTER_REPAIR_VALUE,
+  INPUT_ID_PURCHASE_PRICE
 } from '../../../constants'
 
 class App extends Component {
@@ -23,17 +26,39 @@ class App extends Component {
   calculateResult = () => {
 
   }
-  getInvestmentAfterYears = years => {
-    // down payment + repair costs + closing costs = total investment
+  getInitialEquity = () => {
     const inputContent = this.state.inputContent
-    const downPayment = inputContent[TITLE_INITIAL_PURCHASE][INPUT_ID_DOWN_PAYMENT]
-    const repairCosts = inputContent[TITLE_INITIAL_PURCHASE][INPUT_ID_REPAIR_COSTS]
-    const closingCosts = inputContent[TITLE_INITIAL_PURCHASE][INPUT_ID_CLOSING_COSTS]
-    let investment = +downPayment + +repairCosts + +closingCosts
+    const initialPurchase = inputContent[TITLE_INITIAL_PURCHASE]
+    const downPayment = initialPurchase[INPUT_ID_DOWN_PAYMENT]
+    const afterRepairValue = initialPurchase[INPUT_ID_AFTER_REPAIR_VALUE]
+    const purchasePrice = initialPurchase[INPUT_ID_PURCHASE_PRICE]
+
+    return +downPayment + (+afterRepairValue - +purchasePrice)
+  }
+  getInitialInvestment = () => {
+    const inputContent = this.state.inputContent
+    const initialPurchase = inputContent[TITLE_INITIAL_PURCHASE]
+    const downPayment = initialPurchase[INPUT_ID_DOWN_PAYMENT]
+    const repairCosts = initialPurchase[INPUT_ID_REPAIR_COSTS]
+    const closingCosts = initialPurchase[INPUT_ID_CLOSING_COSTS]
+    const otherCosts = initialPurchase[INPUT_ID_OTHER_INITIAL_COSTS]
+    return +downPayment + +repairCosts + +closingCosts + +otherCosts
+  }
+  getEquityAfterYears = years => {
+    let equity = this.getInitialEquity()
+
+    if (years === 0) {
+      return equity
+    }
+    return equity
+  }
+  getInvestmentAfterYears = years => {
+    let investment = this.getInitialInvestment()
+
     if (years === 0) {
       return investment;
     }
-    return investment + 5
+    return investment
   }
   handleKeyDown = (event, section, inputId) => {
     const inputContent = this.state.inputContent
@@ -71,7 +96,9 @@ class App extends Component {
           </InputSection>
         )) }
         <CalculateButton handleClick={ this.calculateResult } />
-        <Result getInvestmentAfterYears={ this.getInvestmentAfterYears }/>
+        <Result
+          getInvestmentAfterYears={ this.getInvestmentAfterYears }
+          getEquityAfterYears={ this.getEquityAfterYears }/>
       </div>
     )
   }

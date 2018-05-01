@@ -17,6 +17,7 @@ import {
   INPUT_ID_NEIGHBORHOOD,
   INPUT_ID_OTHER_EXPENSES,
   INPUT_ID_OTHER_INCOME,
+  INPUT_ID_OTHER_INITIAL_COSTS,
   INPUT_ID_POSTAL_OR_ZIP_CODE,
   INPUT_ID_PRIVATE_MORTGAGE_INSURANCE,
   INPUT_ID_PROPERTY_TAX,
@@ -114,6 +115,10 @@ const initialPurchaseInputProps = [
   {
     inputId: INPUT_ID_CLOSING_COSTS,
     label: 'Closing Costs'
+  },
+  {
+    inputId: INPUT_ID_OTHER_INITIAL_COSTS,
+    label: 'Other Initial Costs'
   }
 ]
 
