@@ -2,9 +2,15 @@ import React from 'react'
 
 import './calculateButton.css'
 
-const CalculateButton = () => {
+const CalculateButton = ({
+  handleClick
+}) => {
   return (
-    <button className='calculateButton'>Calculate</button>
+    <button
+      className='calculateButton'
+      onClick={ handleClick }>
+      Calculate
+    </button>
   )
 }
 

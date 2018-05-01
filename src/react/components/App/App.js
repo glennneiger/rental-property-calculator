@@ -13,6 +13,9 @@ class App extends Component {
       inputContent: this.getInputState()
     }
   }
+  calculateResult = () => {
+    alert('calculating')
+  }
   handleKeyDown = (event, section, inputId) => {
     const inputContent = this.state.inputContent
     inputContent[section][inputId] = event.target.value
@@ -48,7 +51,7 @@ class App extends Component {
             )) }
           </InputSection>
         )) }
-        <CalculateButton />
+        <CalculateButton handleClick={ this.calculateResult } />
       </div>
     )
   }
