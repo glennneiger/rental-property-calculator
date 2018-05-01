@@ -6,6 +6,12 @@ import InputSection from '../InputSection'
 import Input from '../Input'
 import { inputSectionData } from './childProps'
 import './app.css'
+import {
+  INPUT_ID_CLOSING_COSTS,
+  INPUT_ID_DOWN_PAYMENT,
+  INPUT_ID_REPAIR_COSTS,
+  TITLE_INITIAL_PURCHASE
+} from '../../../constants'
 
 class App extends Component {
   constructor() {
@@ -18,15 +24,16 @@ class App extends Component {
 
   }
   getInvestmentAfterYears = years => {
-    // down payment + repair cost + closing costs = total investment
-    // const inputContent = this.state.inputContent
-    // TODO: somehow map this to childprops initial purchase so if it changes it still works
-    // const downPayment = inputContent['']
-    // let investment = downPayment
-    // if (years === 0) {
-    //   return investment;
-    // }
-    // return investment + 5
+    // down payment + repair costs + closing costs = total investment
+    const inputContent = this.state.inputContent
+    const downPayment = inputContent[TITLE_INITIAL_PURCHASE][INPUT_ID_DOWN_PAYMENT]
+    const repairCosts = inputContent[TITLE_INITIAL_PURCHASE][INPUT_ID_REPAIR_COSTS]
+    const closingCosts = inputContent[TITLE_INITIAL_PURCHASE][INPUT_ID_CLOSING_COSTS]
+    let investment = +downPayment + +repairCosts + +closingCosts
+    if (years === 0) {
+      return investment;
+    }
+    return investment + 5
   }
   handleKeyDown = (event, section, inputId) => {
     const inputContent = this.state.inputContent

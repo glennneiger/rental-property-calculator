@@ -1,165 +1,204 @@
+import {
+  INPUT_ID_AFTER_REPAIR_VALUE,
+  INPUT_ID_AMORTIZATION_PERIOD,
+  INPUT_ID_CAP_EX,
+  INPUT_ID_CITY,
+  INPUT_ID_CLOSING_COSTS,
+  INPUT_ID_COUNTRY,
+  INPUT_ID_DOWN_PAYMENT,
+  INPUT_ID_ELECTRICITY,
+  INPUT_ID_GARBAGE,
+  INPUT_ID_HOA,
+  INPUT_ID_INSURANCE,
+  INPUT_ID_INTEREST_RATE,
+  INPUT_ID_LOAN_AMOUNT,
+  INPUT_ID_MANAGEMENT,
+  INPUT_ID_MORTGAGE,
+  INPUT_ID_NEIGHBORHOOD,
+  INPUT_ID_OTHER_EXPENSES,
+  INPUT_ID_OTHER_INCOME,
+  INPUT_ID_POSTAL_OR_ZIP_CODE,
+  INPUT_ID_PRIVATE_MORTGAGE_INSURANCE,
+  INPUT_ID_PROPERTY_TAX,
+  INPUT_ID_PROVINCE_OR_STATE,
+  INPUT_ID_PURCHASE_PRICE,
+  INPUT_ID_RENTAL_INCOME,
+  INPUT_ID_REPAIR_COSTS,
+  INPUT_ID_REPAIRS_AND_MAINTENANCE,
+  INPUT_ID_SQUARE_FEET,
+  INPUT_ID_STREET_ADDRESS,
+  INPUT_ID_UNIT_NUMBER,
+  INPUT_ID_VACANCY,
+  INPUT_ID_WATER_AND_SEWER,
+  TITLE_GENERAL_INFO,
+  TITLE_INITIAL_PURCHASE,
+  TITLE_MONTHLY_OPERATING_EXPENSES,
+  TITLE_MONTHLY_OPERATING_INCOME
+} from '../../../constants'
+
 const generalInfoInputProps = [
   {
-    inputId: 'neighborhoodInput',
+    inputId: INPUT_ID_NEIGHBORHOOD,
     inputType: 'text',
     label: 'Neighborhood',
     textInputWidth: 200
   },
   {
-    inputId: 'streetAddressInput',
+    inputId: INPUT_ID_STREET_ADDRESS,
     inputType: 'text',
     label: 'Street Address',
     textInputWidth: 300
   },
   {
-    inputId: 'unitNumberInput',
+    inputId: INPUT_ID_UNIT_NUMBER,
     inputType: 'text',
     label: 'Unit',
   },
   {
-    inputId: 'cityInput',
+    inputId: INPUT_ID_CITY,
     inputType: 'text',
     label: 'City',
     textInputWidth: 200
   },
   {
-    inputId: 'provinceOrStateInput',
+    inputId: INPUT_ID_PROVINCE_OR_STATE,
     inputType: 'text',
     label: 'Province/State'
   },
   {
-    inputId: 'countryInput',
+    inputId: INPUT_ID_COUNTRY,
     inputType: 'text',
     label: 'Country',
     textInputWidth: 200
   },
   {
-    inputId: 'postalOrZipCodeInput',
+    inputId: INPUT_ID_POSTAL_OR_ZIP_CODE,
     inputType: 'text',
     label: 'Postal/Zip Code'
   },
   {
-    inputId: 'sqftInput',
+    inputId: INPUT_ID_SQUARE_FEET,
     label: 'Square Feet'
   }
 ]
 
 const initialPurchaseInputProps = [
   {
-    inputId: 'purchasePriceInput',
+    inputId: INPUT_ID_PURCHASE_PRICE,
     label: 'Purchase Price'
   },
   {
-    inputId: 'downPaymentInput',
+    inputId: INPUT_ID_DOWN_PAYMENT,
     label: 'Down Payment'
   },
   {
-    inputId: 'loanAmountInput',
+    inputId: INPUT_ID_LOAN_AMOUNT,
     label: 'Loan Amount'
   },
   {
-    inputId: 'interestRateInput',
+    inputId: INPUT_ID_INTEREST_RATE,
     label: 'Interest Rate (%)'
   },
   {
-    inputId: 'amortizationPeriodInput',
+    inputId: INPUT_ID_AMORTIZATION_PERIOD,
     label: 'Amortization Period (years)'
   },
   {
-    inputId: 'arvInput',
+    inputId: INPUT_ID_AFTER_REPAIR_VALUE,
     label: 'After Repair Value'
   },
   {
-    inputId: 'repairCostsInput',
+    inputId: INPUT_ID_REPAIR_COSTS,
     label: 'Repair Costs'
   },
   {
-    inputId: 'closingCostsInput',
+    inputId: INPUT_ID_CLOSING_COSTS,
     label: 'Closing Costs'
   }
 ]
 
 const operatingIncomeInputProps = [
   {
-    inputId:'rentInput',
-    label:'Rental Income'
+    inputId: INPUT_ID_RENTAL_INCOME,
+    label: 'Rental Income'
   },
   {
-    inputId:'otherIncomeInput',
-    label:'Other Income'
+    inputId: INPUT_ID_OTHER_INCOME,
+    label: 'Other Income'
   }
 ]
 
 const operatingExpensesInputProps = [
   {
-    inputId: 'mortgageInput',
+    inputId: INPUT_ID_MORTGAGE,
     label: 'Mortgage'
   },
   {
-    inputId: 'electricityInput',
+    inputId: INPUT_ID_ELECTRICITY,
     label: 'Electricity'
   },
   {
-    inputId: 'waterAndSewerInput',
+    inputId: INPUT_ID_WATER_AND_SEWER,
     label: 'Water and Sewer'
   },
   {
-    inputId: 'PMIInput',
+    inputId: INPUT_ID_PRIVATE_MORTGAGE_INSURANCE,
     label: 'Private Mortgage Insurance'
   },
   {
-    inputId: 'garbageInput',
+    inputId: INPUT_ID_GARBAGE,
     label: 'Garbage'
   },
   {
-    inputId: 'hoaInput',
+    inputId: INPUT_ID_HOA,
     label: 'HOA Fees'
   },
   {
-    inputId: 'insuranceInput',
+    inputId: INPUT_ID_INSURANCE,
     label: 'Insurance'
   },
   {
-    inputId: 'propertyTaxInput',
+    inputId: INPUT_ID_PROPERTY_TAX,
     label: 'Property Tax'
   },
   {
-    inputId: 'vacancyInput',
+    inputId: INPUT_ID_VACANCY,
     label: 'Vacancy (%)'
   },
   {
-    inputId: 'r&mInput',
+    inputId: INPUT_ID_REPAIRS_AND_MAINTENANCE,
     label: 'Repairs & Maintenance (%)'
   },
   {
-    inputId: 'capExInput',
+    inputId: INPUT_ID_CAP_EX,
     label: 'Cap. Ex. (%)'
   },
   {
-    inputId: 'managementInput',
+    inputId: INPUT_ID_MANAGEMENT,
     label: 'Management (%)'
   },
   {
-    inputId: 'otherExpensestInput',
+    inputId: INPUT_ID_OTHER_EXPENSES,
     label: 'Other Expenses'
   },
 ]
 
 export const inputSectionData = [
   {
-    title: 'General Info',
+    title: TITLE_GENERAL_INFO,
     childProps: generalInfoInputProps
   },
   {
-    title: "Initial Purchase",
+    title: TITLE_INITIAL_PURCHASE,
     childProps: initialPurchaseInputProps
   },
   {
-    title: "Monthly Operating Income",
+    title: TITLE_MONTHLY_OPERATING_INCOME,
     childProps: operatingIncomeInputProps
   },
   {
-    title: "Monthly Operating Expenses",
+    title: TITLE_MONTHLY_OPERATING_EXPENSES,
     childProps: operatingExpensesInputProps
   }
 ]
+
