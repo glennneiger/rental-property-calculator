@@ -23,6 +23,10 @@ const FutureResults = ({
     ) {
       yearsToShowResults.push(i)
     }
+    /* To show the year after amortization period, when debt is paid off */
+    if (numYears) {
+      yearsToShowResults.push(numYears + 1)
+    }
     return yearsToShowResults
   }
   return (
