@@ -206,7 +206,7 @@ export const futureProjectionsInputProps = [
   },
   {
     inputId: INPUT_ID_ANNUAL_INCOME_GROWTH,
-    label: 'Annual Rent Growth (%)'
+    label: 'Annual Income Growth (%)'
   },
   {
     inputId: INPUT_ID_ANNUAL_EXPENSES_GROWTH,

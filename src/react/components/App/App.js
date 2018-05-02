@@ -36,6 +36,14 @@ class App extends Component {
       inputContent: this.getInputState()
     }
   }
+  getCompoundedValue = (initialValue, annualGrowthRate, years) => (
+    Math.round(initialValue *
+      Math.pow(
+        1 + (annualGrowthRate / 100),
+        years
+      )
+    )
+  )
   getPercentOfPropertyValueMonthly = (percent, propertyValue) => (
     percent * propertyValue / (100 * MONTHS_PER_YEAR)
   )
@@ -52,11 +60,10 @@ class App extends Component {
     propertyValue = parseInt(propertyValue, NUMBER_SYSTEM_DECIMAL)
     annualPVGrowth = parseInt(annualPVGrowth, NUMBER_SYSTEM_DECIMAL)
     if (annualPVGrowth) {
-      return Math.round(propertyValue *
-        Math.pow(
-          1 + (annualPVGrowth / 100),
-          year
-        )
+      return this.getCompoundedValue(
+        propertyValue,
+        annualPVGrowth,
+        year
       )
     }
     return Math.round(propertyValue)
@@ -68,7 +75,6 @@ class App extends Component {
   }
   /* Cash flow = Income - Expenses */
   getCashFlowForYear = year => {
-    // TODO: deal with all numbers of years that aren't 0
     const inputContent = this.state.inputContent
     const monthlyIncome = inputContent[TITLE_MONTHLY_INCOME]
     const monthlyExpenses = inputContent[TITLE_MONTHLY_EXPENSES]
@@ -88,12 +94,13 @@ class App extends Component {
       const income = monthlyIncome[current.inputId]
       return total + +income
     }, 0)
+
     if (annualIncomeGrowth) {
-      incomeForYear = incomeForYear *
-        Math.pow(
-          1 + (annualIncomeGrowth / 100),
-          year
-        )
+      incomeForYear = this.getCompoundedValue(
+        incomeForYear,
+        annualIncomeGrowth,
+        year
+      )
     }
 
     let expensesForYear = expensesInputProps.reduce((total, current) => {
@@ -113,11 +120,11 @@ class App extends Component {
     }, 0)
 
     if (annualExpensesGrowth) {
-      expensesForYear = expensesForYear *
-        Math.pow(
-          1 + (annualExpensesGrowth / 100),
-          year
-        )
+      expensesForYear = this.getCompoundedValue(
+        expensesForYear,
+        annualExpensesGrowth,
+        year
+      )
     }
 
     return Math.round((incomeForYear - expensesForYear) * MONTHS_PER_YEAR)
