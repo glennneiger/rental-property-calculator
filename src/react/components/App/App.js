@@ -56,6 +56,9 @@ class App extends Component {
     const futureProjections = inputContent[TITLE_FUTURE_PROJECTIONS]
 
     let propertyValue = initialPurchase[INPUT_ID_AFTER_REPAIR_VALUE]
+    if (!propertyValue) {
+      propertyValue = 0
+    }
     let annualPVGrowth = futureProjections[INPUT_ID_PROPERTY_VALUE_GROWTH]
     propertyValue = parseInt(propertyValue, NUMBER_SYSTEM_DECIMAL)
     annualPVGrowth = parseInt(annualPVGrowth, NUMBER_SYSTEM_DECIMAL)
