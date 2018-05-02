@@ -21,7 +21,10 @@ import {
   MONTHS_PER_YEAR,
   TITLE_INITIAL_PURCHASE,
   TITLE_MONTHLY_EXPENSES,
-  TITLE_MONTHLY_INCOME
+  TITLE_MONTHLY_INCOME,
+  TITLE_FUTURE_PROJECTIONS,
+  INPUT_ID_PROPERTY_VALUE_GROWTH,
+  NUMBER_SYSTEM_DECIMAL
 } from '../../../constants'
 
 class App extends Component {
@@ -37,6 +40,20 @@ class App extends Component {
   getPercentOfRentalIncomeMonthly = (percent, monthlyRentalIncome) => (
     percent * monthlyRentalIncome / 100
   )
+  getPropertyValueForYear = year => {
+    const inputContent = this.state.inputContent
+    const initialPurchase = inputContent[TITLE_INITIAL_PURCHASE]
+    const futureProjections = inputContent[TITLE_FUTURE_PROJECTIONS]
+
+    let propertyValue = initialPurchase[INPUT_ID_AFTER_REPAIR_VALUE]
+    let annualPVGrowth = futureProjections[INPUT_ID_PROPERTY_VALUE_GROWTH]
+    propertyValue = parseInt(propertyValue, NUMBER_SYSTEM_DECIMAL)
+    annualPVGrowth = parseInt(annualPVGrowth, NUMBER_SYSTEM_DECIMAL)
+    if (annualPVGrowth) {
+      return Math.round(propertyValue * Math.pow((1 + (annualPVGrowth / 100)), year))
+    }
+    return Math.round(propertyValue)
+  }
   getAmortizationPeriod = () => {
     const inputContent = this.state.inputContent
     const initialPurchase = inputContent[TITLE_INITIAL_PURCHASE]
@@ -65,6 +82,7 @@ class App extends Component {
       } else if (current.percentOfPropertyValue) {
         expense = this.getPercentOfPropertyValueMonthly(
           expense,
+          // TODO: get property value for year here
           initialPurchase[INPUT_ID_AFTER_REPAIR_VALUE]
         )
       }
@@ -165,7 +183,8 @@ class App extends Component {
           getCashFlowForYear={ this.getCashFlowForYear }
           getCashOnCashReturnForYear={ this.getCashOnCashReturnForYear }
           getInvestmentAfterYears={ this.getInvestmentAfterYears }
-          getEquityAfterYears={ this.getEquityAfterYears }/>
+          getEquityAfterYears={ this.getEquityAfterYears }
+          getPropertyValueForYear={ this.getPropertyValueForYear }/>
       </div>
     )
   }
