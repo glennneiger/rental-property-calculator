@@ -4,9 +4,9 @@ import Result from '../Result'
 import InputSection from '../InputSection'
 import Input from '../Input'
 import {
+  expensesInputProps,
   incomeInputProps,
-  inputSectionData,
-  expensesInputProps
+  inputSectionData
 } from './childProps'
 import './app.css'
 import {
