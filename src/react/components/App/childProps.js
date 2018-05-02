@@ -170,19 +170,23 @@ export const expensesInputProps = [
   },
   {
     inputId: INPUT_ID_VACANCY,
-    label: 'Vacancy (%)'
+    label: 'Vacancy (%)',
+    percent: true
   },
   {
     inputId: INPUT_ID_REPAIRS_AND_MAINTENANCE,
-    label: 'Repairs & Maintenance (%)'
+    label: 'Repairs & Maintenance (%)',
+    percent: true
   },
   {
     inputId: INPUT_ID_CAP_EX,
-    label: 'Cap. Ex. (%)'
+    label: 'Cap. Ex. (%)',
+    percent: true
   },
   {
     inputId: INPUT_ID_MANAGEMENT,
-    label: 'Management (%)'
+    label: 'Management (%)',
+    percent: true
   },
   {
     inputId: INPUT_ID_OTHER_EXPENSES,

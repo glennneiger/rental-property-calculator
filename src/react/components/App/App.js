@@ -15,6 +15,7 @@ import {
   INPUT_ID_DOWN_PAYMENT,
   INPUT_ID_OTHER_INITIAL_COSTS,
   INPUT_ID_PURCHASE_PRICE,
+  INPUT_ID_RENTAL_INCOME,
   INPUT_ID_REPAIR_COSTS,
   MONTHS_PER_YEAR,
   TITLE_INITIAL_PURCHASE,
@@ -42,7 +43,10 @@ class App extends Component {
     }, 0)
 
     const expensesForYear = expensesInputProps.reduce((total, current) => {
-      const expense = monthlyExpenses[current.inputId]
+      let expense = monthlyExpenses[current.inputId]
+      if (current.percent) {
+        expense = expense * monthlyIncome[INPUT_ID_RENTAL_INCOME] / 100
+      }
       return total + +expense
     }, 0)
 
