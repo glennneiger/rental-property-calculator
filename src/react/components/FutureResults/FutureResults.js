@@ -7,34 +7,20 @@ import YearResult from '../YearResult'
 const FutureResults = ({
   getCashFlowForYear,
   getCashOnCashReturnForYear
-}) => (
-  <div className='futureResults'>
-    <YearResult
-      getCashFlowForYear={ getCashFlowForYear }
-      getCashOnCashReturnForYear={ getCashOnCashReturnForYear }
-      year={ 1 }/>
-    <YearResult
-      getCashFlowForYear={ getCashFlowForYear }
-      getCashOnCashReturnForYear={ getCashOnCashReturnForYear }
-      year={ 5 }/>
-    <YearResult
-      getCashFlowForYear={ getCashFlowForYear }
-      getCashOnCashReturnForYear={ getCashOnCashReturnForYear }
-      year={ 10 }/>
-    <YearResult
-      getCashFlowForYear={ getCashFlowForYear }
-      getCashOnCashReturnForYear={ getCashOnCashReturnForYear }
-      year={ 15 }/>
-    <YearResult
-      getCashFlowForYear={ getCashFlowForYear }
-      getCashOnCashReturnForYear={ getCashOnCashReturnForYear }
-      year={ 20 }/>
-    <YearResult
-      getCashFlowForYear={ getCashFlowForYear }
-      getCashOnCashReturnForYear={ getCashOnCashReturnForYear }
-      year={ 25 }/>
-  </div>
-)
+}) => {
+  const yearsToShowResults = [1, 5, 10, 15, 20, 25]
+  return (
+    <div className='futureResults'>
+      { yearsToShowResults.map(year => (
+        <YearResult
+          key={ year }
+          getCashFlowForYear={ getCashFlowForYear }
+          getCashOnCashReturnForYear={ getCashOnCashReturnForYear }
+          year={ year }/>
+      )) }
+    </div>
+  )
+}
 
 FutureResults.propTypes = {
   getCashFlowForYear: PropTypes.func.isRequired,
