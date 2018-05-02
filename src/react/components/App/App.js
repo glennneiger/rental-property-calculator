@@ -12,21 +12,21 @@ import './app.css'
 import {
   INPUT_ID_AFTER_REPAIR_VALUE,
   INPUT_ID_AMORTIZATION_PERIOD,
+  INPUT_ID_ANNUAL_EXPENSES_GROWTH,
   INPUT_ID_ANNUAL_INCOME_GROWTH,
   INPUT_ID_CLOSING_COSTS,
   INPUT_ID_DOWN_PAYMENT,
   INPUT_ID_OTHER_INITIAL_COSTS,
+  INPUT_ID_PROPERTY_VALUE_GROWTH,
   INPUT_ID_PURCHASE_PRICE,
   INPUT_ID_RENTAL_INCOME,
   INPUT_ID_REPAIR_COSTS,
   MONTHS_PER_YEAR,
+  NUMBER_SYSTEM_DECIMAL,
   TITLE_INITIAL_PURCHASE,
   TITLE_MONTHLY_EXPENSES,
   TITLE_MONTHLY_INCOME,
-  TITLE_FUTURE_PROJECTIONS,
-  INPUT_ID_PROPERTY_VALUE_GROWTH,
-  NUMBER_SYSTEM_DECIMAL,
-  INPUT_ID_ANNUAL_EXPENSES_GROWTH
+  TITLE_FUTURE_PROJECTIONS
 } from '../../../constants'
 
 class App extends Component {
@@ -76,28 +76,28 @@ class App extends Component {
     const initialPurchase = inputContent[TITLE_INITIAL_PURCHASE]
     return initialPurchase[INPUT_ID_AMORTIZATION_PERIOD]
   }
-  /* Cash flow = Income - Expenses */
-  getCashFlowForYear = year => {
+  getAnnualIncomeGrowth = () => {
     const inputContent = this.state.inputContent
-    const monthlyIncome = inputContent[TITLE_MONTHLY_INCOME]
-    const monthlyExpenses = inputContent[TITLE_MONTHLY_EXPENSES]
-    const initialPurchase = inputContent[TITLE_INITIAL_PURCHASE]
     const futureProjections = inputContent[TITLE_FUTURE_PROJECTIONS]
-
-    let annualIncomeGrowth = futureProjections[
+    const annualIncomeGrowth = futureProjections[
       INPUT_ID_ANNUAL_INCOME_GROWTH
     ]
-    let annualExpensesGrowth = futureProjections[
-      INPUT_ID_ANNUAL_EXPENSES_GROWTH
-    ]
-    annualIncomeGrowth = parseInt(annualIncomeGrowth, NUMBER_SYSTEM_DECIMAL)
-    annualExpensesGrowth = parseInt(annualExpensesGrowth, NUMBER_SYSTEM_DECIMAL)
+    return parseInt(annualIncomeGrowth, NUMBER_SYSTEM_DECIMAL)
+  }
+  getInitialYearlyIncome = () => {
+    const inputContent = this.state.inputContent
+    const monthlyIncome = inputContent[TITLE_MONTHLY_INCOME]
 
-    let incomeForYear = incomeInputProps.reduce((total, current) => {
+    const initialYearlyIncome = incomeInputProps.reduce((total, current) => {
       const income = monthlyIncome[current.inputId]
       return total + +income
     }, 0)
+    return initialYearlyIncome
+  }
+  getIncomeForYear = year => {
+    let incomeForYear = this.getInitialYearlyIncome()
 
+    const annualIncomeGrowth = this.getAnnualIncomeGrowth()
     if (annualIncomeGrowth) {
       incomeForYear = this.getCompoundedValue(
         incomeForYear,
@@ -105,6 +105,23 @@ class App extends Component {
         year
       )
     }
+
+    return incomeForYear
+  }
+  getAnnualExpensesGrowth = () => {
+    const inputContent = this.state.inputContent
+    const futureProjections = inputContent[TITLE_FUTURE_PROJECTIONS]
+
+    const annualExpensesGrowth = futureProjections[
+      INPUT_ID_ANNUAL_EXPENSES_GROWTH
+    ]
+    return parseInt(annualExpensesGrowth, NUMBER_SYSTEM_DECIMAL)
+  }
+  getInitialYearlyExpenses = () => {
+    const inputContent = this.state.inputContent
+    const monthlyIncome = inputContent[TITLE_MONTHLY_INCOME]
+    const monthlyExpenses = inputContent[TITLE_MONTHLY_EXPENSES]
+    const initialPurchase = inputContent[TITLE_INITIAL_PURCHASE]
 
     let expensesForYear = expensesInputProps.reduce((total, current) => {
       let expense = monthlyExpenses[current.inputId]
@@ -121,7 +138,12 @@ class App extends Component {
       }
       return total + +expense
     }, 0)
+    return expensesForYear
+  }
+  getExpensesForYear = year => {
+    let expensesForYear = this.getInitialYearlyExpenses()
 
+    const annualExpensesGrowth = this.getAnnualExpensesGrowth()
     if (annualExpensesGrowth) {
       expensesForYear = this.getCompoundedValue(
         expensesForYear,
@@ -129,7 +151,12 @@ class App extends Component {
         year
       )
     }
-
+    return expensesForYear
+  }
+  /* Cash flow = Income - Expenses */
+  getCashFlowForYear = year => {
+    const incomeForYear = this.getIncomeForYear(year)
+    const expensesForYear = this.getExpensesForYear(year)
     return Math.round((incomeForYear - expensesForYear) * MONTHS_PER_YEAR)
   }
   /* Cash on cash return = (cash flow / initialInvestment) * 100% */
