@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import './result.css'
 import YearResult from '../YearResult'
@@ -19,5 +20,12 @@ const Result = ({
       year={ 1 }/>
   </div>
 )
+
+Result.propTypes = {
+  getCashFlowForYear: PropTypes.func.isRequired,
+  getCashOnCashReturnForYear: PropTypes.func.isRequired,
+  getEquityAfterYears: PropTypes.func.isRequired,
+  getInvestmentAfterYears: PropTypes.func.isRequired
+}
 
 export default Result

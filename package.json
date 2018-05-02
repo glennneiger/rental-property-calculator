@@ -17,7 +17,9 @@
     "dev": "npm-run-all --parallel start electron"
   },
   "devDependencies": {
+    "babel-eslint": "^8.2.3",
     "electron": "^1.8.6",
+    "eslint": "^4.19.1",
     "npm-run-all": "^4.1.2"
   }
 }

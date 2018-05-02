@@ -4,9 +4,9 @@ import Result from '../Result'
 import InputSection from '../InputSection'
 import Input from '../Input'
 import {
+  incomeInputProps,
   inputSectionData,
-  expensesInputProps,
-  incomeInputProps
+  expensesInputProps
 } from './childProps'
 import './app.css'
 import {
@@ -51,7 +51,6 @@ class App extends Component {
     }, 0)
 
     return (incomeForYear - expensesForYear) * MONTHS_PER_YEAR
-
   }
   /* Cash on cash return = (cash flow / initialInvestment) * 100% */
   getCashOnCashReturnForYear = year => {
@@ -74,7 +73,8 @@ class App extends Component {
 
     return +downPayment + (+afterRepairValue - +purchasePrice)
   }
-  /* Initial investment = down payment + repair costs + closing costs + other initial costs */
+  /* Initial investment =
+    down payment + repair costs + closing costs + other initial costs */
   getInitialInvestment = () => {
     const inputContent = this.state.inputContent
     const initialPurchase = inputContent[TITLE_INITIAL_PURCHASE]
@@ -88,7 +88,7 @@ class App extends Component {
   }
   getEquityAfterYears = years => {
     let equity = this.getInitialEquity()
-  // TODO: deal with all numbers of years that aren't 0
+    // TODO: deal with all numbers of years that aren't 0
     if (years === 0) {
       return equity
     }
@@ -98,7 +98,7 @@ class App extends Component {
     let investment = this.getInitialInvestment()
     // TODO: deal with all numbers of years that aren't 0
     if (years === 0) {
-      return investment;
+      return investment
     }
     return investment
   }
@@ -129,7 +129,9 @@ class App extends Component {
             title={ section.title }>
             { section.childProps.map(props => (
               <Input
-                content={ this.state.inputContent[section.title][props.inputId] }
+                content={
+                  this.state.inputContent[section.title][props.inputId]
+                }
                 key={ props.inputId }
                 { ...props }
                 handleKeyDown={ this.handleKeyDown }
