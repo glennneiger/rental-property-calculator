@@ -1,0 +1,11 @@
+.result {
+  margin: 24px;
+  padding: 24px;
+  background-color: #e9f3f8;
+}
+
+.result h2 {
+  font-size: 1.8em;
+  font-weight: bold;
+  margin-bottom: 20px;
+}

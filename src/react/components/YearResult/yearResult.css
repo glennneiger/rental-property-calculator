@@ -1,0 +1,12 @@
+.yearResult {
+  margin: 24px 0px;
+}
+
+.yearResult h3 {
+  font-size: 1.4em;
+  text-decoration: underline;
+}
+
+.yearResult p {
+  padding-top: 4px;
+}
