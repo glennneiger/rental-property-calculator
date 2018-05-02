@@ -92,7 +92,7 @@ class App extends Component {
       const income = monthlyIncome[current.inputId]
       return total + +income
     }, 0)
-    return initialYearlyIncome
+    return parseInt(initialYearlyIncome, NUMBER_SYSTEM_DECIMAL)
   }
   getIncomeForYear = year => {
     let incomeForYear = this.getInitialYearlyIncome()
@@ -138,7 +138,7 @@ class App extends Component {
       }
       return total + +expense
     }, 0)
-    return expensesForYear
+    return parseInt(expensesForYear, NUMBER_SYSTEM_DECIMAL)
   }
   getExpensesForYear = year => {
     let expensesForYear = this.getInitialYearlyExpenses()
