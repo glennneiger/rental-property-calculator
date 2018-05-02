@@ -12,6 +12,7 @@ import './app.css'
 import {
   INPUT_ID_AFTER_REPAIR_VALUE,
   INPUT_ID_AMORTIZATION_PERIOD,
+  INPUT_ID_ANNUAL_INCOME_GROWTH,
   INPUT_ID_CLOSING_COSTS,
   INPUT_ID_DOWN_PAYMENT,
   INPUT_ID_OTHER_INITIAL_COSTS,
@@ -24,7 +25,8 @@ import {
   TITLE_MONTHLY_INCOME,
   TITLE_FUTURE_PROJECTIONS,
   INPUT_ID_PROPERTY_VALUE_GROWTH,
-  NUMBER_SYSTEM_DECIMAL
+  NUMBER_SYSTEM_DECIMAL,
+  INPUT_ID_ANNUAL_EXPENSES_GROWTH
 } from '../../../constants'
 
 class App extends Component {
@@ -50,7 +52,12 @@ class App extends Component {
     propertyValue = parseInt(propertyValue, NUMBER_SYSTEM_DECIMAL)
     annualPVGrowth = parseInt(annualPVGrowth, NUMBER_SYSTEM_DECIMAL)
     if (annualPVGrowth) {
-      return Math.round(propertyValue * Math.pow((1 + (annualPVGrowth / 100)), year))
+      return Math.round(propertyValue *
+        Math.pow(
+          1 + (annualPVGrowth / 100),
+          year
+        )
+      )
     }
     return Math.round(propertyValue)
   }
@@ -66,13 +73,30 @@ class App extends Component {
     const monthlyIncome = inputContent[TITLE_MONTHLY_INCOME]
     const monthlyExpenses = inputContent[TITLE_MONTHLY_EXPENSES]
     const initialPurchase = inputContent[TITLE_INITIAL_PURCHASE]
+    const futureProjections = inputContent[TITLE_FUTURE_PROJECTIONS]
 
-    const incomeForYear = incomeInputProps.reduce((total, current) => {
+    let annualIncomeGrowth = futureProjections[
+      INPUT_ID_ANNUAL_INCOME_GROWTH
+    ]
+    let annualExpensesGrowth = futureProjections[
+      INPUT_ID_ANNUAL_EXPENSES_GROWTH
+    ]
+    annualIncomeGrowth = parseInt(annualIncomeGrowth, NUMBER_SYSTEM_DECIMAL)
+    annualExpensesGrowth = parseInt(annualExpensesGrowth, NUMBER_SYSTEM_DECIMAL)
+
+    let incomeForYear = incomeInputProps.reduce((total, current) => {
       const income = monthlyIncome[current.inputId]
       return total + +income
     }, 0)
+    if (annualIncomeGrowth) {
+      incomeForYear = incomeForYear *
+        Math.pow(
+          1 + (annualIncomeGrowth / 100),
+          year
+        )
+    }
 
-    const expensesForYear = expensesInputProps.reduce((total, current) => {
+    let expensesForYear = expensesInputProps.reduce((total, current) => {
       let expense = monthlyExpenses[current.inputId]
       if (current.percentOfRent) {
         expense = this.getPercentOfRentalIncomeMonthly(
@@ -82,14 +106,21 @@ class App extends Component {
       } else if (current.percentOfPropertyValue) {
         expense = this.getPercentOfPropertyValueMonthly(
           expense,
-          // TODO: get property value for year here
           initialPurchase[INPUT_ID_AFTER_REPAIR_VALUE]
         )
       }
       return total + +expense
     }, 0)
 
-    return (incomeForYear - expensesForYear) * MONTHS_PER_YEAR
+    if (annualExpensesGrowth) {
+      expensesForYear = expensesForYear *
+        Math.pow(
+          1 + (annualExpensesGrowth / 100),
+          year
+        )
+    }
+
+    return Math.round((incomeForYear - expensesForYear) * MONTHS_PER_YEAR)
   }
   /* Cash on cash return = (cash flow / initialInvestment) * 100% */
   getCashOnCashReturnForYear = year => {
