@@ -31,6 +31,12 @@ class App extends Component {
       inputContent: this.getInputState()
     }
   }
+  getPercentOfPropertyValueMonthly = (percent, propertyValue) => (
+    percent * propertyValue / (100 * MONTHS_PER_YEAR)
+  )
+  getPercentOfRentalIncomeMonthly = (percent, monthlyRentalIncome) => (
+    percent * monthlyRentalIncome / 100
+  )
   getAmortizationPeriod = () => {
     const inputContent = this.state.inputContent
     const initialPurchase = inputContent[TITLE_INITIAL_PURCHASE]
@@ -42,6 +48,7 @@ class App extends Component {
     const inputContent = this.state.inputContent
     const monthlyIncome = inputContent[TITLE_MONTHLY_INCOME]
     const monthlyExpenses = inputContent[TITLE_MONTHLY_EXPENSES]
+    const initialPurchase = inputContent[TITLE_INITIAL_PURCHASE]
 
     const incomeForYear = incomeInputProps.reduce((total, current) => {
       const income = monthlyIncome[current.inputId]
@@ -50,8 +57,16 @@ class App extends Component {
 
     const expensesForYear = expensesInputProps.reduce((total, current) => {
       let expense = monthlyExpenses[current.inputId]
-      if (current.percent) {
-        expense = expense * monthlyIncome[INPUT_ID_RENTAL_INCOME] / 100
+      if (current.percentOfRent) {
+        expense = this.getPercentOfRentalIncomeMonthly(
+          expense,
+          monthlyIncome[INPUT_ID_RENTAL_INCOME]
+        )
+      } else if (current.percentOfPropertyValue) {
+        expense = this.getPercentOfPropertyValueMonthly(
+          expense,
+          initialPurchase[INPUT_ID_AFTER_REPAIR_VALUE]
+        )
       }
       return total + +expense
     }, 0)
