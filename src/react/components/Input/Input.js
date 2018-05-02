@@ -1,5 +1,6 @@
 import React from 'react'
 import './input.css'
+import PropTypes from 'prop-types'
 
 const DEFAULT_TOTAL_WIDTH = 100
 const LABEL_WIDTH = 185
@@ -8,7 +9,7 @@ const Input = ({
   content,
   handleKeyDown,
   inputId,
-  inputType='number',
+  inputType = 'number',
   label,
   section,
   textInputWidth = DEFAULT_TOTAL_WIDTH
@@ -27,6 +28,16 @@ const Input = ({
         onChange={ handleChange }/>
     </div>
   )
+}
+
+Input.propTypes = {
+  content: PropTypes.string.isRequired,
+  handleKeyDown: PropTypes.func.isRequired,
+  inputId: PropTypes.string.isRequired,
+  inputType: PropTypes.string,
+  label: PropTypes.string.isRequired,
+  section: PropTypes.string.isRequired,
+  textInputWidth: PropTypes.number
 }
 
 export default Input

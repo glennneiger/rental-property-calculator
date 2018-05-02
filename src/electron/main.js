@@ -5,6 +5,8 @@ const {
   BrowserWindow
 } = electron
 
+let mainWindow
+
 const createWindow = () => {
   mainWindow = new BrowserWindow({
     height: 800,
@@ -13,8 +15,7 @@ const createWindow = () => {
 
   mainWindow.loadURL('http://localhost:3000')
 
-  mainWindow.on('closed', () => mainWindow = null)
+  mainWindow.on('closed', () => (mainWindow = null))
 }
 
-let mainWindow
 app.on('ready', createWindow)

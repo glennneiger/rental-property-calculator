@@ -53,7 +53,7 @@ const generalInfoInputProps = [
   {
     inputId: INPUT_ID_UNIT_NUMBER,
     inputType: 'text',
-    label: 'Unit',
+    label: 'Unit'
   },
   {
     inputId: INPUT_ID_CITY,
@@ -191,7 +191,7 @@ export const expensesInputProps = [
   {
     inputId: INPUT_ID_OTHER_EXPENSES,
     label: 'Other Expenses'
-  },
+  }
 ]
 
 export const inputSectionData = [
