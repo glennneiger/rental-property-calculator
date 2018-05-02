@@ -31,13 +31,17 @@ const FutureResults = ({
   }
   return (
     <div className='futureResults'>
-      { getYearsToShowResults().map(year => (
-        <YearResult
-          key={ year }
-          getCashFlowForYear={ getCashFlowForYear }
-          getCashOnCashReturnForYear={ getCashOnCashReturnForYear }
-          year={ year }/>
-      )) }
+      { getYearsToShowResults().length === 1
+        ? <p className='enterAmortization'>
+          Enter an amortization period to see your results.
+        </p>
+        : getYearsToShowResults().map(year => (
+          <YearResult
+            key={ year }
+            getCashFlowForYear={ getCashFlowForYear }
+            getCashOnCashReturnForYear={ getCashOnCashReturnForYear }
+            year={ year }/>
+        )) }
     </div>
   )
 }

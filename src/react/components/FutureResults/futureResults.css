@@ -4,3 +4,8 @@
   flex-wrap: wrap;
   align-content: space-between;
 }
+
+.futureResults .enterAmortization {
+  font-weight: bold;
+  font-size: 20px;
+}
