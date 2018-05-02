@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import './result.css'
-import YearResult from '../YearResult'
+import FutureResults from '../FutureResults'
 
 const Result = ({
   getCashFlowForYear,
@@ -14,10 +14,9 @@ const Result = ({
     <h2>Live Results</h2>
     <p>Initial Investment: { getInvestmentAfterYears(0) }</p>
     <p>Initial Equity: { getEquityAfterYears(0) }</p>
-    <YearResult
+    <FutureResults
       getCashFlowForYear={ getCashFlowForYear }
-      getCashOnCashReturnForYear={ getCashOnCashReturnForYear }
-      year={ 1 }/>
+      getCashOnCashReturnForYear={ getCashOnCashReturnForYear }/>
   </div>
 )
 
