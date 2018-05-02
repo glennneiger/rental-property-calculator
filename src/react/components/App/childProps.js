@@ -1,6 +1,8 @@
 import {
   INPUT_ID_AFTER_REPAIR_VALUE,
   INPUT_ID_AMORTIZATION_PERIOD,
+  INPUT_ID_ANNUAL_EXPENSES_GROWTH,
+  INPUT_ID_ANNUAL_INCOME_GROWTH,
   INPUT_ID_CAP_EX,
   INPUT_ID_CITY,
   INPUT_ID_CLOSING_COSTS,
@@ -21,6 +23,7 @@ import {
   INPUT_ID_POSTAL_OR_ZIP_CODE,
   INPUT_ID_PRIVATE_MORTGAGE_INSURANCE,
   INPUT_ID_PROPERTY_TAX,
+  INPUT_ID_PROPERTY_VALUE_GROWTH,
   INPUT_ID_PROVINCE_OR_STATE,
   INPUT_ID_PURCHASE_PRICE,
   INPUT_ID_RENTAL_INCOME,
@@ -31,6 +34,7 @@ import {
   INPUT_ID_UNIT_NUMBER,
   INPUT_ID_VACANCY,
   INPUT_ID_WATER_AND_SEWER,
+  TITLE_FUTURE_PROJECTIONS,
   TITLE_GENERAL_INFO,
   TITLE_INITIAL_PURCHASE,
   TITLE_MONTHLY_EXPENSES,
@@ -194,6 +198,21 @@ export const expensesInputProps = [
   }
 ]
 
+export const futureProjectionsInputProps = [
+  {
+    inputId: INPUT_ID_PROPERTY_VALUE_GROWTH,
+    label: 'Annual Property Value Growth (%)'
+  },
+  {
+    inputId: INPUT_ID_ANNUAL_INCOME_GROWTH,
+    label: 'Annual Rent Growth (%)'
+  },
+  {
+    inputId: INPUT_ID_ANNUAL_EXPENSES_GROWTH,
+    label: 'Annual Expenses Growth (%)'
+  }
+]
+
 export const inputSectionData = [
   {
     title: TITLE_GENERAL_INFO,
@@ -210,5 +229,9 @@ export const inputSectionData = [
   {
     title: TITLE_MONTHLY_EXPENSES,
     childProps: expensesInputProps
+  },
+  {
+    title: TITLE_FUTURE_PROJECTIONS,
+    childProps: futureProjectionsInputProps
   }
 ]
