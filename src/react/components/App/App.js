@@ -11,6 +11,7 @@ import {
 import './app.css'
 import {
   INPUT_ID_AFTER_REPAIR_VALUE,
+  INPUT_ID_AMORTIZATION_PERIOD,
   INPUT_ID_CLOSING_COSTS,
   INPUT_ID_DOWN_PAYMENT,
   INPUT_ID_OTHER_INITIAL_COSTS,
@@ -29,6 +30,11 @@ class App extends Component {
     this.state = {
       inputContent: this.getInputState()
     }
+  }
+  getAmortizationPeriod = () => {
+    const inputContent = this.state.inputContent
+    const initialPurchase = inputContent[TITLE_INITIAL_PURCHASE]
+    return initialPurchase[INPUT_ID_AMORTIZATION_PERIOD]
   }
   /* Cash flow = Income - Expenses */
   getCashFlowForYear = year => {
@@ -140,6 +146,7 @@ class App extends Component {
           </InputSection>
         )) }
         <Result
+          amortizationPeriod={ this.getAmortizationPeriod() }
           getCashFlowForYear={ this.getCashFlowForYear }
           getCashOnCashReturnForYear={ this.getCashOnCashReturnForYear }
           getInvestmentAfterYears={ this.getInvestmentAfterYears }

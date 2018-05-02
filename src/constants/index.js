@@ -1,5 +1,7 @@
 export const INPUT_ID_AFTER_REPAIR_VALUE = 'afterRepairValueInput'
 export const INPUT_ID_AMORTIZATION_PERIOD = 'amortizationPeriodInput'
+export const INPUT_ID_ANNUAL_EXPENSES_GROWTH = 'annualExpensesGrowthInput'
+export const INPUT_ID_ANNUAL_INCOME_GROWTH = 'annualIncomeGrowthInput'
 export const INPUT_ID_CAP_EX = 'capExInput'
 export const INPUT_ID_CITY = 'cityInput'
 export const INPUT_ID_CLOSING_COSTS = 'closingCostsInput'
@@ -20,6 +22,7 @@ export const INPUT_ID_OTHER_INITIAL_COSTS = 'otherInitialCostsInput'
 export const INPUT_ID_POSTAL_OR_ZIP_CODE = 'postalOrZipCodeInput'
 export const INPUT_ID_PRIVATE_MORTGAGE_INSURANCE ='privateMortgageInsuranceInput'
 export const INPUT_ID_PROPERTY_TAX = 'propertyTaxInput'
+export const INPUT_ID_PROPERTY_VALUE_GROWTH = 'propertyValueGrowthInput'
 export const INPUT_ID_PROVINCE_OR_STATE = 'provinceOrStateInput'
 export const INPUT_ID_PURCHASE_PRICE = 'purchasePriceInput'
 export const INPUT_ID_RENTAL_INCOME = 'rentalIncomeInput'
@@ -31,8 +34,12 @@ export const INPUT_ID_UNIT_NUMBER = 'unitNumberInput'
 export const INPUT_ID_VACANCY = 'vacancyInput'
 export const INPUT_ID_WATER_AND_SEWER = 'waterAndSewerInput'
 
-export const MONTHS_PER_YEAR = 12
+export const INTERVAL_YEAR_RESULTS = 5
 
+export const MONTHS_PER_YEAR = 12
+export const NUMBER_SYSTEM_DECIMAL = 10
+
+export const TITLE_FUTURE_PROJECTIONS = 'Future Projections'
 export const TITLE_GENERAL_INFO = 'General Info'
 export const TITLE_INITIAL_PURCHASE = 'Initial Purchase'
 export const TITLE_MONTHLY_INCOME = 'Monthly Income'
