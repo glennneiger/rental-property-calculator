@@ -13,6 +13,26 @@ const FutureResults = ({
       getCashFlowForYear={ getCashFlowForYear }
       getCashOnCashReturnForYear={ getCashOnCashReturnForYear }
       year={ 1 }/>
+    <YearResult
+      getCashFlowForYear={ getCashFlowForYear }
+      getCashOnCashReturnForYear={ getCashOnCashReturnForYear }
+      year={ 5 }/>
+    <YearResult
+      getCashFlowForYear={ getCashFlowForYear }
+      getCashOnCashReturnForYear={ getCashOnCashReturnForYear }
+      year={ 10 }/>
+    <YearResult
+      getCashFlowForYear={ getCashFlowForYear }
+      getCashOnCashReturnForYear={ getCashOnCashReturnForYear }
+      year={ 15 }/>
+    <YearResult
+      getCashFlowForYear={ getCashFlowForYear }
+      getCashOnCashReturnForYear={ getCashOnCashReturnForYear }
+      year={ 20 }/>
+    <YearResult
+      getCashFlowForYear={ getCashFlowForYear }
+      getCashOnCashReturnForYear={ getCashOnCashReturnForYear }
+      year={ 25 }/>
   </div>
 )
 

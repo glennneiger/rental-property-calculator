@@ -1,3 +1,6 @@
 .futureResults {
+  display: flex;
   margin: 24px 0px;
+  flex-wrap: wrap;
+  align-content: space-between;
 }
