@@ -20,7 +20,8 @@ import {
   MONTHS_PER_YEAR,
   TITLE_INITIAL_PURCHASE,
   TITLE_MONTHLY_EXPENSES,
-  TITLE_MONTHLY_INCOME
+  TITLE_MONTHLY_INCOME,
+  INPUT_ID_AMORTIZATION_PERIOD
 } from '../../../constants'
 
 class App extends Component {
@@ -29,6 +30,11 @@ class App extends Component {
     this.state = {
       inputContent: this.getInputState()
     }
+  }
+  getAmortizationPeriod = () => {
+    const inputContent = this.state.inputContent
+    const initialPurchase = inputContent[TITLE_INITIAL_PURCHASE]
+    return initialPurchase[INPUT_ID_AMORTIZATION_PERIOD]
   }
   /* Cash flow = Income - Expenses */
   getCashFlowForYear = year => {
@@ -140,6 +146,7 @@ class App extends Component {
           </InputSection>
         )) }
         <Result
+          amortizationPeriod={ this.getAmortizationPeriod() }
           getCashFlowForYear={ this.getCashFlowForYear }
           getCashOnCashReturnForYear={ this.getCashOnCashReturnForYear }
           getInvestmentAfterYears={ this.getInvestmentAfterYears }

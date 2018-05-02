@@ -3,15 +3,31 @@ import PropTypes from 'prop-types'
 
 import './futureResults.css'
 import YearResult from '../YearResult'
+import {
+  INTERVAL_YEAR_RESULTS,
+  NUMBER_SYSTEM_DECIMAL
+} from '../../../constants'
 
 const FutureResults = ({
+  amortizationPeriod,
   getCashFlowForYear,
   getCashOnCashReturnForYear
 }) => {
-  const yearsToShowResults = [1, 5, 10, 15, 20, 25]
+  const getYearsToShowResults = () => {
+    let yearsToShowResults = [1]
+    const numYears = parseInt(amortizationPeriod, NUMBER_SYSTEM_DECIMAL)
+    for (
+      let i = INTERVAL_YEAR_RESULTS;
+      i <= numYears;
+      i = i + INTERVAL_YEAR_RESULTS
+    ) {
+      yearsToShowResults.push(i)
+    }
+    return yearsToShowResults
+  }
   return (
     <div className='futureResults'>
-      { yearsToShowResults.map(year => (
+      { getYearsToShowResults().map(year => (
         <YearResult
           key={ year }
           getCashFlowForYear={ getCashFlowForYear }
@@ -23,6 +39,7 @@ const FutureResults = ({
 }
 
 FutureResults.propTypes = {
+  amortizationPeriod: PropTypes.string.isRequired,
   getCashFlowForYear: PropTypes.func.isRequired,
   getCashOnCashReturnForYear: PropTypes.func.isRequired
 }

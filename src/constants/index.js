@@ -1,3 +1,5 @@
+export const NUMBER_SYSTEM_DECIMAL = 10
+
 export const INPUT_ID_AFTER_REPAIR_VALUE = 'afterRepairValueInput'
 export const INPUT_ID_AMORTIZATION_PERIOD = 'amortizationPeriodInput'
 export const INPUT_ID_ANNUAL_EXPENSES_GROWTH = 'annualExpensesGrowthInput'
@@ -33,6 +35,8 @@ export const INPUT_ID_STREET_ADDRESS = 'streetAddressInput'
 export const INPUT_ID_UNIT_NUMBER = 'unitNumberInput'
 export const INPUT_ID_VACANCY = 'vacancyInput'
 export const INPUT_ID_WATER_AND_SEWER = 'waterAndSewerInput'
+
+export const INTERVAL_YEAR_RESULTS = 5
 
 export const MONTHS_PER_YEAR = 12
 

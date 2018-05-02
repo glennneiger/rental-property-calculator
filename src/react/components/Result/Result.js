@@ -5,6 +5,7 @@ import './result.css'
 import FutureResults from '../FutureResults'
 
 const Result = ({
+  amortizationPeriod,
   getCashFlowForYear,
   getCashOnCashReturnForYear,
   getEquityAfterYears,
@@ -15,12 +16,14 @@ const Result = ({
     <p>Initial Investment: { getInvestmentAfterYears(0) }</p>
     <p>Initial Equity: { getEquityAfterYears(0) }</p>
     <FutureResults
+      amortizationPeriod={ amortizationPeriod }
       getCashFlowForYear={ getCashFlowForYear }
       getCashOnCashReturnForYear={ getCashOnCashReturnForYear }/>
   </div>
 )
 
 Result.propTypes = {
+  amortizationPeriod: PropTypes.string.isRequired,
   getCashFlowForYear: PropTypes.func.isRequired,
   getCashOnCashReturnForYear: PropTypes.func.isRequired,
   getEquityAfterYears: PropTypes.func.isRequired,
