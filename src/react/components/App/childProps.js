@@ -1,7 +1,7 @@
 import {
   INPUT_ID_AFTER_REPAIR_VALUE,
   INPUT_ID_AMORTIZATION_PERIOD,
-  INPUT_ID_ANNUAL_EXPENSES_GROWTH,
+  INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH,
   INPUT_ID_ANNUAL_INCOME_GROWTH,
   INPUT_ID_CAP_EX,
   INPUT_ID_CITY,
@@ -209,8 +209,8 @@ export const futureProjectionsInputProps = [
     label: 'Annual Income Growth (%)'
   },
   {
-    inputId: INPUT_ID_ANNUAL_EXPENSES_GROWTH,
-    label: 'Annual Expenses Growth (%)'
+    inputId: INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH,
+    label: 'Annual Constant Expenses Growth (%)'
   }
 ]
 
