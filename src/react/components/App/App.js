@@ -125,20 +125,21 @@ class App extends Component {
     const inputContent = this.state.inputContent
     const monthlyExpenses = inputContent[TITLE_MONTHLY_EXPENSES]
 
-    let constantExpensesForYear = expensesInputProps.reduce((total, current) => {
-      let expense = monthlyExpenses[current.inputId]
-      if (current.percentOfRent || current.percentOfPropertyValue) {
-        expense = 0
-      }
-      return total + +expense
-    }, 0)
+    const constantExpensesForYear = expensesInputProps
+      .reduce((total, current) => {
+        let expense = monthlyExpenses[current.inputId]
+        if (current.percentOfRent || current.percentOfPropertyValue) {
+          expense = 0
+        }
+        return total + +expense
+      }, 0)
     return parseInt(constantExpensesForYear, NUMBER_SYSTEM_DECIMAL)
   }
   getPercentageExpensesForYear = year => {
     const inputContent = this.state.inputContent
     const monthlyExpenses = inputContent[TITLE_MONTHLY_EXPENSES]
 
-    let percentageExpensesForYear = expensesInputProps
+    const percentageExpensesForYear = expensesInputProps
       .reduce((total, current) => {
         let expense = 0
         if (current.percentOfRent) {
