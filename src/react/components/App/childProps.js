@@ -170,27 +170,28 @@ export const expensesInputProps = [
   },
   {
     inputId: INPUT_ID_PROPERTY_TAX,
-    label: 'Property Tax'
+    label: 'Property Tax (%)',
+    percentOfPropertyValue: true
   },
   {
     inputId: INPUT_ID_VACANCY,
     label: 'Vacancy (%)',
-    percent: true
+    percentOfRent: true
   },
   {
     inputId: INPUT_ID_REPAIRS_AND_MAINTENANCE,
     label: 'Repairs & Maintenance (%)',
-    percent: true
+    percentOfRent: true
   },
   {
     inputId: INPUT_ID_CAP_EX,
     label: 'Cap. Ex. (%)',
-    percent: true
+    percentOfRent: true
   },
   {
     inputId: INPUT_ID_MANAGEMENT,
     label: 'Management (%)',
-    percent: true
+    percentOfRent: true
   },
   {
     inputId: INPUT_ID_OTHER_EXPENSES,
@@ -205,7 +206,7 @@ export const futureProjectionsInputProps = [
   },
   {
     inputId: INPUT_ID_ANNUAL_INCOME_GROWTH,
-    label: 'Annual Rent Growth (%)'
+    label: 'Annual Income Growth (%)'
   },
   {
     inputId: INPUT_ID_ANNUAL_EXPENSES_GROWTH,

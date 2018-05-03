@@ -9,7 +9,8 @@ const Result = ({
   getCashFlowForYear,
   getCashOnCashReturnForYear,
   getEquityAfterYears,
-  getInvestmentAfterYears
+  getInvestmentAfterYears,
+  getPropertyValueForYear
 }) => (
   <div className='result'>
     <h2>Live Results</h2>
@@ -18,7 +19,8 @@ const Result = ({
     <FutureResults
       amortizationPeriod={ amortizationPeriod }
       getCashFlowForYear={ getCashFlowForYear }
-      getCashOnCashReturnForYear={ getCashOnCashReturnForYear }/>
+      getCashOnCashReturnForYear={ getCashOnCashReturnForYear }
+      getPropertyValueForYear={ getPropertyValueForYear }/>
   </div>
 )
 
@@ -27,7 +29,8 @@ Result.propTypes = {
   getCashFlowForYear: PropTypes.func.isRequired,
   getCashOnCashReturnForYear: PropTypes.func.isRequired,
   getEquityAfterYears: PropTypes.func.isRequired,
-  getInvestmentAfterYears: PropTypes.func.isRequired
+  getInvestmentAfterYears: PropTypes.func.isRequired,
+  getPropertyValueForYear: PropTypes.func.isRequired
 }
 
 export default Result
