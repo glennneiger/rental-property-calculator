@@ -6,11 +6,19 @@ import {
   TITLE_FUTURE_PROJECTIONS,
   INPUT_ID_PROPERTY_VALUE_GROWTH,
   INPUT_ID_ANNUAL_INCOME_GROWTH,
-  TITLE_MONTHLY_INCOME
+  TITLE_MONTHLY_INCOME,
+  INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH,
+  TITLE_MONTHLY_EXPENSES,
+  INPUT_ID_DOWN_PAYMENT,
+  INPUT_ID_PURCHASE_PRICE,
+  INPUT_ID_REPAIR_COSTS,
+  INPUT_ID_CLOSING_COSTS,
+  INPUT_ID_OTHER_INITIAL_COSTS
 } from '../constants'
 
 import {
-  incomeInputProps
+  incomeInputProps,
+  expensesInputProps
 } from '../react/components/App/childProps'
 
 export const getCompoundedValue = (initialValue, annualGrowthRate, years) =>
@@ -69,4 +77,53 @@ export const getIncomeForYear = (inputContent, year) => {
     annualIncomeGrowth,
     year
   )
+}
+
+export const getAnnualConstantExpensesGrowth = inputContent => {
+  const futureProjections = inputContent[TITLE_FUTURE_PROJECTIONS]
+
+  const annualConstantExpensesGrowth = futureProjections[
+    INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH
+  ]
+  return annualConstantExpensesGrowth ?
+    parseInt(annualConstantExpensesGrowth, NUMBER_SYSTEM_DECIMAL)
+    : 0
+}
+
+export const getInitialYearlyConstantExpenses = inputContent => {
+  const monthlyExpenses = inputContent[TITLE_MONTHLY_EXPENSES]
+
+  const constantExpensesForYear = expensesInputProps
+    .reduce((total, current) => {
+      let expense = monthlyExpenses[current.inputId]
+      if (current.percentOfRent || current.percentOfPropertyValue) {
+        expense = 0
+      }
+      return total + +expense
+    }, 0)
+  return parseInt(constantExpensesForYear, NUMBER_SYSTEM_DECIMAL)
+}
+
+/* Initial equity = down payment + after repair value + purchase price */
+export const getInitialEquity = inputContent => {
+  const initialPurchase = inputContent[TITLE_INITIAL_PURCHASE]
+
+  const downPayment = initialPurchase[INPUT_ID_DOWN_PAYMENT]
+  const afterRepairValue = initialPurchase[INPUT_ID_AFTER_REPAIR_VALUE]
+  const purchasePrice = initialPurchase[INPUT_ID_PURCHASE_PRICE]
+
+  return +downPayment + (+afterRepairValue - +purchasePrice)
+}
+
+/* Initial investment =
+    down payment + repair costs + closing costs + other initial costs */
+export const getInitialInvestment = inputContent => {
+  const initialPurchase = inputContent[TITLE_INITIAL_PURCHASE]
+
+  const downPayment = initialPurchase[INPUT_ID_DOWN_PAYMENT]
+  const repairCosts = initialPurchase[INPUT_ID_REPAIR_COSTS]
+  const closingCosts = initialPurchase[INPUT_ID_CLOSING_COSTS]
+  const otherCosts = initialPurchase[INPUT_ID_OTHER_INITIAL_COSTS]
+
+  return +downPayment + +repairCosts + +closingCosts + +otherCosts
 }
