@@ -1,6 +1,6 @@
 export const INPUT_ID_AFTER_REPAIR_VALUE = 'afterRepairValueInput'
 export const INPUT_ID_AMORTIZATION_PERIOD = 'amortizationPeriodInput'
-export const INPUT_ID_ANNUAL_EXPENSES_GROWTH = 'annualExpensesGrowthInput'
+export const INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH = 'annualExpensesGrowthInput'
 export const INPUT_ID_ANNUAL_INCOME_GROWTH = 'annualIncomeGrowthInput'
 export const INPUT_ID_CAP_EX = 'capExInput'
 export const INPUT_ID_CITY = 'cityInput'
