@@ -21,19 +21,54 @@ import {
   incomeInputProps
 } from '../react/components/App/childProps'
 
-export const getCompoundedValue = (initialValue, annualGrowthRate, years) =>
-  Math.round(initialValue *
+export const getCompoundedValue = (initialValue, annualGrowthRate, years) => {
+  if (typeof initialValue !== 'number'
+    || typeof annualGrowthRate !== 'number'
+    || typeof years !== 'number'
+    ) {
+    throw new TypeError(`${ getCompoundedValue.name } requires numbers as inputs.`)
+  }
+  return Math.round(initialValue *
     Math.pow(
       1 + (annualGrowthRate / 100),
       years
     )
   )
+}
 
-export const getPercentOfPropertyValueMonthly = (percent, propertyValue) =>
-  percent * propertyValue / (100 * MONTHS_PER_YEAR)
+export const getPercentOfPropertyValueMonthly = (percent, propertyValue) => {
+  if (percent.constructor === Array
+    || percent === null
+    || propertyValue.constructor === Array
+    || propertyValue === null
+  ) {
+    throw new TypeError(`${ getPercentOfPropertyValueMonthly.name } requires numbers as inputs.`)
+  }
+  if (percent != parseInt(percent, NUMBER_SYSTEM_DECIMAL) || propertyValue != parseInt(propertyValue, NUMBER_SYSTEM_DECIMAL)) {
+    throw new TypeError(`${ getPercentOfPropertyValueMonthly.name } requires numbers as inputs.`)
+  }
+  if (percent <= 0 || propertyValue <= 0) {
+    return 0
+  }
+  return parseFloat((percent * propertyValue / (100 * MONTHS_PER_YEAR)).toFixed(2))
+}
 
-export const getPercentOfRentalIncomeMonthly = (percent, monthlyRentalIncome) =>
-  percent * monthlyRentalIncome / 100
+export const getPercentOfRentalIncomeMonthly = (percent, monthlyRentalIncome) => {
+  if (percent.constructor === Array
+    || percent === null
+    || monthlyRentalIncome.constructor === Array
+    || monthlyRentalIncome === null
+  ) {
+    throw new TypeError(`${ getPercentOfRentalIncomeMonthly.name } requires numbers as inputs.`)
+  }
+  if (percent != parseInt(percent, NUMBER_SYSTEM_DECIMAL) || monthlyRentalIncome != parseInt(monthlyRentalIncome, NUMBER_SYSTEM_DECIMAL)) {
+    throw new TypeError(`${ getPercentOfRentalIncomeMonthly.name } requires numbers as inputs.`)
+  }
+  if (percent <= 0 || monthlyRentalIncome <= 0) {
+    return 0
+  }
+  return parseFloat((percent * monthlyRentalIncome / 100).toFixed(2))
+}
 
 export const getInitialPropertyValue = inputContent => {
   const initialPurchase = inputContent[TITLE_INITIAL_PURCHASE]
