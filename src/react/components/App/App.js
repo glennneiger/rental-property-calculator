@@ -55,10 +55,7 @@ class App extends Component {
     const initialPurchase = inputContent[TITLE_INITIAL_PURCHASE]
 
     let propertyValue = initialPurchase[INPUT_ID_AFTER_REPAIR_VALUE]
-    if (!propertyValue) {
-      propertyValue = 0
-    }
-    return parseInt(propertyValue, NUMBER_SYSTEM_DECIMAL)
+    return propertyValue ? parseInt(propertyValue, NUMBER_SYSTEM_DECIMAL) : 0
   }
   getAnnualPropertyValueGrowth = () => {
     const inputContent = this.state.inputContent
@@ -255,9 +252,10 @@ class App extends Component {
           amortizationPeriod={ this.getAmortizationPeriod() }
           getCashFlowForYear={ this.getCashFlowForYear }
           getCashOnCashReturnForYear={ this.getCashOnCashReturnForYear }
-          getInvestmentAfterYears={ this.getInvestmentAfterYears }
           getEquityAfterYears={ this.getEquityAfterYears }
-          getPropertyValueForYear={ this.getPropertyValueForYear }/>
+          getInvestmentAfterYears={ this.getInvestmentAfterYears }
+          getPropertyValueForYear={ this.getPropertyValueForYear }
+        />
       </div>
     )
   }
