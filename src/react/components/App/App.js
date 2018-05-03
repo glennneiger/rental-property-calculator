@@ -16,16 +16,16 @@ import {
   TITLE_MONTHLY_EXPENSES
 } from '../../../constants'
 import {
-  getCompoundedValue,
-  getPercentOfRentalIncomeMonthly,
-  getPercentOfPropertyValueMonthly,
-  getInitialPropertyValue,
-  getAnnualPropertyValueGrowth,
-  getIncomeForYear,
   getAnnualConstantExpensesGrowth,
-  getInitialYearlyConstantExpenses,
+  getAnnualPropertyValueGrowth,
+  getCompoundedValue,
+  getIncomeForYear,
   getInitialEquity,
-  getInitialInvestment
+  getInitialInvestment,
+  getInitialPropertyValue,
+  getInitialYearlyConstantExpenses,
+  getPercentOfPropertyValueMonthly,
+  getPercentOfRentalIncomeMonthly
 } from '../../../utils'
 
 class App extends Component {
