@@ -98,3 +98,26 @@ export const calculateConstantExpensesForYear = (
   )
   return parseInt(constantExpensesForYear, NUMBER_SYSTEM_DECIMAL)
 }
+
+export const calculatePercentageExpensesForYear = year => {
+  const inputContent = this.state.inputContent
+  const monthlyExpenses = inputContent[TITLE_MONTHLY_EXPENSES]
+
+  const percentageExpensesForYear = expensesInputProps
+    .reduce((total, current) => {
+      let expense = 0
+      if (current.percentOfRent) {
+        expense = calculatePercentOfRentalIncomeMonthly(
+          monthlyExpenses[current.inputId],
+          this.calculateIncomeForYear(year)
+        )
+      } else if (current.percentOfPropertyValue) {
+        expense = calculatePercentOfPropertyValueMonthly(
+          monthlyExpenses[current.inputId],
+          this.calculatePropertyValueForYear(year)
+        )
+      }
+      return total + +expense
+    }, 0)
+  return parseInt(percentageExpensesForYear, NUMBER_SYSTEM_DECIMAL)
+}

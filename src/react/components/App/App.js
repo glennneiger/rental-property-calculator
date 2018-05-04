@@ -30,12 +30,12 @@ import {
   getCompoundedValue,
   calculatePercentOfRentalIncomeMonthly,
   calculatePercentOfPropertyValueMonthly,
-  calculateInitialPropertyValue,
-  calculateInitialYearlyConstantExpenses,
   calculateConstantExpensesForYear
 } from '../../../utils/calculationUtils'
 import {
-  getAnnualConstantExpensesGrowth
+  getAnnualConstantExpensesGrowth,
+  getInitialPropertyValue,
+  getAnnualPropertyValueGrowth
 } from '../../../utils/stateGetters'
 
 class App extends Component {
@@ -46,11 +46,9 @@ class App extends Component {
     }
   }
   calculatePropertyValueForYear = year => {
-    let propertyValue = calculateInitialPropertyValue(this.state.inputContent)
     const inputContent = this.state.inputContent
-    const futureProjections = inputContent[TITLE_FUTURE_PROJECTIONS]
-
-    const annualPVGrowth = futureProjections[INPUT_ID_PROPERTY_VALUE_GROWTH]
+    const propertyValue = getInitialPropertyValue(inputContent)
+    const annualPVGrowth = getAnnualPropertyValueGrowth(inputContent)
     return getCompoundedValue(
       propertyValue,
       annualPVGrowth,
@@ -73,7 +71,7 @@ class App extends Component {
     return calculateIncomeForYear(year, monthlyIncome, annualIncomeGrowth)
   }
 
-  getPercentageExpensesForYear = year => {
+  calculatePercentageExpensesForYear = year => {
     const inputContent = this.state.inputContent
     const monthlyExpenses = inputContent[TITLE_MONTHLY_EXPENSES]
 
@@ -108,7 +106,7 @@ class App extends Component {
     )
   }
   getExpensesForYear = year => {
-    const percentageExpensesForYear = this.getPercentageExpensesForYear(year)
+    const percentageExpensesForYear = this.calculatePercentageExpensesForYear(year)
     const constantExpensesForYear = this.calculateConstantExpensesForYear(year)
     return constantExpensesForYear + percentageExpensesForYear
   }
