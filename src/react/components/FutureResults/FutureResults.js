@@ -12,7 +12,7 @@ const FutureResults = ({
   amortizationPeriod,
   getCashFlowForYear,
   getCashOnCashReturnForYear,
-  getPropertyValueForYear
+  calculatePropertyValueForYear
 }) => {
   const getYearsToShowResults = () => {
     let yearsToShowResults = [1]
@@ -41,7 +41,7 @@ const FutureResults = ({
             key={ year }
             getCashFlowForYear={ getCashFlowForYear }
             getCashOnCashReturnForYear={ getCashOnCashReturnForYear }
-            getPropertyValueForYear= { getPropertyValueForYear }
+            calculatePropertyValueForYear= { calculatePropertyValueForYear }
             year={ year }/>
         )) }
     </div>
@@ -52,7 +52,7 @@ FutureResults.propTypes = {
   amortizationPeriod: PropTypes.string.isRequired,
   getCashFlowForYear: PropTypes.func.isRequired,
   getCashOnCashReturnForYear: PropTypes.func.isRequired,
-  getPropertyValueForYear: PropTypes.func.isRequired
+  calculatePropertyValueForYear: PropTypes.func.isRequired
 }
 
 export default FutureResults

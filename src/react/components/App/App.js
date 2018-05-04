@@ -12,6 +12,7 @@ import {
   INPUT_ID_AFTER_REPAIR_VALUE,
   INPUT_ID_AMORTIZATION_PERIOD,
   INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH,
+  INPUT_ID_ANNUAL_INCOME_GROWTH,
   INPUT_ID_CLOSING_COSTS,
   INPUT_ID_DOWN_PAYMENT,
   INPUT_ID_OTHER_INITIAL_COSTS,
@@ -30,7 +31,7 @@ import {
   getCompoundedValue,
   calculatePercentOfRentalIncomeMonthly,
   calculatePercentOfPropertyValueMonthly,
-  getInitialPropertyValue
+  calculateInitialPropertyValue
 } from '../../../utils/calculationUtils'
 
 class App extends Component {
@@ -40,17 +41,12 @@ class App extends Component {
       inputContent: this.getInputState()
     }
   }
-  getAnnualPropertyValueGrowth = () => {
+  calculatePropertyValueForYear = year => {
+    let propertyValue = calculateInitialPropertyValue(this.state.inputContent)
     const inputContent = this.state.inputContent
     const futureProjections = inputContent[TITLE_FUTURE_PROJECTIONS]
 
     const annualPVGrowth = futureProjections[INPUT_ID_PROPERTY_VALUE_GROWTH]
-    return annualPVGrowth ? parseInt(annualPVGrowth, NUMBER_SYSTEM_DECIMAL) : 0
-  }
-  getPropertyValueForYear = year => {
-    let propertyValue = getInitialPropertyValue(this.state.inputContent)
-
-    let annualPVGrowth = this.getAnnualPropertyValueGrowth()
     return getCompoundedValue(
       propertyValue,
       annualPVGrowth,
@@ -69,7 +65,8 @@ class App extends Component {
     const { inputContent } = this.state
     const futureProjections = inputContent[TITLE_FUTURE_PROJECTIONS]
     const monthlyIncome = inputContent[TITLE_MONTHLY_INCOME]
-    return calculateIncomeForYear(year, monthlyIncome, futureProjections)
+    const annualIncomeGrowth = futureProjections[INPUT_ID_ANNUAL_INCOME_GROWTH]
+    return calculateIncomeForYear(year, monthlyIncome, annualIncomeGrowth)
   }
   getAnnualConstantExpensesGrowth = () => {
     const inputContent = this.state.inputContent
@@ -78,9 +75,7 @@ class App extends Component {
     const annualConstantExpensesGrowth = futureProjections[
       INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH
     ]
-    return annualConstantExpensesGrowth ?
-      parseInt(annualConstantExpensesGrowth, NUMBER_SYSTEM_DECIMAL)
-      : 0
+    return annualConstantExpensesGrowth
   }
   getInitialYearlyConstantExpenses = () => {
     const inputContent = this.state.inputContent
@@ -111,7 +106,7 @@ class App extends Component {
         } else if (current.percentOfPropertyValue) {
           expense = calculatePercentOfPropertyValueMonthly(
             monthlyExpenses[current.inputId],
-            this.getPropertyValueForYear(year)
+            this.calculatePropertyValueForYear(year)
           )
         }
         return total + +expense
@@ -233,12 +228,12 @@ class App extends Component {
           // results={ this.calculateResults() }
           // // map years to their results { 1: {...}, 5: {...}, ... }
 
-          amortizationPeriod={ this.getAmortizationPeriod() }
+          amortizationPeriod={ '' + this.getAmortizationPeriod() }
           getCashFlowForYear={ this.getCashFlowForYear }
           getCashOnCashReturnForYear={ this.getCashOnCashReturnForYear }
           getEquityAfterYears={ this.getEquityAfterYears }
           getInvestmentAfterYears={ this.getInvestmentAfterYears }
-          getPropertyValueForYear={ this.getPropertyValueForYear }
+          calculatePropertyValueForYear={ this.calculatePropertyValueForYear }
         />
       </div>
     )
