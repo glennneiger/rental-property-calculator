@@ -11,7 +11,6 @@ import './app.css'
 import {
   INPUT_ID_AFTER_REPAIR_VALUE,
   INPUT_ID_AMORTIZATION_PERIOD,
-  INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH,
   INPUT_ID_ANNUAL_INCOME_GROWTH,
   INPUT_ID_CLOSING_COSTS,
   INPUT_ID_DOWN_PAYMENT,
@@ -31,8 +30,13 @@ import {
   getCompoundedValue,
   calculatePercentOfRentalIncomeMonthly,
   calculatePercentOfPropertyValueMonthly,
-  calculateInitialPropertyValue
+  calculateInitialPropertyValue,
+  calculateInitialYearlyConstantExpenses,
+  calculateConstantExpensesForYear
 } from '../../../utils/calculationUtils'
+import {
+  getAnnualConstantExpensesGrowth
+} from '../../../utils/stateGetters'
 
 class App extends Component {
   constructor() {
@@ -68,29 +72,7 @@ class App extends Component {
     const annualIncomeGrowth = futureProjections[INPUT_ID_ANNUAL_INCOME_GROWTH]
     return calculateIncomeForYear(year, monthlyIncome, annualIncomeGrowth)
   }
-  getAnnualConstantExpensesGrowth = () => {
-    const inputContent = this.state.inputContent
-    const futureProjections = inputContent[TITLE_FUTURE_PROJECTIONS]
 
-    const annualConstantExpensesGrowth = futureProjections[
-      INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH
-    ]
-    return annualConstantExpensesGrowth
-  }
-  getInitialYearlyConstantExpenses = () => {
-    const inputContent = this.state.inputContent
-    const monthlyExpenses = inputContent[TITLE_MONTHLY_EXPENSES]
-
-    const constantExpensesForYear = expensesInputProps
-      .reduce((total, current) => {
-        let expense = monthlyExpenses[current.inputId]
-        if (current.percentOfRent || current.percentOfPropertyValue) {
-          expense = 0
-        }
-        return total + +expense
-      }, 0)
-    return parseInt(constantExpensesForYear, NUMBER_SYSTEM_DECIMAL)
-  }
   getPercentageExpensesForYear = year => {
     const inputContent = this.state.inputContent
     const monthlyExpenses = inputContent[TITLE_MONTHLY_EXPENSES]
@@ -113,20 +95,18 @@ class App extends Component {
       }, 0)
     return parseInt(percentageExpensesForYear, NUMBER_SYSTEM_DECIMAL)
   }
-  getConstantExpensesForYear = year => {
-    const initialConstantExpenses = this.getInitialYearlyConstantExpenses()
-
-    const annualConstantExpensesGrowth = this.getAnnualConstantExpensesGrowth()
-    const constantExpensesForYear = getCompoundedValue(
-      initialConstantExpenses,
-      annualConstantExpensesGrowth,
-      year
-    )
-    return parseInt(constantExpensesForYear, NUMBER_SYSTEM_DECIMAL)
-  }
   getExpensesForYear = year => {
     const percentageExpensesForYear = this.getPercentageExpensesForYear(year)
-    const constantExpensesForYear = this.getConstantExpensesForYear(year)
+    const inputContent = this.state.inputContent
+    const monthlyExpenses = inputContent[TITLE_MONTHLY_EXPENSES]
+    const annualConstantExpensesGrowth = getAnnualConstantExpensesGrowth(
+      inputContent
+    )
+    const constantExpensesForYear = calculateConstantExpensesForYear(
+      annualConstantExpensesGrowth,
+      monthlyExpenses,
+      year
+    )
     return constantExpensesForYear + percentageExpensesForYear
   }
   /* Cash flow = Income - Expenses */

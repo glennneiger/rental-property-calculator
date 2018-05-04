@@ -2,9 +2,16 @@ import {
   MONTHS_PER_YEAR,
   TITLE_INITIAL_PURCHASE,
   INPUT_ID_AFTER_REPAIR_VALUE,
-  NUMBER_SYSTEM_DECIMAL
+  NUMBER_SYSTEM_DECIMAL,
+  TITLE_MONTHLY_EXPENSES
 } from '../constants'
-import { incomeInputProps } from '../react/components/App/childProps'
+import {
+  expensesInputProps,
+  incomeInputProps
+} from '../react/components/App/childProps'
+import {
+  getAnnualConstantExpensesGrowth
+} from './stateGetters'
 
 const makeValidGrowthRate = growthRate => (
   growthRate
@@ -62,4 +69,32 @@ export const calculateIncomeForYear = (
     year
   )
   return incomeForYear
+}
+
+export const calculateInitialYearlyConstantExpenses = monthlyExpenses => {
+  const constantExpensesForYear = expensesInputProps
+    .reduce((total, current) => {
+      let expense = monthlyExpenses[current.inputId]
+      if (current.percentOfRent || current.percentOfPropertyValue) {
+        expense = 0
+      }
+      return total + +expense
+    }, 0)
+  return parseInt(constantExpensesForYear, NUMBER_SYSTEM_DECIMAL)
+}
+
+export const calculateConstantExpensesForYear = (
+  annualConstantExpensesGrowth,
+  monthlyExpenses,
+  year
+) => {
+  const initialConstantExpenses = calculateInitialYearlyConstantExpenses(
+    monthlyExpenses
+  )
+  const constantExpensesForYear = getCompoundedValue(
+    initialConstantExpenses,
+    annualConstantExpensesGrowth,
+    year
+  )
+  return parseInt(constantExpensesForYear, NUMBER_SYSTEM_DECIMAL)
 }
