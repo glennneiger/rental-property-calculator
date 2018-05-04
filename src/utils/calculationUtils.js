@@ -10,7 +10,7 @@ import {
   incomeInputProps
 } from '../react/components/App/childProps'
 import {
-  getAnnualConstantExpensesGrowth
+  getAnnualConstantExpensesGrowth, getAnnualPropertyValueGrowth
 } from './stateGetters'
 
 const makeValidGrowthRate = growthRate => (
@@ -40,13 +40,6 @@ export const calculatePercentOfRentalIncomeMonthly = (
   monthlyRentalIncome
 ) =>
   percent * monthlyRentalIncome / 100
-
-export const calculateInitialPropertyValue = inputContent => {
-  const initialPurchase = inputContent[TITLE_INITIAL_PURCHASE]
-
-  let propertyValue = initialPurchase[INPUT_ID_AFTER_REPAIR_VALUE]
-  return propertyValue ? parseInt(propertyValue, NUMBER_SYSTEM_DECIMAL) : 0
-}
 
 //* ******************** */
 const calculateInitialYearlyIncome = monthlyIncome => {
@@ -99,22 +92,38 @@ export const calculateConstantExpensesForYear = (
   return parseInt(constantExpensesForYear, NUMBER_SYSTEM_DECIMAL)
 }
 
-export const calculatePercentageExpensesForYear = year => {
-  const inputContent = this.state.inputContent
-  const monthlyExpenses = inputContent[TITLE_MONTHLY_EXPENSES]
+export const calculatePropertyValueForYear = (
+  initialPropertyValue,
+  annualPVGrowth,
+  year
+) => {
+  return getCompoundedValue(
+    initialPropertyValue,
+    annualPVGrowth,
+    year
+  )
+}
 
+export const calculatePercentageExpensesForYear = (
+  annualIncomeGrowth,
+  annualPVGrowth,
+  monthlyIncome,
+  monthlyExpenses,
+  initialPropertyValue,
+  year
+) => {
   const percentageExpensesForYear = expensesInputProps
     .reduce((total, current) => {
       let expense = 0
       if (current.percentOfRent) {
         expense = calculatePercentOfRentalIncomeMonthly(
           monthlyExpenses[current.inputId],
-          this.calculateIncomeForYear(year)
+          calculateIncomeForYear(year, monthlyIncome, annualIncomeGrowth)
         )
       } else if (current.percentOfPropertyValue) {
         expense = calculatePercentOfPropertyValueMonthly(
           monthlyExpenses[current.inputId],
-          this.calculatePropertyValueForYear(year)
+          calculatePropertyValueForYear(initialPropertyValue, annualPVGrowth, year)
         )
       }
       return total + +expense

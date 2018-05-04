@@ -4,7 +4,8 @@ import {
   TITLE_INITIAL_PURCHASE,
   INPUT_ID_AFTER_REPAIR_VALUE,
   NUMBER_SYSTEM_DECIMAL,
-  INPUT_ID_PROPERTY_VALUE_GROWTH
+  INPUT_ID_PROPERTY_VALUE_GROWTH,
+  INPUT_ID_ANNUAL_INCOME_GROWTH
 } from '../constants'
 
 export const getAnnualConstantExpensesGrowth = inputContent => {
@@ -27,4 +28,10 @@ export const getAnnualPropertyValueGrowth = inputContent => {
   const futureProjections = inputContent[TITLE_FUTURE_PROJECTIONS]
 
   return futureProjections[INPUT_ID_PROPERTY_VALUE_GROWTH]
+}
+
+export const getAnnualIncomeGrowth = inputContent => {
+  const futureProjections = inputContent[TITLE_FUTURE_PROJECTIONS]
+
+  return futureProjections[INPUT_ID_ANNUAL_INCOME_GROWTH]
 }

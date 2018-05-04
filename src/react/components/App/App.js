@@ -30,12 +30,15 @@ import {
   getCompoundedValue,
   calculatePercentOfRentalIncomeMonthly,
   calculatePercentOfPropertyValueMonthly,
-  calculateConstantExpensesForYear
+  calculateConstantExpensesForYear,
+  calculatePropertyValueForYear,
+  calculatePercentageExpensesForYear
 } from '../../../utils/calculationUtils'
 import {
   getAnnualConstantExpensesGrowth,
   getInitialPropertyValue,
-  getAnnualPropertyValueGrowth
+  getAnnualPropertyValueGrowth,
+  getAnnualIncomeGrowth
 } from '../../../utils/stateGetters'
 
 class App extends Component {
@@ -49,7 +52,7 @@ class App extends Component {
     const inputContent = this.state.inputContent
     const propertyValue = getInitialPropertyValue(inputContent)
     const annualPVGrowth = getAnnualPropertyValueGrowth(inputContent)
-    return getCompoundedValue(
+    return calculatePropertyValueForYear(
       propertyValue,
       annualPVGrowth,
       year
@@ -73,25 +76,19 @@ class App extends Component {
 
   calculatePercentageExpensesForYear = year => {
     const inputContent = this.state.inputContent
+    const annualIncomeGrowth = getAnnualIncomeGrowth(inputContent)
+    const annualPVGrowth = getAnnualPropertyValueGrowth(inputContent)
+    const monthlyIncome = inputContent[TITLE_MONTHLY_INCOME]
     const monthlyExpenses = inputContent[TITLE_MONTHLY_EXPENSES]
-
-    const percentageExpensesForYear = expensesInputProps
-      .reduce((total, current) => {
-        let expense = 0
-        if (current.percentOfRent) {
-          expense = calculatePercentOfRentalIncomeMonthly(
-            monthlyExpenses[current.inputId],
-            this.calculateIncomeForYear(year)
-          )
-        } else if (current.percentOfPropertyValue) {
-          expense = calculatePercentOfPropertyValueMonthly(
-            monthlyExpenses[current.inputId],
-            this.calculatePropertyValueForYear(year)
-          )
-        }
-        return total + +expense
-      }, 0)
-    return parseInt(percentageExpensesForYear, NUMBER_SYSTEM_DECIMAL)
+    const propertyValue = getInitialPropertyValue(inputContent)
+    return calculatePercentageExpensesForYear(
+      annualIncomeGrowth,
+      annualPVGrowth,
+      monthlyIncome,
+      monthlyExpenses,
+      propertyValue,
+      year
+    )
   }
   calculateConstantExpensesForYear = year => {
     const inputContent = this.state.inputContent
