@@ -95,18 +95,21 @@ class App extends Component {
       }, 0)
     return parseInt(percentageExpensesForYear, NUMBER_SYSTEM_DECIMAL)
   }
-  getExpensesForYear = year => {
-    const percentageExpensesForYear = this.getPercentageExpensesForYear(year)
+  calculateConstantExpensesForYear = year => {
     const inputContent = this.state.inputContent
     const monthlyExpenses = inputContent[TITLE_MONTHLY_EXPENSES]
     const annualConstantExpensesGrowth = getAnnualConstantExpensesGrowth(
       inputContent
     )
-    const constantExpensesForYear = calculateConstantExpensesForYear(
+    return calculateConstantExpensesForYear(
       annualConstantExpensesGrowth,
       monthlyExpenses,
       year
     )
+  }
+  getExpensesForYear = year => {
+    const percentageExpensesForYear = this.getPercentageExpensesForYear(year)
+    const constantExpensesForYear = this.calculateConstantExpensesForYear(year)
     return constantExpensesForYear + percentageExpensesForYear
   }
   /* Cash flow = Income - Expenses */
