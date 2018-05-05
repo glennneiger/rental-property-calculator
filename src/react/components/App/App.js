@@ -109,7 +109,6 @@ class App extends Component {
     return Math.round(calculateYearCashFlow(incomeForYear, expensesForYear))
   }
   /* Cash on cash return = (cash flow / initialInvestment) * 100% */
-  // TODO: make this work for years that aren't the initial year
   getCashOnCashReturnForYear = year => {
     const yearCashFlow = this.calculateCashFlowForYear(year)
     const initialInvestment = this.calculateInitialInvestment()
@@ -144,21 +143,13 @@ class App extends Component {
       otherCosts
     )
   }
+  // TODO: calculate equity for years that aren't 0
   calculateEquityAfterYears = years => {
     let equity = this.calculateInitialEquity()
-    // TODO: deal with all numbers of years that aren't 0
     if (years === 0) {
       return equity
     }
     return equity
-  }
-  calculateInvestmentAfterYears = years => {
-    let investment = this.calculateInitialInvestment()
-    // TODO: deal with all numbers of years that aren't 0
-    if (years === 0) {
-      return investment
-    }
-    return investment
   }
   handleKeyDown = (event, section, inputId) => {
     let inputContent = this.state.inputContent
@@ -207,7 +198,7 @@ class App extends Component {
           calculateCashFlowForYear={ this.calculateCashFlowForYear }
           getCashOnCashReturnForYear={ this.getCashOnCashReturnForYear }
           calculateEquityAfterYears={ this.calculateEquityAfterYears }
-          calculateInvestmentAfterYears={ this.calculateInvestmentAfterYears }
+          calculateInitialInvestment={ this.calculateInitialInvestment }
           calculatePropertyValueForYear={ this.calculatePropertyValueForYear }
         />
       </div>

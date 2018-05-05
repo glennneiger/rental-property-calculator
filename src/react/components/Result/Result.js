@@ -9,12 +9,12 @@ const Result = ({
   calculateCashFlowForYear,
   getCashOnCashReturnForYear,
   calculateEquityAfterYears,
-  calculateInvestmentAfterYears,
+  calculateInitialInvestment,
   calculatePropertyValueForYear
 }) => (
   <div className='result'>
     <h2>Live Results</h2>
-    <p>Initial Investment: { calculateInvestmentAfterYears(0) }</p>
+    <p>Initial Investment: { calculateInitialInvestment() }</p>
     <p>Initial Equity: { calculateEquityAfterYears(0) }</p>
     <FutureResults
       amortizationPeriod={ amortizationPeriod }
@@ -29,7 +29,7 @@ Result.propTypes = {
   calculateCashFlowForYear: PropTypes.func.isRequired,
   getCashOnCashReturnForYear: PropTypes.func.isRequired,
   calculateEquityAfterYears: PropTypes.func.isRequired,
-  calculateInvestmentAfterYears: PropTypes.func.isRequired,
+  calculateInitialInvestment: PropTypes.func.isRequired,
   calculatePropertyValueForYear: PropTypes.func.isRequired
 }
 
