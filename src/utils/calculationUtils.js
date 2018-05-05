@@ -134,3 +134,11 @@ export const calculateExpensesForYear = (
   percentageExpenses
 ) =>
   constantExpenses + percentageExpenses
+
+export const calculateYearCashFlow = (incomeForYear, expensesForYear) =>
+  (incomeForYear - expensesForYear) * MONTHS_PER_YEAR
+
+export const calculateCashOnCashReturn = (cashFlow, totalInvestment) =>
+  totalInvestment === 0
+    ? Number.POSITIVE_INFINITY
+    : (cashFlow / totalInvestment * 100)

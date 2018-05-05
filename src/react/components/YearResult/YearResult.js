@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import './yearResult.css'
 
 const YearResult = ({
-  getCashFlowForYear,
+  calculateCashFlowForYear,
   getCashOnCashReturnForYear,
   calculatePropertyValueForYear,
   year
@@ -12,7 +12,7 @@ const YearResult = ({
   return (
     <div className='yearResult'>
       <h3>Year { year }</h3>
-      <p>Cash Flow: ${ getCashFlowForYear(year) }</p>
+      <p>Cash Flow: ${ calculateCashFlowForYear(year) }</p>
       <p>Cash on Cash Return: { getCashOnCashReturnForYear(year) }%</p>
       <p>Property Value: ${ calculatePropertyValueForYear(year) }</p>
     </div>
@@ -20,7 +20,7 @@ const YearResult = ({
 }
 
 YearResult.propTypes = {
-  getCashFlowForYear: PropTypes.func.isRequired,
+  calculateCashFlowForYear: PropTypes.func.isRequired,
   getCashOnCashReturnForYear: PropTypes.func.isRequired,
   calculatePropertyValueForYear: PropTypes.func.isRequired,
   year: PropTypes.number.isRequired
