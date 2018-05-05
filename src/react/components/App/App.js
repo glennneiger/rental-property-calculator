@@ -8,14 +8,7 @@ import {
 } from './childProps'
 import './app.css'
 import {
-  INPUT_ID_AFTER_REPAIR_VALUE,
   INPUT_ID_ANNUAL_INCOME_GROWTH,
-  INPUT_ID_CLOSING_COSTS,
-  INPUT_ID_DOWN_PAYMENT,
-  INPUT_ID_OTHER_INITIAL_COSTS,
-  INPUT_ID_PURCHASE_PRICE,
-  INPUT_ID_REPAIR_COSTS,
-  TITLE_INITIAL_PURCHASE,
   TITLE_MONTHLY_EXPENSES,
   TITLE_MONTHLY_INCOME,
   TITLE_FUTURE_PROJECTIONS
@@ -28,18 +21,20 @@ import {
   calculateExpensesForYear,
   calculateYearCashFlow,
   calculateCashOnCashReturn,
-  calculateInitialInvestment
+  calculateInitialInvestment,
+  calculateInitialEquity
 } from '../../../utils/calculationUtils'
 import {
   getAnnualConstantExpensesGrowth,
-  getInitialPropertyValue,
+  getAfterRepairValue,
   getAnnualPropertyValueGrowth,
   getAnnualIncomeGrowth,
   getAmortizationPeriod,
   getDownPayment,
   getRepairCosts,
   getClosingCosts,
-  getOtherCosts
+  getOtherCosts,
+  getPurchasePrice
 } from '../../../utils/stateGetters'
 
 class App extends Component {
@@ -51,7 +46,7 @@ class App extends Component {
   }
   calculatePropertyValueForYear = year => {
     const inputContent = this.state.inputContent
-    const propertyValue = getInitialPropertyValue(inputContent)
+    const propertyValue = getAfterRepairValue(inputContent)
     const annualPVGrowth = getAnnualPropertyValueGrowth(inputContent)
     return calculatePropertyValueForYear(
       propertyValue,
@@ -73,7 +68,7 @@ class App extends Component {
     const annualPVGrowth = getAnnualPropertyValueGrowth(inputContent)
     const monthlyIncome = inputContent[TITLE_MONTHLY_INCOME]
     const monthlyExpenses = inputContent[TITLE_MONTHLY_EXPENSES]
-    const propertyValue = getInitialPropertyValue(inputContent)
+    const propertyValue = getAfterRepairValue(inputContent)
     return calculatePercentageExpensesForYear(
       annualIncomeGrowth,
       annualPVGrowth,
@@ -123,15 +118,14 @@ class App extends Component {
     )
   }
   /* Initial equity = down payment + after repair value + purchase price */
-  getInitialEquity = () => {
+  calculateInitialEquity = () => {
     const inputContent = this.state.inputContent
-    const initialPurchase = inputContent[TITLE_INITIAL_PURCHASE]
 
-    const downPayment = initialPurchase[INPUT_ID_DOWN_PAYMENT]
-    const afterRepairValue = initialPurchase[INPUT_ID_AFTER_REPAIR_VALUE]
-    const purchasePrice = initialPurchase[INPUT_ID_PURCHASE_PRICE]
+    const downPayment = getDownPayment(inputContent)
+    const afterRepairValue = getAfterRepairValue(inputContent)
+    const purchasePrice = getPurchasePrice(inputContent)
 
-    return +downPayment + (+afterRepairValue - +purchasePrice)
+    return calculateInitialEquity(downPayment, afterRepairValue, purchasePrice)
   }
   /* Initial investment =
     down payment + repair costs + closing costs + other initial costs */
@@ -150,15 +144,15 @@ class App extends Component {
       otherCosts
     )
   }
-  getEquityAfterYears = years => {
-    let equity = this.getInitialEquity()
+  calculateEquityAfterYears = years => {
+    let equity = this.calculateInitialEquity()
     // TODO: deal with all numbers of years that aren't 0
     if (years === 0) {
       return equity
     }
     return equity
   }
-  getInvestmentAfterYears = years => {
+  calculateInvestmentAfterYears = years => {
     let investment = this.calculateInitialInvestment()
     // TODO: deal with all numbers of years that aren't 0
     if (years === 0) {
@@ -212,8 +206,8 @@ class App extends Component {
           amortizationPeriod={ getAmortizationPeriod(this.state.inputContent) }
           calculateCashFlowForYear={ this.calculateCashFlowForYear }
           getCashOnCashReturnForYear={ this.getCashOnCashReturnForYear }
-          getEquityAfterYears={ this.getEquityAfterYears }
-          getInvestmentAfterYears={ this.getInvestmentAfterYears }
+          calculateEquityAfterYears={ this.calculateEquityAfterYears }
+          calculateInvestmentAfterYears={ this.calculateInvestmentAfterYears }
           calculatePropertyValueForYear={ this.calculatePropertyValueForYear }
         />
       </div>

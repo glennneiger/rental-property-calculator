@@ -10,7 +10,8 @@ import {
   INPUT_ID_DOWN_PAYMENT,
   INPUT_ID_REPAIR_COSTS,
   INPUT_ID_CLOSING_COSTS,
-  INPUT_ID_OTHER_INITIAL_COSTS
+  INPUT_ID_OTHER_INITIAL_COSTS,
+  INPUT_ID_PURCHASE_PRICE
 } from '../constants'
 
 export const getAnnualConstantExpensesGrowth = inputContent => {
@@ -22,7 +23,7 @@ export const getAnnualConstantExpensesGrowth = inputContent => {
   return annualConstantExpensesGrowth
 }
 
-export const getInitialPropertyValue = inputContent => {
+export const getAfterRepairValue = inputContent => {
   const initialPurchase = inputContent[TITLE_INITIAL_PURCHASE]
 
   const propertyValue = initialPurchase[INPUT_ID_AFTER_REPAIR_VALUE]
@@ -65,4 +66,9 @@ export const getClosingCosts = inputContent => {
 export const getOtherCosts = inputContent => {
   const initialPurchase = inputContent[TITLE_INITIAL_PURCHASE]
   return initialPurchase[INPUT_ID_OTHER_INITIAL_COSTS]
+}
+
+export const getPurchasePrice = inputContent => {
+  const initialPurchase = inputContent[TITLE_INITIAL_PURCHASE]
+  return initialPurchase[INPUT_ID_PURCHASE_PRICE]
 }

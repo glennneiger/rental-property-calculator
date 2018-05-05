@@ -150,3 +150,10 @@ export const calculateInitialInvestment = (
   otherCosts
 ) =>
   +downPayment + +repairCosts + +closingCosts + +otherCosts
+
+export const calculateInitialEquity = (
+  downPayment,
+  afterRepairValue,
+  purchasePrice
+) =>
+  +downPayment + (+afterRepairValue - +purchasePrice)
