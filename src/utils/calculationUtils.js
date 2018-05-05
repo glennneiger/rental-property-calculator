@@ -26,8 +26,12 @@ export const getCompoundedValue = (initialValue, annualGrowthRate, years) => {
 export const calculatePercentOfPropertyValueMonthly = (
   percent,
   propertyValue
-) =>
-  percent * propertyValue / (100 * MONTHS_PER_YEAR)
+) => {
+  if (!percent || !propertyValue) {
+    return 0
+  }
+  return percent * propertyValue / (100 * MONTHS_PER_YEAR)
+}
 
 export const calculatePercentOfRentalIncomeMonthly = (
   percent,
