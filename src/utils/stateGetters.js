@@ -6,7 +6,11 @@ import {
   NUMBER_SYSTEM_DECIMAL,
   INPUT_ID_PROPERTY_VALUE_GROWTH,
   INPUT_ID_ANNUAL_INCOME_GROWTH,
-  INPUT_ID_AMORTIZATION_PERIOD
+  INPUT_ID_AMORTIZATION_PERIOD,
+  INPUT_ID_DOWN_PAYMENT,
+  INPUT_ID_REPAIR_COSTS,
+  INPUT_ID_CLOSING_COSTS,
+  INPUT_ID_OTHER_INITIAL_COSTS
 } from '../constants'
 
 export const getAnnualConstantExpensesGrowth = inputContent => {
@@ -41,4 +45,24 @@ export const getAmortizationPeriod = inputContent => {
   const initialPurchase = inputContent[TITLE_INITIAL_PURCHASE]
 
   return initialPurchase[INPUT_ID_AMORTIZATION_PERIOD]
+}
+
+export const getDownPayment = inputContent => {
+  const initialPurchase = inputContent[TITLE_INITIAL_PURCHASE]
+  return initialPurchase[INPUT_ID_DOWN_PAYMENT]
+}
+
+export const getRepairCosts = inputContent => {
+  const initialPurchase = inputContent[TITLE_INITIAL_PURCHASE]
+  return initialPurchase[INPUT_ID_REPAIR_COSTS]
+}
+
+export const getClosingCosts = inputContent => {
+  const initialPurchase = inputContent[TITLE_INITIAL_PURCHASE]
+  return initialPurchase[INPUT_ID_CLOSING_COSTS]
+}
+
+export const getOtherCosts = inputContent => {
+  const initialPurchase = inputContent[TITLE_INITIAL_PURCHASE]
+  return initialPurchase[INPUT_ID_OTHER_INITIAL_COSTS]
 }

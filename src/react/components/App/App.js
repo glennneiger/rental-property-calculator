@@ -27,14 +27,19 @@ import {
   calculatePercentageExpensesForYear,
   calculateExpensesForYear,
   calculateYearCashFlow,
-  calculateCashOnCashReturn
+  calculateCashOnCashReturn,
+  calculateInitialInvestment
 } from '../../../utils/calculationUtils'
 import {
   getAnnualConstantExpensesGrowth,
   getInitialPropertyValue,
   getAnnualPropertyValueGrowth,
   getAnnualIncomeGrowth,
-  getAmortizationPeriod
+  getAmortizationPeriod,
+  getDownPayment,
+  getRepairCosts,
+  getClosingCosts,
+  getOtherCosts
 } from '../../../utils/stateGetters'
 
 class App extends Component {
@@ -109,9 +114,10 @@ class App extends Component {
     return Math.round(calculateYearCashFlow(incomeForYear, expensesForYear))
   }
   /* Cash on cash return = (cash flow / initialInvestment) * 100% */
+  // TODO: make this work for years that aren't the initial year
   getCashOnCashReturnForYear = year => {
     const yearCashFlow = this.calculateCashFlowForYear(year)
-    const initialInvestment = this.getInitialInvestment()
+    const initialInvestment = this.calculateInitialInvestment()
     return parseFloat(
       calculateCashOnCashReturn(yearCashFlow, initialInvestment).toFixed(2)
     )
@@ -129,16 +135,20 @@ class App extends Component {
   }
   /* Initial investment =
     down payment + repair costs + closing costs + other initial costs */
-  getInitialInvestment = () => {
+  calculateInitialInvestment = () => {
     const inputContent = this.state.inputContent
-    const initialPurchase = inputContent[TITLE_INITIAL_PURCHASE]
 
-    const downPayment = initialPurchase[INPUT_ID_DOWN_PAYMENT]
-    const repairCosts = initialPurchase[INPUT_ID_REPAIR_COSTS]
-    const closingCosts = initialPurchase[INPUT_ID_CLOSING_COSTS]
-    const otherCosts = initialPurchase[INPUT_ID_OTHER_INITIAL_COSTS]
+    const downPayment = getDownPayment(inputContent)
+    const repairCosts = getRepairCosts(inputContent)
+    const closingCosts = getClosingCosts(inputContent)
+    const otherCosts = getOtherCosts(inputContent)
 
-    return +downPayment + +repairCosts + +closingCosts + +otherCosts
+    return calculateInitialInvestment(
+      downPayment,
+      repairCosts,
+      closingCosts,
+      otherCosts
+    )
   }
   getEquityAfterYears = years => {
     let equity = this.getInitialEquity()
@@ -149,7 +159,7 @@ class App extends Component {
     return equity
   }
   getInvestmentAfterYears = years => {
-    let investment = this.getInitialInvestment()
+    let investment = this.calculateInitialInvestment()
     // TODO: deal with all numbers of years that aren't 0
     if (years === 0) {
       return investment

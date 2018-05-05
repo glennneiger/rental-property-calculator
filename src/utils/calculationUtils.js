@@ -142,3 +142,11 @@ export const calculateCashOnCashReturn = (cashFlow, totalInvestment) =>
   totalInvestment === 0
     ? Number.POSITIVE_INFINITY
     : (cashFlow / totalInvestment * 100)
+
+export const calculateInitialInvestment = (
+  downPayment,
+  repairCosts,
+  closingCosts,
+  otherCosts
+) =>
+  +downPayment + +repairCosts + +closingCosts + +otherCosts
