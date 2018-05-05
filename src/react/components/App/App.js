@@ -164,9 +164,13 @@ class App extends Component {
     return investment
   }
   handleKeyDown = (event, section, inputId) => {
-    const inputContent = this.state.inputContent
-    inputContent[section][inputId] = event.target.value
-    this.forceUpdate()
+    this.setState({
+      inputContent: Object.assign({}, this.state.inputContent, {
+        [section]: Object.assign({}, this.state.section, {
+          [inputId]: event.target.value
+        })
+      })
+    })
   }
   getInputState = () => {
     let inputContent = {}
