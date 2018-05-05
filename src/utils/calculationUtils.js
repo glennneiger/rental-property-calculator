@@ -7,7 +7,7 @@ import {
   incomeInputProps
 } from '../react/components/App/childProps'
 
-const makeValidGrowthRate = growthRate => (
+export const makeValidGrowthRate = growthRate => (
   growthRate
     ? parseInt(growthRate, NUMBER_SYSTEM_DECIMAL)
     : 0
