@@ -123,7 +123,11 @@ export const calculatePercentageExpensesForYear = (
       } else if (current.percentOfPropertyValue) {
         expense = calculatePercentOfPropertyValueMonthly(
           monthlyExpenses[current.inputId],
-          calculatePropertyValueForYear(initialPropertyValue, annualPVGrowth, year)
+          calculatePropertyValueForYear(
+            initialPropertyValue,
+            annualPVGrowth,
+            year
+          )
         )
       }
       return total + +expense
