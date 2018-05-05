@@ -36,8 +36,12 @@ export const calculatePercentOfPropertyValueMonthly = (
 export const calculatePercentOfRentalIncomeMonthly = (
   percent,
   monthlyRentalIncome
-) =>
-  percent * monthlyRentalIncome / 100
+) => {
+  if (!percent || !monthlyRentalIncome) {
+    return 0
+  }
+  return percent * monthlyRentalIncome / 100
+}
 
 const calculateInitialYearlyIncome = monthlyIncome => {
   const initialYearlyIncome = incomeInputProps.reduce((total, current) => {

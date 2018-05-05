@@ -3,7 +3,8 @@ import { expect } from 'chai'
 import {
   getCompoundedValue,
   makeValidGrowthRate,
-  calculatePercentOfPropertyValueMonthly
+  calculatePercentOfPropertyValueMonthly,
+  calculatePercentOfRentalIncomeMonthly
 } from '../../src/utils/calculationUtils'
 
 describe('utils/calculationUtils', () => {
@@ -76,6 +77,38 @@ describe('utils/calculationUtils', () => {
     })
     it('returns 0 if propertyValue is undefined', () => {
       expect(calculatePercentOfPropertyValueMonthly(1, undefined))
+        .to
+        .equal(0)
+    })
+  })
+  describe('calculatePercentOfRentalIncomeMonthly', () => {
+    it('returns proper value when given positive inputs', () => {
+      expect(calculatePercentOfRentalIncomeMonthly(5, 1800))
+        .to
+        .equal(90)
+    })
+    it('returns proper value when given numeric strings', () => {
+      expect(calculatePercentOfRentalIncomeMonthly('5', '1800'))
+        .to
+        .equal(90)
+    })
+    it('returns 0 if percent is null', () => {
+      expect(calculatePercentOfRentalIncomeMonthly(null, 1800))
+        .to
+        .equal(0)
+    })
+    it('returns 0 if propertyValue is null', () => {
+      expect(calculatePercentOfRentalIncomeMonthly(5, null))
+        .to
+        .equal(0)
+    })
+    it('returns 0 if percent is undefined', () => {
+      expect(calculatePercentOfRentalIncomeMonthly(undefined, 1800))
+        .to
+        .equal(0)
+    })
+    it('returns 0 if propertyValue is undefined', () => {
+      expect(calculatePercentOfRentalIncomeMonthly(5, undefined))
         .to
         .equal(0)
     })
