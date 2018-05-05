@@ -56,9 +56,8 @@ class App extends Component {
   }
   calculateIncomeForYear = year => {
     const { inputContent } = this.state
-    const futureProjections = inputContent[TITLE_FUTURE_PROJECTIONS]
     const monthlyIncome = inputContent[TITLE_MONTHLY_INCOME]
-    const annualIncomeGrowth = futureProjections[INPUT_ID_ANNUAL_INCOME_GROWTH]
+    const annualIncomeGrowth = getAnnualIncomeGrowth(inputContent)
     return calculateIncomeForYear(year, monthlyIncome, annualIncomeGrowth)
   }
 
