@@ -1,6 +1,7 @@
 export const INPUT_ID_AFTER_REPAIR_VALUE = 'afterRepairValueInput'
 export const INPUT_ID_AMORTIZATION_PERIOD = 'amortizationPeriodInput'
-export const INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH = 'annualExpensesGrowthInput'
+export const INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH =
+  'annualExpensesGrowthInput'
 export const INPUT_ID_ANNUAL_INCOME_GROWTH = 'annualIncomeGrowthInput'
 export const INPUT_ID_CAP_EX = 'capExInput'
 export const INPUT_ID_CITY = 'cityInput'
@@ -20,7 +21,8 @@ export const INPUT_ID_OTHER_EXPENSES = 'otherExpensesInput'
 export const INPUT_ID_OTHER_INCOME = 'otherIncomeInput'
 export const INPUT_ID_OTHER_INITIAL_COSTS = 'otherInitialCostsInput'
 export const INPUT_ID_POSTAL_OR_ZIP_CODE = 'postalOrZipCodeInput'
-export const INPUT_ID_PRIVATE_MORTGAGE_INSURANCE ='privateMortgageInsuranceInput'
+export const INPUT_ID_PRIVATE_MORTGAGE_INSURANCE =
+  'privateMortgageInsuranceInput'
 export const INPUT_ID_PROPERTY_TAX = 'propertyTaxInput'
 export const INPUT_ID_PROPERTY_VALUE_GROWTH = 'propertyValueGrowthInput'
 export const INPUT_ID_PROVINCE_OR_STATE = 'provinceOrStateInput'

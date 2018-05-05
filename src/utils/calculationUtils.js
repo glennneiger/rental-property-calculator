@@ -1,18 +1,11 @@
 import {
   MONTHS_PER_YEAR,
-  TITLE_INITIAL_PURCHASE,
-  INPUT_ID_AFTER_REPAIR_VALUE,
-  NUMBER_SYSTEM_DECIMAL,
-  TITLE_MONTHLY_EXPENSES
+  NUMBER_SYSTEM_DECIMAL
 } from '../constants'
 import {
   expensesInputProps,
   incomeInputProps
 } from '../react/components/App/childProps'
-import {
-  getAnnualConstantExpensesGrowth,
-  getAnnualPropertyValueGrowth
-} from './stateGetters'
 
 const makeValidGrowthRate = growthRate => (
   growthRate
@@ -135,3 +128,9 @@ export const calculatePercentageExpensesForYear = (
     }, 0)
   return parseInt(percentageExpensesForYear, NUMBER_SYSTEM_DECIMAL)
 }
+
+export const calculateExpensesForYear = (
+  constantExpenses,
+  percentageExpenses
+) =>
+  constantExpenses + percentageExpenses

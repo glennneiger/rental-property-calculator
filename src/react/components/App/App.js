@@ -4,22 +4,18 @@ import Result from '../Result'
 import InputSection from '../InputSection'
 import Input from '../Input'
 import {
-  expensesInputProps,
   inputSectionData
 } from './childProps'
 import './app.css'
 import {
   INPUT_ID_AFTER_REPAIR_VALUE,
-  INPUT_ID_AMORTIZATION_PERIOD,
   INPUT_ID_ANNUAL_INCOME_GROWTH,
   INPUT_ID_CLOSING_COSTS,
   INPUT_ID_DOWN_PAYMENT,
   INPUT_ID_OTHER_INITIAL_COSTS,
-  INPUT_ID_PROPERTY_VALUE_GROWTH,
   INPUT_ID_PURCHASE_PRICE,
   INPUT_ID_REPAIR_COSTS,
   MONTHS_PER_YEAR,
-  NUMBER_SYSTEM_DECIMAL,
   TITLE_INITIAL_PURCHASE,
   TITLE_MONTHLY_EXPENSES,
   TITLE_MONTHLY_INCOME,
@@ -27,12 +23,10 @@ import {
 } from '../../../constants'
 import {
   calculateIncomeForYear,
-  getCompoundedValue,
-  calculatePercentOfRentalIncomeMonthly,
-  calculatePercentOfPropertyValueMonthly,
   calculateConstantExpensesForYear,
   calculatePropertyValueForYear,
-  calculatePercentageExpensesForYear
+  calculatePercentageExpensesForYear,
+  calculateExpensesForYear
 } from '../../../utils/calculationUtils'
 import {
   getAnnualConstantExpensesGrowth,
@@ -96,9 +90,16 @@ class App extends Component {
     )
   }
   getExpensesForYear = year => {
-    const percentageExpensesForYear = this.calculatePercentageExpensesForYear(year)
-    const constantExpensesForYear = this.calculateConstantExpensesForYear(year)
-    return constantExpensesForYear + percentageExpensesForYear
+    const percentageExpensesForYear = this.calculatePercentageExpensesForYear(
+      year
+    )
+    const constantExpensesForYear = this.calculateConstantExpensesForYear(
+      year
+    )
+    return calculateExpensesForYear(
+      constantExpensesForYear,
+      percentageExpensesForYear
+    )
   }
   /* Cash flow = Income - Expenses */
   getCashFlowForYear = year => {
