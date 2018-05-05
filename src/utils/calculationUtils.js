@@ -10,7 +10,8 @@ import {
   incomeInputProps
 } from '../react/components/App/childProps'
 import {
-  getAnnualConstantExpensesGrowth, getAnnualPropertyValueGrowth
+  getAnnualConstantExpensesGrowth,
+  getAnnualPropertyValueGrowth
 } from './stateGetters'
 
 const makeValidGrowthRate = growthRate => (

@@ -38,7 +38,8 @@ import {
   getAnnualConstantExpensesGrowth,
   getInitialPropertyValue,
   getAnnualPropertyValueGrowth,
-  getAnnualIncomeGrowth
+  getAnnualIncomeGrowth,
+  getAmortizationPeriod
 } from '../../../utils/stateGetters'
 
 class App extends Component {
@@ -56,14 +57,6 @@ class App extends Component {
       propertyValue,
       annualPVGrowth,
       year
-    )
-  }
-  getAmortizationPeriod = () => {
-    const inputContent = this.state.inputContent
-    const initialPurchase = inputContent[TITLE_INITIAL_PURCHASE]
-    return parseInt(
-      initialPurchase[INPUT_ID_AMORTIZATION_PERIOD],
-      NUMBER_SYSTEM_DECIMAL
     )
   }
   calculateIncomeForYear = year => {
@@ -164,13 +157,9 @@ class App extends Component {
     return investment
   }
   handleKeyDown = (event, section, inputId) => {
-    this.setState({
-      inputContent: Object.assign({}, this.state.inputContent, {
-        [section]: Object.assign({}, this.state.section, {
-          [inputId]: event.target.value
-        })
-      })
-    })
+    let inputContent = this.state.inputContent
+    inputContent[section][inputId] = event.target.value
+    this.forceUpdate()
   }
   getInputState = () => {
     let inputContent = {}
@@ -210,7 +199,7 @@ class App extends Component {
           // results={ this.calculateResults() }
           // // map years to their results { 1: {...}, 5: {...}, ... }
 
-          amortizationPeriod={ '' + this.getAmortizationPeriod() }
+          amortizationPeriod={ getAmortizationPeriod(this.state.inputContent) }
           getCashFlowForYear={ this.getCashFlowForYear }
           getCashOnCashReturnForYear={ this.getCashOnCashReturnForYear }
           getEquityAfterYears={ this.getEquityAfterYears }
