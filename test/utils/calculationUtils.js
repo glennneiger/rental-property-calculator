@@ -228,6 +228,21 @@ describe('utils/calculationUtils', () => {
         .be
         .closeTo(ANSWER, PRECISION)
     })
+    it('returns proper value when year is 0', () => {
+      expect(calculateIncomeForYear(0, MONTHLY_INCOME, ANNUAL_INCOME_GROWTH))
+        .to
+        .equal(23400)
+    })
+    it('returns proper value when monthlyIncome is 0', () => {
+      expect(calculateIncomeForYear(YEAR, 0, ANNUAL_INCOME_GROWTH))
+        .to
+        .equal(0)
+    })
+    it('returns proper value when annualIncomeGrowth is 0', () => {
+      expect(calculateIncomeForYear(YEAR, MONTHLY_INCOME, 0))
+        .to
+        .equal(23400)
+    })
     it('returns 0 if year is null', () => {
       expect(calculateIncomeForYear(null, MONTHLY_INCOME, ANNUAL_INCOME_GROWTH))
         .to

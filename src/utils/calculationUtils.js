@@ -61,10 +61,13 @@ export const calculateIncomeForYear = (
   monthlyIncome,
   annualIncomeGrowth
 ) => {
+  let incomeForYear = calculateInitialYearlyIncome(monthlyIncome)
+  if (year === 0 || annualIncomeGrowth === 0) {
+    return incomeForYear
+  }
   if (!year || !monthlyIncome || !annualIncomeGrowth) {
     return 0
   }
-  let incomeForYear = calculateInitialYearlyIncome(monthlyIncome)
   incomeForYear = getCompoundedValue(
     incomeForYear,
     annualIncomeGrowth,
