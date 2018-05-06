@@ -8,7 +8,9 @@ import {
   calculateInitialMonthlyIncome,
   calculateInitialYearlyIncome,
   calculateIncomeForYear,
-  calculateInitialMonthlyConstantExpenses
+  calculateInitialMonthlyConstantExpenses,
+  calculateInitialYearlyConstantExpenses,
+  calculateConstantExpensesForYear
 } from '../../src/utils/calculationUtils'
 import {
   INPUT_ID_RENTAL_INCOME,
@@ -33,19 +35,20 @@ const DEFAULT_MONTHLY_INCOME = {
   [INPUT_ID_OTHER_INCOME]: 150
 }
 
+// constant: sum is 1250
 const DEFAULT_MONTHLY_EXPENSES = {
   [INPUT_ID_MORTGAGE]: 800,
   [INPUT_ID_ELECTRICITY]: 50,
   [INPUT_ID_WATER_AND_SEWER]: 50,
   [INPUT_ID_PRIVATE_MORTGAGE_INSURANCE]: 80,
   [INPUT_ID_GARBAGE]: 50,
-  [INPUT_ID_HOA]: 0,
+  [INPUT_ID_HOA]: 100,
   [INPUT_ID_INSURANCE]: 100,
-  [INPUT_ID_PROPERTY_TAX]: 1,
-  [INPUT_ID_VACANCY]: 5,
-  [INPUT_ID_REPAIRS_AND_MAINTENANCE]: 5,
-  [INPUT_ID_CAP_EX]: 5,
-  [INPUT_ID_MANAGEMENT]: 5,
+  [INPUT_ID_PROPERTY_TAX]: 1, // percent of property value
+  [INPUT_ID_VACANCY]: 5, // percent of rental income
+  [INPUT_ID_REPAIRS_AND_MAINTENANCE]: 5, // percent of rental income
+  [INPUT_ID_CAP_EX]: 5, // percent of rental income
+  [INPUT_ID_MANAGEMENT]: 5, // percent of rental income
   [INPUT_ID_OTHER_EXPENSES]: 20
 }
 
@@ -291,19 +294,87 @@ describe('utils/calculationUtils', () => {
         .equal(0)
     })
   })
-  // describe('calculateInitialMonthlyConstantExpenses', () => {
-  //   let monthlyExpenses
-  //   beforeEach(() => {
-  //     monthlyExpenses = DEFAULT_MONTHLY_EXPENSES
-  //   })
-  //   it('returns proper value when given positive inputs', () => {
-  //     expect(calculateInitialMonthlyConstantExpenses(
-  //       YEAR,
-  //       MONTHLY_INCOME,
-  //       ANNUAL_INCOME_GROWTH
-  //     )).to
-  //       .be
-  //       .closeTo(ANSWER, PRECISION)
-  //   })
-  // })
+  describe('calculateInitialMonthlyConstantExpenses', () => {
+    let monthlyExpenses
+    beforeEach(() => {
+      monthlyExpenses = DEFAULT_MONTHLY_EXPENSES
+    })
+    it('returns proper value when given positive inputs', () => {
+      expect(calculateInitialMonthlyConstantExpenses(monthlyExpenses))
+        .to
+        .equal(1250)
+    })
+    it('returns 0 value when monthlyExpenses is null', () => {
+      expect(calculateInitialMonthlyConstantExpenses(null))
+        .to
+        .equal(0)
+    })
+    it('returns 0 value when monthlyExpenses is undefined', () => {
+      expect(calculateInitialMonthlyConstantExpenses(undefined))
+        .to
+        .equal(0)
+    })
+  })
+  describe('calculateInitialYearlyConstantExpenses', () => {
+    let monthlyExpenses
+    beforeEach(() => {
+      monthlyExpenses = DEFAULT_MONTHLY_EXPENSES
+    })
+    it('returns proper value when given positive inputs', () => {
+      expect(calculateInitialYearlyConstantExpenses(monthlyExpenses))
+        .to
+        .equal(15000)
+    })
+    it('returns 0 value when monthlyExpenses is null', () => {
+      expect(calculateInitialYearlyConstantExpenses(null))
+        .to
+        .equal(0)
+    })
+    it('returns 0 value when monthlyExpenses is undefined', () => {
+      expect(calculateInitialYearlyConstantExpenses(undefined))
+        .to
+        .equal(0)
+    })
+  })
+  describe('calculateConstantExpensesForYear', () => {
+    const ANNUAL_CONSTANT_EXPENSES_GROWTH = 2
+    const YEAR = 20
+    let monthlyExpenses
+    beforeEach(() => {
+      monthlyExpenses = DEFAULT_MONTHLY_EXPENSES
+    })
+    it('returns proper value when given positive inputs', () => {
+      expect(calculateConstantExpensesForYear(
+        ANNUAL_CONSTANT_EXPENSES_GROWTH,
+        monthlyExpenses,
+        YEAR
+      )).to
+        .be
+        .closeTo(22289.21, 0.01)
+    })
+    it('returns proper value when annualConstantExpensesGrowth is 0', () => {
+      expect(calculateConstantExpensesForYear(
+        0,
+        monthlyExpenses,
+        YEAR
+      )).to
+        .equal(15000)
+    })
+    it('returns proper value when year is 0', () => {
+      expect(calculateConstantExpensesForYear(
+        ANNUAL_CONSTANT_EXPENSES_GROWTH,
+        monthlyExpenses,
+        0
+      )).to
+        .equal(15000)
+    })
+    it('returns proper value when monthlyExpenses is 0', () => {
+      expect(calculateConstantExpensesForYear(
+        ANNUAL_CONSTANT_EXPENSES_GROWTH,
+        0,
+        YEAR
+      )).to
+        .equal(0)
+    })
+  })
 })

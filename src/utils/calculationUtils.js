@@ -77,6 +77,9 @@ export const calculateIncomeForYear = (
 }
 
 export const calculateInitialMonthlyConstantExpenses = monthlyExpenses => {
+  if (!monthlyExpenses) {
+    return 0
+  }
   const constantExpensesForYear = expensesInputProps
     .reduce((total, current) => {
       let expense = monthlyExpenses[current.inputId]
@@ -106,7 +109,7 @@ export const calculateConstantExpensesForYear = (
     annualConstantExpensesGrowth,
     year
   )
-  return parseInt(constantExpensesForYear, NUMBER_SYSTEM_DECIMAL)
+  return constantExpensesForYear
 }
 
 export const calculatePropertyValueForYear = (
