@@ -141,7 +141,6 @@ export const calculateWholeYearRentalIncomeForYear = (
   )
 }
 
-// TODO: test this
 export const calculateMonthlyRentalIncomeForYear = (
   year,
   monthlyIncome,

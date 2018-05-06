@@ -14,7 +14,8 @@ import {
   calculatePropertyValueForYear,
   calculatePercentageExpensesForYear,
   calculateInitialYearlyRentalIncome,
-  calculateWholeYearRentalIncomeForYear
+  calculateWholeYearRentalIncomeForYear,
+  calculateMonthlyRentalIncomeForYear
 } from '../../src/utils/calculationUtils'
 import {
   INPUT_ID_RENTAL_INCOME,
@@ -472,6 +473,41 @@ describe('utils/calculationUtils', () => {
       expect(calculateWholeYearRentalIncomeForYear(20, monthlyIncome, 0))
         .to
         .equal(21600)
+    })
+  })
+  describe('calculateMonthlyRentalIncomeForYear', () => {
+    let monthlyIncome
+    beforeEach(() => {
+      monthlyIncome = Object.assign({}, DEFAULT_MONTHLY_INCOME)
+    })
+    it('returns proper value when given positive inputs', () => {
+      expect(calculateMonthlyRentalIncomeForYear(20, monthlyIncome, 2))
+        .to
+        .be
+        .closeTo(2674.71, 0.01)
+    })
+    it('returns proper value when year is 0', () => {
+      expect(calculateMonthlyRentalIncomeForYear(0, monthlyIncome, 2))
+        .to
+        .equal(1800)
+    })
+    it('returns proper value when rental income is 0', () => {
+      monthlyIncome[INPUT_ID_RENTAL_INCOME] = 0
+      expect(calculateMonthlyRentalIncomeForYear(20, monthlyIncome, 2))
+        .to
+        .equal(0)
+    })
+    it('returns proper value when other income is 0', () => {
+      monthlyIncome[INPUT_ID_OTHER_INCOME] = 0
+      expect(calculateMonthlyRentalIncomeForYear(20, monthlyIncome, 2))
+        .to
+        .be
+        .closeTo(2674.71, 0.01)
+    })
+    it('returns proper value when annualIncomeGrowth is 0', () => {
+      expect(calculateMonthlyRentalIncomeForYear(20, monthlyIncome, 0))
+        .to
+        .equal(1800)
     })
   })
   describe('calculatePercentageExpensesForYear', () => {
