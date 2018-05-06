@@ -15,7 +15,9 @@ import {
   calculatePercentageExpensesForYear,
   calculateInitialYearlyRentalIncome,
   calculateWholeYearRentalIncomeForYear,
-  calculateMonthlyRentalIncomeForYear
+  calculateMonthlyRentalIncomeForYear,
+  calculateExpensesForYear,
+  calculateYearCashFlow
 } from '../../src/utils/calculationUtils'
 import {
   INPUT_ID_RENTAL_INCOME,
@@ -598,6 +600,40 @@ describe('utils/calculationUtils', () => {
         0
       )).to
         .equal(5320)
+    })
+  })
+  describe('calculateExpensesForYear', () => {
+    it('returns proper value when given positive inputs', () => {
+      expect(calculateExpensesForYear(22289.21, 8225.40)).to
+        .be
+        .closeTo(30514.61, 0.01)
+    })
+    it('returns proper value when constantExpenses is 0', () => {
+      expect(calculateExpensesForYear(0, 8225.40)).to
+        .be
+        .closeTo(8225.40, 0.01)
+    })
+    it('returns proper value when percentageExpenses is 0', () => {
+      expect(calculateExpensesForYear(22289.21, 0)).to
+        .be
+        .closeTo(22289.21, 0.01)
+    })
+  })
+  describe('calculateYearCashFlow', () => {
+    it('returns proper value when given positive inputs', () => {
+      expect(calculateYearCashFlow(20000.64, 15000.78)).to
+        .be
+        .closeTo(4999.86, 0.01)
+    })
+    it('returns proper value when incomeForYear is 0', () => {
+      expect(calculateYearCashFlow(0, 15000.78)).to
+        .be
+        .closeTo(-15000.78, 0.01)
+    })
+    it('returns proper value when expensesForYear is 0', () => {
+      expect(calculateYearCashFlow(20000.64, 0)).to
+        .be
+        .closeTo(20000.64, 0.01)
     })
   })
 })
