@@ -10,7 +10,8 @@ import {
   calculateIncomeForYear,
   calculateInitialMonthlyConstantExpenses,
   calculateInitialYearlyConstantExpenses,
-  calculateConstantExpensesForYear
+  calculateConstantExpensesForYear,
+  calculatePropertyValueForYear
 } from '../../src/utils/calculationUtils'
 import {
   INPUT_ID_RENTAL_INCOME,
@@ -375,6 +376,41 @@ describe('utils/calculationUtils', () => {
         YEAR
       )).to
         .equal(0)
+    })
+  })
+  describe('calculatePropertyValueForYear', () => {
+    it('returns proper value when given positive inputs', () => {
+      expect(calculatePropertyValueForYear(
+        100000,
+        2,
+        20
+      )).to
+        .be
+        .closeTo(148594.74, 0.01)
+    })
+    it('returns proper value when initialPropertyValue is 0', () => {
+      expect(calculatePropertyValueForYear(
+        0,
+        2,
+        20
+      )).to
+        .equal(0)
+    })
+    it('returns proper value when annualPVGrowth is 0', () => {
+      expect(calculatePropertyValueForYear(
+        100000,
+        0,
+        20
+      )).to
+        .equal(100000)
+    })
+    it('returns proper value when year is 0', () => {
+      expect(calculatePropertyValueForYear(
+        100000,
+        2,
+        0
+      )).to
+        .equal(100000)
     })
   })
 })
