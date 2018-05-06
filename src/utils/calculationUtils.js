@@ -15,12 +15,7 @@ export const makeValidGrowthRate = growthRate => (
 
 export const getCompoundedValue = (initialValue, annualGrowthRate, years) => {
   const validatedAnnualGrowthRate = makeValidGrowthRate(annualGrowthRate)
-  return Math.round(initialValue *
-    Math.pow(
-      1 + (validatedAnnualGrowthRate / 100),
-      years
-    )
-  )
+  return initialValue * Math.pow(1 + (validatedAnnualGrowthRate / 100), years)
 }
 
 export const calculatePercentOfPropertyValueMonthly = (
@@ -43,12 +38,22 @@ export const calculatePercentOfRentalIncomeMonthly = (
   return percent * monthlyRentalIncome / 100
 }
 
-const calculateInitialYearlyIncome = monthlyIncome => {
-  const initialYearlyIncome = incomeInputProps.reduce((total, current) => {
+export const calculateInitialMonthlyIncome = monthlyIncome => {
+  if (!monthlyIncome) {
+    return 0
+  }
+  const initialMonthlyIncome = incomeInputProps.reduce((total, current) => {
     const income = monthlyIncome[current.inputId]
     return total + +income
   }, 0)
-  return parseInt(initialYearlyIncome, NUMBER_SYSTEM_DECIMAL)
+  return parseInt(initialMonthlyIncome, NUMBER_SYSTEM_DECIMAL)
+}
+
+export const calculateInitialYearlyIncome = monthlyIncome => {
+  if (!monthlyIncome) {
+    return 0
+  }
+  return calculateInitialMonthlyIncome(monthlyIncome) * MONTHS_PER_YEAR
 }
 
 export const calculateIncomeForYear = (
@@ -56,6 +61,9 @@ export const calculateIncomeForYear = (
   monthlyIncome,
   annualIncomeGrowth
 ) => {
+  if (!year || !monthlyIncome || !annualIncomeGrowth) {
+    return 0
+  }
   let incomeForYear = calculateInitialYearlyIncome(monthlyIncome)
   incomeForYear = getCompoundedValue(
     incomeForYear,
@@ -65,7 +73,7 @@ export const calculateIncomeForYear = (
   return incomeForYear
 }
 
-export const calculateInitialYearlyConstantExpenses = monthlyExpenses => {
+export const calculateInitialMonthlyConstantExpenses = monthlyExpenses => {
   const constantExpensesForYear = expensesInputProps
     .reduce((total, current) => {
       let expense = monthlyExpenses[current.inputId]
@@ -76,6 +84,11 @@ export const calculateInitialYearlyConstantExpenses = monthlyExpenses => {
     }, 0)
   return parseInt(constantExpensesForYear, NUMBER_SYSTEM_DECIMAL)
 }
+
+export const calculateInitialYearlyConstantExpenses = monthlyExpenses =>
+  calculateInitialMonthlyConstantExpenses(
+    monthlyExpenses
+  ) * MONTHS_PER_YEAR
 
 export const calculateConstantExpensesForYear = (
   annualConstantExpensesGrowth,
@@ -113,7 +126,7 @@ export const calculatePercentageExpensesForYear = (
   initialPropertyValue,
   year
 ) => {
-  const percentageExpensesForYear = expensesInputProps
+  const percentageExpensesForMonth = expensesInputProps
     .reduce((total, current) => {
       let expense = 0
       if (current.percentOfRent) {
@@ -133,7 +146,10 @@ export const calculatePercentageExpensesForYear = (
       }
       return total + +expense
     }, 0)
-  return parseInt(percentageExpensesForYear, NUMBER_SYSTEM_DECIMAL)
+  return parseInt(
+    percentageExpensesForMonth * MONTHS_PER_YEAR,
+    NUMBER_SYSTEM_DECIMAL
+  )
 }
 
 export const calculateExpensesForYear = (
@@ -143,7 +159,7 @@ export const calculateExpensesForYear = (
   constantExpenses + percentageExpenses
 
 export const calculateYearCashFlow = (incomeForYear, expensesForYear) =>
-  (incomeForYear - expensesForYear) * MONTHS_PER_YEAR
+  incomeForYear - expensesForYear
 
 export const calculateCashOnCashReturn = (cashFlow, totalInvestment) =>
   totalInvestment === 0
