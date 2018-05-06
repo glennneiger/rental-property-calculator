@@ -17,7 +17,10 @@ import {
   calculateWholeYearRentalIncomeForYear,
   calculateMonthlyRentalIncomeForYear,
   calculateExpensesForYear,
-  calculateYearCashFlow
+  calculateYearCashFlow,
+  calculateCashOnCashReturn,
+  calculateInitialInvestment,
+  calculateInitialEquity
 } from '../../src/utils/calculationUtils'
 import {
   INPUT_ID_RENTAL_INCOME,
@@ -604,36 +607,120 @@ describe('utils/calculationUtils', () => {
   })
   describe('calculateExpensesForYear', () => {
     it('returns proper value when given positive inputs', () => {
-      expect(calculateExpensesForYear(22289.21, 8225.40)).to
+      expect(calculateExpensesForYear(22289.21, 8225.40))
+        .to
         .be
         .closeTo(30514.61, 0.01)
     })
     it('returns proper value when constantExpenses is 0', () => {
-      expect(calculateExpensesForYear(0, 8225.40)).to
+      expect(calculateExpensesForYear(0, 8225.40))
+        .to
         .be
         .closeTo(8225.40, 0.01)
     })
     it('returns proper value when percentageExpenses is 0', () => {
-      expect(calculateExpensesForYear(22289.21, 0)).to
+      expect(calculateExpensesForYear(22289.21, 0))
+        .to
         .be
         .closeTo(22289.21, 0.01)
     })
   })
   describe('calculateYearCashFlow', () => {
     it('returns proper value when given positive inputs', () => {
-      expect(calculateYearCashFlow(20000.64, 15000.78)).to
+      expect(calculateYearCashFlow(20000.64, 15000.78))
+        .to
         .be
         .closeTo(4999.86, 0.01)
     })
     it('returns proper value when incomeForYear is 0', () => {
-      expect(calculateYearCashFlow(0, 15000.78)).to
+      expect(calculateYearCashFlow(0, 15000.78))
+        .to
         .be
         .closeTo(-15000.78, 0.01)
     })
     it('returns proper value when expensesForYear is 0', () => {
-      expect(calculateYearCashFlow(20000.64, 0)).to
+      expect(calculateYearCashFlow(20000.64, 0))
+        .to
         .be
         .closeTo(20000.64, 0.01)
+    })
+  })
+  describe('calculateCashOnCashReturn', () => {
+    it('returns proper value when given positive inputs', () => {
+      expect(calculateCashOnCashReturn(1603.54, 42000.62))
+        .to
+        .be
+        .closeTo(3.82, 0.01)
+    })
+    it('returns proper value when cashFlow is negative', () => {
+      expect(calculateCashOnCashReturn(-1603.54, 42000.62))
+        .to
+        .be
+        .closeTo(-3.82, 0.01)
+    })
+    it('returns proper value when cashFlow is 0', () => {
+      expect(calculateCashOnCashReturn(0, 42000.62))
+        .to
+        .equal(0)
+    })
+    it('returns proper value when totalInvestment is 0', () => {
+      expect(calculateCashOnCashReturn(1603.54, 0))
+        .to
+        .equal(Number.POSITIVE_INFINITY)
+    })
+  })
+  describe('calculateInitialInvestment', () => {
+    it('returns proper value when given positive inputs', () => {
+      expect(calculateInitialInvestment(20000, 20000, 3000, 250))
+        .to
+        .equal(43250)
+    })
+    it('returns proper value when downPayment is 0', () => {
+      expect(calculateInitialInvestment(0, 20000, 3000, 250))
+        .to
+        .equal(23250)
+    })
+    it('returns proper value when repairCosts is 0', () => {
+      expect(calculateInitialInvestment(20000, 0, 3000, 250))
+        .to
+        .equal(23250)
+    })
+    it('returns proper value when closingCosts is 0', () => {
+      expect(calculateInitialInvestment(20000, 20000, 0, 250))
+        .to
+        .equal(40250)
+    })
+    it('returns proper value when otherCosts is 0', () => {
+      expect(calculateInitialInvestment(20000, 20000, 3000, 0))
+        .to
+        .equal(43000)
+    })
+  })
+  describe('calculateInitialEquity', () => {
+    it('returns proper value when given positive inputs', () => {
+      expect(calculateInitialEquity(21600, 90000, 72000))
+        .to
+        .equal(39600)
+    })
+    it('returns proper value when downPayment is 0', () => {
+      expect(calculateInitialEquity(0, 90000, 72000))
+        .to
+        .equal(18000)
+    })
+    it('returns proper value when afterRepairValue is 0', () => {
+      expect(calculateInitialEquity(21600, 0, 72000))
+        .to
+        .equal(0)
+    })
+    it('returns proper value when purchasePrice is 0', () => {
+      expect(calculateInitialEquity(21600, 90000, 0))
+        .to
+        .equal(90000)
+    })
+    it('returns proper value when downPayment and purchasePrice are 0', () => {
+      expect(calculateInitialEquity(0, 90000, 0))
+        .to
+        .equal(90000)
     })
   })
 })

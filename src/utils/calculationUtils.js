@@ -215,5 +215,12 @@ export const calculateInitialEquity = (
   downPayment,
   afterRepairValue,
   purchasePrice
-) =>
-  +downPayment + (+afterRepairValue - +purchasePrice)
+) => {
+  if (afterRepairValue === 0) {
+    return 0
+  }
+  if (purchasePrice === 0) {
+    return afterRepairValue
+  }
+  return +downPayment + (+afterRepairValue - +purchasePrice)
+}
