@@ -7,18 +7,46 @@ import {
   calculatePercentOfRentalIncomeMonthly,
   calculateInitialMonthlyIncome,
   calculateInitialYearlyIncome,
-  calculateIncomeForYear
+  calculateIncomeForYear,
+  calculateInitialMonthlyConstantExpenses
 } from '../../src/utils/calculationUtils'
 import {
   INPUT_ID_RENTAL_INCOME,
-  INPUT_ID_OTHER_INCOME
+  INPUT_ID_OTHER_INCOME,
+  INPUT_ID_WATER_AND_SEWER,
+  INPUT_ID_MORTGAGE,
+  INPUT_ID_ELECTRICITY,
+  INPUT_ID_PRIVATE_MORTGAGE_INSURANCE,
+  INPUT_ID_GARBAGE,
+  INPUT_ID_HOA,
+  INPUT_ID_INSURANCE,
+  INPUT_ID_PROPERTY_TAX,
+  INPUT_ID_VACANCY,
+  INPUT_ID_REPAIRS_AND_MAINTENANCE,
+  INPUT_ID_CAP_EX,
+  INPUT_ID_MANAGEMENT,
+  INPUT_ID_OTHER_EXPENSES
 } from '../../src/constants'
 
-const createNewMonthlyIncome = (rentalIncome, otherIncome) => {
-  return {
-    [INPUT_ID_RENTAL_INCOME]: rentalIncome,
-    [INPUT_ID_OTHER_INCOME]: otherIncome
-  }
+const DEFAULT_MONTHLY_INCOME = {
+  [INPUT_ID_RENTAL_INCOME]: 1800,
+  [INPUT_ID_OTHER_INCOME]: 150
+}
+
+const DEFAULT_MONTHLY_EXPENSES = {
+  [INPUT_ID_MORTGAGE]: 800,
+  [INPUT_ID_ELECTRICITY]: 50,
+  [INPUT_ID_WATER_AND_SEWER]: 50,
+  [INPUT_ID_PRIVATE_MORTGAGE_INSURANCE]: 80,
+  [INPUT_ID_GARBAGE]: 50,
+  [INPUT_ID_HOA]: 0,
+  [INPUT_ID_INSURANCE]: 100,
+  [INPUT_ID_PROPERTY_TAX]: 1,
+  [INPUT_ID_VACANCY]: 5,
+  [INPUT_ID_REPAIRS_AND_MAINTENANCE]: 5,
+  [INPUT_ID_CAP_EX]: 5,
+  [INPUT_ID_MANAGEMENT]: 5,
+  [INPUT_ID_OTHER_EXPENSES]: 20
 }
 
 describe('utils/calculationUtils', () => {
@@ -131,22 +159,18 @@ describe('utils/calculationUtils', () => {
     })
   })
   describe('calculateInitialMonthlyIncome', () => {
-    const POSITIVE_RENTAL_INCOME = 1800
-    const POSITIVE_OTHER_INCOME = 150
+    let monthlyIncome
+    beforeEach(() => {
+      monthlyIncome = DEFAULT_MONTHLY_INCOME
+    })
     it('returns proper value when given positive inputs', () => {
-      const monthlyIncome = createNewMonthlyIncome(
-        POSITIVE_RENTAL_INCOME,
-        POSITIVE_OTHER_INCOME
-      )
       expect(calculateInitialMonthlyIncome(monthlyIncome))
         .to
         .equal(1950)
     })
     it('returns proper value when given numeric strings', () => {
-      const monthlyIncome = createNewMonthlyIncome(
-        '1800',
-        '150'
-      )
+      monthlyIncome[INPUT_ID_RENTAL_INCOME] = '1800'
+      monthlyIncome[INPUT_ID_OTHER_INCOME] = '150'
       expect(calculateInitialMonthlyIncome(monthlyIncome))
         .to
         .equal(1950)
@@ -163,22 +187,18 @@ describe('utils/calculationUtils', () => {
     })
   })
   describe('calculateInitialYearlyIncome', () => {
-    const POSITIVE_RENTAL_INCOME = 1800
-    const POSITIVE_OTHER_INCOME = 150
+    let monthlyIncome
+    beforeEach(() => {
+      monthlyIncome = DEFAULT_MONTHLY_INCOME
+    })
     it('returns proper value when given positive inputs', () => {
-      const monthlyIncome = createNewMonthlyIncome(
-        POSITIVE_RENTAL_INCOME,
-        POSITIVE_OTHER_INCOME
-      )
       expect(calculateInitialYearlyIncome(monthlyIncome))
         .to
         .equal(23400)
     })
     it('returns proper value when given numeric strings', () => {
-      const monthlyIncome = createNewMonthlyIncome(
-        '1800',
-        '150'
-      )
+      monthlyIncome[INPUT_ID_RENTAL_INCOME] = '1800'
+      monthlyIncome[INPUT_ID_OTHER_INCOME] = '150'
       expect(calculateInitialYearlyIncome(monthlyIncome))
         .to
         .equal(23400)
@@ -195,41 +215,35 @@ describe('utils/calculationUtils', () => {
     })
   })
   describe('calculateIncomeForYear', () => {
-    const POSITIVE_RENTAL_INCOME = 1800
-    const POSITIVE_OTHER_INCOME = 150
-    const POSITIVE_RENTAL_INCOME_STRING = '1800'
-    const POSITIVE_OTHER_INCOME_STRING = '150'
     const YEAR = 20
     const ANNUAL_INCOME_GROWTH = 5
-    const ANSWER = 62087.17
+    const ANSWER_INCOME_FOR_YEAR = 62087.17
     const PRECISION = 0.01
     const YEAR_STRING = '20'
     const ANNUAL_INCOME_GROWTH_STRING = '5'
-    const MONTHLY_INCOME = createNewMonthlyIncome(
-      POSITIVE_RENTAL_INCOME,
-      POSITIVE_OTHER_INCOME
-    )
-    const MONTHLY_INCOME_STRINGS = createNewMonthlyIncome(
-      POSITIVE_RENTAL_INCOME_STRING,
-      POSITIVE_OTHER_INCOME_STRING
-    )
+    let monthlyIncome
+    beforeEach(() => {
+      monthlyIncome = DEFAULT_MONTHLY_INCOME
+    })
     it('returns proper value when given positive inputs', () => {
-      expect(calculateIncomeForYear(YEAR, MONTHLY_INCOME, ANNUAL_INCOME_GROWTH))
+      expect(calculateIncomeForYear(YEAR, monthlyIncome, ANNUAL_INCOME_GROWTH))
         .to
         .be
-        .closeTo(ANSWER, PRECISION)
+        .closeTo(ANSWER_INCOME_FOR_YEAR, PRECISION)
     })
     it('returns proper value when given numeric strings', () => {
+      monthlyIncome[INPUT_ID_RENTAL_INCOME] = '1800'
+      monthlyIncome[INPUT_ID_OTHER_INCOME] = '150'
       expect(calculateIncomeForYear(
         YEAR_STRING,
-        MONTHLY_INCOME_STRINGS,
+        monthlyIncome,
         ANNUAL_INCOME_GROWTH_STRING
       )).to
         .be
-        .closeTo(ANSWER, PRECISION)
+        .closeTo(ANSWER_INCOME_FOR_YEAR, PRECISION)
     })
     it('returns proper value when year is 0', () => {
-      expect(calculateIncomeForYear(0, MONTHLY_INCOME, ANNUAL_INCOME_GROWTH))
+      expect(calculateIncomeForYear(0, monthlyIncome, ANNUAL_INCOME_GROWTH))
         .to
         .equal(23400)
     })
@@ -239,19 +253,19 @@ describe('utils/calculationUtils', () => {
         .equal(0)
     })
     it('returns proper value when annualIncomeGrowth is 0', () => {
-      expect(calculateIncomeForYear(YEAR, MONTHLY_INCOME, 0))
+      expect(calculateIncomeForYear(YEAR, monthlyIncome, 0))
         .to
         .equal(23400)
     })
     it('returns 0 if year is null', () => {
-      expect(calculateIncomeForYear(null, MONTHLY_INCOME, ANNUAL_INCOME_GROWTH))
+      expect(calculateIncomeForYear(null, monthlyIncome, ANNUAL_INCOME_GROWTH))
         .to
         .equal(0)
     })
     it('returns 0 if year is undefined', () => {
       expect(calculateIncomeForYear(
         undefined,
-        MONTHLY_INCOME,
+        monthlyIncome,
         ANNUAL_INCOME_GROWTH
       )).to
         .equal(0)
@@ -267,14 +281,29 @@ describe('utils/calculationUtils', () => {
         .equal(0)
     })
     it('returns 0 if annualIncomeGrowth is null', () => {
-      expect(calculateIncomeForYear(YEAR, MONTHLY_INCOME, null))
+      expect(calculateIncomeForYear(YEAR, monthlyIncome, null))
         .to
         .equal(0)
     })
     it('returns 0 if annualIncomeGrowth is undefined', () => {
-      expect(calculateIncomeForYear(YEAR, MONTHLY_INCOME, undefined))
+      expect(calculateIncomeForYear(YEAR, monthlyIncome, undefined))
         .to
         .equal(0)
     })
   })
+  // describe('calculateInitialMonthlyConstantExpenses', () => {
+  //   let monthlyExpenses
+  //   beforeEach(() => {
+  //     monthlyExpenses = DEFAULT_MONTHLY_EXPENSES
+  //   })
+  //   it('returns proper value when given positive inputs', () => {
+  //     expect(calculateInitialMonthlyConstantExpenses(
+  //       YEAR,
+  //       MONTHLY_INCOME,
+  //       ANNUAL_INCOME_GROWTH
+  //     )).to
+  //       .be
+  //       .closeTo(ANSWER, PRECISION)
+  //   })
+  // })
 })
