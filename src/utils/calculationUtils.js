@@ -125,11 +125,9 @@ export const calculatePropertyValueForYear = (
   )
 }
 
-// TODO: test this
 export const calculateInitialYearlyRentalIncome = monthlyIncome =>
   monthlyIncome[INPUT_ID_RENTAL_INCOME] * MONTHS_PER_YEAR
 
-// TODO: test this
 export const calculateWholeYearRentalIncomeForYear = (
   year,
   monthlyIncome,
