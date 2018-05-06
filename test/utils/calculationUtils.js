@@ -11,7 +11,8 @@ import {
   calculateInitialMonthlyConstantExpenses,
   calculateInitialYearlyConstantExpenses,
   calculateConstantExpensesForYear,
-  calculatePropertyValueForYear
+  calculatePropertyValueForYear,
+  calculatePercentageExpensesForYear
 } from '../../src/utils/calculationUtils'
 import {
   INPUT_ID_RENTAL_INCOME,
@@ -411,6 +412,96 @@ describe('utils/calculationUtils', () => {
         0
       )).to
         .equal(100000)
+    })
+  })
+  describe('calculatePercentageExpensesForYear', () => {
+    let monthlyIncome
+    let monthlyExpenses
+    beforeEach(() => {
+      monthlyIncome = DEFAULT_MONTHLY_INCOME
+      monthlyExpenses = DEFAULT_MONTHLY_EXPENSES
+    })
+    it('returns proper value when given positive inputs', () => {
+      expect(calculatePercentageExpensesForYear(
+        2,
+        3,
+        monthlyIncome,
+        monthlyExpenses,
+        100000,
+        20
+      )).to
+        .be
+        .closeTo(8225.40, 0.01)
+    })
+    it('returns proper value when annualIncomeGrowth is 0', () => {
+      expect(calculatePercentageExpensesForYear(
+        0,
+        3,
+        monthlyIncome,
+        monthlyExpenses,
+        100000,
+        20
+      )).to
+        .be
+        .closeTo(6126.11, 0.01)
+    })
+    it('returns proper value when annualPVGrowth is 0', () => {
+      expect(calculatePercentageExpensesForYear(
+        2,
+        0,
+        monthlyIncome,
+        monthlyExpenses,
+        100000,
+        20
+      )).to
+        .be
+        .closeTo(7419.29, 0.01)
+    })
+    it('returns proper value when monthlyIncome is 0', () => {
+      expect(calculatePercentageExpensesForYear(
+        2,
+        3,
+        0,
+        monthlyExpenses,
+        100000,
+        20
+      )).to
+        .be
+        .closeTo(1806.11, 0.01)
+    })
+    it('returns proper value when monthlyExpenses is 0', () => {
+      expect(calculatePercentageExpensesForYear(
+        2,
+        3,
+        monthlyIncome,
+        0,
+        100000,
+        20
+      )).to
+        .equal(0)
+    })
+    it('returns proper value when initialPropertyValue is 0', () => {
+      expect(calculatePercentageExpensesForYear(
+        2,
+        3,
+        monthlyIncome,
+        monthlyExpenses,
+        0,
+        20
+      )).to
+        .be
+        .closeTo(6419.29, 0.01)
+    })
+    it('returns proper value when year is 0', () => {
+      expect(calculatePercentageExpensesForYear(
+        2,
+        3,
+        monthlyIncome,
+        monthlyExpenses,
+        100000,
+        0
+      )).to
+        .equal(5320)
     })
   })
 })

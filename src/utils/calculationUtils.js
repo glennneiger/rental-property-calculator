@@ -1,6 +1,7 @@
 import {
   MONTHS_PER_YEAR,
-  NUMBER_SYSTEM_DECIMAL
+  NUMBER_SYSTEM_DECIMAL,
+  INPUT_ID_RENTAL_INCOME
 } from '../constants'
 import {
   expensesInputProps,
@@ -124,6 +125,38 @@ export const calculatePropertyValueForYear = (
   )
 }
 
+// TODO: test this
+export const calculateInitialYearlyRentalIncome = monthlyIncome =>
+  monthlyIncome[INPUT_ID_RENTAL_INCOME] * MONTHS_PER_YEAR
+
+// TODO: test this
+export const calculateWholeYearRentalIncomeForYear = (
+  year,
+  monthlyIncome,
+  annualIncomeGrowth
+) => {
+  let yearlyRentalIncome = calculateInitialYearlyRentalIncome(monthlyIncome)
+  return getCompoundedValue(
+    yearlyRentalIncome,
+    annualIncomeGrowth,
+    year
+  )
+}
+
+// TODO: test this
+export const calculateMonthlyRentalIncomeForYear = (
+  year,
+  monthlyIncome,
+  annualIncomeGrowth
+) => {
+  let yearRentalIncome = calculateWholeYearRentalIncomeForYear(
+    year,
+    monthlyIncome,
+    annualIncomeGrowth
+  )
+  return yearRentalIncome / MONTHS_PER_YEAR
+}
+
 export const calculatePercentageExpensesForYear = (
   annualIncomeGrowth,
   annualPVGrowth,
@@ -138,7 +171,11 @@ export const calculatePercentageExpensesForYear = (
       if (current.percentOfRent) {
         expense = calculatePercentOfRentalIncomeMonthly(
           monthlyExpenses[current.inputId],
-          calculateIncomeForYear(year, monthlyIncome, annualIncomeGrowth)
+          calculateMonthlyRentalIncomeForYear(
+            year,
+            monthlyIncome,
+            annualIncomeGrowth
+          )
         )
       } else if (current.percentOfPropertyValue) {
         expense = calculatePercentOfPropertyValueMonthly(
@@ -152,10 +189,7 @@ export const calculatePercentageExpensesForYear = (
       }
       return total + +expense
     }, 0)
-  return parseInt(
-    percentageExpensesForMonth * MONTHS_PER_YEAR,
-    NUMBER_SYSTEM_DECIMAL
-  )
+  return percentageExpensesForMonth * MONTHS_PER_YEAR
 }
 
 export const calculateExpensesForYear = (
