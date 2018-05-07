@@ -222,11 +222,10 @@ class App extends Component {
           // TODO: instead of functions, pass down an object.
           results={ this.calculateResults() }
           initialInvestment={ this.calculateInitialInvestment() }
+          initialEquity={ this.calculateInitialEquity() }
           amortizationPeriod={ getAmortizationPeriod(this.state.inputContent) }
           calculateCashFlowForYear={ this.calculateCashFlowForYear }
           calculateCashOnCashReturnForYear={ this.calculateCashOnCashReturnForYear }
-          calculateEquityAfterYears={ this.calculateEquityAfterYears }
-          calculateInitialInvestment={ this.calculateInitialInvestment }
           calculatePropertyValueForYear={ this.calculatePropertyValueForYear }
         />
       </div>
