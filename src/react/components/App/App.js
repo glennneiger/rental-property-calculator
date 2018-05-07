@@ -31,7 +31,7 @@ import {
   getDownPayment,
   getRepairCosts,
   getClosingCosts,
-  getOtherCosts,
+  getOtherInitialCosts,
   getPurchasePrice
 } from '../../../utils/stateGetters'
 
@@ -134,7 +134,7 @@ class App extends Component {
     const downPayment = getDownPayment(inputContent)
     const repairCosts = getRepairCosts(inputContent)
     const closingCosts = getClosingCosts(inputContent)
-    const otherCosts = getOtherCosts(inputContent)
+    const otherCosts = getOtherInitialCosts(inputContent)
 
     return calculateInitialInvestment(
       downPayment,

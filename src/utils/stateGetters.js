@@ -95,7 +95,7 @@ export const getClosingCosts = inputContent => {
     : 0
 }
 
-export const getOtherCosts = inputContent => {
+export const getOtherInitialCosts = inputContent => {
   const initialPurchase = inputContent[TITLE_INITIAL_PURCHASE]
 
   const otherCosts = initialPurchase[INPUT_ID_OTHER_INITIAL_COSTS]
