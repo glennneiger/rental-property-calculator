@@ -25,7 +25,7 @@ const Result = ({
 )
 
 Result.propTypes = {
-  amortizationPeriod: PropTypes.string.isRequired,
+  amortizationPeriod: PropTypes.number.isRequired,
   calculateCashFlowForYear: PropTypes.func.isRequired,
   getCashOnCashReturnForYear: PropTypes.func.isRequired,
   calculateEquityAfterYears: PropTypes.func.isRequired,

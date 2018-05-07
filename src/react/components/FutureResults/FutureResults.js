@@ -49,7 +49,7 @@ const FutureResults = ({
 }
 
 FutureResults.propTypes = {
-  amortizationPeriod: PropTypes.string.isRequired,
+  amortizationPeriod: PropTypes.number.isRequired,
   calculateCashFlowForYear: PropTypes.func.isRequired,
   getCashOnCashReturnForYear: PropTypes.func.isRequired,
   calculatePropertyValueForYear: PropTypes.func.isRequired

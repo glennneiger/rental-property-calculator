@@ -8,10 +8,8 @@ import {
 } from './childProps'
 import './app.css'
 import {
-  TITLE_GENERAL_INFO,
   TITLE_MONTHLY_EXPENSES,
-  TITLE_MONTHLY_INCOME,
-  INPUT_ID_SQUARE_FEET
+  TITLE_MONTHLY_INCOME
 } from '../../../constants'
 import {
   calculateIncomeForYear,

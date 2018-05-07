@@ -31,7 +31,10 @@ const Input = ({
 }
 
 Input.propTypes = {
-  content: PropTypes.string.isRequired,
+  content: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]).isRequired,
   handleKeyDown: PropTypes.func.isRequired,
   inputId: PropTypes.string.isRequired,
   inputType: PropTypes.string,
