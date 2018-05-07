@@ -1,7 +1,7 @@
 import {
+  INPUT_ID_RENTAL_INCOME,
   MONTHS_PER_YEAR,
-  NUMBER_SYSTEM_DECIMAL,
-  INPUT_ID_RENTAL_INCOME
+  NUMBER_SYSTEM_DECIMAL
 } from '../constants'
 import {
   expensesInputProps,
