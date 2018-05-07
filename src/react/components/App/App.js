@@ -223,10 +223,9 @@ class App extends Component {
           results={ this.calculateResults() }
           initialInvestment={ this.calculateInitialInvestment() }
           initialEquity={ this.calculateInitialEquity() }
-          amortizationPeriod={ getAmortizationPeriod(this.state.inputContent) }
-          calculateCashFlowForYear={ this.calculateCashFlowForYear }
-          calculateCashOnCashReturnForYear={ this.calculateCashOnCashReturnForYear }
-          calculatePropertyValueForYear={ this.calculatePropertyValueForYear }
+          yearsForResults={ getYearsForResults(
+            getAmortizationPeriod(this.state.inputContent)
+          ) }
         />
       </div>
     )
