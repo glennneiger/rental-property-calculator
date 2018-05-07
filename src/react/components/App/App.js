@@ -8,8 +8,10 @@ import {
 } from './childProps'
 import './app.css'
 import {
+  TITLE_GENERAL_INFO,
   TITLE_MONTHLY_EXPENSES,
-  TITLE_MONTHLY_INCOME
+  TITLE_MONTHLY_INCOME,
+  INPUT_ID_SQUARE_FEET
 } from '../../../constants'
 import {
   calculateIncomeForYear,
@@ -159,10 +161,15 @@ class App extends Component {
       const section = inputSection.title
       inputSection.childProps.forEach(props => {
         const input = props.inputId
+        const inputType = props.inputType
         if (!inputContent[section]) {
           inputContent[section] = {}
         }
-        inputContent[section][input] = ''
+        if (inputType === 'number') {
+          inputContent[section][input] = 0
+        } else if (inputType === 'text') {
+          inputContent[section][input] = ''
+        }
       })
     })
     return inputContent

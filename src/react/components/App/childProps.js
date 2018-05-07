@@ -83,6 +83,7 @@ const generalInfoInputProps = [
   },
   {
     inputId: INPUT_ID_SQUARE_FEET,
+    inputType: 'number',
     label: 'Square Feet'
   }
 ]
@@ -90,38 +91,47 @@ const generalInfoInputProps = [
 const initialPurchaseInputProps = [
   {
     inputId: INPUT_ID_PURCHASE_PRICE,
+    inputType: 'number',
     label: 'Purchase Price'
   },
   {
     inputId: INPUT_ID_DOWN_PAYMENT,
+    inputType: 'number',
     label: 'Down Payment'
   },
   {
     inputId: INPUT_ID_LOAN_AMOUNT,
+    inputType: 'number',
     label: 'Loan Amount'
   },
   {
     inputId: INPUT_ID_INTEREST_RATE,
+    inputType: 'number',
     label: 'Interest Rate (%)'
   },
   {
     inputId: INPUT_ID_AMORTIZATION_PERIOD,
+    inputType: 'number',
     label: 'Amortization Period (years)'
   },
   {
     inputId: INPUT_ID_AFTER_REPAIR_VALUE,
+    inputType: 'number',
     label: 'After Repair Value'
   },
   {
     inputId: INPUT_ID_REPAIR_COSTS,
+    inputType: 'number',
     label: 'Repair Costs'
   },
   {
     inputId: INPUT_ID_CLOSING_COSTS,
+    inputType: 'number',
     label: 'Closing Costs'
   },
   {
     inputId: INPUT_ID_OTHER_INITIAL_COSTS,
+    inputType: 'number',
     label: 'Other Initial Costs'
   }
 ]
@@ -130,10 +140,12 @@ const initialPurchaseInputProps = [
 export const incomeInputProps = [
   {
     inputId: INPUT_ID_RENTAL_INCOME,
+    inputType: 'number',
     label: 'Rental Income'
   },
   {
     inputId: INPUT_ID_OTHER_INCOME,
+    inputType: 'number',
     label: 'Other Income'
   }
 ]
@@ -142,59 +154,72 @@ export const incomeInputProps = [
 export const expensesInputProps = [
   {
     inputId: INPUT_ID_MORTGAGE,
+    inputType: 'number',
     label: 'Mortgage'
   },
   {
     inputId: INPUT_ID_ELECTRICITY,
+    inputType: 'number',
     label: 'Electricity'
   },
   {
     inputId: INPUT_ID_WATER_AND_SEWER,
+    inputType: 'number',
     label: 'Water and Sewer'
   },
   {
     inputId: INPUT_ID_PRIVATE_MORTGAGE_INSURANCE,
+    inputType: 'number',
     label: 'Private Mortgage Insurance'
   },
   {
     inputId: INPUT_ID_GARBAGE,
+    inputType: 'number',
     label: 'Garbage'
   },
   {
     inputId: INPUT_ID_HOA,
+    inputType: 'number',
     label: 'HOA Fees'
   },
   {
     inputId: INPUT_ID_INSURANCE,
+    inputType: 'number',
     label: 'Insurance'
   },
   {
     inputId: INPUT_ID_PROPERTY_TAX,
+    inputType: 'number',
     label: 'Property Tax (%)',
     percentOfPropertyValue: true
   },
   {
     inputId: INPUT_ID_VACANCY,
+    inputType: 'number',
     label: 'Vacancy (%)',
     percentOfRent: true
   },
   {
     inputId: INPUT_ID_REPAIRS_AND_MAINTENANCE,
+    inputType: 'number',
     label: 'Repairs & Maintenance (%)',
     percentOfRent: true
   },
   {
     inputId: INPUT_ID_CAP_EX,
+    inputType: 'number',
     label: 'Cap. Ex. (%)',
     percentOfRent: true
   },
   {
     inputId: INPUT_ID_MANAGEMENT,
+    inputType: 'number',
     label: 'Management (%)',
     percentOfRent: true
   },
   {
     inputId: INPUT_ID_OTHER_EXPENSES,
+    inputType: 'number',
     label: 'Other Expenses'
   }
 ]
@@ -202,14 +227,17 @@ export const expensesInputProps = [
 export const futureProjectionsInputProps = [
   {
     inputId: INPUT_ID_PROPERTY_VALUE_GROWTH,
+    inputType: 'number',
     label: 'Annual Property Value Growth (%)'
   },
   {
     inputId: INPUT_ID_ANNUAL_INCOME_GROWTH,
+    inputType: 'number',
     label: 'Annual Income Growth (%)'
   },
   {
     inputId: INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH,
+    inputType: 'number',
     label: 'Annual Constant Expenses Growth (%)'
   }
 ]
