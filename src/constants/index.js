@@ -42,6 +42,11 @@ export const MONTHS_PER_YEAR = 12
 export const NUMBER_PRECISION_DISPLAY = 2
 export const NUMBER_SYSTEM_DECIMAL = 10
 
+export const RESULTS_CASH_FLOW = 'cashFlow'
+export const RESULTS_CASH_ON_CASH_RETURN = 'cashOnCashReturn'
+export const RESULTS_PROPERTY_VALUE = 'propertyValue'
+export const RESULTS_EQUITY = 'equity'
+
 export const TITLE_FUTURE_PROJECTIONS = 'Future Projections'
 export const TITLE_GENERAL_INFO = 'General Info'
 export const TITLE_INITIAL_PURCHASE = 'Initial Purchase'

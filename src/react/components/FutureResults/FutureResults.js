@@ -10,7 +10,7 @@ import {
 const FutureResults = ({
   amortizationPeriod,
   calculateCashFlowForYear,
-  getCashOnCashReturnForYear,
+  calculateCashOnCashReturnForYear,
   calculatePropertyValueForYear
 }) => {
   const getYearsToShowResults = () => {
@@ -38,7 +38,7 @@ const FutureResults = ({
           <YearResult
             key={ year }
             calculateCashFlowForYear={ calculateCashFlowForYear }
-            getCashOnCashReturnForYear={ getCashOnCashReturnForYear }
+            calculateCashOnCashReturnForYear={ calculateCashOnCashReturnForYear }
             calculatePropertyValueForYear= { calculatePropertyValueForYear }
             year={ year }/>
         )) }
@@ -49,7 +49,7 @@ const FutureResults = ({
 FutureResults.propTypes = {
   amortizationPeriod: PropTypes.number.isRequired,
   calculateCashFlowForYear: PropTypes.func.isRequired,
-  getCashOnCashReturnForYear: PropTypes.func.isRequired,
+  calculateCashOnCashReturnForYear: PropTypes.func.isRequired,
   calculatePropertyValueForYear: PropTypes.func.isRequired
 }
 

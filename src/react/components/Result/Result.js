@@ -7,19 +7,21 @@ import FutureResults from '../FutureResults'
 const Result = ({
   amortizationPeriod,
   calculateCashFlowForYear,
-  getCashOnCashReturnForYear,
+  calculateCashOnCashReturnForYear,
   calculateEquityAfterYears,
   calculateInitialInvestment,
-  calculatePropertyValueForYear
+  calculatePropertyValueForYear,
+  results
 }) => (
   <div className='result'>
     <h2>Live Results</h2>
     <p>Initial Investment: { calculateInitialInvestment() }</p>
     <p>Initial Equity: { calculateEquityAfterYears(0) }</p>
+    { console.log(results) }
     <FutureResults
       amortizationPeriod={ amortizationPeriod }
       calculateCashFlowForYear={ calculateCashFlowForYear }
-      getCashOnCashReturnForYear={ getCashOnCashReturnForYear }
+      calculateCashOnCashReturnForYear={ calculateCashOnCashReturnForYear }
       calculatePropertyValueForYear={ calculatePropertyValueForYear }/>
   </div>
 )
@@ -27,10 +29,11 @@ const Result = ({
 Result.propTypes = {
   amortizationPeriod: PropTypes.number.isRequired,
   calculateCashFlowForYear: PropTypes.func.isRequired,
-  getCashOnCashReturnForYear: PropTypes.func.isRequired,
+  calculateCashOnCashReturnForYear: PropTypes.func.isRequired,
   calculateEquityAfterYears: PropTypes.func.isRequired,
   calculateInitialInvestment: PropTypes.func.isRequired,
-  calculatePropertyValueForYear: PropTypes.func.isRequired
+  calculatePropertyValueForYear: PropTypes.func.isRequired,
+  results: PropTypes.object.isRequired
 }
 
 export default Result

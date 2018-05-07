@@ -5,7 +5,7 @@ import './yearResult.css'
 
 const YearResult = ({
   calculateCashFlowForYear,
-  getCashOnCashReturnForYear,
+  calculateCashOnCashReturnForYear,
   calculatePropertyValueForYear,
   year
 }) => {
@@ -13,7 +13,7 @@ const YearResult = ({
     <div className='yearResult'>
       <h3>Year { year }</h3>
       <p>Cash Flow: ${ calculateCashFlowForYear(year) }</p>
-      <p>Cash on Cash Return: { getCashOnCashReturnForYear(year) }%</p>
+      <p>Cash on Cash Return: { calculateCashOnCashReturnForYear(year) }%</p>
       <p>Property Value: ${ calculatePropertyValueForYear(year) }</p>
     </div>
   )
@@ -21,7 +21,7 @@ const YearResult = ({
 
 YearResult.propTypes = {
   calculateCashFlowForYear: PropTypes.func.isRequired,
-  getCashOnCashReturnForYear: PropTypes.func.isRequired,
+  calculateCashOnCashReturnForYear: PropTypes.func.isRequired,
   calculatePropertyValueForYear: PropTypes.func.isRequired,
   year: PropTypes.number.isRequired
 }
