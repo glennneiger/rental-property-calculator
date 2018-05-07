@@ -8,31 +8,32 @@ import {
 } from './childProps'
 import './app.css'
 import {
+  NUMBER_PRECISION_DISPLAY,
   TITLE_MONTHLY_EXPENSES,
   TITLE_MONTHLY_INCOME
 } from '../../../constants'
 import {
-  calculateIncomeForYear,
-  calculateConstantExpensesForYear,
-  calculatePropertyValueForYear,
-  calculatePercentageExpensesForYear,
-  calculateExpensesForYear,
-  calculateYearCashFlow,
   calculateCashOnCashReturn,
+  calculateConstantExpensesForYear,
+  calculateExpensesForYear,
+  calculateIncomeForYear,
+  calculateInitialEquity,
   calculateInitialInvestment,
-  calculateInitialEquity
+  calculatePercentageExpensesForYear,
+  calculatePropertyValueForYear,
+  calculateYearCashFlow
 } from '../../../utils/calculationUtils'
 import {
-  getAnnualConstantExpensesGrowth,
   getAfterRepairValue,
-  getAnnualPropertyValueGrowth,
-  getAnnualIncomeGrowth,
   getAmortizationPeriod,
-  getDownPayment,
-  getRepairCosts,
+  getAnnualConstantExpensesGrowth,
+  getAnnualIncomeGrowth,
+  getAnnualPropertyValueGrowth,
   getClosingCosts,
+  getDownPayment,
   getOtherInitialCosts,
-  getPurchasePrice
+  getPurchasePrice,
+  getRepairCosts
 } from '../../../utils/stateGetters'
 
 class App extends Component {
@@ -50,7 +51,7 @@ class App extends Component {
       propertyValue,
       annualPVGrowth,
       year
-    ).toFixed(2)
+    ).toFixed(NUMBER_PRECISION_DISPLAY)
   }
   calculateIncomeForYear = year => {
     const { inputContent } = this.state
@@ -105,7 +106,10 @@ class App extends Component {
     const expensesForYear = this.calculateExpensesForYear(year)
     // return Math.round(calculateYearCashFlow(incomeForYear, expensesForYear))
     return parseFloat(
-      calculateYearCashFlow(incomeForYear, expensesForYear).toFixed(2)
+      calculateYearCashFlow(
+        incomeForYear,
+        expensesForYear
+      ).toFixed(NUMBER_PRECISION_DISPLAY)
     )
   }
   /* Cash on cash return = (cash flow / initialInvestment) * 100% */
@@ -113,7 +117,10 @@ class App extends Component {
     const yearCashFlow = this.calculateCashFlowForYear(year)
     const initialInvestment = this.calculateInitialInvestment()
     return parseFloat(
-      calculateCashOnCashReturn(yearCashFlow, initialInvestment).toFixed(2)
+      calculateCashOnCashReturn(
+        yearCashFlow,
+        initialInvestment
+      ).toFixed(NUMBER_PRECISION_DISPLAY)
     )
   }
   /* Initial equity = down payment + after repair value + purchase price */
