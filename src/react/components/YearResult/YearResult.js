@@ -9,9 +9,6 @@ import {
 } from '../../../constants'
 
 const YearResult = ({
-  // calculateCashFlowForYear,
-  // calculateCashOnCashReturnForYear,
-  // calculatePropertyValueForYear,
   result,
   year
 }) => {
@@ -26,9 +23,6 @@ const YearResult = ({
 }
 
 YearResult.propTypes = {
-  // calculateCashFlowForYear: PropTypes.func.isRequired,
-  // calculateCashOnCashReturnForYear: PropTypes.func.isRequired,
-  // calculatePropertyValueForYear: PropTypes.func.isRequired,
   result: PropTypes.object.isRequired,
   year: PropTypes.number.isRequired
 }

@@ -219,7 +219,6 @@ class App extends Component {
           </InputSection>
         )) }
         <Result
-          // TODO: instead of functions, pass down an object.
           results={ this.calculateResults() }
           initialInvestment={ this.calculateInitialInvestment() }
           initialEquity={ this.calculateInitialEquity() }
