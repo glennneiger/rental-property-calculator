@@ -21,7 +21,7 @@ export const getAnnualConstantExpensesGrowth = inputContent => {
     INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH
   ]
   return annualConstantExpensesGrowth
-    ? parseFloat(annualConstantExpensesGrowth).toFixed(4)
+    ? parseFloat(annualConstantExpensesGrowth)
     : 0
 }
 
@@ -30,7 +30,7 @@ export const getAfterRepairValue = inputContent => {
 
   const propertyValue = initialPurchase[INPUT_ID_AFTER_REPAIR_VALUE]
   return propertyValue
-    ? parseFloat(propertyValue, NUMBER_SYSTEM_DECIMAL).toFixed(2)
+    ? parseFloat(propertyValue, NUMBER_SYSTEM_DECIMAL)
     : 0
 }
 
@@ -42,7 +42,7 @@ export const getAnnualPropertyValueGrowth = inputContent => {
   ]
 
   return annualPropertyValueGrowth
-    ? parseFloat(annualPropertyValueGrowth).toFixed(4)
+    ? parseFloat(annualPropertyValueGrowth)
     : 0
 }
 
@@ -52,7 +52,7 @@ export const getAnnualIncomeGrowth = inputContent => {
   const annualIncomeGrowth = futureProjections[INPUT_ID_ANNUAL_INCOME_GROWTH]
 
   return annualIncomeGrowth
-    ? parseFloat(annualIncomeGrowth).toFixed(4)
+    ? parseFloat(annualIncomeGrowth)
     : 0
 }
 
@@ -72,7 +72,7 @@ export const getDownPayment = inputContent => {
   const downPayment = initialPurchase[INPUT_ID_DOWN_PAYMENT]
 
   return downPayment
-    ? parseFloat(downPayment).toFixed(2)
+    ? parseFloat(downPayment)
     : 0
 }
 
@@ -81,7 +81,7 @@ export const getRepairCosts = inputContent => {
 
   const repairCosts = initialPurchase[INPUT_ID_REPAIR_COSTS]
   return repairCosts
-    ? parseFloat(repairCosts).toFixed(2)
+    ? parseFloat(repairCosts)
     : 0
 }
 
@@ -91,7 +91,7 @@ export const getClosingCosts = inputContent => {
   const closingCosts = initialPurchase[INPUT_ID_CLOSING_COSTS]
 
   return closingCosts
-    ? parseFloat(closingCosts).toFixed(2)
+    ? parseFloat(closingCosts)
     : 0
 }
 
@@ -101,7 +101,7 @@ export const getOtherCosts = inputContent => {
   const otherCosts = initialPurchase[INPUT_ID_OTHER_INITIAL_COSTS]
 
   return otherCosts
-    ? parseFloat(otherCosts).toFixed(2)
+    ? parseFloat(otherCosts)
     : 0
 }
 
@@ -111,6 +111,6 @@ export const getPurchasePrice = inputContent => {
   const purchasePrice = initialPurchase[INPUT_ID_PURCHASE_PRICE]
 
   return purchasePrice
-    ? parseFloat(purchasePrice).toFixed(2)
+    ? parseFloat(purchasePrice)
     : 0
 }

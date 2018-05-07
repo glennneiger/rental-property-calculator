@@ -9,8 +9,7 @@ import {
 import './app.css'
 import {
   TITLE_MONTHLY_EXPENSES,
-  TITLE_MONTHLY_INCOME,
-  NUMBER_SYSTEM_DECIMAL
+  TITLE_MONTHLY_INCOME
 } from '../../../constants'
 import {
   calculateIncomeForYear,
@@ -51,7 +50,7 @@ class App extends Component {
       propertyValue,
       annualPVGrowth,
       year
-    )
+    ).toFixed(2)
   }
   calculateIncomeForYear = year => {
     const { inputContent } = this.state
@@ -104,7 +103,10 @@ class App extends Component {
   calculateCashFlowForYear = year => {
     const incomeForYear = this.calculateIncomeForYear(year)
     const expensesForYear = this.calculateExpensesForYear(year)
-    return Math.round(calculateYearCashFlow(incomeForYear, expensesForYear))
+    // return Math.round(calculateYearCashFlow(incomeForYear, expensesForYear))
+    return parseFloat(
+      calculateYearCashFlow(incomeForYear, expensesForYear).toFixed(2)
+    )
   }
   /* Cash on cash return = (cash flow / initialInvestment) * 100% */
   getCashOnCashReturnForYear = year => {
