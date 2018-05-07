@@ -104,7 +104,6 @@ class App extends Component {
   calculateCashFlowForYear = year => {
     const incomeForYear = this.calculateIncomeForYear(year)
     const expensesForYear = this.calculateExpensesForYear(year)
-    // return Math.round(calculateYearCashFlow(incomeForYear, expensesForYear))
     return parseFloat(
       calculateYearCashFlow(
         incomeForYear,
@@ -169,15 +168,10 @@ class App extends Component {
       const section = inputSection.title
       inputSection.childProps.forEach(props => {
         const input = props.inputId
-        const inputType = props.inputType
         if (!inputContent[section]) {
           inputContent[section] = {}
         }
-        if (inputType === 'number') {
-          inputContent[section][input] = 0
-        } else if (inputType === 'text') {
-          inputContent[section][input] = ''
-        }
+        inputContent[section][input] = ''
       })
     })
     return inputContent
