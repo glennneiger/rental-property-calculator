@@ -5,8 +5,8 @@ import './futureResults.css'
 import YearResult from '../YearResult'
 
 const FutureResults = ({
-  yearsForResults,
-  results
+  results,
+  yearsForResults
 }) => {
   return (
     <div className='futureResults'>
@@ -25,8 +25,8 @@ const FutureResults = ({
 }
 
 FutureResults.propTypes = {
-  yearsForResults: PropTypes.array.isRequired,
-  results: PropTypes.object.isRequired
+  results: PropTypes.object.isRequired,
+  yearsForResults: PropTypes.array.isRequired
 }
 
 export default FutureResults

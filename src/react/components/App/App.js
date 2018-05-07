@@ -219,9 +219,9 @@ class App extends Component {
           </InputSection>
         )) }
         <Result
-          results={ this.calculateResults() }
-          initialInvestment={ this.calculateInitialInvestment() }
           initialEquity={ this.calculateInitialEquity() }
+          initialInvestment={ this.calculateInitialInvestment() }
+          results={ this.calculateResults() }
           yearsForResults={ getYearsForResults(
             getAmortizationPeriod(this.state.inputContent)
           ) }

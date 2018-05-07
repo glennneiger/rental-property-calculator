@@ -5,18 +5,18 @@ import './result.css'
 import FutureResults from '../FutureResults'
 
 const Result = ({
-  yearsForResults,
   initialEquity,
   initialInvestment,
-  results
+  results,
+  yearsForResults
 }) => (
   <div className='result'>
     <h2>Live Results</h2>
     <p>Initial Investment: { initialInvestment }</p>
     <p>Initial Equity: { initialEquity }</p>
     <FutureResults
-      yearsForResults={ yearsForResults }
       results={ results }
+      yearsForResults={ yearsForResults }
     />
   </div>
 )
