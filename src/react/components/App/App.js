@@ -9,6 +9,10 @@ import {
 import './app.css'
 import {
   NUMBER_PRECISION_DISPLAY,
+  RESULTS_CASH_FLOW,
+  RESULTS_CASH_ON_CASH_RETURN,
+  RESULTS_EQUITY,
+  RESULTS_PROPERTY_VALUE,
   TITLE_MONTHLY_EXPENSES,
   TITLE_MONTHLY_INCOME
 } from '../../../constants'
@@ -35,6 +39,9 @@ import {
   getPurchasePrice,
   getRepairCosts
 } from '../../../utils/stateGetters'
+import {
+  getYearsForResults
+} from '../../../utils/resultsUtils'
 
 class App extends Component {
   constructor() {
@@ -42,6 +49,23 @@ class App extends Component {
     this.state = {
       inputContent: this.getInputState()
     }
+  }
+  calculateResults = () => {
+    let results = {}
+    const yearsToShow = getYearsForResults(
+      getAmortizationPeriod(this.state.inputContent)
+    )
+    yearsToShow.map(year => {
+      results[year] = {
+        [RESULTS_CASH_FLOW]: this.calculateCashFlowForYear(year),
+        [RESULTS_CASH_ON_CASH_RETURN]: this.calculateCashOnCashReturnForYear(
+          year
+        ),
+        [RESULTS_PROPERTY_VALUE]: this.calculatePropertyValueForYear(year),
+        [RESULTS_EQUITY]: this.calculateEquityAfterYears(year)
+      }
+    })
+    return results
   }
   calculatePropertyValueForYear = year => {
     const inputContent = this.state.inputContent
@@ -112,7 +136,7 @@ class App extends Component {
     )
   }
   /* Cash on cash return = (cash flow / initialInvestment) * 100% */
-  getCashOnCashReturnForYear = year => {
+  calculateCashOnCashReturnForYear = year => {
     const yearCashFlow = this.calculateCashFlowForYear(year)
     const initialInvestment = this.calculateInitialInvestment()
     return parseFloat(
@@ -195,16 +219,12 @@ class App extends Component {
           </InputSection>
         )) }
         <Result
-          // TODO: instead of functions, pass down an object.
-          // results={ this.calculateResults() }
-          // // map years to their results { 1: {...}, 5: {...}, ... }
-
-          amortizationPeriod={ getAmortizationPeriod(this.state.inputContent) }
-          calculateCashFlowForYear={ this.calculateCashFlowForYear }
-          getCashOnCashReturnForYear={ this.getCashOnCashReturnForYear }
-          calculateEquityAfterYears={ this.calculateEquityAfterYears }
-          calculateInitialInvestment={ this.calculateInitialInvestment }
-          calculatePropertyValueForYear={ this.calculatePropertyValueForYear }
+          initialEquity={ this.calculateInitialEquity() }
+          initialInvestment={ this.calculateInitialInvestment() }
+          results={ this.calculateResults() }
+          yearsForResults={ getYearsForResults(
+            getAmortizationPeriod(this.state.inputContent)
+          ) }
         />
       </div>
     )
