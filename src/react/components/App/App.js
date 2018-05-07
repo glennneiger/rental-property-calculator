@@ -9,7 +9,8 @@ import {
 import './app.css'
 import {
   TITLE_MONTHLY_EXPENSES,
-  TITLE_MONTHLY_INCOME
+  TITLE_MONTHLY_INCOME,
+  NUMBER_SYSTEM_DECIMAL
 } from '../../../constants'
 import {
   calculateIncomeForYear,

@@ -4,8 +4,7 @@ import PropTypes from 'prop-types'
 import './futureResults.css'
 import YearResult from '../YearResult'
 import {
-  INTERVAL_YEAR_RESULTS,
-  NUMBER_SYSTEM_DECIMAL
+  INTERVAL_YEAR_RESULTS
 } from '../../../constants'
 
 const FutureResults = ({
@@ -16,17 +15,16 @@ const FutureResults = ({
 }) => {
   const getYearsToShowResults = () => {
     let yearsToShowResults = [1]
-    const numYears = parseInt(amortizationPeriod, NUMBER_SYSTEM_DECIMAL)
     for (
       let i = INTERVAL_YEAR_RESULTS;
-      i <= numYears;
+      i <= amortizationPeriod;
       i = i + INTERVAL_YEAR_RESULTS
     ) {
       yearsToShowResults.push(i)
     }
     /* To show the year after amortization period, when debt is paid off */
-    if (numYears) {
-      yearsToShowResults.push(numYears + 1)
+    if (amortizationPeriod) {
+      yearsToShowResults.push(amortizationPeriod + 1)
     }
     return yearsToShowResults
   }
