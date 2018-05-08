@@ -226,14 +226,12 @@ export const calculateInitialEquity = (
   return +downPayment + (+afterRepairValue - +purchasePrice)
 }
 
-// TODO: test
 export const calculateInitialYearlyMortgage = monthlyExpenses => {
   return monthlyExpenses
     ? monthlyExpenses[INPUT_ID_MORTGAGE] * MONTHS_PER_YEAR
     : 0
 }
 
-// TODO: test
 export const calculateMortgageForYear = (
   annualConstantExpensesGrowth,
   monthlyExpenses,

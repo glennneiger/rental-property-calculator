@@ -21,7 +21,8 @@ import {
   calculateCashOnCashReturn,
   calculateInitialInvestment,
   calculateInitialEquity,
-  calculateInitialYearlyMortgage
+  calculateInitialYearlyMortgage,
+  calculateMortgageForYear
 } from '../../src/utils/calculationUtils'
 import {
   INPUT_ID_RENTAL_INCOME,
@@ -749,6 +750,67 @@ describe('utils/calculationUtils', () => {
       expect(calculateInitialYearlyMortgage(undefined))
         .to
         .equal(0)
+    })
+  })
+  describe('calculateMortgageForYear', () => {
+    const ANNUAL_CONSTANT_EXPENSES_GROWTH = 5
+    const ANNUAL_CONSTANT_EXPENSES_GROWTH_STRING = '5'
+    const YEAR = 20
+    const YEAR_STRING = '20'
+    let monthlyExpenses
+    beforeEach(() => {
+      monthlyExpenses = Object.assign({}, DEFAULT_MONTHLY_EXPENSES)
+    })
+    it('returns proper value when given positive numbers', () => {
+      expect(calculateMortgageForYear(
+        ANNUAL_CONSTANT_EXPENSES_GROWTH,
+        monthlyExpenses,
+        YEAR
+      )).to
+        .be
+        .closeTo(25471.66, 0.01)
+    })
+    it('returns proper value when given numeric strings', () => {
+      monthlyExpenses[INPUT_ID_MORTGAGE] = '800'
+      expect(calculateMortgageForYear(
+        ANNUAL_CONSTANT_EXPENSES_GROWTH_STRING,
+        monthlyExpenses,
+        YEAR_STRING
+      )).to
+        .be
+        .closeTo(25471.66, 0.01)
+    })
+    it('returns proper value when constant expenses growth is 0', () => {
+      expect(calculateMortgageForYear(
+        0,
+        monthlyExpenses,
+        YEAR
+      )).to
+        .equal(9600)
+    })
+    it('returns proper value when monthlyExpenses is null', () => {
+      expect(calculateMortgageForYear(
+        ANNUAL_CONSTANT_EXPENSES_GROWTH,
+        null,
+        YEAR
+      )).to
+        .equal(0)
+    })
+    it('returns proper value when monthlyExpenses is undefined', () => {
+      expect(calculateMortgageForYear(
+        ANNUAL_CONSTANT_EXPENSES_GROWTH,
+        undefined,
+        YEAR
+      )).to
+        .equal(0)
+    })
+    it('returns proper value when year is 0', () => {
+      expect(calculateMortgageForYear(
+        ANNUAL_CONSTANT_EXPENSES_GROWTH,
+        monthlyExpenses,
+        0
+      )).to
+        .equal(9600)
     })
   })
 })
