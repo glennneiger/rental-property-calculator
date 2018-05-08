@@ -14,7 +14,8 @@ import {
   RESULTS_EQUITY,
   RESULTS_PROPERTY_VALUE,
   TITLE_MONTHLY_EXPENSES,
-  TITLE_MONTHLY_INCOME
+  TITLE_MONTHLY_INCOME,
+  MONTHS_PER_YEAR
 } from '../../../constants'
 import {
   calculateCashOnCashReturn,
@@ -23,6 +24,7 @@ import {
   calculateIncomeForYear,
   calculateInitialEquity,
   calculateInitialInvestment,
+  calculateMortgageForYear,
   calculatePercentageExpensesForYear,
   calculatePropertyValueForYear,
   calculateYearCashFlow
@@ -35,6 +37,7 @@ import {
   getAnnualPropertyValueGrowth,
   getClosingCosts,
   getDownPayment,
+  getMonthlyMortgage,
   getOtherInitialCosts,
   getPurchasePrice,
   getRepairCosts
@@ -55,6 +58,7 @@ class App extends Component {
     const yearsToShow = getYearsForResults(
       getAmortizationPeriod(this.state.inputContent)
     )
+    // TODO: cash flow and coc return year after mortgage ends
     yearsToShow.map(year => {
       results[year] = {
         [RESULTS_CASH_FLOW]: this.calculateCashFlowForYear(year),
@@ -64,8 +68,34 @@ class App extends Component {
         [RESULTS_PROPERTY_VALUE]: this.calculatePropertyValueForYear(year),
         [RESULTS_EQUITY]: this.calculateEquityAfterYears(year)
       }
+      console.log('year:', year)
+      console.log('yearsToShow:', yearsToShow[yearsToShow.length - 1])
+      if (year === yearsToShow[yearsToShow.length - 1]) {
+        results[year][RESULTS_CASH_FLOW] =
+          this.calculateCashFlowForYearNoMortgage(year)
+        // results[year][RESULTS_CASH_ON_CASH_RETURN] =
+        //   this.calculateCashOnCashReturnForYearNoMortgage(year)
+      }
+      // MAKE CASH ON CASH RETURN NO MORTGAGE CALCULATION FUNCTION
     })
     return results
+  }
+  calculateCashFlowForYearNoMortgage = year => {
+    const cashFlow = this.calculateCashFlowForYear(year)
+    return (+cashFlow + +this.calculateMortgageForYear(year))
+      .toFixed(NUMBER_PRECISION_DISPLAY)
+  }
+  calculateMortgageForYear = year => {
+    const inputContent = this.state.inputContent
+    const annualConstantExpensesGrowth = getAnnualConstantExpensesGrowth(
+      inputContent
+    )
+    const monthlyExpenses = inputContent[TITLE_MONTHLY_EXPENSES]
+    return calculateMortgageForYear(
+      annualConstantExpensesGrowth,
+      monthlyExpenses,
+      year
+    )
   }
   calculatePropertyValueForYear = year => {
     const inputContent = this.state.inputContent

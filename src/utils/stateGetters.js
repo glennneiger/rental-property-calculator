@@ -11,7 +11,9 @@ import {
   INPUT_ID_REPAIR_COSTS,
   NUMBER_SYSTEM_DECIMAL,
   TITLE_FUTURE_PROJECTIONS,
-  TITLE_INITIAL_PURCHASE
+  TITLE_INITIAL_PURCHASE,
+  TITLE_MONTHLY_EXPENSES,
+  INPUT_ID_MORTGAGE
 } from '../constants'
 
 export const getAnnualConstantExpensesGrowth = inputContent => {
@@ -105,5 +107,15 @@ export const getPurchasePrice = inputContent => {
   const purchasePrice = initialPurchase[INPUT_ID_PURCHASE_PRICE]
   return purchasePrice
     ? parseFloat(purchasePrice)
+    : 0
+}
+
+// TODO: test
+export const getMonthlyMortgage = inputContent => {
+  const monthlyExpenses = inputContent[TITLE_MONTHLY_EXPENSES]
+
+  const monthlyMortgage = monthlyExpenses[INPUT_ID_MORTGAGE]
+  return monthlyMortgage
+    ? parseFloat(monthlyMortgage)
     : 0
 }
