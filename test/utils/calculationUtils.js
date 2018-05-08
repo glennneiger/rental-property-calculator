@@ -20,7 +20,8 @@ import {
   calculateYearCashFlow,
   calculateCashOnCashReturn,
   calculateInitialInvestment,
-  calculateInitialEquity
+  calculateInitialEquity,
+  calculateInitialYearlyMortgage
 } from '../../src/utils/calculationUtils'
 import {
   INPUT_ID_RENTAL_INCOME,
@@ -174,7 +175,7 @@ describe('utils/calculationUtils', () => {
   describe('calculateInitialMonthlyIncome', () => {
     let monthlyIncome
     beforeEach(() => {
-      monthlyIncome = DEFAULT_MONTHLY_INCOME
+      monthlyIncome = Object.assign({}, DEFAULT_MONTHLY_INCOME)
     })
     it('returns proper value when given positive inputs', () => {
       expect(calculateInitialMonthlyIncome(monthlyIncome))
@@ -721,6 +722,33 @@ describe('utils/calculationUtils', () => {
       expect(calculateInitialEquity(0, 90000, 0))
         .to
         .equal(90000)
+    })
+  })
+  describe('calculateInitialYearlyMortgage', () => {
+    let monthlyExpenses
+    beforeEach(() => {
+      monthlyExpenses = Object.assign({}, DEFAULT_MONTHLY_EXPENSES)
+    })
+    it('returns proper value when given numbers', () => {
+      expect(calculateInitialYearlyMortgage(monthlyExpenses))
+        .to
+        .equal(9600)
+    })
+    it('returns proper value when given numeric string', () => {
+      monthlyExpenses[INPUT_ID_MORTGAGE] = '800'
+      expect(calculateInitialYearlyMortgage(monthlyExpenses))
+        .to
+        .equal(9600)
+    })
+    it('returns 0 if monthlyExpenses is null', () => {
+      expect(calculateInitialYearlyMortgage(null))
+        .to
+        .equal(0)
+    })
+    it('returns 0 if monthlyExpenses is undefined', () => {
+      expect(calculateInitialYearlyMortgage(undefined))
+        .to
+        .equal(0)
     })
   })
 })

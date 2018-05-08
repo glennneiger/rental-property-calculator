@@ -227,8 +227,11 @@ export const calculateInitialEquity = (
 }
 
 // TODO: test
-export const calculateInitialYearlyMortgage = monthlyExpenses =>
-  monthlyExpenses[INPUT_ID_MORTGAGE] * MONTHS_PER_YEAR
+export const calculateInitialYearlyMortgage = monthlyExpenses => {
+  return monthlyExpenses
+    ? monthlyExpenses[INPUT_ID_MORTGAGE] * MONTHS_PER_YEAR
+    : 0
+}
 
 // TODO: test
 export const calculateMortgageForYear = (
