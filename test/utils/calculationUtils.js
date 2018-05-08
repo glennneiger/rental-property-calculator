@@ -1,43 +1,45 @@
 import { expect } from 'chai'
 
 import {
-  getCompoundedValue,
-  makeValidGrowthRate,
+  calculateCashOnCashReturn,
+  calculateConstantExpensesForYear,
+  calculateExpensesForYear,
+  calculateIncomeForYear,
+  calculateInitialEquity,
+  calculateInitialInvestment,
+  calculateInitialMonthlyConstantExpenses,
+  calculateInitialMonthlyIncome,
+  calculateInitialYearlyConstantExpenses,
+  calculateInitialYearlyIncome,
+  calculateInitialYearlyMortgage,
+  calculateInitialYearlyRentalIncome,
+  calculateMonthlyRentalIncomeForYear,
+  calculateMortgageForYear,
+  calculatePercentageExpensesForYear,
   calculatePercentOfPropertyValueMonthly,
   calculatePercentOfRentalIncomeMonthly,
-  calculateInitialMonthlyIncome,
-  calculateInitialYearlyIncome,
-  calculateIncomeForYear,
-  calculateInitialMonthlyConstantExpenses,
-  calculateInitialYearlyConstantExpenses,
-  calculateConstantExpensesForYear,
   calculatePropertyValueForYear,
-  calculatePercentageExpensesForYear,
-  calculateInitialYearlyRentalIncome,
   calculateWholeYearRentalIncomeForYear,
-  calculateMonthlyRentalIncomeForYear,
-  calculateExpensesForYear,
   calculateYearCashFlow,
-  calculateCashOnCashReturn,
-  calculateInitialInvestment,
-  calculateInitialEquity
+  getCompoundedValue,
+  makeValidGrowthRate
 } from '../../src/utils/calculationUtils'
 import {
-  INPUT_ID_RENTAL_INCOME,
-  INPUT_ID_OTHER_INCOME,
-  INPUT_ID_WATER_AND_SEWER,
-  INPUT_ID_MORTGAGE,
+  INPUT_ID_CAP_EX,
   INPUT_ID_ELECTRICITY,
-  INPUT_ID_PRIVATE_MORTGAGE_INSURANCE,
   INPUT_ID_GARBAGE,
   INPUT_ID_HOA,
   INPUT_ID_INSURANCE,
-  INPUT_ID_PROPERTY_TAX,
-  INPUT_ID_VACANCY,
-  INPUT_ID_REPAIRS_AND_MAINTENANCE,
-  INPUT_ID_CAP_EX,
   INPUT_ID_MANAGEMENT,
-  INPUT_ID_OTHER_EXPENSES
+  INPUT_ID_MORTGAGE,
+  INPUT_ID_OTHER_EXPENSES,
+  INPUT_ID_OTHER_INCOME,
+  INPUT_ID_PRIVATE_MORTGAGE_INSURANCE,
+  INPUT_ID_PROPERTY_TAX,
+  INPUT_ID_RENTAL_INCOME,
+  INPUT_ID_REPAIRS_AND_MAINTENANCE,
+  INPUT_ID_VACANCY,
+  INPUT_ID_WATER_AND_SEWER
 } from '../../src/constants'
 
 const DEFAULT_MONTHLY_INCOME = {
@@ -174,7 +176,7 @@ describe('utils/calculationUtils', () => {
   describe('calculateInitialMonthlyIncome', () => {
     let monthlyIncome
     beforeEach(() => {
-      monthlyIncome = DEFAULT_MONTHLY_INCOME
+      monthlyIncome = Object.assign({}, DEFAULT_MONTHLY_INCOME)
     })
     it('returns proper value when given positive inputs', () => {
       expect(calculateInitialMonthlyIncome(monthlyIncome))
@@ -721,6 +723,94 @@ describe('utils/calculationUtils', () => {
       expect(calculateInitialEquity(0, 90000, 0))
         .to
         .equal(90000)
+    })
+  })
+  describe('calculateInitialYearlyMortgage', () => {
+    let monthlyExpenses
+    beforeEach(() => {
+      monthlyExpenses = Object.assign({}, DEFAULT_MONTHLY_EXPENSES)
+    })
+    it('returns proper value when given numbers', () => {
+      expect(calculateInitialYearlyMortgage(monthlyExpenses))
+        .to
+        .equal(9600)
+    })
+    it('returns proper value when given numeric string', () => {
+      monthlyExpenses[INPUT_ID_MORTGAGE] = '800'
+      expect(calculateInitialYearlyMortgage(monthlyExpenses))
+        .to
+        .equal(9600)
+    })
+    it('returns 0 if monthlyExpenses is null', () => {
+      expect(calculateInitialYearlyMortgage(null))
+        .to
+        .equal(0)
+    })
+    it('returns 0 if monthlyExpenses is undefined', () => {
+      expect(calculateInitialYearlyMortgage(undefined))
+        .to
+        .equal(0)
+    })
+  })
+  describe('calculateMortgageForYear', () => {
+    const ANNUAL_CONSTANT_EXPENSES_GROWTH = 5
+    const ANNUAL_CONSTANT_EXPENSES_GROWTH_STRING = '5'
+    const YEAR = 20
+    const YEAR_STRING = '20'
+    let monthlyExpenses
+    beforeEach(() => {
+      monthlyExpenses = Object.assign({}, DEFAULT_MONTHLY_EXPENSES)
+    })
+    it('returns proper value when given positive numbers', () => {
+      expect(calculateMortgageForYear(
+        ANNUAL_CONSTANT_EXPENSES_GROWTH,
+        monthlyExpenses,
+        YEAR
+      )).to
+        .be
+        .closeTo(25471.66, 0.01)
+    })
+    it('returns proper value when given numeric strings', () => {
+      monthlyExpenses[INPUT_ID_MORTGAGE] = '800'
+      expect(calculateMortgageForYear(
+        ANNUAL_CONSTANT_EXPENSES_GROWTH_STRING,
+        monthlyExpenses,
+        YEAR_STRING
+      )).to
+        .be
+        .closeTo(25471.66, 0.01)
+    })
+    it('returns proper value when constant expenses growth is 0', () => {
+      expect(calculateMortgageForYear(
+        0,
+        monthlyExpenses,
+        YEAR
+      )).to
+        .equal(9600)
+    })
+    it('returns proper value when monthlyExpenses is null', () => {
+      expect(calculateMortgageForYear(
+        ANNUAL_CONSTANT_EXPENSES_GROWTH,
+        null,
+        YEAR
+      )).to
+        .equal(0)
+    })
+    it('returns proper value when monthlyExpenses is undefined', () => {
+      expect(calculateMortgageForYear(
+        ANNUAL_CONSTANT_EXPENSES_GROWTH,
+        undefined,
+        YEAR
+      )).to
+        .equal(0)
+    })
+    it('returns proper value when year is 0', () => {
+      expect(calculateMortgageForYear(
+        ANNUAL_CONSTANT_EXPENSES_GROWTH,
+        monthlyExpenses,
+        0
+      )).to
+        .equal(9600)
     })
   })
 })

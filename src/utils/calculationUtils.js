@@ -1,4 +1,5 @@
 import {
+  INPUT_ID_MORTGAGE,
   INPUT_ID_RENTAL_INCOME,
   MONTHS_PER_YEAR,
   NUMBER_SYSTEM_DECIMAL
@@ -223,4 +224,23 @@ export const calculateInitialEquity = (
     return afterRepairValue
   }
   return +downPayment + (+afterRepairValue - +purchasePrice)
+}
+
+export const calculateInitialYearlyMortgage = monthlyExpenses => {
+  return monthlyExpenses
+    ? monthlyExpenses[INPUT_ID_MORTGAGE] * MONTHS_PER_YEAR
+    : 0
+}
+
+export const calculateMortgageForYear = (
+  annualConstantExpensesGrowth,
+  monthlyExpenses,
+  year
+) => {
+  const yearlyMortgage = calculateInitialYearlyMortgage(monthlyExpenses)
+  return getCompoundedValue(
+    yearlyMortgage,
+    annualConstantExpensesGrowth,
+    year
+  )
 }
