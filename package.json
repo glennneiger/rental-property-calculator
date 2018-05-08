@@ -51,8 +51,8 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "mocha --compilers js:babel-core/register --opts mocha.opts --no-deprecation",
-    "electron": "electron .",
-    "dev": "npm-run-all --parallel start electron"
+    "test:watch": "mocha --watch --compilers js:babel-core/register --opts mocha.opts --no-deprecation",
+    "electron": "electron ."
   },
   "devDependencies": {
     "babel-eslint": "^8.2.3",
