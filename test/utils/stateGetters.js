@@ -8,6 +8,7 @@ import {
   getAnnualPropertyValueGrowth,
   getClosingCosts,
   getDownPayment,
+  getMonthlyMortgage,
   getOtherInitialCosts,
   getPurchasePrice,
   getRepairCosts
@@ -69,6 +70,8 @@ const CLOSING_COSTS = 3000.25
 const CLOSING_COSTS_STRING = '3000.25'
 const DOWN_PAYMENT = 20000.25
 const DOWN_PAYMENT_STRING = '20000.25'
+const MONTHLY_MORTGAGE = 800.25
+const MONTHLY_MORTGAGE_STRING = '800.25'
 const OTHER_INITIAL_COSTS = 250.25
 const OTHER_INITIAL_COSTS_STRING = '250.25'
 const PURCHASE_PRICE = 100000.25
@@ -103,7 +106,7 @@ const DEFAULT_INPUT_CONTENT = {
     [INPUT_ID_OTHER_INCOME]: '250.25'
   },
   [TITLE_MONTHLY_EXPENSES]: {
-    [INPUT_ID_MORTGAGE]: '800.25',
+    [INPUT_ID_MORTGAGE]: MONTHLY_MORTGAGE_STRING,
     [INPUT_ID_ELECTRICITY]: '25.25',
     [INPUT_ID_WATER_AND_SEWER]: '50.25',
     [INPUT_ID_PRIVATE_MORTGAGE_INSURANCE]: '75.25',
@@ -120,7 +123,8 @@ const DEFAULT_INPUT_CONTENT = {
   [TITLE_FUTURE_PROJECTIONS]: {
     [INPUT_ID_PROPERTY_VALUE_GROWTH]: ANNUAL_PROPERTY_VALUE_GROWTH_STRING,
     [INPUT_ID_ANNUAL_INCOME_GROWTH]: ANNUAL_INCOME_GROWTH_STRING,
-    [INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH]: ANNUAL_CONSTANT_EXPENSES_GROWTH_STRING
+    [INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH]:
+      ANNUAL_CONSTANT_EXPENSES_GROWTH_STRING
   }
 }
 
@@ -193,6 +197,13 @@ describe('utils/stateGetters', () => {
       expect(getPurchasePrice(DEFAULT_INPUT_CONTENT))
         .to
         .equal(PURCHASE_PRICE)
+    })
+  })
+  describe('getMonthlyMortgage', () => {
+    it('returns proper value', () => {
+      expect(getMonthlyMortgage(DEFAULT_INPUT_CONTENT))
+        .to
+        .equal(MONTHLY_MORTGAGE)
     })
   })
 })

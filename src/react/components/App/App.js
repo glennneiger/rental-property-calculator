@@ -14,8 +14,7 @@ import {
   RESULTS_EQUITY,
   RESULTS_PROPERTY_VALUE,
   TITLE_MONTHLY_EXPENSES,
-  TITLE_MONTHLY_INCOME,
-  MONTHS_PER_YEAR
+  TITLE_MONTHLY_INCOME
 } from '../../../constants'
 import {
   calculateCashOnCashReturn,
@@ -37,7 +36,6 @@ import {
   getAnnualPropertyValueGrowth,
   getClosingCosts,
   getDownPayment,
-  getMonthlyMortgage,
   getOtherInitialCosts,
   getPurchasePrice,
   getRepairCosts
