@@ -128,12 +128,10 @@ class App extends Component {
   calculateCashFlowForYear = year => {
     const incomeForYear = this.calculateIncomeForYear(year)
     const expensesForYear = this.calculateExpensesForYear(year)
-    return parseFloat(
-      calculateYearCashFlow(
-        incomeForYear,
-        expensesForYear
-      ).toFixed(NUMBER_PRECISION_DISPLAY)
-    )
+    return calculateYearCashFlow(
+      incomeForYear,
+      expensesForYear
+    ).toFixed(NUMBER_PRECISION_DISPLAY)
   }
   /* Cash on cash return = (cash flow / initialInvestment) * 100% */
   calculateCashOnCashReturnForYear = year => {
