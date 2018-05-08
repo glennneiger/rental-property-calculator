@@ -25,7 +25,8 @@ const Input = ({
         id={ inputId }
         style={ { width: textInputWidth } }
         value={ content }
-        onChange={ handleChange }/>
+        onChange={ handleChange }
+      />
     </div>
   )
 }
