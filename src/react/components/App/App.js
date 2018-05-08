@@ -58,6 +58,7 @@ class App extends Component {
     const yearsToShow = getYearsForResults(
       getAmortizationPeriod(this.state.inputContent)
     )
+    const finalYear = yearsToShow[yearsToShow.length - 1]
     yearsToShow.map(year => {
       results[year] = {
         [RESULTS_CASH_FLOW]: this.calculateCashFlowForYear(year),
@@ -67,9 +68,7 @@ class App extends Component {
         [RESULTS_PROPERTY_VALUE]: this.calculatePropertyValueForYear(year),
         [RESULTS_EQUITY]: this.calculateEquityAfterYears(year)
       }
-      console.log('year:', year)
-      console.log('yearsToShow:', yearsToShow[yearsToShow.length - 1])
-      if (year === yearsToShow[yearsToShow.length - 1]) {
+      if (year === finalYear) {
         results[year][RESULTS_CASH_FLOW] =
           this.calculateCashFlowForYearNoMortgage(year)
         results[year][RESULTS_CASH_ON_CASH_RETURN] =
