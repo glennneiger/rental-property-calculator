@@ -58,7 +58,6 @@ class App extends Component {
     const yearsToShow = getYearsForResults(
       getAmortizationPeriod(this.state.inputContent)
     )
-    // TODO: cash flow and coc return year after mortgage ends
     yearsToShow.map(year => {
       results[year] = {
         [RESULTS_CASH_FLOW]: this.calculateCashFlowForYear(year),
@@ -73,12 +72,19 @@ class App extends Component {
       if (year === yearsToShow[yearsToShow.length - 1]) {
         results[year][RESULTS_CASH_FLOW] =
           this.calculateCashFlowForYearNoMortgage(year)
-        // results[year][RESULTS_CASH_ON_CASH_RETURN] =
-        //   this.calculateCashOnCashReturnForYearNoMortgage(year)
+        results[year][RESULTS_CASH_ON_CASH_RETURN] =
+          this.calculateCashOnCashReturnForYearNoMortgage(year)
       }
-      // MAKE CASH ON CASH RETURN NO MORTGAGE CALCULATION FUNCTION
     })
     return results
+  }
+  calculateCashOnCashReturnForYearNoMortgage = year => {
+    const yearCashFlow = this.calculateCashFlowForYearNoMortgage(year)
+    const initialInvestment = this.calculateInitialInvestment()
+    return calculateCashOnCashReturn(
+      yearCashFlow,
+      initialInvestment
+    ).toFixed(NUMBER_PRECISION_DISPLAY)
   }
   calculateCashFlowForYearNoMortgage = year => {
     const cashFlow = this.calculateCashFlowForYear(year)
