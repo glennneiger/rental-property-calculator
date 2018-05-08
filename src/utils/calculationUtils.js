@@ -1,8 +1,8 @@
 import {
+  INPUT_ID_MORTGAGE,
   INPUT_ID_RENTAL_INCOME,
   MONTHS_PER_YEAR,
-  NUMBER_SYSTEM_DECIMAL,
-  INPUT_ID_MORTGAGE
+  NUMBER_SYSTEM_DECIMAL
 } from '../constants'
 import {
   expensesInputProps,
@@ -237,7 +237,7 @@ export const calculateMortgageForYear = (
   monthlyExpenses,
   year
 ) => {
-  let yearlyMortgage = calculateInitialYearlyMortgage(monthlyExpenses)
+  const yearlyMortgage = calculateInitialYearlyMortgage(monthlyExpenses)
   return getCompoundedValue(
     yearlyMortgage,
     annualConstantExpensesGrowth,

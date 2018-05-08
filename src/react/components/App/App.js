@@ -170,12 +170,10 @@ class App extends Component {
   calculateCashOnCashReturnForYear = year => {
     const yearCashFlow = this.calculateCashFlowForYear(year)
     const initialInvestment = this.calculateInitialInvestment()
-    return parseFloat(
-      calculateCashOnCashReturn(
-        yearCashFlow,
-        initialInvestment
-      ).toFixed(NUMBER_PRECISION_DISPLAY)
-    )
+    return calculateCashOnCashReturn(
+      yearCashFlow,
+      initialInvestment
+    ).toFixed(NUMBER_PRECISION_DISPLAY)
   }
   /* Initial equity = down payment + after repair value + purchase price */
   calculateInitialEquity = () => {
