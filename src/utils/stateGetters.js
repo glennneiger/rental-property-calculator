@@ -6,6 +6,7 @@ import {
   INPUT_ID_CLOSING_COSTS,
   INPUT_ID_DOWN_PAYMENT,
   INPUT_ID_INTEREST_RATE,
+  INPUT_ID_LOAN_AMOUNT,
   INPUT_ID_MORTGAGE,
   INPUT_ID_OTHER_INITIAL_COSTS,
   INPUT_ID_PROPERTY_VALUE_GROWTH,
@@ -19,7 +20,6 @@ import {
 
 export const getAnnualConstantExpensesGrowth = inputContent => {
   const futureProjections = inputContent[TITLE_FUTURE_PROJECTIONS]
-
   const annualConstantExpensesGrowth = futureProjections[
     INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH
   ]
@@ -120,7 +120,6 @@ export const getMonthlyMortgage = inputContent => {
     : 0
 }
 
-// TODO: test
 export const getInterestRate = inputContent => {
   const initialPurchase = inputContent[TITLE_INITIAL_PURCHASE]
 
@@ -130,11 +129,10 @@ export const getInterestRate = inputContent => {
     : 0
 }
 
-// TODO: test
 export const getInitialLoanAmount = inputContent => {
   const initialPurchase = inputContent[TITLE_INITIAL_PURCHASE]
 
-  const initialLoanAmount = initialPurchase[INPUT_ID_INTEREST_RATE]
+  const initialLoanAmount = initialPurchase[INPUT_ID_LOAN_AMOUNT]
   return initialLoanAmount
     ? parseFloat(initialLoanAmount)
     : 0

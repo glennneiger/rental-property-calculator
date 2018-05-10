@@ -8,6 +8,8 @@ import {
   getAnnualPropertyValueGrowth,
   getClosingCosts,
   getDownPayment,
+  getInitialLoanAmount,
+  getInterestRate,
   getMonthlyMortgage,
   getOtherInitialCosts,
   getPurchasePrice,
@@ -70,6 +72,10 @@ const CLOSING_COSTS = 3000.25
 const CLOSING_COSTS_STRING = '3000.25'
 const DOWN_PAYMENT = 20000.25
 const DOWN_PAYMENT_STRING = '20000.25'
+const INITIAL_LOAN_AMOUNT = 80000.25
+const INITIAL_LOAN_AMOUNT_STRING = '80000.25'
+const INTEREST_RATE = 6.25
+const INTEREST_RATE_STRING = '6.25'
 const MONTHLY_MORTGAGE = 800.25
 const MONTHLY_MORTGAGE_STRING = '800.25'
 const OTHER_INITIAL_COSTS = 250.25
@@ -93,8 +99,8 @@ const DEFAULT_INPUT_CONTENT = {
   [TITLE_INITIAL_PURCHASE]: {
     [INPUT_ID_PURCHASE_PRICE]: PURCHASE_PRICE_STRING,
     [INPUT_ID_DOWN_PAYMENT]: DOWN_PAYMENT_STRING,
-    [INPUT_ID_LOAN_AMOUNT]: '80000.25',
-    [INPUT_ID_INTEREST_RATE]: '6.25',
+    [INPUT_ID_LOAN_AMOUNT]: INITIAL_LOAN_AMOUNT_STRING,
+    [INPUT_ID_INTEREST_RATE]: INTEREST_RATE_STRING,
     [INPUT_ID_AMORTIZATION_PERIOD]: AMORTIZATION_PERIOD_STRING,
     [INPUT_ID_AFTER_REPAIR_VALUE]: AFTER_REPAIR_VALUE_STRING,
     [INPUT_ID_REPAIR_COSTS]: REPAIR_COSTS_STRING,
@@ -129,81 +135,190 @@ const DEFAULT_INPUT_CONTENT = {
 }
 
 describe('utils/stateGetters', () => {
+  let inputContent
+  beforeEach(() => {
+    inputContent = Object.assign({}, DEFAULT_INPUT_CONTENT)
+  })
   describe('getAnnualConstantExpensesGrowth', () => {
     it('returns proper value', () => {
-      expect(getAnnualConstantExpensesGrowth(DEFAULT_INPUT_CONTENT))
+      expect(getAnnualConstantExpensesGrowth(inputContent))
         .to
         .equal(ANNUAL_CONSTANT_EXPENSES_GROWTH)
+    })
+    it('returns 0 if annual constant expenses growth is undefined', () => {
+      inputContent[TITLE_FUTURE_PROJECTIONS]
+        [INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH] = undefined
+      expect(getAnnualConstantExpensesGrowth(inputContent))
+        .to
+        .equal(0)
     })
   })
   describe('getAfterRepairValue', () => {
     it('returns proper value', () => {
-      expect(getAfterRepairValue(DEFAULT_INPUT_CONTENT))
+      expect(getAfterRepairValue(inputContent))
         .to
         .equal(AFTER_REPAIR_VALUE)
+    })
+    it('returns 0 if after repair value is undefined', () => {
+      inputContent[TITLE_INITIAL_PURCHASE]
+        [INPUT_ID_AFTER_REPAIR_VALUE] = undefined
+      expect(getAfterRepairValue(inputContent))
+        .to
+        .equal(0)
     })
   })
   describe('getAnnualPropertyValueGrowth', () => {
     it('returns proper value', () => {
-      expect(getAnnualPropertyValueGrowth(DEFAULT_INPUT_CONTENT))
+      expect(getAnnualPropertyValueGrowth(inputContent))
         .to
         .equal(ANNUAL_PROPERTY_VALUE_GROWTH)
+    })
+    it('returns 0 if annual property value growth is undefined', () => {
+      inputContent[TITLE_FUTURE_PROJECTIONS]
+        [INPUT_ID_PROPERTY_VALUE_GROWTH] = undefined
+      expect(getAnnualPropertyValueGrowth(inputContent))
+        .to
+        .equal(0)
     })
   })
   describe('getAnnualIncomeGrowth', () => {
     it('returns proper value', () => {
-      expect(getAnnualIncomeGrowth(DEFAULT_INPUT_CONTENT))
+      expect(getAnnualIncomeGrowth(inputContent))
         .to
         .equal(ANNUAL_INCOME_GROWTH)
+    })
+    it('returns 0 if annual income growth is undefined', () => {
+      inputContent[TITLE_FUTURE_PROJECTIONS]
+        [INPUT_ID_ANNUAL_INCOME_GROWTH] = undefined
+      expect(getAnnualIncomeGrowth(inputContent))
+        .to
+        .equal(0)
     })
   })
   describe('getAmortizationPeriod', () => {
     it('returns proper value', () => {
-      expect(getAmortizationPeriod(DEFAULT_INPUT_CONTENT))
+      expect(getAmortizationPeriod(inputContent))
         .to
         .equal(AMORTIZATION_PERIOD)
+    })
+    it('returns 0 if amortization period is undefined', () => {
+      inputContent[TITLE_INITIAL_PURCHASE]
+        [INPUT_ID_AMORTIZATION_PERIOD] = undefined
+      expect(getAmortizationPeriod(inputContent))
+        .to
+        .equal(0)
     })
   })
   describe('getDownPayment', () => {
     it('returns proper value', () => {
-      expect(getDownPayment(DEFAULT_INPUT_CONTENT))
+      expect(getDownPayment(inputContent))
         .to
         .equal(DOWN_PAYMENT)
+    })
+    it('returns 0 if down payment is undefined', () => {
+      inputContent[TITLE_INITIAL_PURCHASE]
+        [INPUT_ID_DOWN_PAYMENT] = undefined
+      expect(getDownPayment(inputContent))
+        .to
+        .equal(0)
     })
   })
   describe('getRepairCosts', () => {
     it('returns proper value', () => {
-      expect(getRepairCosts(DEFAULT_INPUT_CONTENT))
+      expect(getRepairCosts(inputContent))
         .to
         .equal(REPAIR_COSTS)
+    })
+    it('returns 0 if repair costs are undefined', () => {
+      inputContent[TITLE_INITIAL_PURCHASE]
+        [INPUT_ID_REPAIR_COSTS] = undefined
+      expect(getRepairCosts(inputContent))
+        .to
+        .equal(0)
     })
   })
   describe('getClosingCosts', () => {
     it('returns proper value', () => {
-      expect(getClosingCosts(DEFAULT_INPUT_CONTENT))
+      expect(getClosingCosts(inputContent))
         .to
         .equal(CLOSING_COSTS)
+    })
+    it('returns 0 if closing costs are undefined', () => {
+      inputContent[TITLE_INITIAL_PURCHASE]
+        [INPUT_ID_CLOSING_COSTS] = undefined
+      expect(getClosingCosts(inputContent))
+        .to
+        .equal(0)
     })
   })
   describe('getOtherInitialCosts', () => {
     it('returns proper value', () => {
-      expect(getOtherInitialCosts(DEFAULT_INPUT_CONTENT))
+      expect(getOtherInitialCosts(inputContent))
         .to
         .equal(OTHER_INITIAL_COSTS)
+    })
+    it('returns 0 if other initial costs are undefined', () => {
+      inputContent[TITLE_INITIAL_PURCHASE]
+        [INPUT_ID_OTHER_INITIAL_COSTS] = undefined
+      expect(getOtherInitialCosts(inputContent))
+        .to
+        .equal(0)
     })
   })
   describe('getPurchasePrice', () => {
     it('returns proper value', () => {
-      expect(getPurchasePrice(DEFAULT_INPUT_CONTENT))
+      expect(getPurchasePrice(inputContent))
         .to
         .equal(PURCHASE_PRICE)
+    })
+    it('returns 0 if purchase price is undefined', () => {
+      inputContent[TITLE_INITIAL_PURCHASE]
+        [INPUT_ID_PURCHASE_PRICE] = undefined
+      expect(getPurchasePrice(inputContent))
+        .to
+        .equal(0)
     })
   })
   describe('getMonthlyMortgage', () => {
     it('returns proper value', () => {
-      expect(getMonthlyMortgage(DEFAULT_INPUT_CONTENT))
+      expect(getMonthlyMortgage(inputContent))
         .to
         .equal(MONTHLY_MORTGAGE)
+    })
+    it('returns 0 if monthly mortgage is undefined', () => {
+      inputContent[TITLE_MONTHLY_EXPENSES]
+        [INPUT_ID_MORTGAGE] = undefined
+      expect(getMonthlyMortgage(inputContent))
+        .to
+        .equal(0)
+    })
+  })
+  describe('getInterestRate', () => {
+    it('returns proper value', () => {
+      expect(getInterestRate(inputContent))
+        .to
+        .equal(INTEREST_RATE)
+    })
+    it('returns 0 if interest rate is undefined', () => {
+      inputContent[TITLE_INITIAL_PURCHASE]
+        [INPUT_ID_INTEREST_RATE] = undefined
+      expect(getInterestRate(inputContent))
+        .to
+        .equal(0)
+    })
+  })
+  describe('getInitialLoanAmount', () => {
+    it('returns proper value', () => {
+      expect(getInitialLoanAmount(inputContent))
+        .to
+        .equal(INITIAL_LOAN_AMOUNT)
+    })
+    it('returns 0 if initial loan amount is undefined', () => {
+      inputContent[TITLE_INITIAL_PURCHASE]
+        [INPUT_ID_LOAN_AMOUNT] = undefined
+      expect(getInitialLoanAmount(inputContent))
+        .to
+        .equal(0)
     })
   })
 })

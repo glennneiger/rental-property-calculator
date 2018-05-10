@@ -245,7 +245,6 @@ export const calculateMortgageForYear = (
   )
 }
 
-// TODO: test
 // https://www.mtgprofessor.com/formulas.htm
 export const calculateMonthlyMortgagePayment = (
   amortizationPeriod,
