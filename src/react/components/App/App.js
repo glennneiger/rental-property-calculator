@@ -23,6 +23,7 @@ import {
   calculateIncomeForYear,
   calculateInitialEquity,
   calculateInitialInvestment,
+  calculateMonthlyMortgagePayment,
   calculateMortgageForYear,
   calculatePercentageExpensesForYear,
   calculatePropertyValueForYear,
@@ -36,6 +37,8 @@ import {
   getAnnualPropertyValueGrowth,
   getClosingCosts,
   getDownPayment,
+  getInitialLoanAmount,
+  getInterestRate,
   getOtherInitialCosts,
   getPurchasePrice,
   getRepairCosts
@@ -98,6 +101,18 @@ class App extends Component {
       annualConstantExpensesGrowth,
       monthlyExpenses,
       year
+    )
+  }
+  calculateMonthlyMortgagePayment = () => {
+    const inputContent = this.state.inputContent
+    const amortizationPeriod = getAmortizationPeriod(inputContent)
+    const interestRate = getInterestRate(inputContent)
+    const loanAmount = getInitialLoanAmount(inputContent)
+
+    return calculateMonthlyMortgagePayment(
+      amortizationPeriod,
+      interestRate,
+      loanAmount
     )
   }
   calculatePropertyValueForYear = year => {
