@@ -3,6 +3,7 @@ import { expect } from 'chai'
 import {
   calculateCashOnCashReturn,
   calculateConstantExpensesForYear,
+  calculateEquityForYear,
   calculateExpensesForYear,
   calculateIncomeForYear,
   calculateInitialEquity,
@@ -20,6 +21,7 @@ import {
   calculatePercentOfPropertyValueMonthly,
   calculatePercentOfRentalIncomeMonthly,
   calculatePropertyValueForYear,
+  calculateRemainingLoanBalanceForYear,
   calculateWholeYearRentalIncomeForYear,
   calculateYearCashFlow,
   getCompoundedValue,
@@ -820,6 +822,74 @@ describe('utils/calculationUtils', () => {
         .to
         .be
         .closeTo(491.27, 0.01)
+    })
+  })
+  // describe('calculateEquityForYear', () => {
+  //   const INITIAL_LOAN_AMOUNT = 80000
+  //   const INTEREST_RATE = 6.5
+  //   const AMORTIZATION_PERIOD = 25
+  //   const YEAR = 20
+  //   it('returns proper value when given positive numbers', () => {
+  //     expect(calculateEquityForYear(
+  //       INITIAL_LOAN_AMOUNT,
+  //       INTEREST_RATE,
+  //       AMORTIZATION_PERIOD,
+  //       YEAR
+  //     )).to
+  //       .be
+  //       .closeTo(491.27, 0.01)
+  //   })
+  // })
+  describe('calculateRemainingLoanBalanceForYear', () => {
+    const INITIAL_LOAN_AMOUNT = 80000
+    const INTEREST_RATE = 6.5
+    const AMORTIZATION_PERIOD = 25
+    const YEAR = 20
+    it('returns proper value when given positive numbers', () => {
+      expect(calculateRemainingLoanBalanceForYear(
+        INITIAL_LOAN_AMOUNT,
+        INTEREST_RATE,
+        AMORTIZATION_PERIOD,
+        YEAR
+      )).to
+        .be
+        .closeTo(27607.16, 0.01)
+    })
+    it('returns proper value when initial loan is 0', () => {
+      expect(calculateRemainingLoanBalanceForYear(
+        0,
+        INTEREST_RATE,
+        AMORTIZATION_PERIOD,
+        YEAR
+      )).to
+        .equal(0)
+    })
+    it('returns proper value when interest rate is 0', () => {
+      expect(calculateRemainingLoanBalanceForYear(
+        INITIAL_LOAN_AMOUNT,
+        0,
+        AMORTIZATION_PERIOD,
+        YEAR
+      )).to
+        .equal(0)
+    })
+    it('returns proper value when amortization period is 0', () => {
+      expect(calculateRemainingLoanBalanceForYear(
+        INITIAL_LOAN_AMOUNT,
+        INTEREST_RATE,
+        0,
+        YEAR
+      )).to
+        .equal(0)
+    })
+    it('returns proper value when year is 0', () => {
+      expect(calculateRemainingLoanBalanceForYear(
+        INITIAL_LOAN_AMOUNT,
+        INTEREST_RATE,
+        AMORTIZATION_PERIOD,
+        0
+      )).to
+        .equal(INITIAL_LOAN_AMOUNT)
     })
   })
 })

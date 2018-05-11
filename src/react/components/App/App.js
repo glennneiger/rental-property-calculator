@@ -19,7 +19,7 @@ import {
 import {
   calculateCashOnCashReturn,
   calculateConstantExpensesForYear,
-  calculateEquityAfterYears,
+  calculateEquityForYear,
   calculateExpensesForYear,
   calculateIncomeForYear,
   calculateInitialEquity,
@@ -28,7 +28,7 @@ import {
   calculateMortgageForYear,
   calculatePercentageExpensesForYear,
   calculatePropertyValueForYear,
-  calculateRemainingLoanBalanceAfterYears,
+  calculateRemainingLoanBalanceForYear,
   calculateYearCashFlow
 } from '../../../utils/calculationUtils'
 import {
@@ -69,7 +69,7 @@ class App extends Component {
           year
         ),
         [RESULTS_PROPERTY_VALUE]: this.calculatePropertyValueForYear(year),
-        [RESULTS_EQUITY]: this.calculateEquityAfterYears(year)
+        [RESULTS_EQUITY]: this.calculateEquityForYear(year)
       }
       if (year === finalYear) {
         results[year][RESULTS_CASH_FLOW] =
@@ -219,13 +219,13 @@ class App extends Component {
       otherCosts
     )
   }
-  calculateRemainingLoanBalanceAfterYears = years => {
+  calculateRemainingLoanBalanceForYear = years => {
     const inputContent = this.state.inputContent
     const initialLoanAmount = getInitialLoanAmount(inputContent)
     const interestRate = getInterestRate(inputContent)
     const amortizationPeriod = getAmortizationPeriod(inputContent)
 
-    return calculateRemainingLoanBalanceAfterYears(
+    return calculateRemainingLoanBalanceForYear(
       initialLoanAmount,
       interestRate,
       amortizationPeriod,
@@ -233,7 +233,7 @@ class App extends Component {
     )
   }
   // TODO: calculate equity for years that aren't 0
-  calculateEquityAfterYears = years => {
+  calculateEquityForYear = years => {
     const initialEquity = calculateInitialEquity()
     if (years === 0) {
       return initialEquity
@@ -242,9 +242,9 @@ class App extends Component {
     const propertyValueForYear = this.calculatePropertyValueForYear(years)
     const initialPropertyValue = getAfterRepairValue(inputContent)
     const loanAmount = getInitialLoanAmount(inputContent)
-    const remainingBalance = this.calculateRemainingLoanBalanceAfterYears(years)
+    const remainingBalance = this.calculateRemainingLoanBalanceForYear(years)
 
-    return calculateEquityAfterYears(
+    return calculateEquityForYear(
       initialEquity,
       propertyValueForYear,
       initialPropertyValue,
