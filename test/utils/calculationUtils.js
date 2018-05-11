@@ -824,22 +824,79 @@ describe('utils/calculationUtils', () => {
         .closeTo(491.27, 0.01)
     })
   })
-  // describe('calculateEquityForYear', () => {
-  //   const INITIAL_LOAN_AMOUNT = 80000
-  //   const INTEREST_RATE = 6.5
-  //   const AMORTIZATION_PERIOD = 25
-  //   const YEAR = 20
-  //   it('returns proper value when given positive numbers', () => {
-  //     expect(calculateEquityForYear(
-  //       INITIAL_LOAN_AMOUNT,
-  //       INTEREST_RATE,
-  //       AMORTIZATION_PERIOD,
-  //       YEAR
-  //     )).to
-  //       .be
-  //       .closeTo(491.27, 0.01)
-  //   })
-  // })
+  describe('calculateEquityForYear', () => {
+    const INITIAL_EQUITY = 60000
+    const PROPERTY_VALUE_FOR_YEAR = 208032.64
+    const INITIAL_PROPERTY_VALUE = 140000
+    const INITIAL_LOAN_AMOUNT = 80000
+    const REMAINING_LOAN_BALANCE = 27607.16
+    it('returns proper value when given positive numbers', () => {
+      expect(calculateEquityForYear(
+        INITIAL_EQUITY,
+        PROPERTY_VALUE_FOR_YEAR,
+        INITIAL_PROPERTY_VALUE,
+        INITIAL_LOAN_AMOUNT,
+        REMAINING_LOAN_BALANCE
+      )).to
+        .be
+        .closeTo(180425.48, 0.01)
+    })
+    it('returns proper value when initial equity is 0', () => {
+      expect(calculateEquityForYear(
+        0,
+        PROPERTY_VALUE_FOR_YEAR,
+        INITIAL_PROPERTY_VALUE,
+        INITIAL_LOAN_AMOUNT,
+        REMAINING_LOAN_BALANCE
+      )).to
+        .be
+        .closeTo(120425.48, 0.01)
+    })
+    it('returns proper value when property value for year is 0', () => {
+      expect(calculateEquityForYear(
+        INITIAL_EQUITY,
+        0,
+        INITIAL_PROPERTY_VALUE,
+        INITIAL_LOAN_AMOUNT,
+        REMAINING_LOAN_BALANCE
+      )).to
+        .be
+        .closeTo(-27607.16, 0.01)
+    })
+    it('returns proper value when initial property value is 0', () => {
+      expect(calculateEquityForYear(
+        INITIAL_EQUITY,
+        PROPERTY_VALUE_FOR_YEAR,
+        0,
+        INITIAL_LOAN_AMOUNT,
+        REMAINING_LOAN_BALANCE
+      )).to
+        .be
+        .closeTo(320425.48, 0.01)
+    })
+    it('returns proper value when initial loan amount is 0', () => {
+      expect(calculateEquityForYear(
+        INITIAL_EQUITY,
+        PROPERTY_VALUE_FOR_YEAR,
+        INITIAL_PROPERTY_VALUE,
+        0,
+        REMAINING_LOAN_BALANCE
+      )).to
+        .be
+        .closeTo(100425.48, 0.01)
+    })
+    it('returns proper value when remaining loan balance is 0', () => {
+      expect(calculateEquityForYear(
+        INITIAL_EQUITY,
+        PROPERTY_VALUE_FOR_YEAR,
+        INITIAL_PROPERTY_VALUE,
+        INITIAL_LOAN_AMOUNT,
+        0
+      )).to
+        .be
+        .closeTo(208032.64, 0.01)
+    })
+  })
   describe('calculateRemainingLoanBalanceForYear', () => {
     const INITIAL_LOAN_AMOUNT = 80000
     const INTEREST_RATE = 6.5
