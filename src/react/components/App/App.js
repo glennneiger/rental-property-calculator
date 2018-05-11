@@ -232,13 +232,16 @@ class App extends Component {
       years
     )
   }
-  // TODO: calculate equity for years that aren't 0
   calculateEquityForYear = years => {
-    const initialEquity = calculateInitialEquity()
+    const inputContent = this.state.inputContent
+    const initialEquity = this.calculateInitialEquity()
+    const amortizationPeriod = getAmortizationPeriod(inputContent)
     if (years === 0) {
       return initialEquity
     }
-    const inputContent = this.state.inputContent
+    if (years >= amortizationPeriod) {
+      return this.calculatePropertyValueForYear(years)
+    }
     const propertyValueForYear = this.calculatePropertyValueForYear(years)
     const initialPropertyValue = getAfterRepairValue(inputContent)
     const loanAmount = getInitialLoanAmount(inputContent)
@@ -250,7 +253,7 @@ class App extends Component {
       initialPropertyValue,
       loanAmount,
       remainingBalance
-    )
+    ).toFixed(NUMBER_PRECISION_DISPLAY)
   }
   handleKeyDown = (event, section, inputId) => {
     let inputContent = this.state.inputContent

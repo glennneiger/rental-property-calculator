@@ -928,7 +928,7 @@ describe('utils/calculationUtils', () => {
         AMORTIZATION_PERIOD,
         YEAR
       )).to
-        .equal(0)
+        .equal(16000)
     })
     it('returns proper value when amortization period is 0', () => {
       expect(calculateRemainingLoanBalanceForYear(
