@@ -169,8 +169,7 @@ class App extends Component {
       expensesForYear
     )
     if (year > amortizationPeriod) {
-      return (yearCashFlow + this.calculateMortgageForYear(year))
-        .toFixed(NUMBER_PRECISION_DISPLAY)
+      yearCashFlow += this.calculateMortgageForYear(year)
     }
     return yearCashFlow.toFixed(NUMBER_PRECISION_DISPLAY)
   }
