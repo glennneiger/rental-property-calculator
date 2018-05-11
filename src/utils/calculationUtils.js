@@ -310,5 +310,9 @@ export const calculateRemainingLoanBalanceForYear = (
 export const calculateReturnOnEquityForYear = (
   cashFlowForYear,
   equityForYear
-) =>
-  (cashFlowForYear / equityForYear) * 100
+) => {
+  if (equityForYear < 0.01) {
+    return 0
+  }
+  return (cashFlowForYear / equityForYear) * 100
+}
