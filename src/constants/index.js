@@ -53,3 +53,5 @@ export const TITLE_GENERAL_INFO = 'General Info'
 export const TITLE_INITIAL_PURCHASE = 'Initial Purchase'
 export const TITLE_MONTHLY_INCOME = 'Monthly Income'
 export const TITLE_MONTHLY_EXPENSES = 'Monthly Expenses'
+
+export const ZERO_THRESHOLD = 0.00001

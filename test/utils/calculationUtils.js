@@ -670,6 +670,11 @@ describe('utils/calculationUtils', () => {
         .to
         .equal(0)
     })
+    it('returns proper value when cashFlow and totalInvestment are 0', () => {
+      expect(calculateCashOnCashReturn(0, 0))
+        .to
+        .equal(0)
+    })
     it('returns proper value when totalInvestment is 0', () => {
       expect(calculateCashOnCashReturn(1603.54, 0))
         .to
@@ -998,6 +1003,14 @@ describe('utils/calculationUtils', () => {
       )).to
         .be
         .closeTo(3.93, 0.01)
+    })
+    it('returns proper value when given negative cash flow', () => {
+      expect(calculateReturnOnEquityForYear(
+        -CASH_FLOW_FOR_YEAR,
+        EQUITY_FOR_YEAR
+      )).to
+        .be
+        .closeTo(-3.93, 0.01)
     })
     it('returns proper value when cash flow is 0', () => {
       expect(calculateReturnOnEquityForYear(

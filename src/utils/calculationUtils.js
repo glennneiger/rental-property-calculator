@@ -2,7 +2,8 @@ import {
   INPUT_ID_MORTGAGE,
   INPUT_ID_RENTAL_INCOME,
   MONTHS_PER_YEAR,
-  NUMBER_SYSTEM_DECIMAL
+  NUMBER_SYSTEM_DECIMAL,
+  ZERO_THRESHOLD
 } from '../constants'
 import {
   expensesInputProps,
@@ -199,10 +200,14 @@ export const calculateExpensesForYear = (
 export const calculateYearCashFlow = (incomeForYear, expensesForYear) =>
   incomeForYear - expensesForYear
 
-export const calculateCashOnCashReturn = (cashFlow, totalInvestment) =>
-  totalInvestment === 0
+export const calculateCashOnCashReturn = (cashFlow, totalInvestment) => {
+  if (cashFlow < ZERO_THRESHOLD && cashFlow > -ZERO_THRESHOLD) {
+    return 0
+  }
+  return (totalInvestment < ZERO_THRESHOLD && totalInvestment > -ZERO_THRESHOLD)
     ? Number.POSITIVE_INFINITY
     : (cashFlow / totalInvestment * 100)
+}
 
 export const calculateInitialInvestment = (
   downPayment,
@@ -310,10 +315,10 @@ export const calculateReturnOnEquityForYear = (
   cashFlowForYear,
   equityForYear
 ) => {
-  if (cashFlowForYear < 0.01) {
+  if (cashFlowForYear < ZERO_THRESHOLD && cashFlowForYear > -ZERO_THRESHOLD) {
     return 0
   }
-  return equityForYear < 0.01
+  return (equityForYear < ZERO_THRESHOLD && equityForYear > -ZERO_THRESHOLD)
     ? Number.POSITIVE_INFINITY
     : (cashFlowForYear / equityForYear) * 100
 }
