@@ -256,7 +256,13 @@ export const calculateMonthlyMortgagePayment = (
   interestRate,
   loanAmount
 ) => {
+  if (!amortizationPeriod) {
+    return 0
+  }
   const amMonths = amortizationPeriod * MONTHS_PER_YEAR
+  if (!interestRate) {
+    return loanAmount / amMonths
+  }
   const monthlyInterestRate = interestRate / (MONTHS_PER_YEAR * 100)
   const interestFactor = Math.pow(1 + monthlyInterestRate, amMonths)
   return (loanAmount * interestFactor * monthlyInterestRate)
@@ -321,4 +327,18 @@ export const calculateReturnOnEquityForYear = (
   return (equityForYear < ZERO_THRESHOLD && equityForYear > -ZERO_THRESHOLD)
     ? Number.POSITIVE_INFINITY
     : (cashFlowForYear / equityForYear) * 100
+}
+
+
+export const calculateReturnOnInvestmentForYear = (
+  cashFlowForYear,
+  equityGainedForYear,
+  initialInvestment
+) => {
+  if (cashFlowForYear === 0 && equityGainedForYear === 0) {
+    return 0
+  }
+  return initialInvestment === 0
+    ? Number.POSITIVE_INFINITY
+    : ((cashFlowForYear + equityGainedForYear) / initialInvestment) * 100
 }

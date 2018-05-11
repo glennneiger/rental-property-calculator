@@ -24,6 +24,7 @@ import {
   calculatePropertyValueForYear,
   calculateRemainingLoanBalanceForYear,
   calculateReturnOnEquityForYear,
+  calculateReturnOnInvestmentForYear,
   calculateWholeYearRentalIncomeForYear,
   calculateYearCashFlow,
   getCompoundedValue,
@@ -830,6 +831,22 @@ describe('utils/calculationUtils', () => {
         .be
         .closeTo(491.27, 0.01)
     })
+    it('returns proper value when amortization period is 0', () => {
+      expect(calculateMonthlyMortgagePayment(0, 5.5, 80000))
+        .to
+        .equal(0)
+    })
+    it('returns proper value when interest rate is 0', () => {
+      expect(calculateMonthlyMortgagePayment(25, 0, 80000))
+        .to
+        .be
+        .closeTo(266.67, 0.01)
+    })
+    it('returns proper value when loan amount is 0', () => {
+      expect(calculateMonthlyMortgagePayment(25, 5.5, 0))
+        .to
+        .equal(0)
+    })
   })
   describe('calculateEquityForYear', () => {
     const INITIAL_EQUITY = 60000
@@ -1028,6 +1045,54 @@ describe('utils/calculationUtils', () => {
     })
     it('returns proper value when both cash flow and equity are 0', () => {
       expect(calculateReturnOnEquityForYear(
+        0,
+        0
+      )).to
+        .equal(0)
+    })
+  })
+  describe('calculateReturnOnInvestmentForYear', () => {
+    const CASH_FLOW_FOR_YEAR = 3600
+    const EQUITY_GAINED_FOR_YEAR = 8462.59
+    const INITIAL_INVESTMENT = 43000
+    it('returns proper value when given positive numbers', () => {
+      expect(calculateReturnOnInvestmentForYear(
+        CASH_FLOW_FOR_YEAR,
+        EQUITY_GAINED_FOR_YEAR,
+        INITIAL_INVESTMENT
+      )).to
+        .be
+        .closeTo(28.05, 0.01)
+    })
+    it('returns proper value when cash flow is 0', () => {
+      expect(calculateReturnOnInvestmentForYear(
+        0,
+        EQUITY_GAINED_FOR_YEAR,
+        INITIAL_INVESTMENT
+      )).to
+        .be
+        .closeTo(19.68, 0.01)
+    })
+    it('returns proper value when equity gained is 0', () => {
+      expect(calculateReturnOnInvestmentForYear(
+        CASH_FLOW_FOR_YEAR,
+        0,
+        INITIAL_INVESTMENT
+      )).to
+        .be
+        .closeTo(8.37, 0.01)
+    })
+    it('returns proper value when initial investment is 0', () => {
+      expect(calculateReturnOnInvestmentForYear(
+        CASH_FLOW_FOR_YEAR,
+        EQUITY_GAINED_FOR_YEAR,
+        0
+      )).to
+        .equal(Number.POSITIVE_INFINITY)
+    })
+    it('returns proper value when everything is 0', () => {
+      expect(calculateReturnOnInvestmentForYear(
+        0,
         0,
         0
       )).to

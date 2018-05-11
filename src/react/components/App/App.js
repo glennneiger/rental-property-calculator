@@ -14,6 +14,7 @@ import {
   RESULTS_EQUITY,
   RESULTS_PROPERTY_VALUE,
   RESULTS_RETURN_ON_EQUITY,
+  RESULTS_RETURN_ON_INVESTMENT,
   TITLE_MONTHLY_EXPENSES,
   TITLE_MONTHLY_INCOME
 } from '../../../constants'
@@ -31,6 +32,7 @@ import {
   calculatePropertyValueForYear,
   calculateRemainingLoanBalanceForYear,
   calculateReturnOnEquityForYear,
+  calculateReturnOnInvestmentForYear,
   calculateYearCashFlow
 } from '../../../utils/calculationUtils'
 import {
@@ -71,7 +73,10 @@ class App extends Component {
         ),
         [RESULTS_PROPERTY_VALUE]: this.calculatePropertyValueForYear(year),
         [RESULTS_EQUITY]: this.calculateEquityForYear(year),
-        [RESULTS_RETURN_ON_EQUITY]: this.calculateReturnOnEquityForYear(year)
+        [RESULTS_RETURN_ON_EQUITY]: this.calculateReturnOnEquityForYear(year),
+        [RESULTS_RETURN_ON_INVESTMENT]: this.calculateReturnOnInvestmentForYear(
+          year
+        )
       }
     })
     return results
@@ -248,9 +253,23 @@ class App extends Component {
   calculateReturnOnEquityForYear = year => {
     const cashFlowForYear = this.calculateCashFlowForYear(year)
     const equityForYear = this.calculateEquityForYear(year)
+
     return calculateReturnOnEquityForYear(
       cashFlowForYear,
       equityForYear
+    ).toFixed(NUMBER_PRECISION_DISPLAY)
+  }
+  calculateReturnOnInvestmentForYear = year => {
+    const cashFlowForYear = parseFloat(this.calculateCashFlowForYear(year))
+    const equityCurrentYear = parseFloat(this.calculateEquityForYear(year))
+    const equityPreviousYear = parseFloat(this.calculateEquityForYear(year - 1))
+    const equityGainedForYear = equityCurrentYear - equityPreviousYear
+    const initialInvestment = parseFloat(this.calculateInitialInvestment())
+
+    return calculateReturnOnInvestmentForYear(
+      cashFlowForYear,
+      equityGainedForYear,
+      initialInvestment
     ).toFixed(NUMBER_PRECISION_DISPLAY)
   }
   handleKeyDown = (event, section, inputId) => {
