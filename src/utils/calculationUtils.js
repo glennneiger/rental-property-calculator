@@ -329,7 +329,6 @@ export const calculateReturnOnEquityForYear = (
     : (cashFlowForYear / equityForYear) * 100
 }
 
-
 export const calculateReturnOnInvestmentForYear = (
   cashFlowForYear,
   equityGainedForYear,
