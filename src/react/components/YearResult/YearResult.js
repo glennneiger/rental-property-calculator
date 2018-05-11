@@ -5,6 +5,7 @@ import './yearResult.css'
 import {
   RESULTS_CASH_FLOW,
   RESULTS_CASH_ON_CASH_RETURN,
+  RESULTS_EQUITY,
   RESULTS_PROPERTY_VALUE
 } from '../../../constants'
 
@@ -18,6 +19,7 @@ const YearResult = ({
       <p>Cash Flow: ${ result[RESULTS_CASH_FLOW] }</p>
       <p>Cash on Cash Return: { result[RESULTS_CASH_ON_CASH_RETURN] }%</p>
       <p>Property Value: ${ result[RESULTS_PROPERTY_VALUE] }</p>
+      <p>Equity: ${ result[RESULTS_EQUITY] }</p>
     </div>
   )
 }

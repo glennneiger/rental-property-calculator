@@ -257,3 +257,51 @@ export const calculateMonthlyMortgagePayment = (
   return (loanAmount * interestFactor * monthlyInterestRate)
     / (interestFactor - 1)
 }
+
+export const calculateEquityForYear = (
+  initialEquity,
+  propertyValueForYear,
+  initialPropertyValue,
+  loanAmount,
+  remainingBalance
+) =>
+  initialEquity + (propertyValueForYear - initialPropertyValue)
+    + (loanAmount - remainingBalance)
+
+export const calculateLoanBalanceForYearNoInterest = (
+  initialLoanAmount,
+  amortizationPeriod,
+  year
+) => {
+  if (amortizationPeriod === 0) {
+    return 0
+  }
+  const yearlyPayment = initialLoanAmount / amortizationPeriod
+  return initialLoanAmount - (year * yearlyPayment)
+}
+
+// https://www.mtgprofessor.com/formulas.htm
+export const calculateRemainingLoanBalanceForYear = (
+  initialLoanAmount,
+  interestRate,
+  amortizationPeriod,
+  year
+) => {
+  if (amortizationPeriod === 0) {
+    return 0
+  }
+  if (interestRate === 0) {
+    return calculateLoanBalanceForYearNoInterest(
+      initialLoanAmount,
+      amortizationPeriod,
+      year
+    )
+  }
+  const amMonths = amortizationPeriod * MONTHS_PER_YEAR
+  const months = year * MONTHS_PER_YEAR
+  const monthlyInterestRate = interestRate / (MONTHS_PER_YEAR * 100)
+  const interestFactorTotal = Math.pow(1 + monthlyInterestRate, amMonths)
+  const interestFactorForYear = Math.pow(1 + monthlyInterestRate, months)
+  return (initialLoanAmount * (interestFactorTotal - interestFactorForYear))
+    / (interestFactorTotal - 1)
+}

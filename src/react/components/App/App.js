@@ -19,6 +19,7 @@ import {
 import {
   calculateCashOnCashReturn,
   calculateConstantExpensesForYear,
+  calculateEquityForYear,
   calculateExpensesForYear,
   calculateIncomeForYear,
   calculateInitialEquity,
@@ -27,6 +28,7 @@ import {
   calculateMortgageForYear,
   calculatePercentageExpensesForYear,
   calculatePropertyValueForYear,
+  calculateRemainingLoanBalanceForYear,
   calculateYearCashFlow
 } from '../../../utils/calculationUtils'
 import {
@@ -67,7 +69,7 @@ class App extends Component {
           year
         ),
         [RESULTS_PROPERTY_VALUE]: this.calculatePropertyValueForYear(year),
-        [RESULTS_EQUITY]: this.calculateEquityAfterYears(year)
+        [RESULTS_EQUITY]: this.calculateEquityForYear(year)
       }
       if (year === finalYear) {
         results[year][RESULTS_CASH_FLOW] =
@@ -217,13 +219,41 @@ class App extends Component {
       otherCosts
     )
   }
-  // TODO: calculate equity for years that aren't 0
-  calculateEquityAfterYears = years => {
-    let equity = this.calculateInitialEquity()
+  calculateRemainingLoanBalanceForYear = years => {
+    const inputContent = this.state.inputContent
+    const initialLoanAmount = getInitialLoanAmount(inputContent)
+    const interestRate = getInterestRate(inputContent)
+    const amortizationPeriod = getAmortizationPeriod(inputContent)
+
+    return calculateRemainingLoanBalanceForYear(
+      initialLoanAmount,
+      interestRate,
+      amortizationPeriod,
+      years
+    )
+  }
+  calculateEquityForYear = years => {
+    const inputContent = this.state.inputContent
+    const initialEquity = this.calculateInitialEquity()
+    const amortizationPeriod = getAmortizationPeriod(inputContent)
     if (years === 0) {
-      return equity
+      return initialEquity
     }
-    return equity
+    if (years >= amortizationPeriod) {
+      return this.calculatePropertyValueForYear(years)
+    }
+    const propertyValueForYear = this.calculatePropertyValueForYear(years)
+    const initialPropertyValue = getAfterRepairValue(inputContent)
+    const loanAmount = getInitialLoanAmount(inputContent)
+    const remainingBalance = this.calculateRemainingLoanBalanceForYear(years)
+
+    return calculateEquityForYear(
+      initialEquity,
+      propertyValueForYear,
+      initialPropertyValue,
+      loanAmount,
+      remainingBalance
+    ).toFixed(NUMBER_PRECISION_DISPLAY)
   }
   handleKeyDown = (event, section, inputId) => {
     let inputContent = this.state.inputContent
