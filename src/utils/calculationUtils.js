@@ -268,12 +268,14 @@ export const calculateEquityForYear = (
   initialEquity + (propertyValueForYear - initialPropertyValue)
     + (loanAmount - remainingBalance)
 
-// TODO: test
 export const calculateLoanBalanceForYearNoInterest = (
   initialLoanAmount,
   amortizationPeriod,
   year
 ) => {
+  if (amortizationPeriod === 0) {
+    return 0
+  }
   const yearlyPayment = initialLoanAmount / amortizationPeriod
   return initialLoanAmount - (year * yearlyPayment)
 }

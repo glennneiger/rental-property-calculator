@@ -14,6 +14,7 @@ import {
   calculateInitialYearlyIncome,
   calculateInitialYearlyMortgage,
   calculateInitialYearlyRentalIncome,
+  calculateLoanBalanceForYearNoInterest,
   calculateMonthlyMortgagePayment,
   calculateMonthlyRentalIncomeForYear,
   calculateMortgageForYear,
@@ -895,6 +896,43 @@ describe('utils/calculationUtils', () => {
       )).to
         .be
         .closeTo(208032.64, 0.01)
+    })
+  })
+  describe('calculateLoanBalanceForYearNoInterest', () => {
+    const INITIAL_LOAN_AMOUNT = 80000
+    const AMORTIZATION_PERIOD = 25
+    const YEAR = 20
+    it('returns proper value when given positive numbers', () => {
+      expect(calculateLoanBalanceForYearNoInterest(
+        INITIAL_LOAN_AMOUNT,
+        AMORTIZATION_PERIOD,
+        YEAR
+      )).to
+        .equal(16000)
+    })
+    it('returns proper value when initial loan is 0', () => {
+      expect(calculateLoanBalanceForYearNoInterest(
+        0,
+        AMORTIZATION_PERIOD,
+        YEAR
+      )).to
+        .equal(0)
+    })
+    it('returns proper value when amortization period is 0', () => {
+      expect(calculateLoanBalanceForYearNoInterest(
+        INITIAL_LOAN_AMOUNT,
+        0,
+        YEAR
+      )).to
+        .equal(0)
+    })
+    it('returns proper value when year is 0', () => {
+      expect(calculateLoanBalanceForYearNoInterest(
+        INITIAL_LOAN_AMOUNT,
+        AMORTIZATION_PERIOD,
+        0
+      )).to
+        .equal(INITIAL_LOAN_AMOUNT)
     })
   })
   describe('calculateRemainingLoanBalanceForYear', () => {
