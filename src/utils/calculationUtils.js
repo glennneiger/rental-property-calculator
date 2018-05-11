@@ -305,3 +305,10 @@ export const calculateRemainingLoanBalanceForYear = (
   return (initialLoanAmount * (interestFactorTotal - interestFactorForYear))
     / (interestFactorTotal - 1)
 }
+
+// TODO: test
+export const calculateReturnOnEquityForYear = (
+  cashFlowForYear,
+  equityForYear
+) =>
+  (cashFlowForYear / equityForYear) * 100

@@ -44,8 +44,9 @@ export const NUMBER_SYSTEM_DECIMAL = 10
 
 export const RESULTS_CASH_FLOW = 'cashFlow'
 export const RESULTS_CASH_ON_CASH_RETURN = 'cashOnCashReturn'
-export const RESULTS_PROPERTY_VALUE = 'propertyValue'
 export const RESULTS_EQUITY = 'equity'
+export const RESULTS_PROPERTY_VALUE = 'propertyValue'
+export const RESULTS_RETURN_ON_EQUITY = 'returnOnEquity'
 
 export const TITLE_FUTURE_PROJECTIONS = 'Future Projections'
 export const TITLE_GENERAL_INFO = 'General Info'

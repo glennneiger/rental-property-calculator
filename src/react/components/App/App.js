@@ -13,6 +13,7 @@ import {
   RESULTS_CASH_ON_CASH_RETURN,
   RESULTS_EQUITY,
   RESULTS_PROPERTY_VALUE,
+  RESULTS_RETURN_ON_EQUITY,
   TITLE_MONTHLY_EXPENSES,
   TITLE_MONTHLY_INCOME
 } from '../../../constants'
@@ -29,6 +30,7 @@ import {
   calculatePercentageExpensesForYear,
   calculatePropertyValueForYear,
   calculateRemainingLoanBalanceForYear,
+  calculateReturnOnEquityForYear,
   calculateYearCashFlow
 } from '../../../utils/calculationUtils'
 import {
@@ -61,7 +63,7 @@ class App extends Component {
     const yearsToShow = getYearsForResults(
       getAmortizationPeriod(this.state.inputContent)
     )
-    const finalYear = yearsToShow[yearsToShow.length - 1]
+    // const finalYear = yearsToShow[yearsToShow.length - 1]
     yearsToShow.map(year => {
       results[year] = {
         [RESULTS_CASH_FLOW]: this.calculateCashFlowForYear(year),
@@ -69,30 +71,31 @@ class App extends Component {
           year
         ),
         [RESULTS_PROPERTY_VALUE]: this.calculatePropertyValueForYear(year),
-        [RESULTS_EQUITY]: this.calculateEquityForYear(year)
+        [RESULTS_EQUITY]: this.calculateEquityForYear(year),
+        [RESULTS_RETURN_ON_EQUITY]: this.calculateReturnOnEquityForYear(year)
       }
-      if (year === finalYear) {
-        results[year][RESULTS_CASH_FLOW] =
-          this.calculateCashFlowForYearNoMortgage(year)
-        results[year][RESULTS_CASH_ON_CASH_RETURN] =
-          this.calculateCashOnCashReturnForYearNoMortgage(year)
-      }
+      // if (year === finalYear) {
+      //   results[year][RESULTS_CASH_FLOW] =
+      //     this.calculateCashFlowForYearNoMortgage(year)
+      //   results[year][RESULTS_CASH_ON_CASH_RETURN] =
+      //     this.calculateCashOnCashReturnForYearNoMortgage(year)
+      // }
     })
     return results
   }
-  calculateCashOnCashReturnForYearNoMortgage = year => {
-    const yearCashFlow = this.calculateCashFlowForYearNoMortgage(year)
-    const initialInvestment = this.calculateInitialInvestment()
-    return calculateCashOnCashReturn(
-      yearCashFlow,
-      initialInvestment
-    ).toFixed(NUMBER_PRECISION_DISPLAY)
-  }
-  calculateCashFlowForYearNoMortgage = year => {
-    const cashFlow = this.calculateCashFlowForYear(year)
-    return (+cashFlow + +this.calculateMortgageForYear(year))
-      .toFixed(NUMBER_PRECISION_DISPLAY)
-  }
+  // calculateCashOnCashReturnForYearNoMortgage = year => {
+  //   const yearCashFlow = this.calculateCashFlowForYearNoMortgage(year)
+  //   const initialInvestment = this.calculateInitialInvestment()
+  //   return calculateCashOnCashReturn(
+  //     yearCashFlow,
+  //     initialInvestment
+  //   ).toFixed(NUMBER_PRECISION_DISPLAY)
+  // }
+  // calculateCashFlowForYearNoMortgage = year => {
+  //   const cashFlow = this.calculateCashFlowForYear(year)
+  //   return (+cashFlow + +this.calculateMortgageForYear(year))
+  //     .toFixed(NUMBER_PRECISION_DISPLAY)
+  // }
   calculateMortgageForYear = year => {
     const inputContent = this.state.inputContent
     const annualConstantExpensesGrowth = getAnnualConstantExpensesGrowth(
@@ -176,12 +179,20 @@ class App extends Component {
   }
   /* Cash flow = Income - Expenses */
   calculateCashFlowForYear = year => {
+    const inputContent = this.state.inputContent
+    const amortizationPeriod = getAmortizationPeriod(inputContent)
     const incomeForYear = this.calculateIncomeForYear(year)
     const expensesForYear = this.calculateExpensesForYear(year)
-    return calculateYearCashFlow(
+
+    let yearCashFlow = calculateYearCashFlow(
       incomeForYear,
       expensesForYear
-    ).toFixed(NUMBER_PRECISION_DISPLAY)
+    )
+    if (year > amortizationPeriod) {
+      return (yearCashFlow + this.calculateMortgageForYear(year))
+        .toFixed(NUMBER_PRECISION_DISPLAY)
+    }
+    return yearCashFlow.toFixed(NUMBER_PRECISION_DISPLAY)
   }
   /* Cash on cash return = (cash flow / initialInvestment) * 100% */
   calculateCashOnCashReturnForYear = year => {
@@ -219,7 +230,7 @@ class App extends Component {
       otherCosts
     )
   }
-  calculateRemainingLoanBalanceForYear = years => {
+  calculateRemainingLoanBalanceForYear = year => {
     const inputContent = this.state.inputContent
     const initialLoanAmount = getInitialLoanAmount(inputContent)
     const interestRate = getInterestRate(inputContent)
@@ -229,23 +240,23 @@ class App extends Component {
       initialLoanAmount,
       interestRate,
       amortizationPeriod,
-      years
+      year
     )
   }
-  calculateEquityForYear = years => {
+  calculateEquityForYear = year => {
     const inputContent = this.state.inputContent
     const initialEquity = this.calculateInitialEquity()
     const amortizationPeriod = getAmortizationPeriod(inputContent)
-    if (years === 0) {
+    if (year === 0) {
       return initialEquity
     }
-    if (years >= amortizationPeriod) {
-      return this.calculatePropertyValueForYear(years)
+    if (year >= amortizationPeriod) {
+      return this.calculatePropertyValueForYear(year)
     }
-    const propertyValueForYear = this.calculatePropertyValueForYear(years)
+    const propertyValueForYear = this.calculatePropertyValueForYear(year)
     const initialPropertyValue = getAfterRepairValue(inputContent)
     const loanAmount = getInitialLoanAmount(inputContent)
-    const remainingBalance = this.calculateRemainingLoanBalanceForYear(years)
+    const remainingBalance = this.calculateRemainingLoanBalanceForYear(year)
 
     return calculateEquityForYear(
       initialEquity,
@@ -253,6 +264,14 @@ class App extends Component {
       initialPropertyValue,
       loanAmount,
       remainingBalance
+    ).toFixed(NUMBER_PRECISION_DISPLAY)
+  }
+  calculateReturnOnEquityForYear = year => {
+    const cashFlowForYear = this.calculateCashFlowForYear(year)
+    const equityForYear = this.calculateEquityForYear(year)
+    return calculateReturnOnEquityForYear(
+      cashFlowForYear,
+      equityForYear
     ).toFixed(NUMBER_PRECISION_DISPLAY)
   }
   handleKeyDown = (event, section, inputId) => {

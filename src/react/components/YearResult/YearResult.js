@@ -6,7 +6,8 @@ import {
   RESULTS_CASH_FLOW,
   RESULTS_CASH_ON_CASH_RETURN,
   RESULTS_EQUITY,
-  RESULTS_PROPERTY_VALUE
+  RESULTS_PROPERTY_VALUE,
+  RESULTS_RETURN_ON_EQUITY
 } from '../../../constants'
 
 const YearResult = ({
@@ -20,6 +21,7 @@ const YearResult = ({
       <p>Cash on Cash Return: { result[RESULTS_CASH_ON_CASH_RETURN] }%</p>
       <p>Property Value: ${ result[RESULTS_PROPERTY_VALUE] }</p>
       <p>Equity: ${ result[RESULTS_EQUITY] }</p>
+      <p>Return on Equity: { result[RESULTS_RETURN_ON_EQUITY] }%</p>
     </div>
   )
 }
