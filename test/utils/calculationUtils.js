@@ -23,6 +23,7 @@ import {
   calculatePercentOfRentalIncomeMonthly,
   calculatePropertyValueForYear,
   calculateRemainingLoanBalanceForYear,
+  calculateReturnOnEquityForYear,
   calculateWholeYearRentalIncomeForYear,
   calculateYearCashFlow,
   getCompoundedValue,
@@ -669,6 +670,11 @@ describe('utils/calculationUtils', () => {
         .to
         .equal(0)
     })
+    it('returns proper value when cashFlow and totalInvestment are 0', () => {
+      expect(calculateCashOnCashReturn(0, 0))
+        .to
+        .equal(0)
+    })
     it('returns proper value when totalInvestment is 0', () => {
       expect(calculateCashOnCashReturn(1603.54, 0))
         .to
@@ -985,6 +991,47 @@ describe('utils/calculationUtils', () => {
         0
       )).to
         .equal(INITIAL_LOAN_AMOUNT)
+    })
+  })
+  describe('calculateReturnOnEquityForYear', () => {
+    const CASH_FLOW_FOR_YEAR = 2400
+    const EQUITY_FOR_YEAR = 61000
+    it('returns proper value when given positive numbers', () => {
+      expect(calculateReturnOnEquityForYear(
+        CASH_FLOW_FOR_YEAR,
+        EQUITY_FOR_YEAR
+      )).to
+        .be
+        .closeTo(3.93, 0.01)
+    })
+    it('returns proper value when given negative cash flow', () => {
+      expect(calculateReturnOnEquityForYear(
+        -CASH_FLOW_FOR_YEAR,
+        EQUITY_FOR_YEAR
+      )).to
+        .be
+        .closeTo(-3.93, 0.01)
+    })
+    it('returns proper value when cash flow is 0', () => {
+      expect(calculateReturnOnEquityForYear(
+        0,
+        EQUITY_FOR_YEAR
+      )).to
+        .equal(0)
+    })
+    it('returns proper value when equity is 0', () => {
+      expect(calculateReturnOnEquityForYear(
+        CASH_FLOW_FOR_YEAR,
+        0
+      )).to
+        .equal(Number.POSITIVE_INFINITY)
+    })
+    it('returns proper value when both cash flow and equity are 0', () => {
+      expect(calculateReturnOnEquityForYear(
+        0,
+        0
+      )).to
+        .equal(0)
     })
   })
 })
