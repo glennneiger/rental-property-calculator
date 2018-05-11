@@ -244,3 +244,16 @@ export const calculateMortgageForYear = (
     year
   )
 }
+
+// https://www.mtgprofessor.com/formulas.htm
+export const calculateMonthlyMortgagePayment = (
+  amortizationPeriod,
+  interestRate,
+  loanAmount
+) => {
+  const amMonths = amortizationPeriod * MONTHS_PER_YEAR
+  const monthlyInterestRate = interestRate / (MONTHS_PER_YEAR * 100)
+  const interestFactor = Math.pow(1 + monthlyInterestRate, amMonths)
+  return (loanAmount * interestFactor * monthlyInterestRate)
+    / (interestFactor - 1)
+}

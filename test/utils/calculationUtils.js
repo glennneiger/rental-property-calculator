@@ -13,6 +13,7 @@ import {
   calculateInitialYearlyIncome,
   calculateInitialYearlyMortgage,
   calculateInitialYearlyRentalIncome,
+  calculateMonthlyMortgagePayment,
   calculateMonthlyRentalIncomeForYear,
   calculateMortgageForYear,
   calculatePercentageExpensesForYear,
@@ -811,6 +812,14 @@ describe('utils/calculationUtils', () => {
         0
       )).to
         .equal(9600)
+    })
+  })
+  describe('calculateMonthlyMortgagePayment', () => {
+    it('returns proper value when given positive numbers', () => {
+      expect(calculateMonthlyMortgagePayment(25, 5.5, 80000))
+        .to
+        .be
+        .closeTo(491.27, 0.01)
     })
   })
 })
