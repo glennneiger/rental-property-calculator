@@ -306,13 +306,14 @@ export const calculateRemainingLoanBalanceForYear = (
     / (interestFactorTotal - 1)
 }
 
-// TODO: test
 export const calculateReturnOnEquityForYear = (
   cashFlowForYear,
   equityForYear
 ) => {
-  if (equityForYear < 0.01) {
+  if (cashFlowForYear < 0.01) {
     return 0
   }
-  return (cashFlowForYear / equityForYear) * 100
+  return equityForYear < 0.01
+    ? Number.POSITIVE_INFINITY
+    : (cashFlowForYear / equityForYear) * 100
 }
