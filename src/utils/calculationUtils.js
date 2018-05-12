@@ -49,7 +49,7 @@ export const calculateInitialMonthlyIncome = monthlyIncome => {
     const income = monthlyIncome[current.inputId]
     return total + +income
   }, 0)
-  return parseInt(initialMonthlyIncome, NUMBER_SYSTEM_DECIMAL)
+  return parseFloat(initialMonthlyIncome, NUMBER_SYSTEM_DECIMAL)
 }
 
 export const calculateInitialYearlyIncome = monthlyIncome => {
@@ -91,7 +91,7 @@ export const calculateInitialMonthlyConstantExpenses = monthlyExpenses => {
       }
       return total + +expense
     }, 0)
-  return parseInt(constantExpensesForYear, NUMBER_SYSTEM_DECIMAL)
+  return parseFloat(constantExpensesForYear, NUMBER_SYSTEM_DECIMAL)
 }
 
 export const calculateInitialYearlyConstantExpenses = monthlyExpenses =>
