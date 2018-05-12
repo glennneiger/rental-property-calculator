@@ -79,7 +79,6 @@ class App extends Component {
         )
       }
     })
-    console.log('results:', results)
     return results
   }
   calculateMortgageForYear = year => {
@@ -110,18 +109,11 @@ class App extends Component {
     const inputContent = this.state.inputContent
     const propertyValue = getAfterRepairValue(inputContent)
     const annualPVGrowth = getAnnualPropertyValueGrowth(inputContent)
-    console.log('annualPVGrowth:', annualPVGrowth)
-    const propertyValueForYear = calculatePropertyValueForYear(
+    return calculatePropertyValueForYear(
       propertyValue,
       annualPVGrowth,
       year
-    )
-    return propertyValueForYear
-    // return calculatePropertyValueForYear(
-    //   propertyValue,
-    //   annualPVGrowth,
-    //   year
-    // ).toFixed(NUMBER_PRECISION_DISPLAY)
+    ).toFixed(NUMBER_PRECISION_DISPLAY)
   }
   calculateIncomeForYear = year => {
     const { inputContent } = this.state
