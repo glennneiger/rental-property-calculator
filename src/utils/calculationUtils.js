@@ -12,7 +12,7 @@ import {
 
 export const makeValidGrowthRate = growthRate => (
   growthRate
-    ? parseInt(growthRate, NUMBER_SYSTEM_DECIMAL)
+    ? parseFloat(growthRate, NUMBER_SYSTEM_DECIMAL)
     : 0
 )
 
@@ -201,10 +201,10 @@ export const calculateYearCashFlow = (incomeForYear, expensesForYear) =>
   incomeForYear - expensesForYear
 
 export const calculateCashOnCashReturn = (cashFlow, totalInvestment) => {
-  if (cashFlow < ZERO_THRESHOLD && cashFlow > -ZERO_THRESHOLD) {
+  if (Math.abs(cashFlow) < ZERO_THRESHOLD) {
     return 0
   }
-  return (totalInvestment < ZERO_THRESHOLD && totalInvestment > -ZERO_THRESHOLD)
+  return (Math.abs(totalInvestment) < ZERO_THRESHOLD)
     ? Number.POSITIVE_INFINITY
     : (cashFlow / totalInvestment * 100)
 }
@@ -321,10 +321,10 @@ export const calculateReturnOnEquityForYear = (
   cashFlowForYear,
   equityForYear
 ) => {
-  if (cashFlowForYear < ZERO_THRESHOLD && cashFlowForYear > -ZERO_THRESHOLD) {
+  if (Math.abs(cashFlowForYear) < ZERO_THRESHOLD) {
     return 0
   }
-  return (equityForYear < ZERO_THRESHOLD && equityForYear > -ZERO_THRESHOLD)
+  return (Math.abs(equityForYear) < ZERO_THRESHOLD)
     ? Number.POSITIVE_INFINITY
     : (cashFlowForYear / equityForYear) * 100
 }
