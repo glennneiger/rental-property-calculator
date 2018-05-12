@@ -8,7 +8,6 @@ import {
 } from './childProps'
 import './app.css'
 import {
-  NUMBER_PRECISION_DISPLAY,
   RESULTS_CASH_FLOW,
   RESULTS_CASH_ON_CASH_RETURN,
   RESULTS_EQUITY,
@@ -113,7 +112,7 @@ class App extends Component {
       propertyValue,
       annualPVGrowth,
       year
-    ).toFixed(NUMBER_PRECISION_DISPLAY)
+    )
   }
   calculateIncomeForYear = year => {
     const { inputContent } = this.state
@@ -176,7 +175,7 @@ class App extends Component {
     if (year > amortizationPeriod) {
       yearCashFlow += this.calculateMortgageForYear(year)
     }
-    return yearCashFlow.toFixed(NUMBER_PRECISION_DISPLAY)
+    return yearCashFlow
   }
   /* Cash on cash return = (cash flow / initialInvestment) * 100% */
   calculateCashOnCashReturnForYear = year => {
@@ -185,7 +184,7 @@ class App extends Component {
     return calculateCashOnCashReturn(
       yearCashFlow,
       initialInvestment
-    ).toFixed(NUMBER_PRECISION_DISPLAY)
+    )
   }
   /* Initial equity = down payment + after repair value + purchase price */
   calculateInitialEquity = () => {
@@ -248,7 +247,7 @@ class App extends Component {
       initialPropertyValue,
       loanAmount,
       remainingBalance
-    ).toFixed(NUMBER_PRECISION_DISPLAY)
+    )
   }
   calculateReturnOnEquityForYear = year => {
     const cashFlowForYear = this.calculateCashFlowForYear(year)
@@ -257,7 +256,7 @@ class App extends Component {
     return calculateReturnOnEquityForYear(
       cashFlowForYear,
       equityForYear
-    ).toFixed(NUMBER_PRECISION_DISPLAY)
+    )
   }
   calculateReturnOnInvestmentForYear = year => {
     const cashFlowForYear = parseFloat(this.calculateCashFlowForYear(year))
@@ -270,7 +269,7 @@ class App extends Component {
       cashFlowForYear,
       equityGainedForYear,
       initialInvestment
-    ).toFixed(NUMBER_PRECISION_DISPLAY)
+    )
   }
   updateValueForInput = (value, section, inputId) => {
     let inputContent = this.state.inputContent
