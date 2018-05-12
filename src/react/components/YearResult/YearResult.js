@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 
 import './yearResult.css'
 import {
+  NUMBER_PRECISION_DISPLAY,
   RESULTS_CASH_FLOW,
   RESULTS_CASH_ON_CASH_RETURN,
   RESULTS_EQUITY,
   RESULTS_PROPERTY_VALUE,
   RESULTS_RETURN_ON_EQUITY,
-  RESULTS_RETURN_ON_INVESTMENT,
-  NUMBER_PRECISION_DISPLAY
+  RESULTS_RETURN_ON_INVESTMENT
 } from '../../../constants'
 
 const YearResult = ({
