@@ -7,12 +7,12 @@ const LABEL_WIDTH = 185
 
 const Input = ({
   content,
-  updateValueForInput,
   inputId,
   inputType = 'number',
   label,
   section,
-  textInputWidth = DEFAULT_TOTAL_WIDTH
+  textInputWidth = DEFAULT_TOTAL_WIDTH,
+  updateValueForInput
 }) => {
   const handleChange = event => {
     const value = event.target.value
@@ -40,12 +40,12 @@ Input.propTypes = {
     PropTypes.string,
     PropTypes.number
   ]).isRequired,
-  updateValueForInput: PropTypes.func.isRequired,
   inputId: PropTypes.string.isRequired,
   inputType: PropTypes.string,
   label: PropTypes.string.isRequired,
   section: PropTypes.string.isRequired,
-  textInputWidth: PropTypes.number
+  textInputWidth: PropTypes.number,
+  updateValueForInput: PropTypes.func.isRequired
 }
 
 export default Input
