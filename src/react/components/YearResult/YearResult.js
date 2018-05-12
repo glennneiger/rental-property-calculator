@@ -16,50 +16,65 @@ const YearResult = ({
   result,
   year
 }) => {
-  const formatDisplayEntry = (entryTitle, entry, prefix = '', suffix = '') => (
+  const displayEntries = [
+    {
+      title: 'Cash Flow',
+      content: result[RESULTS_CASH_FLOW],
+      prefix: '$',
+      suffix: ''
+    },
+    {
+      title: 'Cash on Cash Return',
+      content: result[RESULTS_CASH_ON_CASH_RETURN],
+      prefix: '',
+      suffix: '%'
+    },
+    {
+      title: 'Property Value',
+      content: result[RESULTS_PROPERTY_VALUE],
+      prefix: '$',
+      suffix: ''
+    },
+    {
+      title: 'Equity',
+      content: result[RESULTS_EQUITY],
+      prefix: '$',
+      suffix: ''
+    },
+    {
+      title: 'Return on Equity',
+      content: result[RESULTS_RETURN_ON_EQUITY],
+      prefix: '',
+      suffix: '%'
+    },
+    {
+      title: 'Return on Investment',
+      content: result[RESULTS_RETURN_ON_INVESTMENT],
+      prefix: '',
+      suffix: '%'
+    }
+  ]
+  const formatDisplayEntry = ({
+    title,
+    content,
+    prefix,
+    suffix
+  }) => (
     <p>
       {
-        `${ entryTitle }:
-        ${ prefix }${ entry.toFixed(NUMBER_PRECISION_DISPLAY) }${ suffix }`
+        `${ title }:
+        ${ prefix }${ content.toFixed(NUMBER_PRECISION_DISPLAY) }${ suffix }`
       }
     </p>
   )
   return (
     <div className='yearResult'>
       <h3>Year { year }</h3>
-      { formatDisplayEntry(
-        'Cash Flow',
-        result[RESULTS_CASH_FLOW],
-        '$'
-      ) }
-      { formatDisplayEntry(
-        'Cash on Cash Return',
-        result[RESULTS_CASH_ON_CASH_RETURN],
-        '',
-        '%'
-      ) }
-      { formatDisplayEntry(
-        'Property Value',
-        result[RESULTS_PROPERTY_VALUE],
-        '$'
-      ) }
-      { formatDisplayEntry(
-        'Equity',
-        result[RESULTS_EQUITY],
-        '$'
-      ) }
-      { formatDisplayEntry(
-        'Return on Equity',
-        result[RESULTS_RETURN_ON_EQUITY],
-        '',
-        '%'
-      ) }
-      { formatDisplayEntry(
-        'Return on Investment',
-        result[RESULTS_RETURN_ON_INVESTMENT],
-        '',
-        '%'
-      ) }
+      {
+        displayEntries.map(entry => (
+          formatDisplayEntry(entry)
+        ))
+      }
     </div>
   )
 }
