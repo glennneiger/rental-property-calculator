@@ -17,11 +17,12 @@ const DisplayEntry = ({
       ${ prefix }${ content.toFixed(NUMBER_PRECISION_DISPLAY) }${ suffix }` }
   </p>
 )
+
 DisplayEntry.propTypes = {
-  title: PropTypes.string.isRequired,
   content: PropTypes.number.isRequired,
   prefix: PropTypes.string.isRequired,
-  suffix: PropTypes.string.isRequired
+  suffix: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired
 }
 
 export default DisplayEntry
