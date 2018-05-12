@@ -272,9 +272,9 @@ class App extends Component {
       initialInvestment
     ).toFixed(NUMBER_PRECISION_DISPLAY)
   }
-  handleKeyDown = (event, section, inputId) => {
+  updateValueForInput = (value, section, inputId) => {
     let inputContent = this.state.inputContent
-    inputContent[section][inputId] = event.target.value
+    inputContent[section][inputId] = value
     this.forceUpdate()
   }
   getInputState = () => {
@@ -304,8 +304,10 @@ class App extends Component {
                 }
                 key={ props.inputId }
                 { ...props }
-                handleKeyDown={ this.handleKeyDown }
-                section={ section.title }/>
+                updateValueForInput={ this.updateValueForInput }
+                section={ section.title }
+                inputType={ props.inputType }
+              />
             )) }
           </InputSection>
         )) }
