@@ -7,8 +7,9 @@ import config from './config'
 import { User } from './models'
 
 const app = express()
-mongoose.connect(`mongodb://localhost/${ config.port }`)
+mongoose.connect('mongodb://localhost/testDB')
 const db = mongoose.connection
+mongoose.Promise = global.Promise
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -20,23 +21,13 @@ db.once('open', () => {
 
 app.use('/api', apiRouter)
 
-/* Catch 404 and forward to error handler */
-app.use((req, res, next) => {
-  const err = new Error('File not found')
-  err.status = 404
-  next(err)
-})
-
 /*
  * Error handler.
  * Define as the last app.use callback
  */
-app.use((err, req, res) => {
+app.use((err, req, res, next) => {
   res.status(err.status || 500)
-  res.json('error', {
-    message: err.message,
-    error: {}
-  })
+  res.send({ error: err.message })
 })
 
 app.listen(config.port, () => {

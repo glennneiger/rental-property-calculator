@@ -9,32 +9,22 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res, next) => {
-  if (
-    req.body.email &&
-    req.body.username &&
-    req.body.password &&
-    req.body.passwordConf
-  ) {
-    // if (req.body.password !== req.body.passwordConf) {
-    //   const err = new Error('Passwords do not match.')
-    //   err.status = 400
-    //   res.send('passwords don\'t match')
-    //   return next(err)
-    // }
+  // if (req.body.password !== req.body.passwordConf) {
+  //   const err = new Error('Passwords do not match.')
+  //   err.status = 400
+  //   res.send('passwords don\'t match')
+  //   return next(err)
+  // }
 
-    const userData = {
-      email: req.body.email,
-      username: req.body.username,
-      password: req.body.password,
-      passwordConf: req.body.passwordConf
-    }
-    User.create(userData, (error, user) => {
-      if (error) {
-        return next(error)
-      }
-      return next()
-    })
+  const userData = {
+    email: req.body.email,
+    username: req.body.username,
+    password: req.body.password,
+    passwordConf: req.body.passwordConf
   }
+  User.create(userData).then(user => {
+    res.send(user)
+  }).catch(next)
 })
 
 // router.get('/profile', (req, res, next) => {
