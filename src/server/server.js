@@ -1,30 +1,24 @@
 import express from 'express'
 import mongoose from 'mongoose'
+import bodyParser from 'body-parser'
 
 import apiRouter from './api'
 import config from './config'
-import { User } from './schemas'
+import { User } from './models'
 
 const app = express()
-mongoose.connect('mongodb://localhost/3001')
+mongoose.connect(`mongodb://localhost/${ config.port }`)
 const db = mongoose.connection
 
-app.use('/api', apiRouter)
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
 
 db.on('error', console.error.bind(console, 'connection error:'))
 db.once('open', () => {
   console.log('Connected to mongoose')
-  const greg = new User({
-    email: 'dardis.greg@gmail.com',
-    username: 'gdardis',
-    password: 'password123',
-    passwordConf: 'password123'
-  })
-  console.log('Greg email:', greg.email)
-  console.log('Greg username:', greg.username)
-  console.log('Greg password:', greg.password)
-  console.log('Greg passwordConf:', greg.passwordConf)
 })
+
+app.use('/api', apiRouter)
 
 /* Catch 404 and forward to error handler */
 app.use((req, res, next) => {
