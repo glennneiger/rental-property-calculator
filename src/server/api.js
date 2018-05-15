@@ -23,8 +23,7 @@ router.post('/', (req, res, next) => {
     passwordConf: req.body.passwordConf
   }
   User.create(userData).then(user => {
-    console.log('called')
-    res.send(user)
+    return res.redirect('profile')
   }).catch(next)
 })
 
