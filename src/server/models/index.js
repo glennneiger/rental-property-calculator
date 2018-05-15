@@ -23,10 +23,6 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: [true, 'Password field is required']
-  },
-  passwordConf: {
-    type: String,
-    required: [true, 'Passwordcomf field is required']
   }
 })
 

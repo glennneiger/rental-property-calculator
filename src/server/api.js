@@ -19,10 +19,10 @@ router.post('/', (req, res, next) => {
   const userData = {
     email: req.body.email,
     username: req.body.username,
-    password: req.body.password,
-    passwordConf: req.body.passwordConf
+    password: req.body.password
   }
   User.create(userData).then(user => {
+    req.session.userId = user._id
     return res.redirect('profile')
   }).catch(next)
 })

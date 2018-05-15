@@ -1,6 +1,7 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
+import session from 'express-session'
 
 import apiRouter from './api'
 import config from './config'
@@ -18,6 +19,13 @@ db.on('error', console.error.bind(console, 'connection error:'))
 db.once('open', () => {
   console.log('Connected to mongoose')
 })
+
+/* For tracking login sessions */
+app.use(session({
+  secret: 'work hard',
+  resave: true,
+  saveUninitialized: false
+}))
 
 app.use('/api', apiRouter)
 
