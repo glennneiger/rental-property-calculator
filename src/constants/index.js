@@ -49,6 +49,8 @@ export const RESULTS_PROPERTY_VALUE = 'propertyValue'
 export const RESULTS_RETURN_ON_EQUITY = 'returnOnEquity'
 export const RESULTS_RETURN_ON_INVESTMENT = 'returnOnInvestment'
 
+export const SALT_ROUNDS = 10
+
 export const TITLE_FUTURE_PROJECTIONS = 'Future Projections'
 export const TITLE_GENERAL_INFO = 'General Info'
 export const TITLE_INITIAL_PURCHASE = 'Initial Purchase'

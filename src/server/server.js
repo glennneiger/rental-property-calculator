@@ -26,7 +26,7 @@ app.use('/api', apiRouter)
  * Define as the last app.use callback
  */
 app.use((err, req, res, next) => {
-  res.status(err.status || 500)
+  res.status(err.status || 400)
   res.send({ error: err.message })
 })
 
