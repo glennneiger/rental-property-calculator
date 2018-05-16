@@ -6,7 +6,7 @@ import Input from '../Input'
 import {
   inputSectionData
 } from './childProps'
-import './app.css'
+import './calculator.css'
 import {
   RESULTS_CASH_FLOW,
   RESULTS_CASH_ON_CASH_RETURN,
@@ -52,7 +52,7 @@ import {
   getYearsForResults
 } from '../../../utils/resultsUtils'
 
-class App extends Component {
+class Calculator extends Component {
   constructor() {
     super()
     this.state = {
@@ -292,7 +292,7 @@ class App extends Component {
   }
   render() {
     return (
-      <div className='app'>
+      <div className='calculator'>
         { inputSectionData.map(section => (
           <InputSection key={ section.title }
             title={ section.title }>
@@ -323,4 +323,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default Calculator
