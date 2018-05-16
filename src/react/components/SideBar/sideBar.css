@@ -1,0 +1,11 @@
+.sidebar {
+  float: left;
+  width: 200px;
+  height: 400px;
+  background-color: #E9F3F8;
+  margin-top: 24px;
+  border-radius: 10px;
+  margin-left: 12px;
+  margin-bottom: 24px;
+  padding: 24px;
+}

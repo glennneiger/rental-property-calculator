@@ -8,7 +8,7 @@ import {
 import {
   expensesInputProps,
   incomeInputProps
-} from '../react/components/App/childProps'
+} from '../react/components/Calculator/childProps'
 
 export const makeValidGrowthRate = growthRate => (
   growthRate

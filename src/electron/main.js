@@ -7,10 +7,11 @@ const {
 
 let mainWindow
 
+/* 1100 for calculator + 200 for sidebar = 1300 */
 const createWindow = () => {
   mainWindow = new BrowserWindow({
     height: 800,
-    width: 1100
+    width: 1300
   })
 
   mainWindow.loadURL('http://localhost:3000')
