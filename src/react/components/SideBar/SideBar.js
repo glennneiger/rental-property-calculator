@@ -1,13 +1,25 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-import './sideBar.css'
+import './sidebar.css'
+import GuestSidebar from '../GuestSidebar'
+import UserSidebar from '../UserSidebar'
 
-const SideBar = ({}) => {
+const Sidebar = ({
+  isLoggedIn
+}) => {
   return (
-    <div className='sideBar'>
-      SideBar
+    <div className='sidebar'>
+      { isLoggedIn
+        ? <UserSidebar />
+        : <GuestSidebar />
+      }
     </div>
   )
 }
 
-export default SideBar
+Sidebar.propTypes = {
+  isLoggedIn: PropTypes.boolean
+}
+
+export default Sidebar

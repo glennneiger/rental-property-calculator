@@ -1,14 +1,24 @@
-import React from 'react'
+import React, { Component } from 'react'
 
 import Calculator from '../Calculator'
-import SideBar from '../SideBar'
+import Sidebar from '../Sidebar'
 import './calculatorPage.css'
 
-const CalculatorPage = ({}) => (
-  <div className='calculatorPage'>
-    <SideBar />
-    <Calculator />
-  </div>
-)
+class CalculatorPage extends Component {
+  constructor() {
+    super()
+    this.state = {
+      isLoggedIn: false
+    }
+  }
+  render() {
+    return (
+      <div className='calculatorPage'>
+        <Sidebar isLoggedIn={ this.state.isLoggedIn }/>
+        <Calculator />
+      </div>
+    )
+  }
+}
 
 export default CalculatorPage
