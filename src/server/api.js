@@ -5,7 +5,7 @@ import { User } from './models'
 const router = express.Router()
 
 router.get('/', (req, res) => {
-  res.send('working')
+  return res.send('root')
 })
 
 router.post('/register', (req, res, next) => {
@@ -47,6 +47,17 @@ router.post('/login', (req, res, next) => {
 
 router.get('/profile', (req, res, next) => {
   return res.send('GET profile')
+})
+
+router.get('/logout', (req, res, next) => {
+  if (req.session) {
+    req.session.destroy(err => {
+      if (err) {
+        return next(err)
+      }
+      return res.send('logged out')
+    })
+  }
 })
 
 router.post('/profile', (req, res, next) => {

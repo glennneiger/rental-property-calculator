@@ -2,6 +2,7 @@ import express from 'express'
 import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
 import session from 'express-session'
+const MongoStore = require('connect-mongo')(session)
 
 import apiRouter from './api'
 import config from './config'
@@ -24,7 +25,10 @@ db.once('open', () => {
 app.use(session({
   secret: 'work hard',
   resave: true,
-  saveUninitialized: false
+  saveUninitialized: false,
+  store: new MongoStore({
+    mongooseConnection: db
+  })
 }))
 
 app.use('/api', apiRouter)
