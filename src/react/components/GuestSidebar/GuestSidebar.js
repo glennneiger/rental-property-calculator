@@ -6,12 +6,9 @@ import './guestSidebar.css'
 const GuestSidebar = ({}) => {
   return (
     <div className='guestSidebar'>
-      <Link to={ '/login' }>Login</Link>
-      <p> to save your analysis</p>
+      <p><Link to={ '/login' }>Login</Link> to save your analysis</p>
     </div>
   )
 }
 
 export default GuestSidebar
-
-// todo login route not rendering different page

@@ -14,8 +14,7 @@ class App extends Component {
           component={ CalculatorPage }
           isLoggedIn={ false } /> }
         { <PropsRoute exact path='/login'
-          component={ LoginPage }
-          isLoggedIn={ false } /> }
+          component={ LoginPage } /> }
       </div>
     )
   }
