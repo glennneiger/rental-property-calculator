@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
-import Calculator from './react/components/Calculator'
+import CalculatorPage from './react/components/CalculatorPage'
 import registerServiceWorker from './react/registerServiceWorker'
 
 ReactDOM.render(
-  <Calculator />,
+  <CalculatorPage />,
   document.getElementById('root')
 )
 registerServiceWorker()
