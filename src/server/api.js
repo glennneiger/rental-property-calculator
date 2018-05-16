@@ -28,7 +28,21 @@ router.post('/register', (req, res, next) => {
 })
 
 router.post('/login', (req, res, next) => {
-  res.send('POST login')
+  if (req.body.email && req.body.password) {
+    User.authenticateLogin(req.body.email, req.body.password, (error, user) => {
+      if (error || !user) {
+        const err = new Error('Wrong email or password')
+        err.status = 401
+        return next(err)
+      }
+      req.session.userId = user._id
+      return res.redirect('profile')
+    })
+  } else {
+    const err = new Error('Missing email or password')
+    err.status = 400
+    return next(err)
+  }
 })
 
 router.get('/profile', (req, res, next) => {

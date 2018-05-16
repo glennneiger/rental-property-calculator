@@ -26,6 +26,22 @@ const userSchema = new Schema({
   }
 })
 
+/* Authenticate user login */
+userSchema.statics.authenticateLogin = (email, password, callback) => {
+  User.findOne({ email: email })
+    .exec((err, user) => {
+      if (err || !user) {
+        return callback(err)
+      }
+      bcrypt.compare(password, user.password, (error, result) => {
+        if (result) {
+          return callback(null, user)
+        }
+        return callback()
+      })
+    })
+}
+
 /* Can't use arrow function (gives wrong "this" context) */
 userSchema.pre('save', function (next) {
   const user = this
