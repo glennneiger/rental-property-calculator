@@ -19,7 +19,7 @@ const Sidebar = ({
 }
 
 Sidebar.propTypes = {
-  isLoggedIn: PropTypes.boolean
+  isLoggedIn: PropTypes.bool
 }
 
 export default Sidebar

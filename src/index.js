@@ -1,11 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
-import CalculatorPage from './react/components/CalculatorPage'
+import App from './react/components/App'
 import registerServiceWorker from './react/registerServiceWorker'
+import { BrowserRouter } from 'react-router-dom'
 
-ReactDOM.render(
-  <CalculatorPage />,
-  document.getElementById('root')
+ReactDOM.render((
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+), document.getElementById('root')
 )
 registerServiceWorker()
