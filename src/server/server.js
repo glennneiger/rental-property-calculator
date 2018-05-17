@@ -45,8 +45,9 @@ app.use('/api', apiRouter)
  * Define as the last app.use callback
  */
 app.use((err, req, res, next) => {
+  // console.log(err)
   res.status(err.status || 400)
-  res.send({ error: err.message })
+  res.json({ message: err })
 })
 
 app.listen(config.port, () => {
