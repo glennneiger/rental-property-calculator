@@ -46,21 +46,23 @@ class LoginPage extends Component {
     }
     return (
       <div className='loginPage'>
-        <div className='loginForm'>
-          <form onSubmit={ this.handleSubmit }>
+        <form onSubmit={ this.handleSubmit }>
+          <div className='loginForm'>
+            <label htmlFor='email'>Email</label>
             <input type='text'
               name='email'
-              placeholder={ 'email'}
+              placeholder={ 'Enter Email'}
               value={ this.state.email }
               onChange={ this.handleEmailChange } />
+            <label htmlFor='password'>Password</label>
             <input type='text'
               name='password'
-              placeholder={ 'password'}
+              placeholder={ 'Enter Password'}
               value={ this.state.password }
               onChange={ this.handlePasswordChange } />
             <button>Login</button>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     )
   }

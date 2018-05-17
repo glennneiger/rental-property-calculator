@@ -1,3 +1,33 @@
 .loginPage {
   height: 100%;
 }
+
+.loginForm {
+  width: 500px;
+  margin: 50px auto;
+}
+
+.loginPage label {
+  font-weight: bold;
+}
+
+.loginPage input {
+  width: 100%;
+  padding: 8px 12px;
+  margin: 12px 0px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 2px;
+}
+
+.loginPage button {
+  background-color: #2196F3;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 5px;
+}
