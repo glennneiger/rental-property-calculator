@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import PropTypes from 'prop-types'
+import { Redirect } from 'react-router-dom'
 
 import './loginPage.css'
 
@@ -9,7 +10,8 @@ class LoginPage extends Component {
     super(props)
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      redirectAfterLogin: false
     }
   }
   handleEmailChange = event => {
@@ -28,16 +30,20 @@ class LoginPage extends Component {
       email: this.state.email,
       password: this.state.password
     })
-      .then(response => {
-        if (response) {
-          this.props.handleLogin()
-        }
+      .then(() => {
+        this.props.handleLogin()
+        this.setState({
+          redirectAfterLogin: true
+        })
       })
       .catch(error => {
         console.log(error)
       })
   }
   render() {
+    if (this.state.redirectAfterLogin) {
+      return <Redirect to='/' />
+    }
     return (
       <div className='loginPage'>
         <div className='loginForm'>

@@ -36,7 +36,7 @@ router.post('/login', (req, res, next) => {
         return next(err)
       }
       req.session.userId = user._id
-      return res.redirect('profile')
+      return res.sendStatus(200)
     })
   } else {
     const err = new Error('Missing email or password')
