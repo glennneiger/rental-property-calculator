@@ -31,12 +31,12 @@ router.post('/login', (req, res, next) => {
   if (req.body.email && req.body.password) {
     User.authenticateLogin(req.body.email, req.body.password, (error, user) => {
       if (error || !user) {
-        const err = new Error('Wrong email or password')
+        const err = new Error('Email and password don\'t match')
         err.status = 401
         return next(err)
       }
       req.session.userId = user._id
-      return res.redirect('profile')
+      return res.sendStatus(200)
     })
   } else {
     const err = new Error('Missing email or password')

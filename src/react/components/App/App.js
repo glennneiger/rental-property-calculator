@@ -7,14 +7,26 @@ import PropsRoute from '../PropsRoute'
 import './app.css'
 
 class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      isLoggedIn: false
+    }
+  }
+  handleLogin = () => {
+    this.setState({
+      isLoggedIn: true
+    })
+  }
   render() {
     return (
       <div className='app'>
         { <PropsRoute exact path='/'
           component={ CalculatorPage }
-          isLoggedIn={ false } /> }
+          isLoggedIn={ this.state.isLoggedIn } /> }
         { <PropsRoute exact path='/login'
-          component={ LoginPage } /> }
+          component={ LoginPage }
+          handleLogin = { this.handleLogin }/> }
       </div>
     )
   }
