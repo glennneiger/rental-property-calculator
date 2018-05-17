@@ -37,11 +37,7 @@ class LoginPage extends Component {
         })
       })
       .catch(error => {
-        if (error.response.status === 401) {
-          alert('Wrong email or password')
-        } else if (error.response.status === 400) {
-          alert('Missing email or password')
-        }
+        alert(error.response.data.message)
       })
   }
   render() {
