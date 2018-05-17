@@ -55,7 +55,7 @@ class LoginPage extends Component {
               value={ this.state.email }
               onChange={ this.handleEmailChange } />
             <label htmlFor='password'>Password</label>
-            <input type='text'
+            <input type='password'
               name='password'
               placeholder={ 'Enter Password'}
               value={ this.state.password }
