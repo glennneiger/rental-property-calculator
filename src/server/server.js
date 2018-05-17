@@ -2,6 +2,7 @@ import express from 'express'
 import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
 import session from 'express-session'
+import cors from 'cors'
 const MongoStore = require('connect-mongo')(session)
 
 import apiRouter from './api'
@@ -15,6 +16,12 @@ mongoose.Promise = global.Promise
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use(cors())
+/* For production */
+// app.use(cors({
+//   origin: 'my_production_client_url'
+// }))
+
 
 db.on('error', console.error.bind(console, 'connection error:'))
 db.once('open', () => {
