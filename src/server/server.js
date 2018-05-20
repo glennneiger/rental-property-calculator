@@ -1,10 +1,14 @@
 import express from 'express'
 import mongoose from 'mongoose'
+import bodyParser from 'body-parser'
 
 const users = require('./routes/api/users.js')
 const profile = require('./routes/api/profile.js')
 
 const app = express()
+
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 const db = require('./config/keys.js').mongoURI
 
