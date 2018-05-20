@@ -10,7 +10,7 @@ const CalculatorPage = ({
 }) => {
   return (
     <div className='calculatorPage'>
-      <Sidebar isLoggedIn={ isLoggedIn }/>
+      <Sidebar isLoggedIn={isLoggedIn} />
       <Calculator />
     </div>
   )

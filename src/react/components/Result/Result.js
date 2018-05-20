@@ -12,11 +12,11 @@ const Result = ({
 }) => (
   <div className='result'>
     <h2>Live Results</h2>
-    <p>Initial Investment: { initialInvestment }</p>
-    <p>Initial Equity: { initialEquity }</p>
+    <p>Initial Investment: {initialInvestment}</p>
+    <p>Initial Equity: {initialEquity}</p>
     <FutureResults
-      results={ results }
-      yearsForResults={ yearsForResults }
+      results={results}
+      yearsForResults={yearsForResults}
     />
   </div>
 )

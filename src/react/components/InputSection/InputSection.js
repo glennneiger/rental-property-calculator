@@ -8,9 +8,9 @@ const InputSection = ({
   title
 }) => (
   <div className='inputSection' >
-    <h2>{ title }</h2>
+    <h2>{title}</h2>
     <div className='inputs'>
-      { children }
+      {children}
     </div>
   </div>
 )

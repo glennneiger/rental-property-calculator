@@ -6,7 +6,7 @@ import './guestSidebar.css'
 const GuestSidebar = ({}) => {
   return (
     <div className='guestSidebar'>
-      <p><Link to={ '/login' }>Login</Link> to save your analysis</p>
+      <p><Link to={'/login'}>Login</Link> to save your analysis</p>
     </div>
   )
 }

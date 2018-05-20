@@ -23,13 +23,13 @@ const Input = ({
   }
   const totalWidth = textInputWidth + LABEL_WIDTH
   return (
-    <div className='input' style={ { width: totalWidth } }>
-      <label htmlFor={ inputId }>{ label }:</label>
-      <input type={ 'text' }
-        id={ inputId }
-        style={ { width: textInputWidth } }
-        value={ content }
-        onChange={ handleChange }
+    <div className='input' style={{ width: totalWidth }}>
+      <label htmlFor={inputId}>{label}:</label>
+      <input type={'text'}
+        id={inputId}
+        style={{ width: textInputWidth }}
+        value={content}
+        onChange={handleChange}
       />
     </div>
   )

@@ -21,12 +21,12 @@ class App extends Component {
   render() {
     return (
       <div className='app'>
-        { <PropsRoute exact path='/'
-          component={ CalculatorPage }
-          isLoggedIn={ this.state.isLoggedIn } /> }
-        { <PropsRoute exact path='/login'
-          component={ LoginPage }
-          handleLogin = { this.handleLogin }/> }
+        {<PropsRoute exact path='/'
+          component={CalculatorPage}
+          isLoggedIn={this.state.isLoggedIn} />}
+        {<PropsRoute exact path='/login'
+          component={LoginPage}
+          handleLogin={this.handleLogin} />}
       </div>
     )
   }
