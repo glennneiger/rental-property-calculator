@@ -1,6 +1,8 @@
 import express from 'express'
 import bcrypt from 'bcryptjs'
+import jwt from 'jsonwebtoken'
 
+const keys = require('../../config/keys')
 import { User } from '../../models/User'
 
 const router = express.Router()
@@ -58,14 +60,29 @@ router.post('/login', (req, res) => {
       bcrypt.compare(req.body.password, user.password)
         .then(isMatch => {
           if (isMatch) {
-            return res.json({ msg: 'Logged in' })
+            const payload = {
+              id: user.id,
+              name: user.name
+            }
+            jwt.sign(
+              payload,
+              keys.secret,
+              { expiresIn: 3600 },
+              (err, token) => {
+                return res.json({
+                  success: true,
+                  token: 'Bearer ' + token
+                })
+              }
+            )
+          } else {
+            return res.status(400).json({
+              password: 'The password entered is incorrect.'
+            })
           }
-          return res.status(400).json({
-            password: 'The password entered is incorrect.'
-          })
         })
     })
-    .catch()
+    .catch(err => console.log(err))
 })
 
 module.exports = router
