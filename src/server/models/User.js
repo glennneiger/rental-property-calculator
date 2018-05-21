@@ -1,6 +1,8 @@
 import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
+import { MODEL_USERS } from '../../constants'
+
 const UserSchema = new Schema({
   name: {
     type: String,
@@ -20,4 +22,4 @@ const UserSchema = new Schema({
   }
 })
 
-export const User = mongoose.model('users', UserSchema)
+export const User = mongoose.model(MODEL_USERS, UserSchema)

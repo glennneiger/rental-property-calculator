@@ -38,6 +38,9 @@ export const INPUT_ID_WATER_AND_SEWER = 'waterAndSewerInput'
 
 export const INTERVAL_YEAR_RESULTS = 5
 
+export const MODEL_USERS = 'users'
+export const MODEL_PROFILE = 'profile'
+
 export const MONTHS_PER_YEAR = 12
 export const NUMBER_PRECISION_DISPLAY = 2
 export const NUMBER_SYSTEM_DECIMAL = 10
