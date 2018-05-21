@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken'
 import passport from 'passport'
 
 const keys = require('../../config/keys')
-import { User } from '../../models/User'
+import User from '../../models/User'
 import { validateRegisterInput } from '../../validation/register'
 import { validateLoginInput } from '../../validation/login'
 

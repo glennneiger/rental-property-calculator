@@ -22,4 +22,4 @@ const ProfileSchema = new Schema({
   }
 })
 
-export const User = mongoose.model(MODEL_PROFILE, ProfileSchema)
+export default mongoose.model(MODEL_PROFILE, ProfileSchema)
