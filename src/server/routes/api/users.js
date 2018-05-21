@@ -5,6 +5,9 @@ import passport from 'passport'
 
 const keys = require('../../config/keys')
 import { User } from '../../models/User'
+import {
+  validateRegisterInput
+} from '../../validation/register'
 
 const router = express.Router()
 
@@ -21,6 +24,12 @@ router.get('/test', (req, res) => {
 // @desc    Register new User
 // @access  Public
 router.post('/register', (req, res) => {
+  const { errors, isValid } = validateRegisterInput(req.body)
+
+  if (!isValid) {
+    return res.status(400).json(errors)
+  }
+
   User.findOne({ email: req.body.email })
     .then(user => {
       if (user) {
