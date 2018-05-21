@@ -1,6 +1,7 @@
 import express from 'express'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
+import passport from 'passport'
 
 const keys = require('../../config/keys')
 import { User } from '../../models/User'
@@ -66,7 +67,7 @@ router.post('/login', (req, res) => {
             }
             jwt.sign(
               payload,
-              keys.secret,
+              keys.secretOrKey,
               { expiresIn: 3600 },
               (err, token) => {
                 return res.json({
@@ -84,5 +85,20 @@ router.post('/login', (req, res) => {
     })
     .catch(err => console.log(err))
 })
+
+// @route   GET api/users/current
+// @desc    Return current user
+// @access  Private
+router.get(
+  '/current',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    res.json({
+      id: req.user.id,
+      name: req.user.name,
+      email: req.user.email
+    })
+  }
+)
 
 module.exports = router

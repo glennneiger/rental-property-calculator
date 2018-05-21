@@ -1,6 +1,7 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
+import passport from 'passport'
 
 const users = require('./routes/api/users.js')
 const profile = require('./routes/api/profile.js')
@@ -16,9 +17,8 @@ mongoose.connect(db)
   .then(() => console.log('Mongoose connected to MongoDB'))
   .catch(err => console.log(err))
 
-app.get('/', (req, res) => {
-  return res.send('Hello World')
-})
+app.use(passport.initialize())
+require('./config/passport')(passport)
 
 app.use('/api/users', users)
 app.use('/api/profile', profile)
