@@ -5,9 +5,8 @@ import passport from 'passport'
 
 const keys = require('../../config/keys')
 import { User } from '../../models/User'
-import {
-  validateRegisterInput
-} from '../../validation/register'
+import { validateRegisterInput } from '../../validation/register'
+import { validateLoginInput } from '../../validation/login'
 
 const router = express.Router()
 
@@ -33,7 +32,8 @@ router.post('/register', (req, res) => {
   User.findOne({ email: req.body.email })
     .then(user => {
       if (user) {
-        return res.status(400).json({ email: 'Email already exists.' })
+        errors.email = 'Email already exists.'
+        return res.status(400).json(errors)
       }
 
       const newUser = new User({
@@ -60,11 +60,17 @@ router.post('/register', (req, res) => {
 // @desc    Login User / Returning JWT
 // @access  Public
 router.post('/login', (req, res) => {
+  const { errors, isValid } = validateLoginInput(req.body)
+
+  if (!isValid) {
+    return res.status(400).json(errors)
+  }
 
   User.findOne({ email: req.body.email })
     .then(user => {
       if (!user) {
-        return res.status(404).json({ email: 'No user exists for that email.' })
+        errors.email = 'No user exists for that email'
+        return res.status(404).json(errors)
       }
 
       bcrypt.compare(req.body.password, user.password)
@@ -86,9 +92,8 @@ router.post('/login', (req, res) => {
               }
             )
           } else {
-            return res.status(400).json({
-              password: 'The password entered is incorrect.'
-            })
+            errors.password = 'The password entered is incorrect.'
+            return res.status(400).json(errors)
           }
         })
     })
