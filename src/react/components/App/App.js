@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
+import { Route } from 'react-router-dom'
 
 import CalculatorPage from '../CalculatorPage'
 import LoginPage from '../LoginPage'
-import PropsRoute from '../PropsRoute'
+import RegisterPage from '../RegisterPage'
 
 import './app.css'
 
@@ -21,12 +22,9 @@ class App extends Component {
   render() {
     return (
       <div className='app'>
-        {<PropsRoute exact path='/'
-          component={CalculatorPage}
-          isLoggedIn={this.state.isLoggedIn} />}
-        {<PropsRoute exact path='/login'
-          component={LoginPage}
-          handleLogin={this.handleLogin} />}
+        <Route exact path='/' component={CalculatorPage} />
+        <Route exact path='/login' component={LoginPage} />
+        <Route exact path='/register' component={RegisterPage} />
       </div>
     )
   }

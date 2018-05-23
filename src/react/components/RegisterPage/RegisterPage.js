@@ -1,15 +1,13 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
 
-import './loginPage.css'
+import './registerPage.css'
 
-class LoginPage extends Component {
+class RegisterPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
       email: '',
-      password: '',
-      redirectAfterLogin: false
+      password: ''
     }
   }
   handleEmailChange = event => {
@@ -26,13 +24,10 @@ class LoginPage extends Component {
     event.preventDefault()
   }
   render() {
-    if (this.state.redirectAfterLogin) {
-      return <Redirect to='/' />
-    }
     return (
-      <div className='loginPage'>
+      <div className='registerPage'>
         <form onSubmit={this.handleSubmit}>
-          <div className='loginForm'>
+          <div className='registerForm'>
             <label htmlFor='email'>Email</label>
             <input type='text'
               name='email'
@@ -45,7 +40,7 @@ class LoginPage extends Component {
               placeholder={'Enter Password'}
               value={this.state.password}
               onChange={this.handlePasswordChange} />
-            <button>Login</button>
+            <button>Register</button>
           </div>
         </form>
       </div>
@@ -53,4 +48,4 @@ class LoginPage extends Component {
   }
 }
 
-export default LoginPage
+export default RegisterPage

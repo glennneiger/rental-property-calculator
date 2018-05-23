@@ -1,0 +1,33 @@
+.registerPage {
+  height: 100%;
+}
+
+.registerForm {
+  width: 500px;
+  margin: 50px auto;
+}
+
+.registerPage label {
+  font-weight: bold;
+}
+
+.registerPage input {
+  width: 100%;
+  padding: 8px 12px;
+  margin: 12px 0px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 2px;
+}
+
+.registerPage button {
+  background-color: #2196F3;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 5px;
+}
