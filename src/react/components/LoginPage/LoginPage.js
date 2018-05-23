@@ -8,27 +8,25 @@ class LoginPage extends Component {
     super(props)
     this.state = {
       email: '',
-      password: '',
-      redirectAfterLogin: false
+      password: ''
     }
   }
-  handleEmailChange = event => {
+  handleChange = event => {
     this.setState({
-      email: event.target.value
-    })
-  }
-  handlePasswordChange = event => {
-    this.setState({
-      password: event.target.value
+      [event.target.name]: event.target.value
     })
   }
   handleSubmit = event => {
     event.preventDefault()
+
+    const user = {
+      email: this.state.email,
+      password: this.state.password
+    }
+
+    console.log(user)
   }
   render() {
-    if (this.state.redirectAfterLogin) {
-      return <Redirect to='/' />
-    }
     return (
       <div className='loginPage'>
         <form onSubmit={this.handleSubmit}>
@@ -38,13 +36,13 @@ class LoginPage extends Component {
               name='email'
               placeholder={'Enter Email'}
               value={this.state.email}
-              onChange={this.handleEmailChange} />
+              onChange={this.handleChange} />
             <label htmlFor='password'>Password</label>
             <input type='password'
               name='password'
               placeholder={'Enter Password'}
               value={this.state.password}
-              onChange={this.handlePasswordChange} />
+              onChange={this.handleChange} />
             <button>Login</button>
           </div>
         </form>
