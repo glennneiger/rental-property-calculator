@@ -31,3 +31,11 @@
   width: 100%;
   border-radius: 5px;
 }
+
+.registerPage .isInvalid {
+  border: 1px solid red;
+}
+
+.registerPage .invalidMessage {
+  color: red;
+}

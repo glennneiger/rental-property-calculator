@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import classNames from 'classnames'
 
 import './registerPage.css'
 
@@ -31,9 +32,10 @@ class RegisterPage extends Component {
 
     axios.post('/api/users/register', newUser)
       .then(res => console.log(res.data))
-      .catch(err => console.log(err.response.data))
+      .catch(err => this.setState({ errors: err.response.data }))
   }
   render() {
+    const { errors } = this.state
     return (
       <div className='registerPage'>
         <form onSubmit={this.handleSubmit}>
@@ -43,25 +45,53 @@ class RegisterPage extends Component {
               name='name'
               placeholder={'Enter Your Name'}
               value={this.state.name}
-              onChange={this.handleChange} />
+              onChange={this.handleChange}
+              className={classNames({
+                isInvalid: errors.name
+              })} />
+            {
+              errors.name &&
+                (<div className='invalidMessage'>{errors.name}</div>)
+            }
             <label htmlFor='email'>Email</label>
             <input type='text'
               name='email'
               placeholder={'Enter Email'}
               value={this.state.email}
-              onChange={this.handleChange} />
+              onChange={this.handleChange}
+              className={classNames({
+                isInvalid: errors.name
+              })} />
+            {
+              errors.email &&
+                (<div className='invalidMessage'>{errors.email}</div>)
+            }
             <label htmlFor='password'>Password</label>
             <input type='password'
               name='password'
               placeholder={'Enter Password'}
               value={this.state.password}
-              onChange={this.handleChange} />
+              onChange={this.handleChange}
+              className={classNames({
+                isInvalid: errors.name
+              })} />
+            {
+              errors.password &&
+                (<div className='invalidMessage'>{errors.password}</div>)
+            }
             <label htmlFor='password2'>Confirm Password</label>
             <input type='password'
               name='password2'
               placeholder={'Confirm Password'}
               value={this.state.password2}
-              onChange={this.handleChange} />
+              onChange={this.handleChange}
+              className={classNames({
+                isInvalid: errors.name
+              })} />
+            {
+              errors.password2 &&
+                (<div className='invalidMessage'>{errors.password2}</div>)
+            }
             <button>Register</button>
           </div>
         </form>
