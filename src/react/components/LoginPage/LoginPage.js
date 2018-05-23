@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
 
 import './loginPage.css'
 
@@ -8,7 +7,8 @@ class LoginPage extends Component {
     super(props)
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      errors: {}
     }
   }
   handleChange = event => {
