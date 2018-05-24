@@ -8,17 +8,6 @@ import RegisterPage from '../Authentication/RegisterPage'
 import './app.css'
 
 class App extends Component {
-  constructor() {
-    super()
-    this.state = {
-      isLoggedIn: false
-    }
-  }
-  handleLogin = () => {
-    this.setState({
-      isLoggedIn: true
-    })
-  }
   render() {
     return (
       <div className='app'>
