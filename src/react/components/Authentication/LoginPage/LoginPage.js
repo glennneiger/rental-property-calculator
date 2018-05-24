@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import classNames from 'classnames'
 import axios from 'axios'
+import PropTypes from 'prop-types'
 
 import '../authentication.css'
 
@@ -13,6 +14,11 @@ class LoginPage extends Component {
       errors: {}
     }
   }
+  componentWillReceiveProps = nextProps => {
+    if (nextProps.auth.isAuthenticated) {
+      this.props.history.push('/')
+    }
+  }
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
@@ -21,16 +27,14 @@ class LoginPage extends Component {
   handleSubmit = event => {
     event.preventDefault()
 
-    const user = {
+    const userData = {
       email: this.state.email,
       password: this.state.password
     }
-    axios.post('/api/users/login', user)
-      .then(res => console.log(res.data))
-      .catch(err => this.setState({ errors: err.response.data }))
+    this.props.loginUser(userData)
   }
   render() {
-    const { errors } = this.state
+    const { errors } = this.props
     return (
       <div className='authenticationPage'>
         <form onSubmit={this.handleSubmit}>
@@ -67,6 +71,13 @@ class LoginPage extends Component {
       </div>
     )
   }
+}
+
+LoginPage.propTypes = {
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired,
+  history: PropTypes.object,
+  loginUser: PropTypes.func.isRequired
 }
 
 export default LoginPage
