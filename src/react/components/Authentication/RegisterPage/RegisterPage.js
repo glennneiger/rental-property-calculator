@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
@@ -16,6 +15,13 @@ class RegisterPage extends Component {
       errors: {}
     }
   }
+  componentWillReceiveProps = nextProps => {
+    if (nextProps.errors) {
+      this.setState({
+        errors: nextProps.errors
+      })
+    }
+  }
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
@@ -30,10 +36,7 @@ class RegisterPage extends Component {
       password: this.state.password,
       password2: this.state.password2
     }
-    this.props.registerUser(newUser)
-    // axios.post('/api/users/register', newUser)
-    //   .then(res => console.log(res.data))
-    //   .catch(err => this.setState({ errors: err.response.data }))
+    this.props.registerUser(newUser, this.props.history)
   }
   render() {
     const { errors } = this.state
@@ -102,6 +105,8 @@ class RegisterPage extends Component {
 }
 
 RegisterPage.propTypes = {
+  errors: PropTypes.object.isRequired,
+  history: PropTypes.history,
   registerUser: PropTypes.func.isRequired
 }
 
