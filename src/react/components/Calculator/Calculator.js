@@ -293,30 +293,30 @@ class Calculator extends Component {
   render() {
     return (
       <div className='calculator'>
-        { inputSectionData.map(section => (
-          <InputSection key={ section.title }
-            title={ section.title }>
-            { section.childProps.map(props => (
+        {inputSectionData.map(section => (
+          <InputSection key={section.title}
+            title={section.title}>
+            {section.childProps.map(props => (
               <Input
                 content={
                   this.state.inputContent[section.title][props.inputId]
                 }
-                key={ props.inputId }
-                { ...props }
-                updateValueForInput={ this.updateValueForInput }
-                section={ section.title }
-                inputType={ props.inputType }
+                key={props.inputId}
+                {...props}
+                updateValueForInput={this.updateValueForInput}
+                section={section.title}
+                inputType={props.inputType}
               />
-            )) }
+            ))}
           </InputSection>
-        )) }
+        ))}
         <Result
-          initialEquity={ this.calculateInitialEquity() }
-          initialInvestment={ this.calculateInitialInvestment() }
-          results={ this.calculateResults() }
-          yearsForResults={ getYearsForResults(
+          initialEquity={this.calculateInitialEquity()}
+          initialInvestment={this.calculateInitialInvestment()}
+          results={this.calculateResults()}
+          yearsForResults={getYearsForResults(
             getAmortizationPeriod(this.state.inputContent)
-          ) }
+          )}
         />
       </div>
     )

@@ -13,9 +13,9 @@ const PropsRoute = ({
   component,
   ...rest
 }) => (
-  <Route { ...rest } render={ routeProps => {
+  <Route {...rest} render={routeProps => {
     return renderMergedProps(component, routeProps, rest)
-  } } />
+  }} />
 )
 
 PropsRoute.propTypes = {

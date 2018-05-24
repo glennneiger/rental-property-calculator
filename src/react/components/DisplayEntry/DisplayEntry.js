@@ -13,8 +13,9 @@ const DisplayEntry = ({
   title
 }) => (
   <p>
-    { `${ title }:
-      ${ prefix }${ content.toFixed(NUMBER_PRECISION_DISPLAY) }${ suffix }` }
+    {`${title}:
+    ${prefix}${content.toFixed(NUMBER_PRECISION_DISPLAY)}${suffix}`
+    }
   </p>
 )
 

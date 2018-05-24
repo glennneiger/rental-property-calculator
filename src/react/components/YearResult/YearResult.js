@@ -56,12 +56,12 @@ const YearResult = ({
   ]
   return (
     <div className='yearResult'>
-      <h3>Year { year }</h3>
+      <h3>Year {year}</h3>
       {
         displayEntries.map(entry => (
           <DisplayEntry
-            key={ entry.title }
-            { ...entry }
+            key={entry.title}
+            {...entry}
           />
         ))
       }
