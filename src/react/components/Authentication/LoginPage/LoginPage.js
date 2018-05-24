@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import './loginPage.css'
+import '../authentication.css'
 
 class LoginPage extends Component {
   constructor(props) {
@@ -28,9 +28,9 @@ class LoginPage extends Component {
   }
   render() {
     return (
-      <div className='loginPage'>
+      <div className='authenticationPage'>
         <form onSubmit={this.handleSubmit}>
-          <div className='loginForm'>
+          <div className='authenticationForm'>
             <label htmlFor='email'>Email</label>
             <input type='text'
               name='email'

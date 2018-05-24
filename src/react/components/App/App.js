@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 
 import CalculatorPage from '../CalculatorPage'
-import LoginPage from '../LoginPage'
-import RegisterPage from '../RegisterPage'
+import LoginPage from '../Authentication/LoginPage'
+import RegisterPage from '../Authentication/RegisterPage'
 
 import './app.css'
 

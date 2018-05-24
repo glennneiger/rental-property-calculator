@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import classNames from 'classnames'
 
-import './registerPage.css'
+import '../authentication.css'
 
 class RegisterPage extends Component {
   constructor(props) {
@@ -37,9 +37,9 @@ class RegisterPage extends Component {
   render() {
     const { errors } = this.state
     return (
-      <div className='registerPage'>
+      <div className='authenticationPage'>
         <form onSubmit={this.handleSubmit}>
-          <div className='registerForm'>
+          <div className='authenticationForm'>
             <label htmlFor='name'>Name</label>
             <input type='text'
               name='name'

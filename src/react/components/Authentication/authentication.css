@@ -1,17 +1,26 @@
-.loginPage {
+.authenticationPage .isInvalid {
+  border: 1px solid red;
+}
+
+.authenticationPage .invalidMessage {
+  color: red;
+  padding-bottom: 16px;
+}
+
+.authenticationPage {
   height: 100%;
 }
 
-.loginForm {
+.authenticationForm {
   width: 500px;
   margin: 50px auto;
 }
 
-.loginPage label {
+.authenticationPage label {
   font-weight: bold;
 }
 
-.loginPage input {
+.authenticationPage input {
   width: 100%;
   padding: 8px 12px;
   margin: 12px 0px;
@@ -21,7 +30,7 @@
   border-radius: 2px;
 }
 
-.loginPage button {
+.authenticationPage button {
   background-color: #2196F3;
   color: white;
   padding: 14px 20px;
