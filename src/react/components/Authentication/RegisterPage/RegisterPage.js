@@ -11,15 +11,7 @@ class RegisterPage extends Component {
       name: '',
       email: '',
       password: '',
-      password2: '',
-      errors: {}
-    }
-  }
-  componentWillReceiveProps = nextProps => {
-    if (nextProps.errors) {
-      this.setState({
-        errors: nextProps.errors
-      })
+      password2: ''
     }
   }
   handleChange = event => {
@@ -39,7 +31,7 @@ class RegisterPage extends Component {
     this.props.registerUser(newUser, this.props.history)
   }
   render() {
-    const { errors } = this.state
+    const { errors } = this.props
     return (
       <div className='authenticationPage'>
         <form onSubmit={this.handleSubmit}>
@@ -106,7 +98,7 @@ class RegisterPage extends Component {
 
 RegisterPage.propTypes = {
   errors: PropTypes.object.isRequired,
-  history: PropTypes.history,
+  history: PropTypes.object,
   registerUser: PropTypes.func.isRequired
 }
 
