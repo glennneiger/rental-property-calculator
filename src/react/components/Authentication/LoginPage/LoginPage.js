@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import classNames from 'classnames'
+import axios from 'axios'
 
 import '../authentication.css'
 
@@ -23,10 +25,12 @@ class LoginPage extends Component {
       email: this.state.email,
       password: this.state.password
     }
-
-    console.log(user)
+    axios.post('/api/users/login', user)
+      .then(res => console.log(res.data))
+      .catch(err => this.setState({ errors: err.response.data }))
   }
   render() {
+    const { errors } = this.state
     return (
       <div className='authenticationPage'>
         <form onSubmit={this.handleSubmit}>
@@ -36,13 +40,27 @@ class LoginPage extends Component {
               name='email'
               placeholder={'Enter Email'}
               value={this.state.email}
-              onChange={this.handleChange} />
+              onChange={this.handleChange}
+              className={classNames({
+                isInvalid: errors.email
+              })} />
+            {
+              errors.email &&
+                (<div className='invalidMessage'>{errors.email}</div>)
+            }
             <label htmlFor='password'>Password</label>
             <input type='password'
               name='password'
               placeholder={'Enter Password'}
               value={this.state.password}
-              onChange={this.handleChange} />
+              onChange={this.handleChange}
+              className={classNames({
+                isInvalid: errors.password
+              })} />
+            {
+              errors.password &&
+                (<div className='invalidMessage'>{errors.password}</div>)
+            }
             <button>Login</button>
           </div>
         </form>
