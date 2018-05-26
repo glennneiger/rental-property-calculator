@@ -2,7 +2,6 @@
   "name": "real-estate-calculator",
   "version": "0.1.0",
   "private": true,
-  "main": "src/electron/main.js",
   "dependencies": {
     "autoprefixer": "7.1.6",
     "axios": "^0.18.0",
@@ -71,14 +70,12 @@
     "server": "babel-watch src/server/server.js",
     "build": "node scripts/build.js",
     "test": "mocha --compilers js:babel-core/register --opts mocha.opts --no-deprecation",
-    "test:watch": "mocha --watch --compilers js:babel-core/register --opts mocha.opts --no-deprecation",
-    "electron": "electron ."
+    "test:watch": "mocha --watch --compilers js:babel-core/register --opts mocha.opts --no-deprecation"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.3",
     "babel-watch": "^2.0.7",
     "chai": "^4.1.2",
-    "electron": "^1.8.6",
     "eslint": "^4.19.1",
     "eslint-plugin-mocha": "^5.0.0",
     "mocha": "^5.1.1",
