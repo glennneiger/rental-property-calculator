@@ -1,24 +1,50 @@
 import {
-
+  UPDATE_INPUT
 } from '../actions/constants'
 import {
-  TITLE_FUTURE_PROJECTIONS,
-  TITLE_GENERAL_INFO,
-  TITLE_INITIAL_PURCHASE,
-  TITLE_MONTHLY_EXPENSES,
-  TITLE_MONTHLY_INCOME
-} from '../constants'
+  inputSectionData
+} from '../react/components/Calculator/childProps'
 
-const initialState = {
-  [TITLE_GENERAL_INFO]: {},
-  [TITLE_INITIAL_PURCHASE]: {},
-  [TITLE_MONTHLY_INCOME]: {},
-  [TITLE_MONTHLY_EXPENSES]: {},
-  [TITLE_FUTURE_PROJECTIONS]: {}
+const getInitialState = () => {
+  let initialState = {}
+  inputSectionData.forEach(inputSection => {
+    const section = inputSection.title
+    inputSection.childProps.forEach(props => {
+      const input = props.inputId
+      if (!initialState[section]) {
+        initialState[section] = {}
+      }
+      initialState[section][input] = ''
+    })
+  })
+  return initialState
 }
 
-const calculatorReducer = (state = initialState, action) => {
+/*
+ * Reducer that handles a single calculator section
+ */
+const calculatorSection = (state, action) => {
   switch (action.type) {
+  case UPDATE_INPUT:
+    return {
+      ...state,
+      [action.payload.inputId]: action.payload.value
+    }
+  default:
+    return state
+  }
+}
+
+const calculatorReducer = (state = getInitialState(), action) => {
+  switch (action.type) {
+  case UPDATE_INPUT:
+    return {
+      ...state,
+      [action.payload.section]: calculatorSection(
+        state[action.payload.section],
+        action
+      )
+    }
   default:
     return state
   }

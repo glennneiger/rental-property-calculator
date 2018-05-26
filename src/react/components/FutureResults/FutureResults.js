@@ -5,7 +5,6 @@ import './futureResults.css'
 import YearResult from '../YearResult'
 
 const FutureResults = ({
-  results,
   yearsForResults
 }) => {
   return (
@@ -17,7 +16,6 @@ const FutureResults = ({
         : yearsForResults.map(year => (
           <YearResult
             key={year}
-            result={results[year]}
             year={year} />
         ))}
     </div>
@@ -25,7 +23,6 @@ const FutureResults = ({
 }
 
 FutureResults.propTypes = {
-  results: PropTypes.object.isRequired,
   yearsForResults: PropTypes.array.isRequired
 }
 
