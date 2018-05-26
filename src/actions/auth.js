@@ -2,6 +2,7 @@ import axios from 'axios'
 import jwt_decode from 'jwt-decode'
 
 import {
+  CLEAR_ERRORS,
   GET_ERRORS,
   SET_CURRENT_USER
 } from './constants'
@@ -37,7 +38,18 @@ export const loginUser = userData => dispatch => {
     )
 }
 
+export const logoutUser = () => dispatch => {
+  localStorage.removeItem('jwtToken')
+  setAuthToken(false)
+  // TODO: remove profile from state?
+  dispatch(setCurrentUser({}))
+}
+
 export const setCurrentUser = decodedToken => ({
   type: SET_CURRENT_USER,
   payload: decodedToken
+})
+
+export const clearErrors = () => ({
+  type: CLEAR_ERRORS
 })

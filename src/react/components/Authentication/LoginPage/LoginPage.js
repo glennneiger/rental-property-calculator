@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import classNames from 'classnames'
-import axios from 'axios'
 import PropTypes from 'prop-types'
 
 import '../authentication.css'
@@ -13,6 +12,12 @@ class LoginPage extends Component {
       password: '',
       errors: {}
     }
+  }
+  componentDidMount = () => {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push('/')
+    }
+    this.props.clearErrors()
   }
   componentWillReceiveProps = nextProps => {
     if (nextProps.auth.isAuthenticated) {
@@ -75,6 +80,7 @@ class LoginPage extends Component {
 
 LoginPage.propTypes = {
   auth: PropTypes.object.isRequired,
+  clearErrors: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired,
   history: PropTypes.object,
   loginUser: PropTypes.func.isRequired

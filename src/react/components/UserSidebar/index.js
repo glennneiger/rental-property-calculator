@@ -1,3 +1,9 @@
-import UserSidebar from './UserSidebar'
+import { connect } from 'react-redux'
 
-export default UserSidebar
+import UserSidebar from './UserSidebar'
+import { logoutUser } from '../../../actions/auth'
+
+export default connect(
+  null,
+  { logoutUser }
+)(UserSidebar)

@@ -1,7 +1,10 @@
 import { connect } from 'react-redux'
 
 import LoginPage from './LoginPage'
-import { loginUser } from '../../../../actions/auth'
+import {
+  clearErrors,
+  loginUser
+} from '../../../../actions/auth'
 
 const mapStateToProps = state => ({
   auth: state.auth,
@@ -10,5 +13,6 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { loginUser }
+  { clearErrors,
+    loginUser }
 )(LoginPage)

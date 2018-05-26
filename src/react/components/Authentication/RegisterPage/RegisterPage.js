@@ -14,6 +14,12 @@ class RegisterPage extends Component {
       password2: ''
     }
   }
+  componentDidMount = () => {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push('/')
+    }
+    this.props.clearErrors()
+  }
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
@@ -97,6 +103,8 @@ class RegisterPage extends Component {
 }
 
 RegisterPage.propTypes = {
+  auth: PropTypes.object.isRequired,
+  clearErrors: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired,
   history: PropTypes.object,
   registerUser: PropTypes.func.isRequired
