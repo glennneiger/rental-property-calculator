@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import classNames from 'classnames'
 import PropTypes from 'prop-types'
 
+import AuthInput from '../AuthInput'
 import '../authentication.css'
 
 class LoginPage extends Component {
@@ -44,32 +44,23 @@ class LoginPage extends Component {
       <div className='authenticationPage'>
         <form onSubmit={this.handleSubmit}>
           <div className='authenticationForm'>
-            <label htmlFor='email'>Email</label>
-            <input type='text'
+            <AuthInput
+              error={errors.email}
+              handleChange={this.handleChange}
+              label='Email'
               name='email'
-              placeholder={'Enter Email'}
+              placeholder='Enter Email'
               value={this.state.email}
-              onChange={this.handleChange}
-              className={classNames({
-                isInvalid: errors.email
-              })} />
-            {
-              errors.email &&
-                (<div className='invalidMessage'>{errors.email}</div>)
-            }
-            <label htmlFor='password'>Password</label>
-            <input type='password'
+            />
+            <AuthInput
+              error={errors.password}
+              handleChange={this.handleChange}
+              label='Password'
               name='password'
-              placeholder={'Enter Password'}
+              placeholder='Enter Password'
+              type='password'
               value={this.state.password}
-              onChange={this.handleChange}
-              className={classNames({
-                isInvalid: errors.password
-              })} />
-            {
-              errors.password &&
-                (<div className='invalidMessage'>{errors.password}</div>)
-            }
+            />
             <button>Login</button>
           </div>
         </form>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import classNames from 'classnames'
 
+import AuthInput from '../AuthInput'
 import '../authentication.css'
 
 class RegisterPage extends Component {
@@ -42,58 +42,40 @@ class RegisterPage extends Component {
       <div className='authenticationPage'>
         <form onSubmit={this.handleSubmit}>
           <div className='authenticationForm'>
-            <label htmlFor='name'>Name</label>
-            <input type='text'
+            <AuthInput
+              error={errors.name}
+              handleChange={this.handleChange}
+              label='Name'
               name='name'
-              placeholder={'Enter Your Name'}
+              placeholder='Enter Your Name'
               value={this.state.name}
-              onChange={this.handleChange}
-              className={classNames({
-                isInvalid: errors.name
-              })} />
-            {
-              errors.name &&
-                (<div className='invalidMessage'>{errors.name}</div>)
-            }
-            <label htmlFor='email'>Email</label>
-            <input type='text'
+            />
+            <AuthInput
+              error={errors.email}
+              handleChange={this.handleChange}
+              label='Email'
               name='email'
-              placeholder={'Enter Email'}
+              placeholder='Enter Email'
               value={this.state.email}
-              onChange={this.handleChange}
-              className={classNames({
-                isInvalid: errors.name
-              })} />
-            {
-              errors.email &&
-                (<div className='invalidMessage'>{errors.email}</div>)
-            }
-            <label htmlFor='password'>Password</label>
-            <input type='password'
+            />
+            <AuthInput
+              error={errors.password}
+              handleChange={this.handleChange}
+              label='Password'
               name='password'
-              placeholder={'Enter Password'}
+              placeholder='Enter Password'
+              type='password'
               value={this.state.password}
-              onChange={this.handleChange}
-              className={classNames({
-                isInvalid: errors.name
-              })} />
-            {
-              errors.password &&
-                (<div className='invalidMessage'>{errors.password}</div>)
-            }
-            <label htmlFor='password2'>Confirm Password</label>
-            <input type='password'
+            />
+            <AuthInput
+              error={errors.password2}
+              handleChange={this.handleChange}
+              label='Confirm Password'
               name='password2'
-              placeholder={'Confirm Password'}
+              placeholder='Confirm Password'
+              type='password'
               value={this.state.password2}
-              onChange={this.handleChange}
-              className={classNames({
-                isInvalid: errors.name
-              })} />
-            {
-              errors.password2 &&
-                (<div className='invalidMessage'>{errors.password2}</div>)
-            }
+            />
             <button>Register</button>
           </div>
         </form>
