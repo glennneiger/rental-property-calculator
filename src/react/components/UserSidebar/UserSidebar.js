@@ -1,13 +1,20 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import './userSidebar.css'
 
-const UserSidebar = ({}) => {
+const UserSidebar = ({
+  logoutUser
+}) => {
   return (
     <div className='userSidebar'>
-      User Sidebar
+      <button onClick={ logoutUser }>Logout</button>
     </div>
   )
+}
+
+UserSidebar.propTypes = {
+  logoutUser: PropTypes.func.isRequired
 }
 
 export default UserSidebar

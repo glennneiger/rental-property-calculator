@@ -6,11 +6,11 @@ import GuestSidebar from '../GuestSidebar'
 import UserSidebar from '../UserSidebar'
 
 const Sidebar = ({
-  isLoggedIn
+  auth
 }) => {
   return (
     <div className='sidebar'>
-      { isLoggedIn
+      { auth.isAuthenticated
         ? <UserSidebar />
         : <GuestSidebar />
       }
@@ -19,7 +19,7 @@ const Sidebar = ({
 }
 
 Sidebar.propTypes = {
-  isLoggedIn: PropTypes.bool
+  auth: PropTypes.object.isRequired
 }
 
 export default Sidebar

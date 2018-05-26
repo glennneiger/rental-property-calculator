@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import '../authentication.css'
@@ -11,9 +11,14 @@ class RegisterPage extends Component {
       name: '',
       email: '',
       password: '',
-      password2: '',
-      errors: {}
+      password2: ''
     }
+  }
+  componentDidMount = () => {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push('/')
+    }
+    this.props.clearErrors()
   }
   handleChange = event => {
     this.setState({
@@ -29,13 +34,10 @@ class RegisterPage extends Component {
       password: this.state.password,
       password2: this.state.password2
     }
-
-    axios.post('/api/users/register', newUser)
-      .then(res => console.log(res.data))
-      .catch(err => this.setState({ errors: err.response.data }))
+    this.props.registerUser(newUser, this.props.history)
   }
   render() {
-    const { errors } = this.state
+    const { errors } = this.props
     return (
       <div className='authenticationPage'>
         <form onSubmit={this.handleSubmit}>
@@ -98,6 +100,14 @@ class RegisterPage extends Component {
       </div>
     )
   }
+}
+
+RegisterPage.propTypes = {
+  auth: PropTypes.object.isRequired,
+  clearErrors: PropTypes.func.isRequired,
+  errors: PropTypes.object.isRequired,
+  history: PropTypes.object,
+  registerUser: PropTypes.func.isRequired
 }
 
 export default RegisterPage
