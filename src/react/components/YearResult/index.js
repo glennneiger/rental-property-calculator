@@ -36,7 +36,8 @@ import {
   calculateInitialInvestment as calculateInitialInvestmentUtil,
   calculatePropertyValueForYear as calculatePropertyValueForYearUtil,
   calculateEquityForYear as calculateEquityForYearUtil,
-  calculateRemainingLoanBalanceForYear as calculateRemainingLoanBalanceForYearUtil,
+  calculateRemainingLoanBalanceForYear
+  as calculateRemainingLoanBalanceForYearUtil,
   calculateInitialEquity as calculateInitialEquityUtil,
   calculateReturnOnEquityForYear as calculateReturnOnEquityForYearUtil,
   calculateReturnOnInvestmentForYear as calculateReturnOnInvestmentForYearUtil

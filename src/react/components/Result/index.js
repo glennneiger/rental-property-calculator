@@ -7,7 +7,6 @@ import {
 } from '../../../utils/calculationUtils'
 import {
   INPUT_ID_AFTER_REPAIR_VALUE,
-  INPUT_ID_AMORTIZATION_PERIOD,
   INPUT_ID_DOWN_PAYMENT,
   INPUT_ID_PURCHASE_PRICE,
   INPUT_ID_REPAIR_COSTS,
