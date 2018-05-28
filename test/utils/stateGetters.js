@@ -9,10 +9,12 @@ import {
   getClosingCosts,
   getDownPayment,
   getInitialLoanAmount,
+  getInitialPurchasePrice,
   getInterestRate,
+  getMonthlyExpenses,
+  getMonthlyIncome,
   getMonthlyMortgage,
   getOtherInitialCosts,
-  getInitialPurchasePrice,
   getRepairCosts
 } from '../../src/utils/stateGetters'
 import {
@@ -321,6 +323,20 @@ describe('utils/stateGetters', () => {
       expect(getInitialLoanAmount(state))
         .to
         .equal(0)
+    })
+  })
+  describe('getMonthlyIncome', () => {
+    it('returns proper value', () => {
+      expect(getMonthlyIncome(state))
+        .to
+        .equal(state.calculator[TITLE_MONTHLY_INCOME])
+    })
+  })
+  describe('getMonthlyExpenses', () => {
+    it('returns proper value', () => {
+      expect(getMonthlyExpenses(state))
+        .to
+        .equal(state.calculator[TITLE_MONTHLY_EXPENSES])
     })
   })
 })

@@ -139,12 +139,10 @@ export const getInitialLoanAmount = state => {
     : 0
 }
 
-// TODO: test
 export const getMonthlyIncome = state => (
   state.calculator[TITLE_MONTHLY_INCOME]
 )
 
-// TODO: test
 export const getMonthlyExpenses = state => (
   state.calculator[TITLE_MONTHLY_EXPENSES]
 )

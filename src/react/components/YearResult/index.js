@@ -189,7 +189,6 @@ const calculateInitialEquity = state => {
 }
 
 const calculateEquityForYear = (state, year) => {
-  const initialPurchase = getInitialPurchasePrice(state)
   const initialEquity = calculateInitialEquity(state)
   const amortizationPeriod = getAmortizationPeriod(state)
   if (year === 0) {
