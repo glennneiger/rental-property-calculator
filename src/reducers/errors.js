@@ -5,7 +5,7 @@ import {
 
 const initialState = {}
 
-const errorsReducer = (state = initialState, action) => {
+const errors = (state = initialState, action) => {
   switch (action.type) {
   case GET_ERRORS:
     return action.payload
@@ -16,4 +16,4 @@ const errorsReducer = (state = initialState, action) => {
   }
 }
 
-export default errorsReducer
+export default errors

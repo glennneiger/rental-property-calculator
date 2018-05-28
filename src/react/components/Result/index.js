@@ -6,7 +6,6 @@ import {
   calculateInitialInvestment as calculateInitialInvestmentUtil
 } from '../../../utils/calculationUtils'
 import {
-  CALCULATOR_FIELDS,
   INPUT_ID_AFTER_REPAIR_VALUE,
   INPUT_ID_AMORTIZATION_PERIOD,
   INPUT_ID_DOWN_PAYMENT,
@@ -19,7 +18,7 @@ import {
 
 /* Initial equity = down payment + after repair value + purchase price */
 const calculateInitialEquity = state => {
-  const calculatorFields = state[CALCULATOR_FIELDS]
+  const calculatorFields = state.calculator
   const initialPurchase = calculatorFields[TITLE_INITIAL_PURCHASE]
 
   const downPayment = initialPurchase[INPUT_ID_DOWN_PAYMENT]
@@ -36,7 +35,7 @@ const calculateInitialEquity = state => {
 /* Initial investment =
 down payment + repair costs + closing costs + other initial costs */
 const calculateInitialInvestment = state => {
-  const calculatorFields = state[CALCULATOR_FIELDS]
+  const calculatorFields = state.calculator
   const initialPurchase = calculatorFields[TITLE_INITIAL_PURCHASE]
 
   const downPayment = initialPurchase[INPUT_ID_DOWN_PAYMENT]

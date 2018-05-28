@@ -1,13 +1,10 @@
 import { combineReducers } from 'redux'
-import authReducer from './authReducer'
-import errorsReducer from './errorsReducer'
-import calculatorReducer from './calculatorReducer'
-import {
-  CALCULATOR_FIELDS
-} from '../constants'
+import auth from './auth'
+import errors from './errors'
+import calculator from './calculator'
 
 export const reducer = combineReducers({
-  auth: authReducer,
-  errors: errorsReducer,
-  [CALCULATOR_FIELDS]: calculatorReducer
+  auth,
+  errors,
+  calculator
 })

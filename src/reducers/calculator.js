@@ -35,7 +35,7 @@ const calculatorSection = (state, action) => {
   }
 }
 
-const calculatorReducer = (state = getInitialState(), action) => {
+const calculator = (state = getInitialState(), action) => {
   switch (action.type) {
   case UPDATE_INPUT:
     return {
@@ -50,4 +50,4 @@ const calculatorReducer = (state = getInitialState(), action) => {
   }
 }
 
-export default calculatorReducer
+export default calculator

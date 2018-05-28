@@ -2,7 +2,6 @@ import { connect } from 'react-redux'
 
 import YearResult from './YearResult'
 import {
-  CALCULATOR_FIELDS,
   RESULTS_CASH_FLOW,
   RESULTS_CASH_ON_CASH_RETURN,
   RESULTS_PROPERTY_VALUE,
@@ -44,7 +43,7 @@ import {
 } from '../../../utils/calculationUtils'
 
 const calculatePercentageExpensesForYear = (state, year) => {
-  const calculatorFields = state[CALCULATOR_FIELDS]
+  const calculatorFields = state.calculator
   const futureProjections = calculatorFields[TITLE_FUTURE_PROJECTIONS]
   const annualIncomeGrowth = futureProjections[INPUT_ID_ANNUAL_INCOME_GROWTH]
   const annualPVGrowth = futureProjections[INPUT_ID_PROPERTY_VALUE_GROWTH]
@@ -64,7 +63,7 @@ const calculatePercentageExpensesForYear = (state, year) => {
 }
 
 const calculateConstantExpensesForYear = (state, year) => {
-  const calculatorFields = state[CALCULATOR_FIELDS]
+  const calculatorFields = state.calculator
   const futureProjections = calculatorFields[TITLE_FUTURE_PROJECTIONS]
 
   const monthlyExpenses = calculatorFields[TITLE_MONTHLY_EXPENSES]
@@ -94,7 +93,7 @@ const calculateExpensesForYear = (state, year) => {
 }
 
 const calculateIncomeForYear = (state, year) => {
-  const calculatorFields = state[CALCULATOR_FIELDS]
+  const calculatorFields = state.calculator
   const monthlyIncome = calculatorFields[TITLE_MONTHLY_INCOME]
   const annualIncomeGrowth = calculatorFields[
     TITLE_FUTURE_PROJECTIONS
@@ -109,7 +108,7 @@ const calculateIncomeForYear = (state, year) => {
 }
 
 const calculateMortgageForYear = (state, year) => {
-  const calculatorFields = state[CALCULATOR_FIELDS]
+  const calculatorFields = state.calculator
   const annualConstantExpensesGrowth = calculatorFields[
     TITLE_FUTURE_PROJECTIONS
   ][INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH]
@@ -123,7 +122,7 @@ const calculateMortgageForYear = (state, year) => {
 
 /* Cash flow = Income - Expenses */
 const calculateCashFlowForYear = (state, year) => {
-  const calculatorFields = state[CALCULATOR_FIELDS]
+  const calculatorFields = state.calculator
   const amortizationPeriod = calculatorFields[
     TITLE_INITIAL_PURCHASE
   ][INPUT_ID_AMORTIZATION_PERIOD]
@@ -143,7 +142,7 @@ const calculateCashFlowForYear = (state, year) => {
 /* Initial investment =
   down payment + repair costs + closing costs + other initial costs */
 const calculateInitialInvestment = state => {
-  const calculatorFields = state[CALCULATOR_FIELDS]
+  const calculatorFields = state.calculator
   const initialPurchase = calculatorFields[TITLE_INITIAL_PURCHASE]
 
   const downPayment = initialPurchase[INPUT_ID_DOWN_PAYMENT]
@@ -170,7 +169,7 @@ const calculateCashOnCashReturnForYear = (state, year) => {
 }
 
 const calculatePropertyValueForYear = (state, year) => {
-  const calculatorFields = state[CALCULATOR_FIELDS]
+  const calculatorFields = state.calculator
 
   const propertyValue = calculatorFields[
     TITLE_INITIAL_PURCHASE
@@ -186,7 +185,7 @@ const calculatePropertyValueForYear = (state, year) => {
 }
 
 const calculateRemainingLoanBalanceForYear = (state, year) => {
-  const calculatorFields = state[CALCULATOR_FIELDS]
+  const calculatorFields = state.calculator
   const initialPurchase = calculatorFields[TITLE_INITIAL_PURCHASE]
 
   const initialLoanAmount = initialPurchase[INPUT_ID_LOAN_AMOUNT]
@@ -203,7 +202,7 @@ const calculateRemainingLoanBalanceForYear = (state, year) => {
 
 /* Initial equity = down payment + after repair value + purchase price */
 const calculateInitialEquity = state => {
-  const calculatorFields = state[CALCULATOR_FIELDS]
+  const calculatorFields = state.calculator
   const initialPurchase = calculatorFields[TITLE_INITIAL_PURCHASE]
 
   const downPayment = initialPurchase[INPUT_ID_DOWN_PAYMENT]
@@ -218,7 +217,7 @@ const calculateInitialEquity = state => {
 }
 
 const calculateEquityForYear = (state, year) => {
-  const calculatorFields = state[CALCULATOR_FIELDS]
+  const calculatorFields = state.calculator
   const initialPurchase = calculatorFields[TITLE_INITIAL_PURCHASE]
   const initialEquity = calculateInitialEquity(state)
   const amortizationPeriod = initialPurchase[INPUT_ID_AMORTIZATION_PERIOD]

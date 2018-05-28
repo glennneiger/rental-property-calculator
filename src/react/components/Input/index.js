@@ -1,11 +1,10 @@
 import { connect } from 'react-redux'
 
 import Input from './Input'
-import { CALCULATOR_FIELDS } from '../../../constants'
 import { updateInput } from '../../../actions/calculatorFields'
 
 const mapStateToProps = (state, ownProps) => ({
-  content: state[CALCULATOR_FIELDS][ownProps.section][ownProps.inputId]
+  content: state.calculator[ownProps.section][ownProps.inputId]
 })
 
 const mapDispatchToProps = dispatch => ({

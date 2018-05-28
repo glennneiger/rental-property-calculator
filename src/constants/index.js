@@ -1,5 +1,3 @@
-export const CALCULATOR_FIELDS = 'calculator'
-
 export const INPUT_ID_AFTER_REPAIR_VALUE = 'afterRepairValueInput'
 export const INPUT_ID_AMORTIZATION_PERIOD = 'amortizationPeriodInput'
 export const INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH =
