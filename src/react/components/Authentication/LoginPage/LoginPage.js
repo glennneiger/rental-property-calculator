@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 import AuthInput from '../AuthInput'
 import '../authentication.css'
@@ -63,8 +64,10 @@ class LoginPage extends Component {
               value={this.state.password}
             />
             <button>Login</button>
+            <p>Don't have an account? <Link to={'/register'}>Register</Link></p>
           </div>
         </form>
+
       </div>
     )
   }
