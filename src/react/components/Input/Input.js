@@ -12,14 +12,14 @@ const Input = ({
   label,
   section,
   textInputWidth = DEFAULT_TOTAL_WIDTH,
-  updateValueForInput
+  updateInput
 }) => {
   const handleChange = event => {
     const value = event.target.value
     if (inputType === 'number' && !value.match(/^\d*\.?\d{0,2}$/)) {
       return
     }
-    updateValueForInput(value, section, inputId)
+    updateInput(value, section, inputId)
   }
   const totalWidth = textInputWidth + LABEL_WIDTH
   return (
@@ -45,7 +45,7 @@ Input.propTypes = {
   label: PropTypes.string.isRequired,
   section: PropTypes.string.isRequired,
   textInputWidth: PropTypes.number,
-  updateValueForInput: PropTypes.func.isRequired
+  updateInput: PropTypes.func.isRequired
 }
 
 export default Input

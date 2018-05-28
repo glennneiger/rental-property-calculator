@@ -14,7 +14,7 @@ const AuthInput = ({
   value
 }) => {
   return (
-    <div className='AuthInput'>
+    <div className='authInput'>
       <label htmlFor={name}>{label}</label>
       <input
         type={type}

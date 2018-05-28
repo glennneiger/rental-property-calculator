@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux'
-import authReducer from './authReducer'
-import errorsReducer from './errorsReducer'
+import auth from './auth'
+import errors from './errors'
+import calculator from './calculator'
 
 export const reducer = combineReducers({
-  auth: authReducer,
-  errors: errorsReducer
+  auth,
+  errors,
+  calculator
 })
