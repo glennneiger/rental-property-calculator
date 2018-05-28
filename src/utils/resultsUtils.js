@@ -13,7 +13,7 @@ export const getYearsForResults = amortizationPeriod => {
   }
   /* To show the year after amortization period, when debt is paid off */
   if (amortizationPeriod) {
-    yearsToShowResults.push(amortizationPeriod + 1)
+    yearsToShowResults.push(+amortizationPeriod + 1)
   }
   return yearsToShowResults
 }
