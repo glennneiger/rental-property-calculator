@@ -2,28 +2,12 @@ import { connect } from 'react-redux'
 
 import YearResult from './YearResult'
 import {
-  INPUT_ID_AFTER_REPAIR_VALUE,
-  INPUT_ID_AMORTIZATION_PERIOD,
-  INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH,
-  INPUT_ID_ANNUAL_INCOME_GROWTH,
-  INPUT_ID_CLOSING_COSTS,
-  INPUT_ID_DOWN_PAYMENT,
-  INPUT_ID_INTEREST_RATE,
-  INPUT_ID_LOAN_AMOUNT,
-  INPUT_ID_OTHER_INITIAL_COSTS,
-  INPUT_ID_PROPERTY_VALUE_GROWTH,
-  INPUT_ID_PURCHASE_PRICE,
-  INPUT_ID_REPAIR_COSTS,
   RESULTS_CASH_FLOW,
   RESULTS_CASH_ON_CASH_RETURN,
   RESULTS_EQUITY,
   RESULTS_PROPERTY_VALUE,
   RESULTS_RETURN_ON_EQUITY,
-  RESULTS_RETURN_ON_INVESTMENT,
-  TITLE_FUTURE_PROJECTIONS,
-  TITLE_INITIAL_PURCHASE,
-  TITLE_MONTHLY_EXPENSES,
-  TITLE_MONTHLY_INCOME
+  RESULTS_RETURN_ON_INVESTMENT
 } from '../../../constants'
 import {
   calculateCashOnCashReturn as calculateCashOnCashReturnUtil,
@@ -42,18 +26,30 @@ import {
   calculateReturnOnInvestmentForYear as calculateReturnOnInvestmentForYearUtil,
   calculateYearCashFlow as calculateYearCashFlowUtil
 } from '../../../utils/calculationUtils'
+import {
+  getAfterRepairValue,
+  getAmortizationPeriod,
+  getAnnualConstantExpensesGrowth,
+  getAnnualIncomeGrowth,
+  getAnnualPropertyValueGrowth,
+  getClosingCosts,
+  getDownPayment,
+  getInitialLoanAmount,
+  getInitialPurchasePrice,
+  getInterestRate,
+  getMonthlyExpenses,
+  getMonthlyIncome,
+  getOtherInitialCosts,
+  getRepairCosts
+} from '../../../utils/stateGetters'
 
 const calculatePercentageExpensesForYear = (state, year) => {
-  const calculatorFields = state.calculator
-  const futureProjections = calculatorFields[TITLE_FUTURE_PROJECTIONS]
-  const annualIncomeGrowth = futureProjections[INPUT_ID_ANNUAL_INCOME_GROWTH]
-  const annualPVGrowth = futureProjections[INPUT_ID_PROPERTY_VALUE_GROWTH]
-  const monthlyIncome = calculatorFields[TITLE_MONTHLY_INCOME]
-  const monthlyExpenses = calculatorFields[TITLE_MONTHLY_EXPENSES]
+  const annualIncomeGrowth = getAnnualIncomeGrowth(state)
+  const annualPVGrowth = getAnnualPropertyValueGrowth(state)
+  const monthlyIncome = getMonthlyIncome(state)
+  const monthlyExpenses = getMonthlyExpenses(state)
+  const propertyValue = getAfterRepairValue(state)
 
-  const propertyValue = calculatorFields[
-    TITLE_INITIAL_PURCHASE
-  ][INPUT_ID_AFTER_REPAIR_VALUE]
   return calculatePercentageExpensesForYearUtil(
     annualIncomeGrowth,
     annualPVGrowth,
@@ -65,13 +61,9 @@ const calculatePercentageExpensesForYear = (state, year) => {
 }
 
 const calculateConstantExpensesForYear = (state, year) => {
-  const calculatorFields = state.calculator
-  const futureProjections = calculatorFields[TITLE_FUTURE_PROJECTIONS]
+  const monthlyExpenses = getMonthlyExpenses(state)
+  const annualConstantExpensesGrowth = getAnnualConstantExpensesGrowth(state)
 
-  const monthlyExpenses = calculatorFields[TITLE_MONTHLY_EXPENSES]
-  const annualConstantExpensesGrowth = futureProjections[
-    INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH
-  ]
   return calculateConstantExpensesForYearUtil(
     annualConstantExpensesGrowth,
     monthlyExpenses,
@@ -95,11 +87,9 @@ const calculateExpensesForYear = (state, year) => {
 }
 
 const calculateIncomeForYear = (state, year) => {
-  const calculatorFields = state.calculator
-  const monthlyIncome = calculatorFields[TITLE_MONTHLY_INCOME]
-  const annualIncomeGrowth = calculatorFields[
-    TITLE_FUTURE_PROJECTIONS
-  ][INPUT_ID_ANNUAL_INCOME_GROWTH]
+  const monthlyIncome = getMonthlyIncome(state)
+  const annualIncomeGrowth = getAnnualIncomeGrowth(state)
+
   return calculateIncomeForYearUtil(
     year,
     monthlyIncome,
@@ -108,11 +98,9 @@ const calculateIncomeForYear = (state, year) => {
 }
 
 const calculateMortgageForYear = (state, year) => {
-  const calculatorFields = state.calculator
-  const annualConstantExpensesGrowth = calculatorFields[
-    TITLE_FUTURE_PROJECTIONS
-  ][INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH]
-  const monthlyExpenses = calculatorFields[TITLE_MONTHLY_EXPENSES]
+  const annualConstantExpensesGrowth = getAnnualConstantExpensesGrowth(state)
+  const monthlyExpenses = getMonthlyExpenses(state)
+
   return calculateMortgageForYearUtil(
     annualConstantExpensesGrowth,
     monthlyExpenses,
@@ -122,10 +110,7 @@ const calculateMortgageForYear = (state, year) => {
 
 /* Cash flow = Income - Expenses */
 const calculateCashFlowForYear = (state, year) => {
-  const calculatorFields = state.calculator
-  const amortizationPeriod = calculatorFields[
-    TITLE_INITIAL_PURCHASE
-  ][INPUT_ID_AMORTIZATION_PERIOD]
+  const amortizationPeriod = getAmortizationPeriod(state)
   const incomeForYear = calculateIncomeForYear(state, year)
   const expensesForYear = calculateExpensesForYear(state, year)
 
@@ -142,13 +127,10 @@ const calculateCashFlowForYear = (state, year) => {
 /* Initial investment =
   down payment + repair costs + closing costs + other initial costs */
 const calculateInitialInvestment = state => {
-  const calculatorFields = state.calculator
-  const initialPurchase = calculatorFields[TITLE_INITIAL_PURCHASE]
-
-  const downPayment = initialPurchase[INPUT_ID_DOWN_PAYMENT]
-  const repairCosts = initialPurchase[INPUT_ID_REPAIR_COSTS]
-  const closingCosts = initialPurchase[INPUT_ID_CLOSING_COSTS]
-  const otherCosts = initialPurchase[INPUT_ID_OTHER_INITIAL_COSTS]
+  const downPayment = getDownPayment(state)
+  const repairCosts = getRepairCosts(state)
+  const closingCosts = getClosingCosts(state)
+  const otherCosts = getOtherInitialCosts(state)
 
   return calculateInitialInvestmentUtil(
     downPayment,
@@ -170,15 +152,8 @@ const calculateCashOnCashReturnForYear = (state, year) => {
 }
 
 const calculatePropertyValueForYear = (state, year) => {
-  const calculatorFields = state.calculator
-
-  const propertyValue = calculatorFields[
-    TITLE_INITIAL_PURCHASE
-  ][INPUT_ID_AFTER_REPAIR_VALUE]
-
-  const annualPVGrowth = calculatorFields[
-    TITLE_FUTURE_PROJECTIONS
-  ][INPUT_ID_PROPERTY_VALUE_GROWTH]
+  const propertyValue = getAfterRepairValue(state)
+  const annualPVGrowth = getAnnualPropertyValueGrowth(state)
 
   return calculatePropertyValueForYearUtil(
     propertyValue,
@@ -188,12 +163,9 @@ const calculatePropertyValueForYear = (state, year) => {
 }
 
 const calculateRemainingLoanBalanceForYear = (state, year) => {
-  const calculatorFields = state.calculator
-  const initialPurchase = calculatorFields[TITLE_INITIAL_PURCHASE]
-
-  const initialLoanAmount = initialPurchase[INPUT_ID_LOAN_AMOUNT]
-  const interestRate = initialPurchase[INPUT_ID_INTEREST_RATE]
-  const amortizationPeriod = initialPurchase[INPUT_ID_AMORTIZATION_PERIOD]
+  const initialLoanAmount = getInitialLoanAmount(state)
+  const interestRate = getInterestRate(state)
+  const amortizationPeriod = getAmortizationPeriod(state)
 
   return calculateRemainingLoanBalanceForYearUtil(
     initialLoanAmount,
@@ -205,12 +177,9 @@ const calculateRemainingLoanBalanceForYear = (state, year) => {
 
 /* Initial equity = down payment + after repair value + purchase price */
 const calculateInitialEquity = state => {
-  const calculatorFields = state.calculator
-  const initialPurchase = calculatorFields[TITLE_INITIAL_PURCHASE]
-
-  const downPayment = initialPurchase[INPUT_ID_DOWN_PAYMENT]
-  const afterRepairValue = initialPurchase[INPUT_ID_AFTER_REPAIR_VALUE]
-  const purchasePrice = initialPurchase[INPUT_ID_PURCHASE_PRICE]
+  const downPayment = getDownPayment(state)
+  const afterRepairValue = getAfterRepairValue(state)
+  const purchasePrice = getInitialPurchasePrice(state)
 
   return calculateInitialEquityUtil(
     downPayment,
@@ -220,10 +189,9 @@ const calculateInitialEquity = state => {
 }
 
 const calculateEquityForYear = (state, year) => {
-  const calculatorFields = state.calculator
-  const initialPurchase = calculatorFields[TITLE_INITIAL_PURCHASE]
+  const initialPurchase = getInitialPurchasePrice(state)
   const initialEquity = calculateInitialEquity(state)
-  const amortizationPeriod = initialPurchase[INPUT_ID_AMORTIZATION_PERIOD]
+  const amortizationPeriod = getAmortizationPeriod(state)
   if (year === 0) {
     return initialEquity
   }
@@ -231,8 +199,8 @@ const calculateEquityForYear = (state, year) => {
     return calculatePropertyValueForYear(state, year)
   }
   const propertyValueForYear = calculatePropertyValueForYear(state, year)
-  const initialPropertyValue = initialPurchase[INPUT_ID_AFTER_REPAIR_VALUE]
-  const loanAmount = initialPurchase[INPUT_ID_LOAN_AMOUNT]
+  const initialPropertyValue = getAfterRepairValue(state)
+  const loanAmount = getInitialLoanAmount(state)
   const remainingBalance = calculateRemainingLoanBalanceForYear(state, year)
 
   return calculateEquityForYearUtil(
