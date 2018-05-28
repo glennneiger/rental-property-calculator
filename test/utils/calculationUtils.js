@@ -301,15 +301,15 @@ describe('utils/calculationUtils', () => {
         .to
         .equal(0)
     })
-    it('returns 0 if annualIncomeGrowth is null', () => {
+    it('returns proper value if annualIncomeGrowth is null', () => {
       expect(calculateIncomeForYear(YEAR, monthlyIncome, null))
         .to
-        .equal(0)
+        .equal(23400)
     })
-    it('returns 0 if annualIncomeGrowth is undefined', () => {
+    it('returns proper value if annualIncomeGrowth is undefined', () => {
       expect(calculateIncomeForYear(YEAR, monthlyIncome, undefined))
         .to
-        .equal(0)
+        .equal(23400)
     })
   })
   describe('calculateInitialMonthlyConstantExpenses', () => {
