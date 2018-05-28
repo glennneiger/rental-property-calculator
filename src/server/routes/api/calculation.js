@@ -1,6 +1,7 @@
 import express from 'express'
 import passport from 'passport'
 
+import User from '../../models/User'
 import Calculation from '../../models/Calculation'
 import {
   TITLE_GENERAL_INFO,
@@ -236,6 +237,37 @@ router.post(
           .catch(err1 => console.log(err1))
       }
     }).catch(err2 => console.log(err2))
+  }
+)
+
+// @route   GET api/calculation/:calculation_id
+// @desc    Get calculation by id
+// @access  Private
+router.get(
+  '/:calculation_id',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    Calculation.findById(req.params.calculation_id)
+      .then(calculation => {
+        if (calculation.user.toString() !== req.user.id) {
+          return res.status(401).json({ notauthorized: 'User not authorized'})
+        }
+        return res.json(calculation)
+      })
+      .catch(err => console.log(err))
+  }
+)
+
+// @route   GET api/calculation/all
+// @desc    Get all calculations for User
+// @access  Private
+router.get(
+  '/all',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    Calculation.find({ user: req.user.id })
+      .then(calculations => res.json(calculations))
+      .catch(err => console.log(err))
   }
 )
 
