@@ -2,45 +2,45 @@ import { connect } from 'react-redux'
 
 import YearResult from './YearResult'
 import {
-  RESULTS_CASH_FLOW,
-  RESULTS_CASH_ON_CASH_RETURN,
-  RESULTS_PROPERTY_VALUE,
-  RESULTS_EQUITY,
-  RESULTS_RETURN_ON_EQUITY,
-  RESULTS_RETURN_ON_INVESTMENT,
+  INPUT_ID_AFTER_REPAIR_VALUE,
   INPUT_ID_AMORTIZATION_PERIOD,
   INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH,
-  TITLE_MONTHLY_EXPENSES,
-  TITLE_FUTURE_PROJECTIONS,
-  TITLE_MONTHLY_INCOME,
   INPUT_ID_ANNUAL_INCOME_GROWTH,
-  TITLE_INITIAL_PURCHASE,
-  INPUT_ID_PROPERTY_VALUE_GROWTH,
-  INPUT_ID_AFTER_REPAIR_VALUE,
-  INPUT_ID_OTHER_INITIAL_COSTS,
   INPUT_ID_CLOSING_COSTS,
-  INPUT_ID_REPAIR_COSTS,
   INPUT_ID_DOWN_PAYMENT,
+  INPUT_ID_INTEREST_RATE,
   INPUT_ID_LOAN_AMOUNT,
+  INPUT_ID_OTHER_INITIAL_COSTS,
+  INPUT_ID_PROPERTY_VALUE_GROWTH,
   INPUT_ID_PURCHASE_PRICE,
-  INPUT_ID_INTEREST_RATE
+  INPUT_ID_REPAIR_COSTS,
+  RESULTS_CASH_FLOW,
+  RESULTS_CASH_ON_CASH_RETURN,
+  RESULTS_EQUITY,
+  RESULTS_PROPERTY_VALUE,
+  RESULTS_RETURN_ON_EQUITY,
+  RESULTS_RETURN_ON_INVESTMENT,
+  TITLE_FUTURE_PROJECTIONS,
+  TITLE_INITIAL_PURCHASE,
+  TITLE_MONTHLY_EXPENSES,
+  TITLE_MONTHLY_INCOME
 } from '../../../constants'
 import {
-  calculateYearCashFlow as calculateYearCashFlowUtil,
-  calculateMortgageForYear as calculateMortgageForYearUtil,
-  calculateIncomeForYear as calculateIncomeForYearUtil,
-  calculatePercentageExpensesForYear as calculatePercentageExpensesForYearUtil,
-  calculateConstantExpensesForYear as calculateConstantExpensesForYearUtil,
-  calculateExpensesForYear as calculateExpensesForYearUtil,
   calculateCashOnCashReturn as calculateCashOnCashReturnUtil,
-  calculateInitialInvestment as calculateInitialInvestmentUtil,
-  calculatePropertyValueForYear as calculatePropertyValueForYearUtil,
+  calculateConstantExpensesForYear as calculateConstantExpensesForYearUtil,
   calculateEquityForYear as calculateEquityForYearUtil,
+  calculateExpensesForYear as calculateExpensesForYearUtil,
+  calculateIncomeForYear as calculateIncomeForYearUtil,
+  calculateInitialEquity as calculateInitialEquityUtil,
+  calculateInitialInvestment as calculateInitialInvestmentUtil,
+  calculateMortgageForYear as calculateMortgageForYearUtil,
+  calculatePercentageExpensesForYear as calculatePercentageExpensesForYearUtil,
+  calculatePropertyValueForYear as calculatePropertyValueForYearUtil,
   calculateRemainingLoanBalanceForYear
   as calculateRemainingLoanBalanceForYearUtil,
-  calculateInitialEquity as calculateInitialEquityUtil,
   calculateReturnOnEquityForYear as calculateReturnOnEquityForYearUtil,
-  calculateReturnOnInvestmentForYear as calculateReturnOnInvestmentForYearUtil
+  calculateReturnOnInvestmentForYear as calculateReturnOnInvestmentForYearUtil,
+  calculateYearCashFlow as calculateYearCashFlowUtil
 } from '../../../utils/calculationUtils'
 
 const calculatePercentageExpensesForYear = (state, year) => {
@@ -50,6 +50,7 @@ const calculatePercentageExpensesForYear = (state, year) => {
   const annualPVGrowth = futureProjections[INPUT_ID_PROPERTY_VALUE_GROWTH]
   const monthlyIncome = calculatorFields[TITLE_MONTHLY_INCOME]
   const monthlyExpenses = calculatorFields[TITLE_MONTHLY_EXPENSES]
+
   const propertyValue = calculatorFields[
     TITLE_INITIAL_PURCHASE
   ][INPUT_ID_AFTER_REPAIR_VALUE]
@@ -99,8 +100,6 @@ const calculateIncomeForYear = (state, year) => {
   const annualIncomeGrowth = calculatorFields[
     TITLE_FUTURE_PROJECTIONS
   ][INPUT_ID_ANNUAL_INCOME_GROWTH]
-  // console.log('monthlyIncome:', monthlyIncome)
-  // console.log('annualIncomeGrowth:', annualIncomeGrowth)
   return calculateIncomeForYearUtil(
     year,
     monthlyIncome,
@@ -163,6 +162,7 @@ const calculateInitialInvestment = state => {
 const calculateCashOnCashReturnForYear = (state, year) => {
   const yearCashFlow = calculateCashFlowForYear(state, year)
   const initialInvestment = calculateInitialInvestment(state)
+
   return calculateCashOnCashReturnUtil(
     yearCashFlow,
     initialInvestment
@@ -175,9 +175,11 @@ const calculatePropertyValueForYear = (state, year) => {
   const propertyValue = calculatorFields[
     TITLE_INITIAL_PURCHASE
   ][INPUT_ID_AFTER_REPAIR_VALUE]
+
   const annualPVGrowth = calculatorFields[
     TITLE_FUTURE_PROJECTIONS
   ][INPUT_ID_PROPERTY_VALUE_GROWTH]
+
   return calculatePropertyValueForYearUtil(
     propertyValue,
     annualPVGrowth,

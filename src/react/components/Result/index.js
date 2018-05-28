@@ -7,11 +7,11 @@ import {
 } from '../../../utils/calculationUtils'
 import {
   INPUT_ID_AFTER_REPAIR_VALUE,
+  INPUT_ID_CLOSING_COSTS,
   INPUT_ID_DOWN_PAYMENT,
+  INPUT_ID_OTHER_INITIAL_COSTS,
   INPUT_ID_PURCHASE_PRICE,
   INPUT_ID_REPAIR_COSTS,
-  INPUT_ID_CLOSING_COSTS,
-  INPUT_ID_OTHER_INITIAL_COSTS,
   TITLE_INITIAL_PURCHASE
 } from '../../../constants'
 
@@ -32,7 +32,8 @@ const calculateInitialEquity = state => {
 }
 
 /* Initial investment =
-down payment + repair costs + closing costs + other initial costs */
+ * down payment + repair costs + closing costs + other initial costs
+ */
 const calculateInitialInvestment = state => {
   const calculatorFields = state.calculator
   const initialPurchase = calculatorFields[TITLE_INITIAL_PURCHASE]
