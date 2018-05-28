@@ -46,3 +46,7 @@
   font-weight: bold;
   margin-bottom: 32px;
 }
+
+.authenticationPage p {
+  margin-top: 8px;
+}
