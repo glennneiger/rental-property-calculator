@@ -44,6 +44,7 @@ class LoginPage extends Component {
       <div className='authenticationPage'>
         <form onSubmit={this.handleSubmit}>
           <div className='authenticationForm'>
+            <h1>Login</h1>
             <AuthInput
               error={errors.email}
               handleChange={this.handleChange}

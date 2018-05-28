@@ -42,6 +42,7 @@ class RegisterPage extends Component {
       <div className='authenticationPage'>
         <form onSubmit={this.handleSubmit}>
           <div className='authenticationForm'>
+            <h1>Register</h1>
             <AuthInput
               error={errors.name}
               handleChange={this.handleChange}
