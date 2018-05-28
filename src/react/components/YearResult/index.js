@@ -99,6 +99,8 @@ const calculateIncomeForYear = (state, year) => {
   const annualIncomeGrowth = calculatorFields[
     TITLE_FUTURE_PROJECTIONS
   ][INPUT_ID_ANNUAL_INCOME_GROWTH]
+  // console.log('monthlyIncome:', monthlyIncome)
+  // console.log('annualIncomeGrowth:', annualIncomeGrowth)
   return calculateIncomeForYearUtil(
     year,
     monthlyIncome,

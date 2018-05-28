@@ -65,7 +65,7 @@ export const calculateIncomeForYear = (
   annualIncomeGrowth
 ) => {
   let incomeForYear = calculateInitialYearlyIncome(monthlyIncome)
-  if (year === 0 || annualIncomeGrowth === 0) {
+  if (year === 0 || !annualIncomeGrowth) {
     return incomeForYear
   }
   if (!year || !monthlyIncome || !annualIncomeGrowth) {
