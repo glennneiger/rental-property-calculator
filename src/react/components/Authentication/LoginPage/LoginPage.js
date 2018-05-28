@@ -42,7 +42,6 @@ class LoginPage extends Component {
     const { errors } = this.props
     return (
       <div className='authenticationPage'>
-
         <form onSubmit={this.handleSubmit}>
           <div className='authenticationForm'>
             <h1>Login</h1>
