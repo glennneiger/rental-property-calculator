@@ -5,6 +5,7 @@ import passport from 'passport'
 
 const users = require('./routes/api/users.js')
 const profile = require('./routes/api/profile.js')
+const calculation = require('./routes/api/calculation')
 
 const app = express()
 
@@ -22,6 +23,7 @@ require('./config/passport')(passport)
 
 app.use('/api/users', users)
 app.use('/api/profile', profile)
+app.use('/api/calculation', calculation)
 
 const port = process.env.PORT || 3001
 
