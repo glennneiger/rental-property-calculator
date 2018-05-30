@@ -9,7 +9,7 @@ export const getAllCalculations = () => dispatch => {
   axios.get('/api/calculation/')
     .then(res => {
       res.data.forEach(calculation => idsAndTitles.push({
-        id: calculation.id,
+        id: calculation._id,
         title: calculation.title
       }))
     })
