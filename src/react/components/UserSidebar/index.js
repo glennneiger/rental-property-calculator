@@ -10,6 +10,7 @@ import {
 const mapStateToProps = state => ({
   calculation: state.calculator,
   calculationList: state.calculationList,
+  changesMade: state.currentCalculation.changesMade,
   currentTitle: state.currentCalculation.title
 })
 
