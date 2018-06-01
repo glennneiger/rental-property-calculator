@@ -13,10 +13,13 @@ class UserSidebar extends Component {
     this.props.getAllCalculations()
   }
   handleSaveClick = () => {
-    if (!this.props.isSaved) {
+    if (!this.props.currentTitle) {
       this.handleSaveAsClick()
     } else {
-      console.log('save click')
+      this.props.saveCalculation(
+        this.props.currentTitle,
+        this.props.calculation
+      )
     }
   }
   handleSaveAsClick = () => {
@@ -53,8 +56,8 @@ class UserSidebar extends Component {
 UserSidebar.propTypes = {
   calculation: PropTypes.object.isRequired,
   calculationList: PropTypes.array.isRequired,
+  currentTitle: PropTypes.string,
   getAllCalculations: PropTypes.func.isRequired,
-  isSaved: PropTypes.bool.isRequired,
   logoutUser: PropTypes.func.isRequired,
   saveCalculation: PropTypes.func.isRequired
 }

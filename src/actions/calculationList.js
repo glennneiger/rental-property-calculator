@@ -4,7 +4,7 @@ import {
   GET_ALL_CALCULATIONS,
   LOAD_CALCULATION,
   SET_CHANGES_MADE,
-  SET_IS_SAVED
+  SET_CURRENT_TITLE
 } from './constants'
 
 export const getAllCalculations = () => dispatch => {
@@ -35,8 +35,8 @@ export const getCalculationById = calculationId => dispatch => {
         payload: false
       })
       dispatch({
-        type: SET_IS_SAVED,
-        payload: true
+        type: SET_CURRENT_TITLE,
+        payload: res.data.title
       })
     })
     .catch(err => console.log(err))
@@ -48,14 +48,14 @@ export const saveCalculation = (title, calculation) => dispatch => {
     calculation
   }
   axios.post('/api/calculation/save', calcRequest)
-    .then(() => {
+    .then(res => {
       dispatch({
         type: SET_CHANGES_MADE,
         payload: false
       })
       dispatch({
-        type: SET_IS_SAVED,
-        payload: true
+        type: SET_CURRENT_TITLE,
+        payload: res.data.title
       })
       dispatch(getAllCalculations())
     })
