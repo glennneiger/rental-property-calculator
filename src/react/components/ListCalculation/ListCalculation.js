@@ -8,7 +8,8 @@ class ListCalculation extends Component {
     super(props)
   }
   handleClick = () => {
-    console.log(this.props.id)
+    console.log('clicked:', this.props.id)
+    this.props.getCalculationById(this.props.id)
   }
   render() {
     return (
@@ -21,6 +22,7 @@ class ListCalculation extends Component {
 }
 
 ListCalculation.propTypes = {
+  getCalculationById: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired
 }

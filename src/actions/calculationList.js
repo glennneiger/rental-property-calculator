@@ -19,3 +19,11 @@ export const getAllCalculations = () => dispatch => {
     })
     .catch(err => console.log(err))
 }
+
+export const getCalculationById = calculationId => dispatch => {
+  axios.get(`/api/calculation/${calculationId}`)
+    .then(res => {
+      console.log(res.data)
+    })
+    .catch(err => console.log(err))
+}
