@@ -58,117 +58,152 @@ const CalculationSchema = new Schema({
   calculation: {
     [TITLE_GENERAL_INFO]: {
       [INPUT_ID_NEIGHBORHOOD]: {
-        type: String
+        type: String,
+        default: ''
       },
       [INPUT_ID_STREET_ADDRESS]: {
-        type: String
+        type: String,
+        default: ''
       },
       [INPUT_ID_UNIT_NUMBER]: {
-        type: String
+        type: String,
+        default: ''
       },
       [INPUT_ID_CITY]: {
-        type: String
+        type: String,
+        default: ''
       },
       [INPUT_ID_PROVINCE_OR_STATE]: {
-        type: String
+        type: String,
+        default: ''
       },
       [INPUT_ID_COUNTRY]: {
-        type: String
+        type: String,
+        default: ''
       },
       [INPUT_ID_POSTAL_OR_ZIP_CODE]: {
-        type: String
+        type: String,
+        default: ''
       },
       [INPUT_ID_SQUARE_FEET]: {
-        type: String
+        type: String,
+        default: ''
       }
     },
     [TITLE_INITIAL_PURCHASE]: {
       [INPUT_ID_PURCHASE_PRICE]: {
-        type: String
+        type: String,
+        default: ''
       },
       [INPUT_ID_DOWN_PAYMENT]: {
-        type: String
+        type: String,
+        default: ''
       },
       [INPUT_ID_LOAN_AMOUNT]: {
-        type: String
+        type: String,
+        default: ''
       },
       [INPUT_ID_INTEREST_RATE]: {
-        type: String
+        type: String,
+        default: ''
       },
       [INPUT_ID_AMORTIZATION_PERIOD]: {
-        type: String
+        type: String,
+        default: ''
       },
       [INPUT_ID_AFTER_REPAIR_VALUE]: {
-        type: String
+        type: String,
+        default: ''
       },
       [INPUT_ID_REPAIR_COSTS]: {
-        type: String
+        type: String,
+        default: ''
       },
       [INPUT_ID_CLOSING_COSTS]: {
-        type: String
+        type: String,
+        default: ''
       },
       [INPUT_ID_OTHER_INITIAL_COSTS]: {
-        type: String
+        type: String,
+        default: ''
       }
     },
     [TITLE_MONTHLY_INCOME]: {
       [INPUT_ID_RENTAL_INCOME]: {
-        type: String
+        type: String,
+        default: ''
       },
       [INPUT_ID_OTHER_INCOME]: {
-        type: String
+        type: String,
+        default: ''
       }
     },
     [TITLE_MONTHLY_EXPENSES]: {
       [INPUT_ID_MORTGAGE]: {
-        type: String
+        type: String,
+        default: ''
       },
       [INPUT_ID_ELECTRICITY]: {
-        type: String
+        type: String,
+        default: ''
       },
       [INPUT_ID_WATER_AND_SEWER]: {
-        type: String
+        type: String,
+        default: ''
       },
       [INPUT_ID_PRIVATE_MORTGAGE_INSURANCE]: {
-        type: String
+        type: String,
+        default: ''
       },
       [INPUT_ID_GARBAGE]: {
-        type: String
+        type: String,
+        default: ''
       },
       [INPUT_ID_HOA]: {
-        type: String
+        type: String,
+        default: ''
       },
       [INPUT_ID_INSURANCE]: {
-        type: String
+        type: String,
+        default: ''
       },
       [INPUT_ID_PROPERTY_TAX]: {
-        type: String
+        type: String,
+        default: ''
       },
       [INPUT_ID_VACANCY]: {
-        type: String
+        type: String,
+        default: ''
       },
       [INPUT_ID_REPAIRS_AND_MAINTENANCE]: {
-        type: String
+        type: String,
+        default: ''
       },
       [INPUT_ID_CAP_EX]: {
-        type: String
+        type: String,
+        default: ''
       },
       [INPUT_ID_MANAGEMENT]: {
-        type: String
+        type: String,
+        default: ''
       },
       [INPUT_ID_OTHER_EXPENSES]: {
-        type: String
+        type: String,
+        default: ''
       }
     },
     [TITLE_FUTURE_PROJECTIONS]: {
       [INPUT_ID_PROPERTY_VALUE_GROWTH]: {
-        type: String
+        type: String,
+        default: ''
       },
       [INPUT_ID_ANNUAL_INCOME_GROWTH]: {
-        type: String
+        type: String,
+        default: ''
       },
       [INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH]: {
-        type: String
+        type: String,
+        default: ''
       }
     }
   }

@@ -1,4 +1,5 @@
 import {
+  LOAD_CALCULATION,
   UPDATE_INPUT
 } from '../actions/constants'
 import {
@@ -45,6 +46,8 @@ const calculator = (state = getInitialState(), action) => {
         action
       )
     }
+  case LOAD_CALCULATION:
+    return action.payload
   default:
     return state
   }
