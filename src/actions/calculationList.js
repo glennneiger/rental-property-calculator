@@ -57,6 +57,7 @@ export const saveCalculation = (title, calculation) => dispatch => {
         type: SET_SAVED_CALCULATION,
         payload: true
       })
+      dispatch(getAllCalculations())
     })
     .catch(err => console.log(err))
 }

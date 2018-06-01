@@ -20,7 +20,7 @@ class UserSidebar extends Component {
     const { logoutUser, calculationList } = this.props
     return (
       <div className='userSidebar'>
-        <button onClick={ logoutUser }>Logout</button>
+        <button onClick={logoutUser}>Logout</button>
         {calculationList.length !== 0
           ? <Infinite
             className='infinite'
@@ -36,7 +36,7 @@ class UserSidebar extends Component {
             ))}
           </Infinite>
           : <div>No calculations to display</div>}
-        <button onClick={ this.handleClick }>Save Current Calculation</button>
+        <button onClick={this.handleClick}>Save Current Calculation</button>
       </div>
     )
   }
