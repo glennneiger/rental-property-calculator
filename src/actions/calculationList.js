@@ -31,3 +31,13 @@ export const getCalculationById = calculationId => dispatch => {
     })
     .catch(err => console.log(err))
 }
+
+export const saveCalculation = (title, calculation) => dispatch => {
+  const calcRequest = {
+    title,
+    calculation
+  }
+  axios.post('/api/calculation/save', calcRequest)
+    .then(res => console.log('saved:', res))
+    .catch(err => console.log(err))
+}

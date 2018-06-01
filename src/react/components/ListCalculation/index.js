@@ -5,7 +5,6 @@ import {
 } from '../../../actions/calculationList'
 import ListCalculation from './ListCalculation'
 
-
 export default connect(
   null,
   { getCalculationById }
