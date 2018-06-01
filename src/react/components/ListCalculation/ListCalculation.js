@@ -8,7 +8,6 @@ class ListCalculation extends Component {
     super(props)
   }
   handleClick = () => {
-    console.log('clicked:', this.props.id)
     this.props.getCalculationById(this.props.id)
   }
   render() {

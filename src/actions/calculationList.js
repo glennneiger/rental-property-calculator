@@ -1,7 +1,8 @@
 import axios from 'axios'
 
 import {
-  GET_ALL_CALCULATIONS
+  GET_ALL_CALCULATIONS,
+  LOAD_CALCULATION
 } from './constants'
 
 export const getAllCalculations = () => dispatch => {
@@ -23,7 +24,10 @@ export const getAllCalculations = () => dispatch => {
 export const getCalculationById = calculationId => dispatch => {
   axios.get(`/api/calculation/${calculationId}`)
     .then(res => {
-      console.log(res.data)
+      dispatch({
+        type: LOAD_CALCULATION,
+        payload: res.data.calculation
+      })
     })
     .catch(err => console.log(err))
 }
