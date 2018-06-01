@@ -8,14 +8,15 @@ export const getAllCalculations = () => dispatch => {
   let idsAndTitles = []
   axios.get('/api/calculation/')
     .then(res => {
-      res.data.forEach(calculation => idsAndTitles.push({
+      idsAndTitles = res.data.map(calculation => ({
         id: calculation._id,
         title: calculation.title
       }))
+      dispatch({
+        type: GET_ALL_CALCULATIONS,
+        payload: idsAndTitles
+      })
     })
     .catch(err => console.log(err))
-  dispatch({
-    type: GET_ALL_CALCULATIONS,
-    payload: idsAndTitles
-  })
+
 }

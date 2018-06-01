@@ -13,20 +13,37 @@ class UserSidebar extends Component {
     this.props.getAllCalculations()
   }
   render() {
+    const { logoutUser, calculationList } = this.props
+    console.log(calculationList.length)
+    if (calculationList === undefined || calculationList.length === 0) {
+      <button onClick={ logoutUser }>Logout</button>
+      return <div>Loading...</div>
+    }
     return (
       <div className='userSidebar'>
-        <button onClick={ this.props.logoutUser }>Logout</button>
-        <Infinite className='infinite' containerHeight={200} elementHeight={20}>
-          <ListCalculation
-            id='ID from get all calculations request'
-            title='hello'/>
+        <button onClick={ logoutUser }>Logout</button>
+        <Infinite
+          className='infinite'
+          containerHeight={200}
+          elementHeight={20}
+        >
+          {calculationList.map(calculation => (
+            <ListCalculation
+              key={calculation.id}
+              id={calculation.id}
+              title={calculation.title}
+            />
+          ))}
         </Infinite>
+        }
+
       </div>
     )
   }
 }
 
 UserSidebar.propTypes = {
+  calculationList: PropTypes.array.isRequired,
   logoutUser: PropTypes.func.isRequired,
   getAllCalculations: PropTypes.func.isRequired
 }
