@@ -9,7 +9,8 @@ import {
 
 const mapStateToProps = state => ({
   calculation: state.calculator,
-  calculationList: state.calculationList
+  calculationList: state.calculationList,
+  isSaved: state.currentCalculation.isSaved
 })
 
 export default connect(

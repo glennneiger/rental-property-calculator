@@ -1,11 +1,11 @@
 import {
   SET_CHANGES_MADE,
-  SET_SAVED_CALCULATION
+  SET_IS_SAVED
 } from '../actions/constants'
 
 const initialState = {
   changesMade: false,
-  savedCalculation: false
+  isSaved: false
 }
 
 const currentCalculation = (state = initialState, action) => {
@@ -15,10 +15,10 @@ const currentCalculation = (state = initialState, action) => {
       ...state,
       changesMade: action.payload
     }
-  case SET_SAVED_CALCULATION:
+  case SET_IS_SAVED:
     return {
       ...state,
-      savedCalculation: action.payload
+      isSaved: action.payload
     }
   default:
     return state

@@ -4,7 +4,7 @@ import {
   GET_ALL_CALCULATIONS,
   LOAD_CALCULATION,
   SET_CHANGES_MADE,
-  SET_SAVED_CALCULATION
+  SET_IS_SAVED
 } from './constants'
 
 export const getAllCalculations = () => dispatch => {
@@ -35,7 +35,7 @@ export const getCalculationById = calculationId => dispatch => {
         payload: false
       })
       dispatch({
-        type: SET_SAVED_CALCULATION,
+        type: SET_IS_SAVED,
         payload: true
       })
     })
@@ -54,7 +54,7 @@ export const saveCalculation = (title, calculation) => dispatch => {
         payload: false
       })
       dispatch({
-        type: SET_SAVED_CALCULATION,
+        type: SET_IS_SAVED,
         payload: true
       })
       dispatch(getAllCalculations())
