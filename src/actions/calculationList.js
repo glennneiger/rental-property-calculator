@@ -18,5 +18,4 @@ export const getAllCalculations = () => dispatch => {
       })
     })
     .catch(err => console.log(err))
-
 }
