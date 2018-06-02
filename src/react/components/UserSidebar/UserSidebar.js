@@ -12,11 +12,27 @@ class UserSidebar extends Component {
   componentDidMount() {
     this.props.getAllCalculations()
   }
+  handleSaveClick = () => {
+    if (!this.props.changesMade) {
+      // do nothing
+    } else if (!this.props.currentTitle) {
+      this.handleSaveAsClick()
+    } else {
+      this.props.saveCalculation(
+        this.props.currentTitle,
+        this.props.calculation
+      )
+    }
+  }
+  handleSaveAsClick = () => {
+    const title = prompt('Enter a title for your calculation')
+    this.props.saveCalculation(title, this.props.calculation)
+  }
   render() {
     const { logoutUser, calculationList } = this.props
     return (
       <div className='userSidebar'>
-        <button onClick={ logoutUser }>Logout</button>
+        <button onClick={logoutUser}>Logout</button>
         {calculationList.length !== 0
           ? <Infinite
             className='infinite'
@@ -28,19 +44,26 @@ class UserSidebar extends Component {
                 key={calculation.id}
                 id={calculation.id}
                 title={calculation.title}
+                onLoadListCalculation={this.onLoadListCalculation}
               />
             ))}
           </Infinite>
           : <div>No calculations to display</div>}
+        <button onClick={this.handleSaveClick}>Save</button>
+        <button onClick={this.handleSaveAsClick}>Save As...</button>
       </div>
     )
   }
 }
 
 UserSidebar.propTypes = {
+  calculation: PropTypes.object.isRequired,
   calculationList: PropTypes.array.isRequired,
+  changesMade: PropTypes.bool.isRequired,
+  currentTitle: PropTypes.string,
+  getAllCalculations: PropTypes.func.isRequired,
   logoutUser: PropTypes.func.isRequired,
-  getAllCalculations: PropTypes.func.isRequired
+  saveCalculation: PropTypes.func.isRequired
 }
 
 export default UserSidebar

@@ -11,6 +11,7 @@ const Input = ({
   inputType = 'number',
   label,
   section,
+  setChangesMade,
   textInputWidth = DEFAULT_TOTAL_WIDTH,
   updateInput
 }) => {
@@ -20,6 +21,7 @@ const Input = ({
       return
     }
     updateInput(value, section, inputId)
+    setChangesMade(true)
   }
   const totalWidth = textInputWidth + LABEL_WIDTH
   return (
@@ -44,6 +46,7 @@ Input.propTypes = {
   inputType: PropTypes.string,
   label: PropTypes.string.isRequired,
   section: PropTypes.string.isRequired,
+  setChangesMade: PropTypes.func.isRequired,
   textInputWidth: PropTypes.number,
   updateInput: PropTypes.func.isRequired
 }

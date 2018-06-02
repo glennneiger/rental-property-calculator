@@ -2,7 +2,9 @@ import axios from 'axios'
 
 import {
   GET_ALL_CALCULATIONS,
-  LOAD_CALCULATION
+  LOAD_CALCULATION,
+  SET_CHANGES_MADE,
+  SET_CURRENT_TITLE
 } from './constants'
 
 export const getAllCalculations = () => dispatch => {
@@ -28,6 +30,34 @@ export const getCalculationById = calculationId => dispatch => {
         type: LOAD_CALCULATION,
         payload: res.data.calculation
       })
+      dispatch({
+        type: SET_CHANGES_MADE,
+        payload: false
+      })
+      dispatch({
+        type: SET_CURRENT_TITLE,
+        payload: res.data.title
+      })
+    })
+    .catch(err => console.log(err))
+}
+
+export const saveCalculation = (title, calculation) => dispatch => {
+  const calcRequest = {
+    title,
+    calculation
+  }
+  axios.post('/api/calculation/save', calcRequest)
+    .then(res => {
+      dispatch({
+        type: SET_CHANGES_MADE,
+        payload: false
+      })
+      dispatch({
+        type: SET_CURRENT_TITLE,
+        payload: res.data.title
+      })
+      dispatch(getAllCalculations())
     })
     .catch(err => console.log(err))
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import jwtDecode from 'jwt-decode'
 
+import ModalRoot from '../Modals/ModalRoot'
 import CalculatorPage from '../CalculatorPage'
 import LoginPage from '../Authentication/LoginPage'
 import RegisterPage from '../Authentication/RegisterPage'
@@ -31,6 +32,7 @@ class App extends Component {
   render() {
     return (
       <div className='app'>
+        <ModalRoot />
         <Route exact path='/' component={CalculatorPage} />
         <Route exact path='/login' component={LoginPage} />
         <Route exact path='/register' component={RegisterPage} />
