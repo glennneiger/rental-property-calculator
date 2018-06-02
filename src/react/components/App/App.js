@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import jwtDecode from 'jwt-decode'
+import Modal from 'react-modal'
 
 import ModalRoot from '../Modals/ModalRoot'
 import CalculatorPage from '../CalculatorPage'
@@ -29,9 +30,12 @@ if (localStorage.jwtToken) {
 }
 
 class App extends Component {
+  componentDidMount = () => {
+    Modal.setAppElement('#app')
+  }
   render() {
     return (
-      <div className='app'>
+      <div className='app' id='app'>
         <ModalRoot />
         <Route exact path='/' component={CalculatorPage} />
         <Route exact path='/login' component={LoginPage} />

@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Modal from 'react-modal'
 
 import './saveChangesModal.css'
 
@@ -11,7 +12,13 @@ const SaveChangesModal = ({
   idToGet,
   saveCalculation
 }) => (
-  <div className='saveChangesModal'>
+  <Modal
+    isOpen={true}
+    className='saveChangesModal'
+    shouldCloseOnEsc={true}
+    shouldCloseOnOverlayClick={true}
+    onRequestClose={hideModal}
+  >
     {currentTitle
       ? <p>
         You have unsaved changes to "{ currentTitle }".
@@ -43,7 +50,7 @@ const SaveChangesModal = ({
         Cancel
       </button>
     </div>
-  </div>
+  </Modal>
 )
 
 SaveChangesModal.propTypes = {
