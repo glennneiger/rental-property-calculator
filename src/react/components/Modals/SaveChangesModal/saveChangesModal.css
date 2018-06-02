@@ -13,6 +13,10 @@
   border-radius: 5px;
 }
 
+.saveChangesModal:focus {
+  outline: none;
+}
+
 .saveChangesModal .buttons {
   display: flex;
   flex-direction: row;
