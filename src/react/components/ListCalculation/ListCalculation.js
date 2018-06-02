@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import FaTrashO from 'react-icons/lib/fa/trash-o'
 
 import { MODAL_SAVE_CHANGES } from '../../../constants'
 import './listCalculation.css'
@@ -19,11 +20,19 @@ class ListCalculation extends Component {
       this.props.getCalculationById(this.props.id)
     }
   }
+  handleTrashIconClick = event => {
+    event.stopPropagation()
+    console.log('CLICKED')
+  }
   render() {
     return (
       <div className='listCalculation'
         onClick={this.handleClick}>
         {this.props.title}
+        <FaTrashO
+          className='trashIcon'
+          onClick={this.handleTrashIconClick}
+        />
       </div>
     )
   }
