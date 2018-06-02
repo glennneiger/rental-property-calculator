@@ -2,20 +2,20 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const SaveChangesModal = ({
-  currentTitle,
-  idToGet,
   calculation,
+  currentTitle,
   getCalculationById,
   hideModal,
+  idToGet,
   saveCalculation
 }) => (
   <div className='saveChangesModal'>
-    {currentTitle ?
-      <p>
+    {currentTitle
+      ? <p>
         You have unsaved changes to "{ currentTitle }".
         Would you like to save?
-      </p> :
-      <p>You have unsaved changes.
+      </p>
+      : <p>You have unsaved changes.
         Would you like to save these as a new calculation?
       </p>
     }

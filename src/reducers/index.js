@@ -8,9 +8,9 @@ import modal from './modal'
 
 export const reducer = combineReducers({
   auth,
-  errors,
-  calculator,
   calculationList,
+  calculator,
   currentCalculation,
+  errors,
   modal
 })
