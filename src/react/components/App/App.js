@@ -36,7 +36,6 @@ class App extends Component {
         <Route exact path='/' component={CalculatorPage} />
         <Route exact path='/login' component={LoginPage} />
         <Route exact path='/register' component={RegisterPage} />
-        {/* <ModalRoot /> */}
       </div>
     )
   }

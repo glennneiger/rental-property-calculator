@@ -3,6 +3,9 @@ import PropTypes from 'prop-types'
 
 const SaveChangesModal = ({
   currentTitle,
+  id,
+  calculation,
+  getCalculationById,
   hideModal,
   saveCalculation
 }) => (
@@ -12,12 +15,20 @@ const SaveChangesModal = ({
       Would you like to save?
     </p>
     <button onClick={() => {
-      saveCalculation()
+      let title = currentTitle
+      if (!currentTitle) {
+        title = prompt('Enter a title for your calculation')
+      }
+      saveCalculation(title, calculation)
+      getCalculationById(id)
       hideModal()
     }}>
       Save
     </button>
-    <button onClick={() => hideModal()}>
+    <button onClick={() => {
+      getCalculationById(id)
+      hideModal()
+    }}>
       Don't Save
     </button>
     <button onClick={() => hideModal()}>
@@ -27,8 +38,11 @@ const SaveChangesModal = ({
 )
 
 SaveChangesModal.propTypes = {
+  calculation: PropTypes.object.isRequired,
   currentTitle: PropTypes.string,
+  getCalculationById: PropTypes.func.isRequired,
   hideModal: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
   saveCalculation: PropTypes.func.isRequired
 }
 

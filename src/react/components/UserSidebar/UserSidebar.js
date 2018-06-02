@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Infinite from 'react-infinite'
 
-import { MODAL_SAVE_CHANGES } from '../../../constants'
+// import { MODAL_SAVE_CHANGES } from '../../../constants'
 import ListCalculation from '../ListCalculation'
 import './userSidebar.css'
 
@@ -64,8 +64,8 @@ UserSidebar.propTypes = {
   currentTitle: PropTypes.string,
   getAllCalculations: PropTypes.func.isRequired,
   logoutUser: PropTypes.func.isRequired,
-  saveCalculation: PropTypes.func.isRequired,
-  showModal: PropTypes.func.isRequired
+  saveCalculation: PropTypes.func.isRequired
+  // showModal: PropTypes.func.isRequired
 }
 
 export default UserSidebar

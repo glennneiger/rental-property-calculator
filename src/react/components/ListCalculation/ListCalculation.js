@@ -10,9 +10,14 @@ class ListCalculation extends Component {
   }
   handleClick = () => {
     if (this.props.changesMade) {
-      this.props.showModal(MODAL_SAVE_CHANGES, {})
+      this.props.showModal(MODAL_SAVE_CHANGES, {
+        currentTitle: this.props.currentTitle,
+        id: this.props.id,
+        calculation: this.props.calculation
+      })
+    } else {
+      this.props.getCalculationById(this.props.id)
     }
-    this.props.getCalculationById(this.props.id)
   }
   render() {
     return (
@@ -25,10 +30,11 @@ class ListCalculation extends Component {
 }
 
 ListCalculation.propTypes = {
+  calculation: PropTypes.object,
   changesMade: PropTypes.bool.isRequired,
+  currentTitle: PropTypes.string,
   getCalculationById: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
-  // onLoadListCalculation: PropTypes.func.isRequired,
   showModal: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired
 }

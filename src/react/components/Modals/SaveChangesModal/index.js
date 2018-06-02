@@ -1,15 +1,24 @@
 import { connect } from 'react-redux'
 
 import SaveChangesModal from './SaveChangesModal'
-import { saveCalculation } from '../../../../actions/calculationList'
+import {
+  saveCalculation,
+  getCalculationById
+} from '../../../../actions/calculationList'
 import { hideModal } from '../../../../actions/modal'
 
-const mapStateToProps = state => ({
-  currentTitle: state.currentCalculation.title
-})
+// const mapDispatchToProps = dispatch => ({
+//   hideModal: () => dispatch(
+//     hideModal()
+//   ),
+//   saveCalculation: (title, calculation) => {
+//     saveCalculation(title, calculation)(dispatch)
+//   }
+// })
 
 export default connect(
-  mapStateToProps,
-  { saveCalculation,
-    hideModal }
+  null,
+  { hideModal,
+    saveCalculation,
+    getCalculationById }
 )(SaveChangesModal)

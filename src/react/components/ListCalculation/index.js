@@ -7,7 +7,9 @@ import ListCalculation from './ListCalculation'
 import { showModal } from '../../../actions/modal'
 
 const mapStateToProps = state => ({
-  changesMade: state.currentCalculation.changesMade
+  calculation: state.calculator,
+  changesMade: state.currentCalculation.changesMade,
+  currentTitle: state.currentCalculation.title
 })
 
 export default connect(
