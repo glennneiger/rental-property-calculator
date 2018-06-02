@@ -4,11 +4,13 @@ import errors from './errors'
 import calculator from './calculator'
 import calculationList from './calculationList'
 import currentCalculation from './currentCalculation'
+import modal from './modal'
 
 export const reducer = combineReducers({
   auth,
   errors,
   calculator,
   calculationList,
-  currentCalculation
+  currentCalculation,
+  modal
 })

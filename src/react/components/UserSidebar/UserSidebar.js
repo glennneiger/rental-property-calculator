@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Infinite from 'react-infinite'
 
+import { MODAL_SAVE_CHANGES } from '../../../constants'
 import ListCalculation from '../ListCalculation'
 import './userSidebar.css'
 
@@ -27,15 +28,6 @@ class UserSidebar extends Component {
   handleSaveAsClick = () => {
     const title = prompt('Enter a title for your calculation')
     this.props.saveCalculation(title, this.props.calculation)
-  }
-  onLoadListCalculation = () => {
-    if (this.props.changesMade) {
-
-      // bring out dialog asking if they want to save
-      // if yes, this.handleSaveClick()
-      // if no, do nothing
-      console.log('changes made')
-    }
   }
   render() {
     const { logoutUser, calculationList } = this.props
@@ -72,7 +64,8 @@ UserSidebar.propTypes = {
   currentTitle: PropTypes.string,
   getAllCalculations: PropTypes.func.isRequired,
   logoutUser: PropTypes.func.isRequired,
-  saveCalculation: PropTypes.func.isRequired
+  saveCalculation: PropTypes.func.isRequired,
+  showModal: PropTypes.func.isRequired
 }
 
 export default UserSidebar

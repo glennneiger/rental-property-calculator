@@ -40,6 +40,8 @@ export const INTERVAL_YEAR_RESULTS = 5
 
 export const MILLISECONDS_PER_SECOND = 1000
 
+export const MODAL_SAVE_CHANGES = 'MODAL_SAVE_CHANGES'
+
 export const MODEL_CALCULATIONS = 'calculations'
 export const MODEL_PROFILE = 'profile'
 export const MODEL_USERS = 'users'
