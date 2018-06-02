@@ -49,8 +49,10 @@ class UserSidebar extends Component {
             ))}
           </Infinite>
           : <div>No calculations to display</div>}
-        <button onClick={this.handleSaveClick}>Save</button>
-        <button onClick={this.handleSaveAsClick}>Save As...</button>
+        <div className='saveButtons'>
+          <button onClick={this.handleSaveClick}>Save</button>
+          <button onClick={this.handleSaveAsClick}>Save As...</button>
+        </div>
       </div>
     )
   }

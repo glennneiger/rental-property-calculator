@@ -1,0 +1,34 @@
+.saveChangesModal {
+  position: fixed;
+  width: 500px;
+  height: 150px;
+  background-color: white;
+  border: 3px solid black;
+  left: 32%;
+  top: 25%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 5px;
+}
+
+.saveChangesModal .buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around
+}
+
+.saveChangesModal .buttons button {
+  background-color: #2196F3;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0px;
+  border: 1px solid black;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.saveChangesModal p {
+  font-size: 18px;
+}

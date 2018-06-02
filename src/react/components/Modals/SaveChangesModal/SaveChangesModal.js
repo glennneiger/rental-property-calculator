@@ -1,5 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Modal from 'react-modal'
+
+import './saveChangesModal.css'
 
 const SaveChangesModal = ({
   calculation,
@@ -9,7 +12,13 @@ const SaveChangesModal = ({
   idToGet,
   saveCalculation
 }) => (
-  <div className='saveChangesModal'>
+  <Modal
+    isOpen={true}
+    className='saveChangesModal'
+    shouldCloseOnEsc={true}
+    shouldCloseOnOverlayClick={true}
+    onRequestClose={hideModal}
+  >
     {currentTitle
       ? <p>
         You have unsaved changes to "{ currentTitle }".
@@ -19,27 +28,29 @@ const SaveChangesModal = ({
         Would you like to save these as a new calculation?
       </p>
     }
-    <button onClick={() => {
-      let title = currentTitle
-      if (!currentTitle) {
-        title = prompt('Enter a title for your calculation')
-      }
-      saveCalculation(title, calculation)
-      getCalculationById(idToGet)
-      hideModal()
-    }}>
-      Save
-    </button>
-    <button onClick={() => {
-      getCalculationById(idToGet)
-      hideModal()
-    }}>
-      Don't Save
-    </button>
-    <button onClick={() => hideModal()}>
-      Cancel
-    </button>
-  </div>
+    <div className='buttons'>
+      <button onClick={() => {
+        let title = currentTitle
+        if (!currentTitle) {
+          title = prompt('Enter a title for your calculation')
+        }
+        saveCalculation(title, calculation)
+        getCalculationById(idToGet)
+        hideModal()
+      }}>
+        Save
+      </button>
+      <button onClick={() => {
+        getCalculationById(idToGet)
+        hideModal()
+      }}>
+        Don't Save
+      </button>
+      <button onClick={() => hideModal()}>
+        Cancel
+      </button>
+    </div>
+  </Modal>
 )
 
 SaveChangesModal.propTypes = {
