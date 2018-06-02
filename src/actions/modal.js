@@ -12,9 +12,6 @@ export const showModal = (modalType, modalProps) => dispatch => {
   })
 }
 
-// TODO: make this just an action creator, don't actually dispatch
-export const hideModal = () => dispatch => {
-  dispatch({
-    type: HIDE_MODAL
-  })
-}
+export const hideModal = () => ({
+  type: HIDE_MODAL
+})
