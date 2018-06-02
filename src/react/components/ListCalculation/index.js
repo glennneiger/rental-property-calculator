@@ -12,8 +12,16 @@ const mapStateToProps = state => ({
   currentTitle: state.currentCalculation.title
 })
 
+const mapDispatchToProps = dispatch => ({
+  getCalculationById: calculationId => {
+    dispatch(getCalculationById(calculationId))
+  },
+  showModal: (modalType, modalProps) => dispatch(
+    showModal(modalType, modalProps)
+  )
+})
+
 export default connect(
   mapStateToProps,
-  { getCalculationById,
-    showModal }
+  mapDispatchToProps
 )(ListCalculation)
