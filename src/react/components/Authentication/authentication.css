@@ -31,14 +31,7 @@
 }
 
 .authenticationPage button {
-  background-color: #2196F3;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0px;
-  border: none;
-  cursor: pointer;
   width: 100%;
-  border-radius: 5px;
 }
 
 .authenticationPage h1 {
