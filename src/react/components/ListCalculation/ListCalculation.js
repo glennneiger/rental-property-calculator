@@ -22,7 +22,9 @@ class ListCalculation extends Component {
   }
   handleTrashIconClick = event => {
     event.stopPropagation()
-    console.log('CLICKED')
+    this.props.deleteCalculationWithId(this.props.id)
+    // delete from redux state
+    // delete from mongoDB
   }
   render() {
     return (
@@ -42,6 +44,7 @@ ListCalculation.propTypes = {
   calculation: PropTypes.object,
   changesMade: PropTypes.bool.isRequired,
   currentTitle: PropTypes.string,
+  deleteCalculationWithId: PropTypes.func.isRequired,
   getCalculationById: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
   showModal: PropTypes.func.isRequired,

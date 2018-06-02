@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 
 import {
+  deleteCalculationWithId,
   getCalculationById
 } from '../../../actions/calculationList'
 import ListCalculation from './ListCalculation'
@@ -13,6 +14,9 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
+  deleteCalculationWithId: calculationId => {
+    dispatch(deleteCalculationWithId(calculationId))
+  },
   getCalculationById: calculationId => {
     dispatch(getCalculationById(calculationId))
   },

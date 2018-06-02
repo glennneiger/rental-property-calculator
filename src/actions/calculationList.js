@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 import {
+  DELETE_CALCULATION_WITH_ID,
   GET_ALL_CALCULATIONS,
   LOAD_CALCULATION,
   SET_CHANGES_MADE,
@@ -58,6 +59,17 @@ export const saveCalculation = (title, calculation) => dispatch => {
         payload: res.data.title
       })
       dispatch(getAllCalculations())
+    })
+    .catch(err => console.log(err))
+}
+
+export const deleteCalculationWithId = calculationId => dispatch => {
+  axios.delete(`/api/calculation/${calculationId}`)
+    .then(res => {
+      dispatch({
+        type: DELETE_CALCULATION_WITH_ID,
+        payload: calculationId
+      })
     })
     .catch(err => console.log(err))
 }
