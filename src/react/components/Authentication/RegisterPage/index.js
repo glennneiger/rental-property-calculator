@@ -12,8 +12,16 @@ const mapStateToProps = state => ({
   errors: state.errors
 })
 
+const mapDispatchToProps = dispatch => ({
+  clearErrors: () => {
+    dispatch(clearErrors())
+  },
+  registerUser: (userData, history) => {
+    dispatch(registerUser(userData, history))
+  }
+})
+
 export default connect(
   mapStateToProps,
-  { clearErrors,
-    registerUser }
+  mapDispatchToProps
 )(withRouter(RegisterPage))

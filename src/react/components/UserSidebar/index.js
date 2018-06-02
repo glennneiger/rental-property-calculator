@@ -14,9 +14,19 @@ const mapStateToProps = state => ({
   currentTitle: state.currentCalculation.title
 })
 
+const mapDispatchToProps = dispatch => ({
+  saveCalculation: (title, calculation) => {
+    dispatch(saveCalculation(title, calculation))
+  },
+  logoutUser: () => {
+    dispatch(logoutUser())
+  },
+  getAllCalculations: () => {
+    dispatch(getAllCalculations())
+  }
+})
+
 export default connect(
   mapStateToProps,
-  { saveCalculation,
-    logoutUser,
-    getAllCalculations }
+  mapDispatchToProps
 )(UserSidebar)

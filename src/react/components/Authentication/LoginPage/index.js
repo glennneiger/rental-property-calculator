@@ -11,8 +11,16 @@ const mapStateToProps = state => ({
   errors: state.errors
 })
 
+const mapDispatchToProps = dispatch => ({
+  clearErrors: () => {
+    dispatch(clearErrors())
+  },
+  loginUser: userData => {
+    dispatch(loginUser(userData))
+  }
+})
+
 export default connect(
   mapStateToProps,
-  { clearErrors,
-    loginUser }
+  mapDispatchToProps
 )(LoginPage)
