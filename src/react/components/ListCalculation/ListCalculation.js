@@ -8,6 +8,7 @@ class ListCalculation extends Component {
     super(props)
   }
   handleClick = () => {
+    this.props.onLoadListCalculation()
     this.props.getCalculationById(this.props.id)
   }
   render() {
@@ -23,6 +24,7 @@ class ListCalculation extends Component {
 ListCalculation.propTypes = {
   getCalculationById: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
+  onLoadListCalculation: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired
 }
 

@@ -28,6 +28,15 @@ class UserSidebar extends Component {
     const title = prompt('Enter a title for your calculation')
     this.props.saveCalculation(title, this.props.calculation)
   }
+  onLoadListCalculation = () => {
+    if (this.props.changesMade) {
+
+      // bring out dialog asking if they want to save
+      // if yes, this.handleSaveClick()
+      // if no, do nothing
+      console.log('changes made')
+    }
+  }
   render() {
     const { logoutUser, calculationList } = this.props
     return (
@@ -44,6 +53,7 @@ class UserSidebar extends Component {
                 key={calculation.id}
                 id={calculation.id}
                 title={calculation.title}
+                onLoadListCalculation={this.onLoadListCalculation}
               />
             ))}
           </Infinite>

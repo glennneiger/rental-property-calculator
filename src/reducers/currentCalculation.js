@@ -5,7 +5,6 @@ import {
 
 const initialState = {
   changesMade: false
-  // isSaved: false
 }
 
 const currentCalculation = (state = initialState, action) => {
