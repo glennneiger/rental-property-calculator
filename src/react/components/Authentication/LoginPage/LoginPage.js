@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 
 import AuthInput from '../AuthInput'
 import '../authentication.css'
+import BlueButton from '../../BlueButton'
 
 class LoginPage extends Component {
   constructor(props) {
@@ -63,7 +64,7 @@ class LoginPage extends Component {
               type='password'
               value={this.state.password}
             />
-            <button>Login</button>
+            <BlueButton>Login</BlueButton>
             <p>Don't have an account? <Link to={'/register'}>Register</Link></p>
           </div>
         </form>

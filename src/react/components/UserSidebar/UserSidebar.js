@@ -4,6 +4,7 @@ import Infinite from 'react-infinite'
 
 import ListCalculation from '../ListCalculation'
 import './userSidebar.css'
+import BlueButton from '../BlueButton'
 
 class UserSidebar extends Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class UserSidebar extends Component {
     const { logoutUser, calculationList } = this.props
     return (
       <div className='userSidebar'>
-        <button onClick={logoutUser}>Logout</button>
+        <BlueButton onClick={logoutUser}>Logout</BlueButton>
         {calculationList.length !== 0
           ? <Infinite
             className='infinite'
@@ -50,8 +51,8 @@ class UserSidebar extends Component {
           </Infinite>
           : <div>No calculations to display</div>}
         <div className='saveButtons'>
-          <button onClick={this.handleSaveClick}>Save</button>
-          <button onClick={this.handleSaveAsClick}>Save As...</button>
+          <BlueButton onClick={this.handleSaveClick}>Save</BlueButton>
+          <BlueButton onClick={this.handleSaveAsClick}>Save As...</BlueButton>
         </div>
       </div>
     )
