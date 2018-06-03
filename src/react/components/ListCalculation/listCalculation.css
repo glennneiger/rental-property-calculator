@@ -1,10 +1,20 @@
 .listCalculation {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   border: 1px solid black;
-  padding: 4px;
+  border-radius: 5px;
+  margin: 4px 0;
+  padding: 6px;
   cursor: pointer;
   background-color: white;
+}
+
+.listCalculation span {
+  font-family: Arial, Helvetica, sans-serif;
+  text-overflow: ellipsis;
+  margin-right: 2px;
+  overflow: hidden
 }
 
 .listCalculation .trashIcon {

@@ -1,7 +1,6 @@
 .sidebar {
-  float: left;
-  width: 200px;
-  height: 400px;
+  width: 240px;
+  min-width: 240px;
   background-color: #E9F3F8;
   margin-top: 24px;
   border-radius: 10px;

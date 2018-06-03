@@ -35,18 +35,18 @@ class ListCalculation extends Component {
     const { currentTitle, title } = this.props
     const selected = (currentTitle === title) ? true : false
     return (
-      <div
+      <li
         onClick={this.handleClick}
         className={classNames({
           listCalculation: true,
           isSelected: selected
         })}>
-        {this.props.title}
+        <span>{this.props.title}</span>
         <FaTrashO
           className='trashIcon'
           onClick={this.handleTrashIconClick}
         />
-      </div>
+      </li>
     )
   }
 }
