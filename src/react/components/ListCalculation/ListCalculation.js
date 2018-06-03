@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import FaTrashO from 'react-icons/lib/fa/trash-o'
+import classNames from 'classnames'
 
 import {
   MODAL_CONFIRM_DELETE_CALCULATION,
@@ -31,9 +32,15 @@ class ListCalculation extends Component {
     })
   }
   render() {
+    const { currentTitle, title } = this.props
+    const selected = (currentTitle === title) ? true : false
     return (
-      <div className='listCalculation'
-        onClick={this.handleClick}>
+      <div
+        onClick={this.handleClick}
+        className={classNames({
+          listCalculation: true,
+          isSelected: selected
+        })}>
         {this.props.title}
         <FaTrashO
           className='trashIcon'

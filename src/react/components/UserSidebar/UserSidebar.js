@@ -32,10 +32,11 @@ class UserSidebar extends Component {
     })
   }
   render() {
-    const { logoutUser, calculationList } = this.props
+    const { logoutUser, calculationList, currentTitle } = this.props
     return (
       <div className='userSidebar'>
         <BlueButton onClick={logoutUser}>Logout</BlueButton>
+        <h2>Saved Calculations</h2>
         {calculationList.length !== 0
           ? <Infinite
             className='infinite'

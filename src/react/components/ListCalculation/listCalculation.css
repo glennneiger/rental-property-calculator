@@ -16,3 +16,12 @@
 .listCalculation .trashIcon:hover {
   color: #585858;
 }
+
+.isSelected {
+  background-color: #2196F3;
+  color: white;
+}
+
+.isSelected .trashIcon {
+  color: white;
+}
