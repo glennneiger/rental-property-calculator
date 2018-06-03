@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Modal from 'react-modal'
 
-import './saveChangesModal.css'
+import '../confirmModal.css'
 import BlueButton from '../../BlueButton'
 
 class SaveChangesModal extends Component {
@@ -48,7 +48,7 @@ class SaveChangesModal extends Component {
     return (
       <Modal
         isOpen={true}
-        className='saveChangesModal'
+        className='confirmModal'
         shouldCloseOnEsc={true}
         shouldCloseOnOverlayClick={true}
         onRequestClose={this.props.hideModal}
