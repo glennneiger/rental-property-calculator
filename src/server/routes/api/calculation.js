@@ -307,14 +307,14 @@ router.delete(
           return res.status(401).json({ notauthorized: 'User not authorized' })
         }
         calculation.remove()
-          .then(() => res.json({ post: 'Calculation removed successfully' }))
+          .then(() => res.json({ calculation: 'Calculation removed successfully' }))
           .catch(err => {
             return res.status(404).json(err)
           })
       })
       .catch(() => {
         return res.status(404).json({
-          post: 'No Calculation found with that ID'
+          calculation: 'No Calculation found with that ID'
         })
       })
   }
