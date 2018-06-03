@@ -1,0 +1,11 @@
+:root {
+  --primaryColor: #044389;
+  --buttonColor: #5995ED;
+  --accentColor: #FFAD05;
+  --textInputBackground: rgb(235, 235, 235);
+  --lightTextColor: #FFFFFF;
+  --darkTextColor: black;
+  --modalBackgroundColor: #FFFFFF;
+  --mainBackgroundColor: #E9F3F8;
+  --sidebarColor: green;
+}

@@ -1,0 +1,13 @@
+@import "../../../styles.css";
+
+.header {
+  background-color: var(--primaryColor);
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.header span {
+  font-size: 30px;
+  margin-left: 320px;
+}
