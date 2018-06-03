@@ -53,9 +53,6 @@ class UserSidebar extends Component {
             ))}
           </Infinite>
           : <div>No calculations to display</div>}
-        {currentTitle
-          ? <div><p>Selected calculation:</p><p>"{currentTitle}"</p></div>
-          : null }
         <div className='saveButtons'>
           <BlueButton onClick={this.handleSaveClick}>Save</BlueButton>
           <BlueButton onClick={this.handleSaveAsClick}>Save As...</BlueButton>
