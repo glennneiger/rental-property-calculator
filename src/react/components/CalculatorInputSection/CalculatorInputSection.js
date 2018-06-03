@@ -1,13 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import './inputSection.css'
+import './calculatorInputSection.css'
 
-const InputSection = ({
+const CalculatorInputSection = ({
   children,
   title
 }) => (
-  <div className='inputSection' >
+  <div className='calculatorInputSection' >
     <h2>{title}</h2>
     <div className='inputs'>
       {children}
@@ -15,9 +15,9 @@ const InputSection = ({
   </div>
 )
 
-InputSection.propTypes = {
+CalculatorInputSection.propTypes = {
   children: PropTypes.array,
   title: PropTypes.string.isRequired
 }
 
-export default InputSection
+export default CalculatorInputSection
