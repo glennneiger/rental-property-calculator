@@ -27,6 +27,9 @@ class UserSidebar extends Component {
   }
   handleSaveAsClick = () => {
     const title = prompt('Enter a title for your calculation')
+    if (title === '') {
+      return
+    }
     this.props.saveCalculation(title, this.props.calculation)
   }
   render() {

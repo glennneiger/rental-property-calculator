@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Modal from 'react-modal'
 
-import './saveChangesModal.css'
+import '../confirmModal.css'
 import BlueButton from '../../BlueButton'
 
 class SaveChangesModal extends Component {
@@ -19,6 +19,10 @@ class SaveChangesModal extends Component {
     let title = currentTitle
     if (!currentTitle) {
       title = prompt('Enter a title for your calculation')
+      if (title === '') {
+        hideModal()
+        return
+      }
     }
     saveCalculation(title, calculation)
     getCalculationById(idToGet)
@@ -44,7 +48,7 @@ class SaveChangesModal extends Component {
     return (
       <Modal
         isOpen={true}
-        className='saveChangesModal'
+        className='confirmModal'
         shouldCloseOnEsc={true}
         shouldCloseOnOverlayClick={true}
         onRequestClose={this.props.hideModal}

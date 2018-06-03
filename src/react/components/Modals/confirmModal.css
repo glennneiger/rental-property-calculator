@@ -1,4 +1,4 @@
-.saveChangesModal {
+.confirmModal {
   position: fixed;
   width: 500px;
   height: 150px;
@@ -13,17 +13,17 @@
   border-radius: 5px;
 }
 
-.saveChangesModal:focus {
+.confirmModal:focus {
   outline: none;
 }
 
-.saveChangesModal .buttons {
+.confirmModal .buttons {
   display: flex;
   flex-direction: row;
   justify-content: space-around
 }
 
-.saveChangesModal .buttons button {
+.confirmModal .buttons button {
   background-color: #2196F3;
   color: white;
   padding: 14px 20px;
@@ -33,6 +33,6 @@
   border-radius: 5px;
 }
 
-.saveChangesModal p {
+.confirmModal p {
   font-size: 18px;
 }

@@ -1,12 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { MODAL_SAVE_CHANGES } from '../../../../constants'
+import {
+  MODAL_CONFIRM_DELETE_CALCULATION,
+  MODAL_SAVE_CHANGES
+} from '../../../../constants'
 import SaveChangesModal from '../SaveChangesModal'
+import DeleteCalculationModal from '../DeleteCalculationModal'
 import './modalRoot.css'
 
 const MODAL_COMPONENTS = {
-  [MODAL_SAVE_CHANGES]: SaveChangesModal
+  [MODAL_SAVE_CHANGES]: SaveChangesModal,
+  [MODAL_CONFIRM_DELETE_CALCULATION]: DeleteCalculationModal
 }
 
 const ModalRoot = ({
