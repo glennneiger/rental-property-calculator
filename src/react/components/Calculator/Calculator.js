@@ -2,7 +2,7 @@ import React from 'react'
 
 import Result from '../Result'
 import InputSection from '../InputSection'
-import Input from '../Input'
+import CalculatorInput from '../CalculatorInput'
 import {
   inputSectionData
 } from './childProps'
@@ -15,7 +15,7 @@ const Calculator = () => {
         <InputSection key={section.title}
           title={section.title}>
           {section.childProps.map(props => (
-            <Input
+            <CalculatorInput
               key={props.inputId}
               {...props}
               section={section.title}

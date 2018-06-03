@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import Input from './Input'
+import CalculatorInput from './CalculatorInput'
 import {
   setChangesMade,
   updateInput
@@ -22,4 +22,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Input)
+)(CalculatorInput)
