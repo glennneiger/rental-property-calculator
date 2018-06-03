@@ -294,4 +294,30 @@ router.get(
   }
 )
 
+// @route   DELETE api/calculation/:calculation_id
+// @desc    Delete calculation with ID
+// @access  Private
+router.delete(
+  '/:calculation_id',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    Calculation.findById(req.params.calculation_id)
+      .then(calculation => {
+        if (calculation.user.toString() !== req.user.id) {
+          return res.status(401).json({ notauthorized: 'User not authorized' })
+        }
+        calculation.remove()
+          .then(() => res.json({ calculation: 'Calculation removed successfully' }))
+          .catch(err => {
+            return res.status(404).json(err)
+          })
+      })
+      .catch(() => {
+        return res.status(404).json({
+          calculation: 'No Calculation found with that ID'
+        })
+      })
+  }
+)
+
 module.exports = router
