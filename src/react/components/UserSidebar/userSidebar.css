@@ -1,9 +1,22 @@
 .infinite {
-  margin: 16px 0px;
+  margin: 4px 0px 16px 0px;
   width: 200px;
 }
 
 .userSidebar .saveButtons {
   display: flex;
   justify-content: space-between;
+}
+
+.userSidebar h1 {
+  margin-top: 12px;
+  font-size: 18px;
+}
+
+.userSidebar p {
+  font-size: 18px;
+}
+
+.userSidebar h1, .userSidebar p {
+  font-family: 'Patua One'
 }

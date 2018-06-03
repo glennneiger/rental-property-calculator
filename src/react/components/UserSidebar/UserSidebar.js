@@ -32,10 +32,11 @@ class UserSidebar extends Component {
     })
   }
   render() {
-    const { logoutUser, calculationList } = this.props
+    const { logoutUser, calculationList, currentTitle } = this.props
     return (
       <div className='userSidebar'>
         <BlueButton onClick={logoutUser}>Logout</BlueButton>
+        <h1>Saved Calculations</h1>
         {calculationList.length !== 0
           ? <Infinite
             className='infinite'
@@ -52,6 +53,9 @@ class UserSidebar extends Component {
             ))}
           </Infinite>
           : <div>No calculations to display</div>}
+        {currentTitle
+          ? <div><p>Selected calculation:</p><p>"{currentTitle}"</p></div>
+          : null }
         <div className='saveButtons'>
           <BlueButton onClick={this.handleSaveClick}>Save</BlueButton>
           <BlueButton onClick={this.handleSaveAsClick}>Save As...</BlueButton>
