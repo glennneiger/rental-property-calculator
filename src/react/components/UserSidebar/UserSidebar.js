@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Infinite from 'react-infinite'
 
 import ListCalculation from '../ListCalculation'
 import './userSidebar.css'
@@ -38,11 +37,7 @@ class UserSidebar extends Component {
         <BlueButton onClick={logoutUser}>Logout</BlueButton>
         <h2>Saved Calculations</h2>
         {calculationList.length !== 0
-          ? <Infinite
-            className='infinite'
-            containerHeight={200}
-            elementHeight={20}
-          >
+          ? <ul>
             {calculationList.map(calculation => (
               <ListCalculation
                 key={calculation.id}
@@ -51,7 +46,7 @@ class UserSidebar extends Component {
                 onLoadListCalculation={this.onLoadListCalculation}
               />
             ))}
-          </Infinite>
+          </ul>
           : <div>No calculations to display</div>}
         <div className='saveButtons'>
           <BlueButton onClick={this.handleSaveClick}>Save</BlueButton>
