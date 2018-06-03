@@ -8,7 +8,7 @@
   justify-content: space-between;
 }
 
-.userSidebar h1 {
+.userSidebar h2 {
   margin-top: 12px;
   font-size: 18px;
 }
@@ -17,6 +17,6 @@
   font-size: 18px;
 }
 
-.userSidebar h1, .userSidebar p {
+.userSidebar h2, .userSidebar p {
   font-family: 'Patua One'
 }

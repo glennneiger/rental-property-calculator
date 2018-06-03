@@ -36,7 +36,7 @@ class UserSidebar extends Component {
     return (
       <div className='userSidebar'>
         <BlueButton onClick={logoutUser}>Logout</BlueButton>
-        <h1>Saved Calculations</h1>
+        <h2>Saved Calculations</h2>
         {calculationList.length !== 0
           ? <Infinite
             className='infinite'
