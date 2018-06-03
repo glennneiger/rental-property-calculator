@@ -1,5 +1,5 @@
 import React from 'react'
-import './input.css'
+import './calculatorInput.css'
 import PropTypes from 'prop-types'
 
 import TextInput from '../TextInput'
@@ -7,7 +7,7 @@ import TextInput from '../TextInput'
 const DEFAULT_TOTAL_WIDTH = 100
 const LABEL_WIDTH = 185
 
-const Input = ({
+const CalculatorInput = ({
   content,
   inputId,
   inputType = 'number',
@@ -27,7 +27,7 @@ const Input = ({
   }
   const totalWidth = textInputWidth + LABEL_WIDTH
   return (
-    <div className='input' style={{ width: totalWidth }}>
+    <div className='calculatorInput' style={{ width: totalWidth }}>
       <label htmlFor={inputId}>{label}:</label>
       <TextInput type={'text'}
         id={inputId}
@@ -39,7 +39,7 @@ const Input = ({
   )
 }
 
-Input.propTypes = {
+CalculatorInput.propTypes = {
   content: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number
@@ -53,4 +53,4 @@ Input.propTypes = {
   updateInput: PropTypes.func.isRequired
 }
 
-export default Input
+export default CalculatorInput
