@@ -25,7 +25,7 @@ class DeleteCalculationModal extends Component {
         onRequestClose={this.props.hideModal}
       >
         <p>
-          Are you sure you want to delete this?
+          Are you sure you want to delete "{this.props.titleToDelete}"?
         </p>
         <div className='buttons'>
           <BlueButton onClick={this.handleDeleteClick}>Delete</BlueButton>
@@ -39,7 +39,8 @@ class DeleteCalculationModal extends Component {
 DeleteCalculationModal.propTypes = {
   deleteCalculationWithId: PropTypes.func.isRequired,
   hideModal: PropTypes.func.isRequired,
-  idToDelete: PropTypes.string.isRequired
+  idToDelete: PropTypes.string.isRequired,
+  titleToDelete: PropTypes.string.isRequired
 }
 
 export default DeleteCalculationModal
