@@ -6,6 +6,7 @@ import {
   getAllCalculations,
   saveCalculation
 } from '../../../actions/calculationList'
+import { showModal } from '../../../actions/modal'
 
 const mapStateToProps = state => ({
   calculation: state.calculator,
@@ -23,6 +24,9 @@ const mapDispatchToProps = dispatch => ({
   },
   getAllCalculations: () => {
     dispatch(getAllCalculations())
+  },
+  showModal: (modalType, modalProps) => {
+    dispatch(showModal(modalType, modalProps))
   }
 })
 
