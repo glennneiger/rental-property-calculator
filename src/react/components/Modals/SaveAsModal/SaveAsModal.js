@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Modal from 'react-modal'
 
+import TextInput from '../../TextInput'
 import '../modal.css'
 import BlueButton from '../../BlueButton'
 
@@ -42,7 +43,7 @@ class SaveAsModal extends Component {
         <p>
           Enter a title for your new calculation.
         </p>
-        <input type='text'
+        <TextInput type='text'
           value={this.state.value}
           onChange={this.handleChange}
         />
