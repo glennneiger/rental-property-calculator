@@ -11,17 +11,24 @@ import './calculator.css'
 const Calculator = () => {
   return (
     <div className='calculator'>
-      {inputSectionData.map(section => (
-        <CalculatorInputSection key={section.title}
-          title={section.title}>
-          {section.childProps.map(props => (
-            <CalculatorInput
-              key={props.inputId}
-              {...props}
-              section={section.title}
-            />
-          ))}
-        </CalculatorInputSection>
+      {inputSectionData.map((section, index) => (
+        <div>
+          <CalculatorInputSection key={section.title}
+            title={section.title}>
+            {section.childProps.map(props => (
+              <CalculatorInput
+                key={props.inputId}
+                {...props}
+                section={section.title}
+              />
+            ))}
+          </CalculatorInputSection>
+          {
+            index !== section.childProps.length - 1
+              ? <div className='divider' />
+              : null
+          }
+        </div>
       ))}
       <Result />
     </div>

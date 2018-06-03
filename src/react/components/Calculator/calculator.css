@@ -1,6 +1,16 @@
+@import "../../../styles.css";
+
 .calculator {
   height: 100%;
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
   flex-direction: column;
+  background-color: var(--mainBackgroundColor);
+}
+
+.divider {
+  width: 97%;
+  margin: 0 auto;
+  height: 2px;
+  background-color: rgba(0, 0, 0, 0.8);
 }
