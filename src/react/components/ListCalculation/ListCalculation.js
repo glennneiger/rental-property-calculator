@@ -23,8 +23,6 @@ class ListCalculation extends Component {
   handleTrashIconClick = event => {
     event.stopPropagation()
     this.props.deleteCalculationWithId(this.props.id)
-    // delete from redux state
-    // delete from mongoDB
   }
   render() {
     return (

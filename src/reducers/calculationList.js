@@ -8,7 +8,9 @@ const calculationList = (state = [], action) => {
   case GET_ALL_CALCULATIONS:
     return action.payload
   case DELETE_CALCULATION_WITH_ID:
-    return state.map(item => item.id !== action.payload.calculationId)
+    return state.filter(calc =>
+      calc.id !== action.payload.calculationId
+    )
   default:
     return state
   }

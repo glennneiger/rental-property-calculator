@@ -65,10 +65,12 @@ export const saveCalculation = (title, calculation) => dispatch => {
 
 export const deleteCalculationWithId = calculationId => dispatch => {
   axios.delete(`/api/calculation/${calculationId}`)
-    .then(res => {
+    .then(() => {
       dispatch({
         type: DELETE_CALCULATION_WITH_ID,
-        payload: calculationId
+        payload: {
+          calculationId
+        }
       })
     })
     .catch(err => console.log(err))
