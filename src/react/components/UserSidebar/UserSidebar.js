@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Infinite from 'react-infinite'
 
 import ListCalculation from '../ListCalculation'
 import './userSidebar.css'
