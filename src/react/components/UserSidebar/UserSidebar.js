@@ -32,7 +32,7 @@ class UserSidebar extends Component {
     })
   }
   render() {
-    const { logoutUser, calculationList, currentTitle } = this.props
+    const { logoutUser, calculationList } = this.props
     return (
       <div className='userSidebar'>
         <BlueButton onClick={logoutUser}>Logout</BlueButton>

@@ -48,11 +48,11 @@ import {
 
 const router = express.Router()
 
-// @route   POST api/calculation/save
+// @route   POST api/calculation/
 // @desc    Save calculation
 // @access  Private
 router.post(
-  '/save',
+  '/',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
     const newCalculation = {

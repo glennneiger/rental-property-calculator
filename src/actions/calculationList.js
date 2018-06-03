@@ -48,7 +48,7 @@ export const saveCalculation = (title, calculation) => dispatch => {
     title,
     calculation
   }
-  axios.post('/api/calculation/save', calcRequest)
+  axios.post('/api/calculation', calcRequest)
     .then(res => {
       dispatch({
         type: SET_CHANGES_MADE,
