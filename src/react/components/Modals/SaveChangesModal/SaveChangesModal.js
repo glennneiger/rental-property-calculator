@@ -19,6 +19,10 @@ class SaveChangesModal extends Component {
     let title = currentTitle
     if (!currentTitle) {
       title = prompt('Enter a title for your calculation')
+      if (title === '') {
+        hideModal()
+        return
+      }
     }
     saveCalculation(title, calculation)
     getCalculationById(idToGet)
