@@ -1,4 +1,4 @@
-.confirmModal {
+.modal {
   position: fixed;
   width: 500px;
   height: 150px;
@@ -13,17 +13,17 @@
   border-radius: 5px;
 }
 
-.confirmModal:focus {
+.modal:focus {
   outline: none;
 }
 
-.confirmModal .buttons {
+.modal .buttons {
   display: flex;
   flex-direction: row;
   justify-content: space-around
 }
 
-.confirmModal .buttons button {
+.modal .buttons button {
   background-color: #2196F3;
   color: white;
   padding: 14px 20px;
@@ -33,6 +33,11 @@
   border-radius: 5px;
 }
 
-.confirmModal p {
+.modal p {
   font-size: 18px;
+}
+
+.modal input {
+  width: 480px;
+  padding-left: 8px;
 }

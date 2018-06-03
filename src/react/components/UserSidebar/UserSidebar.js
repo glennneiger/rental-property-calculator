@@ -5,6 +5,7 @@ import Infinite from 'react-infinite'
 import ListCalculation from '../ListCalculation'
 import './userSidebar.css'
 import BlueButton from '../BlueButton'
+import { MODAL_SAVE_AS } from '../../../constants'
 
 class UserSidebar extends Component {
   constructor(props) {
@@ -26,11 +27,9 @@ class UserSidebar extends Component {
     }
   }
   handleSaveAsClick = () => {
-    const title = prompt('Enter a title for your calculation')
-    if (title === '') {
-      return
-    }
-    this.props.saveCalculation(title, this.props.calculation)
+    this.props.showModal(MODAL_SAVE_AS, {
+      calculationToSave: this.props.calculation
+    })
   }
   render() {
     const { logoutUser, calculationList } = this.props
@@ -69,7 +68,8 @@ UserSidebar.propTypes = {
   currentTitle: PropTypes.string,
   getAllCalculations: PropTypes.func.isRequired,
   logoutUser: PropTypes.func.isRequired,
-  saveCalculation: PropTypes.func.isRequired
+  saveCalculation: PropTypes.func.isRequired,
+  showModal: PropTypes.func.isRequired
 }
 
 export default UserSidebar

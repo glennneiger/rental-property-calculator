@@ -5,11 +5,3 @@
   padding: 18px 12px;
   font-size: 1.2em;
 }
-
-.input input {
-  border: 1px solid black;
-  border-radius: 8px;
-  height: 30px;
-  font-size: 1em;
-  padding: 4px;
-}

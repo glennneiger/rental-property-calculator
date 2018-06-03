@@ -2,6 +2,8 @@ import React from 'react'
 import './input.css'
 import PropTypes from 'prop-types'
 
+import TextInput from '../TextInput'
+
 const DEFAULT_TOTAL_WIDTH = 100
 const LABEL_WIDTH = 185
 
@@ -27,7 +29,7 @@ const Input = ({
   return (
     <div className='input' style={{ width: totalWidth }}>
       <label htmlFor={inputId}>{label}:</label>
-      <input type={'text'}
+      <TextInput type={'text'}
         id={inputId}
         style={{ width: textInputWidth }}
         value={content}

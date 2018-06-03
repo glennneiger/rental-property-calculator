@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Modal from 'react-modal'
 
-import '../confirmModal.css'
+import '../modal.css'
 import BlueButton from '../../BlueButton'
 
 class DeleteCalculationModal extends Component {
@@ -19,7 +19,7 @@ class DeleteCalculationModal extends Component {
     return (
       <Modal
         isOpen={true}
-        className='confirmModal'
+        className='modal'
         shouldCloseOnEsc={true}
         shouldCloseOnOverlayClick={true}
         onRequestClose={this.props.hideModal}
