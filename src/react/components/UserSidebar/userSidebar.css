@@ -21,10 +21,11 @@
 }
 
 .userSidebar ul {
-  height: 300px;
-  /* Possible background that Hailey likes: */
-  /* background-color: #fff;
-  padding: 4px 8px; */
+  height: calc(100vh - 200px); /* TODO: compute the ~200px in terms of variables */
+  min-height: 300px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 4px 8px;
   margin: 12px 0;
   overflow-y: auto;
 }

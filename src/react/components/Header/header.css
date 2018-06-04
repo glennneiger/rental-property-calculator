@@ -10,6 +10,7 @@
 }
 
 .header span {
+  white-space: nowrap;
   font-size: 30px;
   margin-left: var(--sidebarWidth);
 }

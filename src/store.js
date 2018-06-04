@@ -9,6 +9,7 @@ import { reducer } from './reducers'
 
 const initialState = {}
 
+// TODO: only enable redux dev tools in DEV mode
 const store = createStore(
   reducer,
   initialState,
