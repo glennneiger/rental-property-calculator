@@ -5,17 +5,23 @@ import {
   getCalculationById,
   saveCalculation
 } from '../../../../actions/calculationList'
-import { hideModal } from '../../../../actions/modal'
+import {
+  hideModal,
+  showModal
+} from '../../../../actions/modal'
 
 const mapDispatchToProps = dispatch => ({
+  getCalculationById: calculationId => {
+    dispatch(getCalculationById(calculationId))
+  },
   hideModal: () => {
     dispatch(hideModal())
   },
   saveCalculation: (title, calculation) => {
     dispatch(saveCalculation(title, calculation))
   },
-  getCalculationById: calculationId => {
-    dispatch(getCalculationById(calculationId))
+  showModal: (modalType, modalProps) => {
+    dispatch(showModal(modalType, modalProps))
   }
 })
 

@@ -4,6 +4,7 @@ import Modal from 'react-modal'
 
 import '../modal.css'
 import BlueButton from '../../BlueButton'
+import { MODAL_SAVE_AS } from '../../../../constants'
 
 class SaveChangesModal extends Component {
   handleSaveClick = () => {
@@ -11,22 +12,16 @@ class SaveChangesModal extends Component {
       calculation,
       currentTitle,
       getCalculationById,
-      hideModal,
       idToGet,
-      saveCalculation
+      showModal
     } = this.props
 
-    let title = currentTitle
     if (!currentTitle) {
-      title = prompt('Enter a title for your calculation')
-      if (title === '') {
-        hideModal()
-        return
-      }
+      showModal(MODAL_SAVE_AS, {
+        calculationToSave: calculation,
+        idToGet
+      })
     }
-    saveCalculation(title, calculation)
-    getCalculationById(idToGet)
-    hideModal()
   }
 
   handleDontSaveClick = () => {
@@ -78,7 +73,8 @@ SaveChangesModal.propTypes = {
   getCalculationById: PropTypes.func.isRequired,
   hideModal: PropTypes.func.isRequired,
   idToGet: PropTypes.string.isRequired,
-  saveCalculation: PropTypes.func.isRequired
+  saveCalculation: PropTypes.func.isRequired,
+  showModal: PropTypes.func.isRequired
 }
 
 export default SaveChangesModal
