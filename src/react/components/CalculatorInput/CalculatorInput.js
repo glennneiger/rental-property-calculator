@@ -3,6 +3,7 @@ import './calculatorInput.css'
 import PropTypes from 'prop-types'
 
 import TextInput from '../TextInput'
+import { INPUT_ID_AMORTIZATION_PERIOD } from '../../../constants'
 
 const DEFAULT_TOTAL_WIDTH = 100
 const LABEL_WIDTH = 185
@@ -20,6 +21,9 @@ const CalculatorInput = ({
   const handleChange = event => {
     const value = event.target.value
     if (inputType === 'number' && !value.match(/^\d*\.?\d{0,2}$/)) {
+      return
+    }
+    if (inputId === INPUT_ID_AMORTIZATION_PERIOD && value.length > 3) {
       return
     }
     updateInput(value, section, inputId)
