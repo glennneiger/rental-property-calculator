@@ -14,11 +14,24 @@ class SaveAsModal extends Component {
     }
   }
   handleSaveClick = () => {
-    this.props.saveCalculation(
+    const {
+      idToGet,
+      saveCalculation,
+      calculationToSave,
+      getCalculationById,
+      hideModal
+    } = this.props
+    let setToCurrentCalculation = true
+    if (idToGet) {
+      setToCurrentCalculation = false
+      getCalculationById(idToGet)
+    }
+    saveCalculation(
       this.state.value,
-      this.props.calculationToSave
+      calculationToSave,
+      setToCurrentCalculation
     )
-    this.props.hideModal()
+    hideModal()
   }
 
   handleCancelClick = () => {
@@ -58,7 +71,9 @@ class SaveAsModal extends Component {
 
 SaveAsModal.propTypes = {
   calculationToSave: PropTypes.object.isRequired,
+  getCalculationById: PropTypes.func.isRequired,
   hideModal: PropTypes.func.isRequired,
+  idToGet: PropTypes.string,
   saveCalculation: PropTypes.func.isRequired
 }
 

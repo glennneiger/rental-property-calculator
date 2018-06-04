@@ -43,21 +43,27 @@ export const getCalculationById = calculationId => dispatch => {
     .catch(err => console.log(err))
 }
 
-export const saveCalculation = (title, calculation) => dispatch => {
+export const saveCalculation = (
+  title,
+  calculation,
+  setToCurrentCalculation = true
+) => dispatch => {
   const calcRequest = {
     title,
     calculation
   }
   axios.post('/api/calculation', calcRequest)
     .then(res => {
-      dispatch({
-        type: SET_CHANGES_MADE,
-        payload: false
-      })
-      dispatch({
-        type: SET_CURRENT_TITLE,
-        payload: res.data.title
-      })
+      if (setToCurrentCalculation) {
+        dispatch({
+          type: SET_CHANGES_MADE,
+          payload: false
+        })
+        dispatch({
+          type: SET_CURRENT_TITLE,
+          payload: res.data.title
+        })
+      }
       dispatch(getAllCalculations())
     })
     .catch(err => console.log(err))
