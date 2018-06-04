@@ -9,6 +9,11 @@
   justify-content: space-between;
 }
 
+.header a {
+  text-decoration: none;
+  color: var(--textColorLight)
+}
+
 .header span {
   white-space: nowrap;
   font-size: 30px;

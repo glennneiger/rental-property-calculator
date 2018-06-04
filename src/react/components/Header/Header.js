@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 import './header.css'
@@ -14,7 +15,7 @@ class Header extends Component {
   render() {
     return (
       <header className='header'>
-        <span>Rental Property Calculator</span>
+        <Link to='/'><span>Rental Property Calculator</span></Link>
         <div className='authButtons'>
           {this.props.isAuthenticated
             ? <BlueButton onClick={this.props.logoutUser}>Logout</BlueButton>

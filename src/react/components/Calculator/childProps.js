@@ -57,7 +57,7 @@ const generalInfoInputProps = [
   {
     inputId: INPUT_ID_UNIT_NUMBER,
     inputType: 'text',
-    label: 'Unit'
+    label: 'Unit Number'
   },
   {
     inputId: INPUT_ID_CITY,
