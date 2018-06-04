@@ -1,0 +1,21 @@
+:root {
+  --primaryColor: #044389;
+  --buttonColor: #5995ED;
+  --accentColor: #FFAD05;
+  --textInputBackground: rgb(235, 235, 235);
+  --textColorLight: #FFFFFF;
+  --textColorDark: black;
+  --modalBackgroundColor: #FFFFFF;
+  --mainBackgroundColor: #E9F3F8;
+  --sidebarColor: #52667c;
+  --sidebarWidth: 300px;
+  --headerHeight: 50px;
+  --sidebarPadding: 20px;
+  --savedCalcTitleFontSize: 18px;
+  --savedCalcTitleMarginTop: 12px;
+  --blueButtonVerticalPadding: 10px;
+  --blueButtonVerticalMargin: 8px;
+  --blueButtonFontSize: 14px;
+  --userSidebarULVerticalPadding: 4px;
+  --userSidebarULVerticalMargin: 12px;
+}

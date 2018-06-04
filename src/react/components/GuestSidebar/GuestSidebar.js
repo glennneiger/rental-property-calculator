@@ -1,15 +1,30 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 import './guestSidebar.css'
+import BlueButton from '../BlueButton'
 
-const GuestSidebar = ({}) => {
-  return (
-    <div className='guestSidebar'>
-      <p><Link to={'/login'}>Login</Link> or <Link to={'/register'}>
-        Register</Link> to save your analysis</p>
-    </div>
-  )
+class GuestSidebar extends Component {
+  onLoginClick = () => {
+    this.props.history.push('/login')
+  }
+  onRegisterClick = () => {
+    this.props.history.push('/register')
+  }
+  render() {
+    return (
+      <div className='guestSidebar'>
+        <BlueButton onClick={this.onLoginClick}>Login</BlueButton>
+        <p>or</p>
+        <BlueButton onClick={this.onRegisterClick}>Register</BlueButton>
+        <p>to save your analysis</p>
+      </div>
+    )
+  }
+}
+
+GuestSidebar.propTypes = {
+  history: PropTypes.object
 }
 
 export default GuestSidebar

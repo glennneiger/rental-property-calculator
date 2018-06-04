@@ -1,8 +1,7 @@
+@import "../../../styles.css";
+
 .calculatorInputSection {
-  margin: 24px;
   padding: 24px;
-  background-color: #e9f3f8;
-  border-radius: 10px;
 }
 
 .calculatorInputSection h2 {

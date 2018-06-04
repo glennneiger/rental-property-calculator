@@ -31,10 +31,9 @@ class UserSidebar extends Component {
     })
   }
   render() {
-    const { logoutUser, calculationList } = this.props
+    const { calculationList } = this.props
     return (
       <div className='userSidebar'>
-        <BlueButton onClick={logoutUser}>Logout</BlueButton>
         <h2>Saved Calculations</h2>
         {calculationList.length !== 0
           ? <ul>
@@ -63,7 +62,6 @@ UserSidebar.propTypes = {
   changesMade: PropTypes.bool.isRequired,
   currentTitle: PropTypes.string,
   getAllCalculations: PropTypes.func.isRequired,
-  logoutUser: PropTypes.func.isRequired,
   saveCalculation: PropTypes.func.isRequired,
   showModal: PropTypes.func.isRequired
 }

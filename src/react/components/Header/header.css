@@ -1,0 +1,24 @@
+@import "../../../styles.css";
+
+.header {
+  background-color: var(--primaryColor);
+  color: var(--textColorLight);
+  height: var(--headerHeight);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header span {
+  white-space: nowrap;
+  font-size: 30px;
+  margin-left: var(--sidebarWidth);
+}
+
+.header .authButtons {
+  margin-right: 20px;
+}
+
+.header #loginButton {
+  margin-right: 20px;
+}

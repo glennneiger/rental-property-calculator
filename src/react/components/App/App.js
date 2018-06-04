@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom'
 import jwtDecode from 'jwt-decode'
 import Modal from 'react-modal'
 
+import Header from '../Header'
 import ModalRoot from '../Modals/ModalRoot'
 import CalculatorPage from '../CalculatorPage'
 import LoginPage from '../Authentication/LoginPage'
@@ -37,6 +38,7 @@ class App extends Component {
     return (
       <div className='app' id='app'>
         <ModalRoot />
+        <Header />
         <Route exact path='/' component={CalculatorPage} />
         <Route exact path='/login' component={LoginPage} />
         <Route exact path='/register' component={RegisterPage} />
