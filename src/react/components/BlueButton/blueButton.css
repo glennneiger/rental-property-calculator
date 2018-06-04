@@ -1,9 +1,12 @@
+/* @import "../../../styles.css"; */
+
 .blueButton {
   background-color: #2196F3;
   color: white;
-  padding: 10px 16px;
-  margin: 8px 0px;
+  padding: var(--blueButtonVerticalPadding) 16px;
+  margin: var(--blueButtonVerticalMargin) 0px;
   border: 1px solid white;
   cursor: pointer;
   border-radius: 5px;
+  font-size: var(--blueButtonFontSize);
 }

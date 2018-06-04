@@ -3,7 +3,7 @@
 .header {
   background-color: var(--primaryColor);
   color: var(--textColorLight);
-  height: 50px;
+  height: var(--headerHeight);
   display: flex;
   align-items: center;
   justify-content: space-between;

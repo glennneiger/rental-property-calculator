@@ -4,5 +4,5 @@
   width: var(--sidebarWidth);
   min-width: var(--sidebarWidth);
   background-color: var(--sidebarColor);
-  padding: 20px;
+  padding: var(--sidebarPadding);
 }
