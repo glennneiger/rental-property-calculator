@@ -15,11 +15,11 @@ class SaveAsModal extends Component {
   }
   handleSaveClick = () => {
     const {
-      idToGet,
-      saveCalculation,
       calculationToSave,
       getCalculationById,
-      hideModal
+      hideModal,
+      idToGet,
+      saveCalculation
     } = this.props
     let setToCurrentCalculation = true
     if (idToGet) {
