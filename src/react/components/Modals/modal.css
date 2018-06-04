@@ -24,13 +24,7 @@
 }
 
 .modal .buttons button {
-  background-color: #2196F3;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0px;
   border: 1px solid black;
-  cursor: pointer;
-  border-radius: 5px;
 }
 
 .modal p {
@@ -38,6 +32,6 @@
 }
 
 .modal input {
-  width: 480px;
+  width: 450px;
   padding-left: 8px;
 }
