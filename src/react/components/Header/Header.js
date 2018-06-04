@@ -2,20 +2,27 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import './header.css'
+import BlueButton from '../BlueButton'
 
 const Header = ({
-  isAuthenticated
+  isAuthenticated,
+  logoutUser
 }) => {
   return (
     <header className='header'>
       <span>Rental Property Calculator</span>
-      {isAuthenticated}
+      <div className='authButtons'>
+        {isAuthenticated
+          ? <BlueButton onClick={logoutUser}>Logout</BlueButton>
+          : <p>LOGIN</p>}
+      </div>
     </header>
   )
 }
 
 Header.propTypes = {
-  isAuthenticated: PropTypes.bool.isRequired
+  isAuthenticated: PropTypes.bool.isRequired,
+  logoutUser: PropTypes.func.isRequired
 }
 
 export default Header

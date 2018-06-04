@@ -1,7 +1,6 @@
 import { connect } from 'react-redux'
 
 import UserSidebar from './UserSidebar'
-import { logoutUser } from '../../../actions/auth'
 import {
   getAllCalculations,
   saveCalculation
@@ -18,9 +17,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   saveCalculation: (title, calculation) => {
     dispatch(saveCalculation(title, calculation))
-  },
-  logoutUser: () => {
-    dispatch(logoutUser())
   },
   getAllCalculations: () => {
     dispatch(getAllCalculations())

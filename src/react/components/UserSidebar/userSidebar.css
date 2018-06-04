@@ -3,6 +3,10 @@
   justify-content: space-between;
 }
 
+.userSidebar .saveButtons > * {
+  width: 49%;
+}
+
 .userSidebar h2 {
   margin-top: 12px;
   font-size: 18px;
@@ -13,7 +17,7 @@
 }
 
 .userSidebar h2, .userSidebar p {
-  font-family: 'Patua One'
+  font-family: 'Patua One', Arial;
 }
 
 .userSidebar ul {

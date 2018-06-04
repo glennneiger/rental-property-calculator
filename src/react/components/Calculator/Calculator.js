@@ -12,8 +12,8 @@ const Calculator = () => {
   return (
     <div className='calculator'>
       {inputSectionData.map((section, index) => (
-        <div>
-          <CalculatorInputSection key={section.title}
+        <div key={section.title}>
+          <CalculatorInputSection
             title={section.title}>
             {section.childProps.map(props => (
               <CalculatorInput

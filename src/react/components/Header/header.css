@@ -2,12 +2,18 @@
 
 .header {
   background-color: var(--primaryColor);
+  color: var(--textColorLight);
   height: 50px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .header span {
   font-size: 30px;
-  margin-left: 320px;
+  margin-left: var(--sidebarWidth);
+}
+
+.header .authButtons {
+  margin-right: 20px;
 }
