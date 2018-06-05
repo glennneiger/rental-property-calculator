@@ -31,8 +31,10 @@ class SaveAsModal extends Component {
       setTitle = false
     }
     if (creatingNewCalculation) {
-      changesMade = null
+      changesMade = false
       setTitle = false
+      // potential bug, clearing calculationToSave before saving?
+      this.props.clearAllCalculatorFields()
     }
     saveCalculation(
       this.state.value,
@@ -81,6 +83,7 @@ class SaveAsModal extends Component {
 
 SaveAsModal.propTypes = {
   calculationToSave: PropTypes.object.isRequired,
+  clearAllCalculatorFields: PropTypes.func.isRequired,
   creatingNewCalculation: PropTypes.bool,
   getCalculationById: PropTypes.func.isRequired,
   hideModal: PropTypes.func.isRequired,

@@ -20,20 +20,14 @@ class UserSidebar extends Component {
     if (!this.props.changesMade) {
       this.props.setCurrentTitle(null)
       this.props.clearAllCalculatorFields()
-      // clear calculator state
 
       // TODO: make this an action that clears calculator state
       // and sets stuff to null/false?
-    } else if (!this.props.currentTitle) {
-      this.props.showModal(MODAL_SAVE_AS, {
-        calculationToSave: this.props.calculation,
-        creatingNewCalculation: true
-      })
-      // set changes made to false?
     } else {
       this.props.showModal(MODAL_SAVE_CHANGES, {
+        calculationToSave: this.props.calculation,
         currentTitle: this.props.currentTitle,
-        calculation: this.props.calculation
+        creatingNewCalculation: true
       })
     }
     // set changes made to false

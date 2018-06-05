@@ -9,8 +9,14 @@ import {
   hideModal,
   showModal
 } from '../../../../actions/modal'
+import {
+  clearAllCalculatorFields
+} from '../../../../actions/calculatorFields'
 
 const mapDispatchToProps = dispatch => ({
+  clearAllCalculatorFields: () => {
+    dispatch(clearAllCalculatorFields())
+  },
   getCalculationById: calculationId => {
     dispatch(getCalculationById(calculationId))
   },

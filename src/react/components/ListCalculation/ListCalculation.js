@@ -18,7 +18,7 @@ class ListCalculation extends Component {
       this.props.showModal(MODAL_SAVE_CHANGES, {
         currentTitle: this.props.currentTitle,
         idToGet: this.props.id,
-        calculation: this.props.calculation
+        calculationToSave: this.props.calculation
       })
     } else {
       this.props.getCalculationById(this.props.id)

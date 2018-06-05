@@ -11,7 +11,8 @@ import { MODAL_SAVE_AS } from '../../../../constants'
 class SaveChangesModal extends Component {
   handleSaveClick = () => {
     const {
-      calculation,
+      calculationToSave,
+      clearAllCalculatorFields,
       creatingNewCalculation,
       currentTitle,
       getCalculationById,
@@ -25,7 +26,7 @@ class SaveChangesModal extends Component {
     let newCurrentTitle = currentTitle
     if (!currentTitle) {
       showModal(MODAL_SAVE_AS, {
-        calculationToSave: calculation,
+        calculationToSave,
         idToGet,
         creatingNewCalculation
       })
@@ -36,12 +37,15 @@ class SaveChangesModal extends Component {
         setTitle = false
       }
       if (creatingNewCalculation) {
-        changesMade = null
-        setTitle = false
+        changesMade = false
+        setTitle = true
+        newCurrentTitle = null
+        // potential bug, clearing calculationToSave before saving?
+        clearAllCalculatorFields()
       }
       saveCalculation(
         currentTitle,
-        calculation,
+        calculationToSave,
         changesMade,
         setTitle,
         newCurrentTitle
@@ -52,12 +56,19 @@ class SaveChangesModal extends Component {
 
   handleDontSaveClick = () => {
     const {
+      clearAllCalculatorFields,
+      creatingNewCalculation,
       getCalculationById,
       hideModal,
       idToGet
     } = this.props
-
-    getCalculationById(idToGet)
+    if (idToGet) {
+      getCalculationById(idToGet)
+    }
+    if (creatingNewCalculation) {
+      clearAllCalculatorFields()
+      // set current title and changes made to null and false
+    }
     hideModal()
   }
 
@@ -94,7 +105,8 @@ class SaveChangesModal extends Component {
 }
 
 SaveChangesModal.propTypes = {
-  calculation: PropTypes.object.isRequired,
+  calculationToSave: PropTypes.object.isRequired,
+  clearAllCalculatorFields: PropTypes.func.isRequired,
   creatingNewCalculation: PropTypes.bool,
   currentTitle: PropTypes.string,
   getCalculationById: PropTypes.func.isRequired,
