@@ -22,18 +22,24 @@ class SaveAsModal extends Component {
       idToGet,
       saveCalculation
     } = this.props
-    let setToCurrentCalculation = true
+    let changesMade = false
+    let setTitle = true
+    let newCurrentTitle = this.state.value
     if (idToGet) {
-      setToCurrentCalculation = false
       getCalculationById(idToGet)
+      changesMade = null
+      setTitle = false
     }
     if (creatingNewCalculation) {
-      setToCurrentCalculation = false
+      changesMade = null
+      setTitle = false
     }
     saveCalculation(
       this.state.value,
       calculationToSave,
-      setToCurrentCalculation
+      changesMade,
+      setTitle,
+      newCurrentTitle
     )
     hideModal()
   }

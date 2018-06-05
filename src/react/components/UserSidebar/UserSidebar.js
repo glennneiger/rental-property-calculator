@@ -18,8 +18,12 @@ class UserSidebar extends Component {
   }
   handleNewCalcClick = () => {
     if (!this.props.changesMade) {
-      // set current title to null
+      this.props.setCurrentTitle(null)
+      this.props.clearAllCalculatorFields()
       // clear calculator state
+
+      // TODO: make this an action that clears calculator state
+      // and sets stuff to null/false?
     } else if (!this.props.currentTitle) {
       this.props.showModal(MODAL_SAVE_AS, {
         calculationToSave: this.props.calculation,
@@ -88,9 +92,11 @@ UserSidebar.propTypes = {
   calculation: PropTypes.object.isRequired,
   calculationList: PropTypes.array.isRequired,
   changesMade: PropTypes.bool.isRequired,
+  clearAllCalculatorFields: PropTypes.func.isRequired,
   currentTitle: PropTypes.string,
   getAllCalculations: PropTypes.func.isRequired,
   saveCalculation: PropTypes.func.isRequired,
+  setCurrentTitle: PropTypes.func.isRequired,
   showModal: PropTypes.func.isRequired
 }
 

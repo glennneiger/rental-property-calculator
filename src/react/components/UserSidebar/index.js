@@ -5,6 +5,11 @@ import {
   getAllCalculations,
   saveCalculation
 } from '../../../actions/calculationList'
+import {
+  setChangesMade,
+  setCurrentTitle
+} from '../../../actions/currentCalculation'
+import { clearAllCalculatorFields } from '../../../actions/calculatorFields'
 import { showModal } from '../../../actions/modal'
 
 const mapStateToProps = state => ({
@@ -15,8 +20,29 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  saveCalculation: (title, calculation) => {
-    dispatch(saveCalculation(title, calculation))
+  clearAllCalculatorFields: () => {
+    dispatch(clearAllCalculatorFields())
+  },
+  saveCalculation: (
+    title,
+    calculation,
+    changesMade,
+    setTitle,
+    newCurrentTitle
+  ) => {
+    dispatch(saveCalculation(
+      title,
+      calculation,
+      changesMade,
+      setTitle,
+      newCurrentTitle
+    ))
+  },
+  setChangesMade: changesMade => {
+    dispatch(setChangesMade(changesMade))
+  },
+  setCurrentTitle: currentTitle => {
+    dispatch(setCurrentTitle(currentTitle))
   },
   getAllCalculations: () => {
     dispatch(getAllCalculations())

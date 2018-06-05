@@ -6,12 +6,13 @@ import '../modal.css'
 import BlueButton from '../../BlueButton'
 import { MODAL_SAVE_AS } from '../../../../constants'
 
-/* Modal used if saving should not set the currentCalculation
- * to the calculation that is being saved here */
+/* Modal used when navigating away from a calculation with unsaved changes.
+ * Examples: getCalculationById, pressing new calculation button */
 class SaveChangesModal extends Component {
   handleSaveClick = () => {
     const {
       calculation,
+      creatingNewCalculation,
       currentTitle,
       getCalculationById,
       hideModal,
@@ -19,21 +20,32 @@ class SaveChangesModal extends Component {
       saveCalculation,
       showModal
     } = this.props
-
+    let changesMade = false
+    let setTitle = true
+    let newCurrentTitle = currentTitle
     if (!currentTitle) {
       showModal(MODAL_SAVE_AS, {
         calculationToSave: calculation,
-        idToGet
+        idToGet,
+        creatingNewCalculation
       })
     } else {
+      if (idToGet) {
+        getCalculationById(idToGet)
+        changesMade = null
+        setTitle = false
+      }
+      if (creatingNewCalculation) {
+        changesMade = null
+        setTitle = false
+      }
       saveCalculation(
         currentTitle,
         calculation,
-        false
+        changesMade,
+        setTitle,
+        newCurrentTitle
       )
-      if (idToGet) {
-        getCalculationById(idToGet)
-      }
       hideModal()
     }
   }
@@ -83,6 +95,7 @@ class SaveChangesModal extends Component {
 
 SaveChangesModal.propTypes = {
   calculation: PropTypes.object.isRequired,
+  creatingNewCalculation: PropTypes.bool,
   currentTitle: PropTypes.string,
   getCalculationById: PropTypes.func.isRequired,
   hideModal: PropTypes.func.isRequired,
