@@ -33,7 +33,6 @@ class SaveAsModal extends Component {
     if (creatingNewCalculation) {
       changesMade = false
       setTitle = false
-      // potential bug, clearing calculationToSave before saving?
       this.props.clearAllCalculatorFields()
     }
     saveCalculation(

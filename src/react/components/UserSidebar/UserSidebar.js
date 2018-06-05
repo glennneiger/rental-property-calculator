@@ -30,11 +30,6 @@ class UserSidebar extends Component {
         creatingNewCalculation: true
       })
     }
-    // set changes made to false
-    // and current title to null in all situations?
-    // be careful about doing it here though...
-    // should do it after each case just in case they
-    // press cancel on the modals or something
   }
   handleSaveClick = () => {
     if (!this.props.changesMade) {

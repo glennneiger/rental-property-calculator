@@ -40,7 +40,6 @@ class SaveChangesModal extends Component {
         changesMade = false
         setTitle = true
         newCurrentTitle = null
-        // potential bug, clearing calculationToSave before saving?
         clearAllCalculatorFields()
       }
       saveCalculation(
@@ -60,16 +59,17 @@ class SaveChangesModal extends Component {
       creatingNewCalculation,
       getCalculationById,
       hideModal,
-      idToGet
+      idToGet,
+      setChangesMade,
+      setCurrentTitle
     } = this.props
     if (idToGet) {
       getCalculationById(idToGet)
     }
     if (creatingNewCalculation) {
       clearAllCalculatorFields()
-      // set current title and changes made to null and false
-      this.props.setCurrentTitle(null)
-      this.props.setChangesMade(false)
+      setCurrentTitle(null)
+      setChangesMade(false)
     }
     hideModal()
   }
