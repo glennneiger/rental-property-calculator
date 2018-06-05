@@ -4,7 +4,10 @@ import PropTypes from 'prop-types'
 import ListCalculation from '../ListCalculation'
 import './userSidebar.css'
 import BlueButton from '../BlueButton'
-import { MODAL_SAVE_AS } from '../../../constants'
+import {
+  MODAL_SAVE_AS,
+  MODAL_SAVE_CHANGES
+} from '../../../constants'
 
 class UserSidebar extends Component {
   constructor(props) {
@@ -15,22 +18,25 @@ class UserSidebar extends Component {
   }
   handleNewCalcClick = () => {
     if (!this.props.changesMade) {
-      // do nothing
+      // set current title to null
+      // clear calculator state
+    } else if (!this.props.currentTitle) {
+      this.props.showModal(MODAL_SAVE_AS, {
+        calculationToSave: this.props.calculation,
+        creatingNewCalculation: true
+      })
+      // set changes made to false?
+    } else {
+      this.props.showModal(MODAL_SAVE_CHANGES, {
+        currentTitle: this.props.currentTitle,
+        calculation: this.props.calculation
+      })
     }
-    // } else {
-
-    // }
-    // } else if (!this.props.currentTitle) {
-    //   this.props.showModal(MODAL_SAVE_AS, {
-    //     calculationToSave: this.props.calculation,
-    //     creatingNewCalculation: true
-    //   })
-    // } else {
-    // this.props.saveCalculation(
-    //   this.props.currentTitle,
-    //   this.props.calculation
-    // )
-    // }
+    // set changes made to false
+    // and current title to null in all situations?
+    // be careful about doing it here though...
+    // should do it after each case just in case they
+    // press cancel on the modals or something
   }
   handleSaveClick = () => {
     if (!this.props.changesMade) {

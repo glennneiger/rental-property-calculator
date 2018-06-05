@@ -6,6 +6,8 @@ import '../modal.css'
 import BlueButton from '../../BlueButton'
 import { MODAL_SAVE_AS } from '../../../../constants'
 
+/* Modal used if saving should not set the currentCalculation
+ * to the calculation that is being saved here */
 class SaveChangesModal extends Component {
   handleSaveClick = () => {
     const {
@@ -29,7 +31,9 @@ class SaveChangesModal extends Component {
         calculation,
         false
       )
-      getCalculationById(idToGet)
+      if (idToGet) {
+        getCalculationById(idToGet)
+      }
       hideModal()
     }
   }
@@ -82,7 +86,7 @@ SaveChangesModal.propTypes = {
   currentTitle: PropTypes.string,
   getCalculationById: PropTypes.func.isRequired,
   hideModal: PropTypes.func.isRequired,
-  idToGet: PropTypes.string.isRequired,
+  idToGet: PropTypes.string,
   saveCalculation: PropTypes.func.isRequired,
   showModal: PropTypes.func.isRequired
 }

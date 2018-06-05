@@ -12,7 +12,7 @@ export const updateInput = (value, section, inputId) => ({
   }
 })
 
-export const setChangesMade = changesMade => ({
-  type: SET_CHANGES_MADE,
-  payload: changesMade
-})
+// export const setChangesMade = changesMade => ({
+//   type: SET_CHANGES_MADE,
+//   payload: changesMade
+// })
