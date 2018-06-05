@@ -17,29 +17,43 @@ class UserSidebar extends Component {
     this.props.getAllCalculations()
   }
   handleNewCalcClick = () => {
-    if (!this.props.changesMade) {
-      this.props.setCurrentTitle(null)
-      this.props.clearAllCalculatorFields()
+    const {
+      calculation,
+      changesMade,
+      clearAllCalculatorFields,
+      currentTitle,
+      setCurrentTitle,
+      showModal
+    } = this.props
 
-      // TODO: make this an action that clears calculator state
-      // and sets stuff to null/false?
+    if (!changesMade) {
+      setCurrentTitle(null)
+      clearAllCalculatorFields()
     } else {
-      this.props.showModal(MODAL_SAVE_CHANGES, {
-        calculationToSave: this.props.calculation,
-        currentTitle: this.props.currentTitle,
+      showModal(MODAL_SAVE_CHANGES, {
+        calculationToSave: calculation,
+        currentTitle: currentTitle,
         creatingNewCalculation: true
       })
     }
   }
   handleSaveClick = () => {
-    if (!this.props.changesMade) {
+    const {
+      calculation,
+      changesMade,
+      currentTitle,
+      saveCalculation
+    } = this.props
+
+    if (!changesMade) {
       // do nothing
-    } else if (!this.props.currentTitle) {
+    } else if (!currentTitle) {
       this.handleSaveAsClick()
     } else {
-      this.props.saveCalculation(
-        this.props.currentTitle,
-        this.props.calculation
+      saveCalculation(
+        currentTitle,
+        calculation,
+        false
       )
     }
   }

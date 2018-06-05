@@ -22,6 +22,7 @@ class SaveAsModal extends Component {
       idToGet,
       saveCalculation
     } = this.props
+
     let changesMade = false
     let setTitle = true
     let newCurrentTitle = this.state.value
@@ -44,17 +45,14 @@ class SaveAsModal extends Component {
     )
     hideModal()
   }
-
   handleCancelClick = () => {
     this.props.hideModal()
   }
-
   handleChange = event => {
     this.setState({
       value: event.target.value
     })
   }
-
   render() {
     return (
       <Modal

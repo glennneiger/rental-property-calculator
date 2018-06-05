@@ -21,6 +21,7 @@ class SaveChangesModal extends Component {
       saveCalculation,
       showModal
     } = this.props
+
     let changesMade = false
     let setTitle = true
     let newCurrentTitle = currentTitle
@@ -52,7 +53,6 @@ class SaveChangesModal extends Component {
       hideModal()
     }
   }
-
   handleDontSaveClick = () => {
     const {
       clearAllCalculatorFields,
@@ -73,11 +73,9 @@ class SaveChangesModal extends Component {
     }
     hideModal()
   }
-
   handleCancelClick = () => {
     this.props.hideModal()
   }
-
   render() {
     return (
       <Modal
