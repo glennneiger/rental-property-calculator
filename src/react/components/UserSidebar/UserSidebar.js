@@ -13,6 +13,9 @@ class UserSidebar extends Component {
   componentDidMount() {
     this.props.getAllCalculations()
   }
+  handleNewCalcClick = () => {
+    console.log('new calc clicked')
+  }
   handleSaveClick = () => {
     if (!this.props.changesMade) {
       // do nothing
@@ -51,6 +54,9 @@ class UserSidebar extends Component {
           <BlueButton onClick={this.handleSaveClick}>Save</BlueButton>
           <BlueButton onClick={this.handleSaveAsClick}>Save As...</BlueButton>
         </div>
+        <BlueButton id='newCalcButton'
+          onClick={this.handleNewCalcClick}>New Calculation
+        </BlueButton>
       </div>
     )
   }

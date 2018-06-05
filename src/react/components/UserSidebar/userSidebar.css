@@ -22,13 +22,17 @@
   font-family: 'Patua One', Arial;
 }
 
+.userSidebar #newCalcButton {
+  width: 100%;
+}
+
 .userSidebar ul {
   height: calc(100vh - var(--headerHeight) -
     var(--savedCalcTitleMarginTop) -
     var(--savedCalcTitleFontSize) - var(--blueButtonFontSize) -
-    2 * var(--blueButtonVerticalMargin) - 2 * var(--blueButtonVerticalPadding) -
+    4 * var(--blueButtonVerticalMargin) - 4 * var(--blueButtonVerticalPadding) -
     2 * var(--userSidebarULVerticalPadding) -
-    2 * var(--userSidebarULVerticalMargin) - 38px);
+    2 * var(--userSidebarULVerticalMargin) - 45px);
   min-height: 300px;
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 8px;

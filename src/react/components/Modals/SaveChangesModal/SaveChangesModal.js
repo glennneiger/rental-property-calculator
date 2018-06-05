@@ -11,7 +11,6 @@ class SaveChangesModal extends Component {
     const {
       calculation,
       currentTitle,
-      getCalculationById,
       idToGet,
       showModal
     } = this.props
