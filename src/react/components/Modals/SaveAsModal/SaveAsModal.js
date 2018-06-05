@@ -16,34 +16,43 @@ class SaveAsModal extends Component {
   handleSaveClick = () => {
     const {
       calculationToSave,
+      creatingNewCalculation,
       getCalculationById,
       hideModal,
       idToGet,
       saveCalculation
     } = this.props
-    let setToCurrentCalculation = true
+
+    let changesMade = false
+    let setTitle = true
+    let newCurrentTitle = this.state.value
     if (idToGet) {
-      setToCurrentCalculation = false
       getCalculationById(idToGet)
+      changesMade = null
+      setTitle = false
+    }
+    if (creatingNewCalculation) {
+      changesMade = false
+      setTitle = false
+      this.props.clearAllCalculatorFields()
     }
     saveCalculation(
       this.state.value,
       calculationToSave,
-      setToCurrentCalculation
+      changesMade,
+      setTitle,
+      newCurrentTitle
     )
     hideModal()
   }
-
   handleCancelClick = () => {
     this.props.hideModal()
   }
-
   handleChange = event => {
     this.setState({
       value: event.target.value
     })
   }
-
   render() {
     return (
       <Modal
@@ -71,6 +80,8 @@ class SaveAsModal extends Component {
 
 SaveAsModal.propTypes = {
   calculationToSave: PropTypes.object.isRequired,
+  clearAllCalculatorFields: PropTypes.func.isRequired,
+  creatingNewCalculation: PropTypes.bool,
   getCalculationById: PropTypes.func.isRequired,
   hideModal: PropTypes.func.isRequired,
   idToGet: PropTypes.string,

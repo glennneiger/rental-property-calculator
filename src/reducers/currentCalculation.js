@@ -4,7 +4,8 @@ import {
 } from '../actions/constants'
 
 const initialState = {
-  changesMade: false
+  changesMade: false,
+  title: null
 }
 
 const currentCalculation = (state = initialState, action) => {

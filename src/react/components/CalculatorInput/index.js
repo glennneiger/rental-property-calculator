@@ -2,9 +2,11 @@ import { connect } from 'react-redux'
 
 import CalculatorInput from './CalculatorInput'
 import {
-  setChangesMade,
   updateInput
 } from '../../../actions/calculatorFields'
+import {
+  setChangesMade
+} from '../../../actions/currentCalculation'
 
 const mapStateToProps = (state, ownProps) => ({
   content: state.calculator[ownProps.section][ownProps.inputId]

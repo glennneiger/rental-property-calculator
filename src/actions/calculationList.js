@@ -3,10 +3,12 @@ import axios from 'axios'
 import {
   DELETE_CALCULATION_WITH_ID,
   GET_ALL_CALCULATIONS,
-  LOAD_CALCULATION,
-  SET_CHANGES_MADE,
-  SET_CURRENT_TITLE
+  LOAD_CALCULATION
 } from './constants'
+import {
+  setChangesMade,
+  setCurrentTitle
+} from './currentCalculation'
 
 export const getAllCalculations = () => dispatch => {
   let idsAndTitles = []
@@ -31,14 +33,8 @@ export const getCalculationById = calculationId => dispatch => {
         type: LOAD_CALCULATION,
         payload: res.data.calculation
       })
-      dispatch({
-        type: SET_CHANGES_MADE,
-        payload: false
-      })
-      dispatch({
-        type: SET_CURRENT_TITLE,
-        payload: res.data.title
-      })
+      dispatch(setChangesMade(false))
+      dispatch(setCurrentTitle(res.data.title))
     })
     .catch(err => console.log(err))
 }
@@ -46,23 +42,21 @@ export const getCalculationById = calculationId => dispatch => {
 export const saveCalculation = (
   title,
   calculation,
-  setToCurrentCalculation = true
+  changesMade = null,
+  setTitle = false,
+  newCurrentTitle = null
 ) => dispatch => {
   const calcRequest = {
     title,
     calculation
   }
   axios.post('/api/calculation', calcRequest)
-    .then(res => {
-      if (setToCurrentCalculation) {
-        dispatch({
-          type: SET_CHANGES_MADE,
-          payload: false
-        })
-        dispatch({
-          type: SET_CURRENT_TITLE,
-          payload: res.data.title
-        })
+    .then(() => {
+      if (changesMade !== null) {
+        dispatch(setChangesMade(changesMade))
+      }
+      if (setTitle) {
+        dispatch(setCurrentTitle(newCurrentTitle))
       }
       dispatch(getAllCalculations())
     })

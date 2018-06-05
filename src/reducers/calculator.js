@@ -1,4 +1,5 @@
 import {
+  CLEAR_ALL_FIELDS,
   LOAD_CALCULATION,
   UPDATE_INPUT
 } from '../actions/constants'
@@ -48,6 +49,8 @@ const calculator = (state = getInitialState(), action) => {
     }
   case LOAD_CALCULATION:
     return action.payload
+  case CLEAR_ALL_FIELDS:
+    return getInitialState()
   default:
     return state
   }

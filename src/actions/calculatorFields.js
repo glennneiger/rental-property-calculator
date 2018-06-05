@@ -1,5 +1,5 @@
 import {
-  SET_CHANGES_MADE,
+  CLEAR_ALL_FIELDS,
   UPDATE_INPUT
 } from './constants'
 
@@ -12,7 +12,6 @@ export const updateInput = (value, section, inputId) => ({
   }
 })
 
-export const setChangesMade = changesMade => ({
-  type: SET_CHANGES_MADE,
-  payload: changesMade
+export const clearAllCalculatorFields = () => ({
+  type: CLEAR_ALL_FIELDS
 })

@@ -4,7 +4,10 @@ import PropTypes from 'prop-types'
 import ListCalculation from '../ListCalculation'
 import './userSidebar.css'
 import BlueButton from '../BlueButton'
-import { MODAL_SAVE_AS } from '../../../constants'
+import {
+  MODAL_SAVE_AS,
+  MODAL_SAVE_CHANGES
+} from '../../../constants'
 
 class UserSidebar extends Component {
   constructor(props) {
@@ -13,15 +16,44 @@ class UserSidebar extends Component {
   componentDidMount() {
     this.props.getAllCalculations()
   }
+  handleNewCalcClick = () => {
+    const {
+      calculation,
+      changesMade,
+      clearAllCalculatorFields,
+      currentTitle,
+      setCurrentTitle,
+      showModal
+    } = this.props
+
+    if (!changesMade) {
+      setCurrentTitle(null)
+      clearAllCalculatorFields()
+    } else {
+      showModal(MODAL_SAVE_CHANGES, {
+        calculationToSave: calculation,
+        currentTitle: currentTitle,
+        creatingNewCalculation: true
+      })
+    }
+  }
   handleSaveClick = () => {
-    if (!this.props.changesMade) {
+    const {
+      calculation,
+      changesMade,
+      currentTitle,
+      saveCalculation
+    } = this.props
+
+    if (!changesMade) {
       // do nothing
-    } else if (!this.props.currentTitle) {
+    } else if (!currentTitle) {
       this.handleSaveAsClick()
     } else {
-      this.props.saveCalculation(
-        this.props.currentTitle,
-        this.props.calculation
+      saveCalculation(
+        currentTitle,
+        calculation,
+        false
       )
     }
   }
@@ -51,6 +83,9 @@ class UserSidebar extends Component {
           <BlueButton onClick={this.handleSaveClick}>Save</BlueButton>
           <BlueButton onClick={this.handleSaveAsClick}>Save As...</BlueButton>
         </div>
+        <BlueButton id='newCalcButton'
+          onClick={this.handleNewCalcClick}>New Calculation
+        </BlueButton>
       </div>
     )
   }
@@ -60,9 +95,11 @@ UserSidebar.propTypes = {
   calculation: PropTypes.object.isRequired,
   calculationList: PropTypes.array.isRequired,
   changesMade: PropTypes.bool.isRequired,
+  clearAllCalculatorFields: PropTypes.func.isRequired,
   currentTitle: PropTypes.string,
   getAllCalculations: PropTypes.func.isRequired,
   saveCalculation: PropTypes.func.isRequired,
+  setCurrentTitle: PropTypes.func.isRequired,
   showModal: PropTypes.func.isRequired
 }
 
