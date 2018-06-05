@@ -17,8 +17,8 @@ const mapDispatchToProps = dispatch => ({
   hideModal: () => {
     dispatch(hideModal())
   },
-  saveCalculation: (title, calculation) => {
-    dispatch(saveCalculation(title, calculation))
+  saveCalculation: (title, calculation, setToCurrentCalculation) => {
+    dispatch(saveCalculation(title, calculation, setToCurrentCalculation))
   },
   showModal: (modalType, modalProps) => {
     dispatch(showModal(modalType, modalProps))

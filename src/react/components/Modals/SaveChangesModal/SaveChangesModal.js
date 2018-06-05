@@ -11,7 +11,10 @@ class SaveChangesModal extends Component {
     const {
       calculation,
       currentTitle,
+      getCalculationById,
+      hideModal,
       idToGet,
+      saveCalculation,
       showModal
     } = this.props
 
@@ -20,6 +23,14 @@ class SaveChangesModal extends Component {
         calculationToSave: calculation,
         idToGet
       })
+    } else {
+      saveCalculation(
+        currentTitle,
+        calculation,
+        false
+      )
+      getCalculationById(idToGet)
+      hideModal()
     }
   }
 

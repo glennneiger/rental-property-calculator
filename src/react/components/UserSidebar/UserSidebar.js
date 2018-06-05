@@ -14,7 +14,23 @@ class UserSidebar extends Component {
     this.props.getAllCalculations()
   }
   handleNewCalcClick = () => {
-    console.log('new calc clicked')
+    if (!this.props.changesMade) {
+      // do nothing
+    }
+    // } else {
+
+    // }
+    // } else if (!this.props.currentTitle) {
+    //   this.props.showModal(MODAL_SAVE_AS, {
+    //     calculationToSave: this.props.calculation,
+    //     creatingNewCalculation: true
+    //   })
+    // } else {
+    // this.props.saveCalculation(
+    //   this.props.currentTitle,
+    //   this.props.calculation
+    // )
+    // }
   }
   handleSaveClick = () => {
     if (!this.props.changesMade) {
