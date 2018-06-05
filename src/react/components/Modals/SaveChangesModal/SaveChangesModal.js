@@ -7,7 +7,7 @@ import BlueButton from '../../BlueButton'
 import { MODAL_SAVE_AS } from '../../../../constants'
 
 /* Modal used when navigating away from a calculation with unsaved changes.
- * Examples: getCalculationById, pressing new calculation button */
+ * Examples: Clicking a ListCalculation, pressing New Calculation button */
 class SaveChangesModal extends Component {
   handleSaveClick = () => {
     const {
