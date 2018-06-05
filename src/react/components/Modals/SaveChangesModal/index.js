@@ -12,8 +12,18 @@ import {
 import {
   clearAllCalculatorFields
 } from '../../../../actions/calculatorFields'
+import {
+  setChangesMade,
+  setCurrentTitle
+} from '../../../../actions/currentCalculation'
 
 const mapDispatchToProps = dispatch => ({
+  setChangesMade: changesMade => {
+    dispatch(setChangesMade(changesMade))
+  },
+  setCurrentTitle: newCurrentTitle => {
+    dispatch(setCurrentTitle(newCurrentTitle))
+  },
   clearAllCalculatorFields: () => {
     dispatch(clearAllCalculatorFields())
   },

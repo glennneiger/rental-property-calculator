@@ -68,6 +68,8 @@ class SaveChangesModal extends Component {
     if (creatingNewCalculation) {
       clearAllCalculatorFields()
       // set current title and changes made to null and false
+      this.props.setCurrentTitle(null)
+      this.props.setChangesMade(false)
     }
     hideModal()
   }
@@ -113,6 +115,8 @@ SaveChangesModal.propTypes = {
   hideModal: PropTypes.func.isRequired,
   idToGet: PropTypes.string,
   saveCalculation: PropTypes.func.isRequired,
+  setChangesMade: PropTypes.func.isRequired,
+  setCurrentTitle: PropTypes.func.isRequired,
   showModal: PropTypes.func.isRequired
 }
 
