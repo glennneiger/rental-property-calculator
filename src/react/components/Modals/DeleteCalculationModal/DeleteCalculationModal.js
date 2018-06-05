@@ -7,14 +7,23 @@ import BlueButton from '../../BlueButton'
 
 class DeleteCalculationModal extends Component {
   handleDeleteClick = () => {
-    // TODO: destructure props
-    if (this.props.idToDelete === this.props.currentlySelectedId) {
-      this.props.setChangesMade(false)
-      this.props.setCurrentTitle(null)
-      this.props.clearAllCalculatorFields()
+    const {
+      idToDelete,
+      currentlySelectedId,
+      setChangesMade,
+      setCurrentTitle,
+      clearAllCalculatorFields,
+      hideModal,
+      deleteCalculationWithId
+    } = this.props
+
+    if (idToDelete === currentlySelectedId) {
+      setChangesMade(false)
+      setCurrentTitle(null)
+      clearAllCalculatorFields()
     }
-    this.props.deleteCalculationWithId(this.props.idToDelete)
-    this.props.hideModal()
+    deleteCalculationWithId(idToDelete)
+    hideModal()
   }
   handleKeepClick = () => {
     this.props.hideModal()
