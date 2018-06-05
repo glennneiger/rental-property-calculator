@@ -7,14 +7,18 @@ import BlueButton from '../../BlueButton'
 
 class DeleteCalculationModal extends Component {
   handleDeleteClick = () => {
+    // TODO: destructure props
+    if (this.props.idToDelete === this.props.currentlySelectedId) {
+      this.props.setChangesMade(false)
+      this.props.setCurrentTitle(null)
+      this.props.clearAllCalculatorFields()
+    }
     this.props.deleteCalculationWithId(this.props.idToDelete)
     this.props.hideModal()
   }
-
   handleKeepClick = () => {
     this.props.hideModal()
   }
-
   render() {
     return (
       <Modal
@@ -37,9 +41,13 @@ class DeleteCalculationModal extends Component {
 }
 
 DeleteCalculationModal.propTypes = {
+  clearAllCalculatorFields: PropTypes.func.isRequired,
+  currentlySelectedId: PropTypes.string,
   deleteCalculationWithId: PropTypes.func.isRequired,
   hideModal: PropTypes.func.isRequired,
   idToDelete: PropTypes.string.isRequired,
+  setChangesMade: PropTypes.func.isRequired,
+  setCurrentTitle: PropTypes.func.isRequired,
   titleToDelete: PropTypes.string.isRequired
 }
 
