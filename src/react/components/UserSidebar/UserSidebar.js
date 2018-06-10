@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import ListCalculation from '../ListCalculation'
-import './userSidebar.css'
+import css from './userSidebar.css'
 import BlueButton from '../BlueButton'
 import {
   MODAL_SAVE_AS,
@@ -65,7 +65,7 @@ class UserSidebar extends Component {
   render() {
     const { calculationList } = this.props
     return (
-      <div className='userSidebar'>
+      <div className={css.userSidebar}>
         <h2>Saved Calculations</h2>
         {calculationList.length !== 0
           ? <ul>
@@ -79,12 +79,13 @@ class UserSidebar extends Component {
             ))}
           </ul>
           : <div>No calculations to display</div>}
-        <div className='saveButtons'>
+        <div className={css.saveButtons}>
           <BlueButton onClick={this.handleSaveClick}>Save</BlueButton>
           <BlueButton onClick={this.handleSaveAsClick}>Save As...</BlueButton>
         </div>
-        <BlueButton id='newCalcButton'
-          onClick={this.handleNewCalcClick}>New Calculation
+        <BlueButton id={css.newCalcButton}
+          onClick={this.handleNewCalcClick}>
+          New Calculation
         </BlueButton>
       </div>
     )

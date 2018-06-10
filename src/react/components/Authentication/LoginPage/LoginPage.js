@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
 import AuthInput from '../AuthInput'
-import '../authentication.css'
+import css from '../authentication.css'
 import BlueButton from '../../BlueButton'
 
 class LoginPage extends Component {
@@ -43,9 +43,9 @@ class LoginPage extends Component {
   render() {
     const { errors } = this.props
     return (
-      <div className='authenticationPage'>
+      <div className={css.authenticationPage}>
         <form onSubmit={this.handleSubmit}>
-          <div className='authenticationForm'>
+          <div className={css.authenticationForm}>
             <h1>Login</h1>
             <AuthInput
               error={errors.email}

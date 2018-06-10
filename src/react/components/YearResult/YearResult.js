@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import './yearResult.css'
+import css from './yearResult.css'
 import {
   RESULTS_CASH_FLOW,
   RESULTS_CASH_ON_CASH_RETURN,
@@ -55,7 +55,7 @@ const YearResult = ({
     }
   ]
   return (
-    <div className='yearResult'>
+    <div className={css.yearResult}>
       <h3>Year {year}</h3>
       {
         displayEntries.map(entry => (

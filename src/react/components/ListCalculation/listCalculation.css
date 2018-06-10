@@ -17,13 +17,13 @@
   overflow: hidden
 }
 
-.listCalculation .trashIcon {
+.trashIcon {
   min-width: 16px;
   min-height: 16px;
   color: #919191;
 }
 
-.listCalculation .trashIcon:hover {
+.trashIcon:hover {
   color: #585858;
 }
 

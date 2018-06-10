@@ -10,7 +10,7 @@
   margin-bottom: 20px;
 }
 
-.calculatorInputSection .inputs {
+.inputs {
   display: flex;
   flex-wrap: wrap;
   align-content: space-between;

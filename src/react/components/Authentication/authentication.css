@@ -1,8 +1,8 @@
-.authenticationPage .isInvalid {
+.isInvalid {
   border: 1px solid red;
 }
 
-.authenticationPage .invalidMessage {
+.invalidMessage {
   color: red;
   padding-bottom: 16px;
 }

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Modal from 'react-modal'
 
-import '../modal.css'
+import css from '../modal.css'
 import BlueButton from '../../BlueButton'
 
 class DeleteCalculationModal extends Component {
@@ -32,7 +32,7 @@ class DeleteCalculationModal extends Component {
     return (
       <Modal
         isOpen={true}
-        className='modal'
+        className={css.modal}
         shouldCloseOnEsc={true}
         shouldCloseOnOverlayClick={true}
         onRequestClose={this.props.hideModal}
@@ -40,7 +40,7 @@ class DeleteCalculationModal extends Component {
         <p>
           Are you sure you want to delete "{this.props.titleToDelete}"?
         </p>
-        <div className='buttons'>
+        <div className={css.buttons}>
           <BlueButton onClick={this.handleDeleteClick}>Delete</BlueButton>
           <BlueButton onClick={this.handleKeepClick}>Keep</BlueButton>
         </div>

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Modal from 'react-modal'
 
-import '../modal.css'
+import css from '../modal.css'
 import BlueButton from '../../BlueButton'
 import { MODAL_SAVE_AS } from '../../../../constants'
 
@@ -80,7 +80,7 @@ class SaveChangesModal extends Component {
     return (
       <Modal
         isOpen={true}
-        className='modal'
+        className={css.modal}
         shouldCloseOnEsc={true}
         shouldCloseOnOverlayClick={true}
         onRequestClose={this.props.hideModal}
@@ -94,7 +94,7 @@ class SaveChangesModal extends Component {
             Would you like to save these as a new calculation?
           </p>
         }
-        <div className='buttons'>
+        <div className={css.buttons}>
           <BlueButton onClick={this.handleSaveClick}>Save</BlueButton>
           <BlueButton onClick={this.handleDontSaveClick}>Don't Save</BlueButton>
           <BlueButton onClick={this.handleCancelClick}>Cancel</BlueButton>
