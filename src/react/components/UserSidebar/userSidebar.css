@@ -1,11 +1,11 @@
 @import "../../../styles.css";
 
-.userSidebar .saveButtons {
+.saveButtons {
   display: flex;
   justify-content: space-between;
 }
 
-.userSidebar .saveButtons > * {
+.saveButtons > * {
   width: 49%;
 }
 
@@ -22,7 +22,7 @@
   font-family: 'Patua One', Arial;
 }
 
-.userSidebar #newCalcButton {
+#newCalcButton {
   width: 100%;
 }
 

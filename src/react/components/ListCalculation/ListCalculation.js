@@ -7,7 +7,7 @@ import {
   MODAL_CONFIRM_DELETE_CALCULATION,
   MODAL_SAVE_CHANGES
 } from '../../../constants'
-import './listCalculation.css'
+import css from './listCalculation.css'
 
 class ListCalculation extends Component {
   constructor(props) {
@@ -38,12 +38,12 @@ class ListCalculation extends Component {
       <li
         onClick={this.handleClick}
         className={classNames({
-          listCalculation: true,
-          isSelected: selected
+          [css.listCalculation]: true,
+          [css.isSelected]: selected
         })}>
         <span>{this.props.title}</span>
         <FaTrashO
-          className='trashIcon'
+          className={css.trashIcon}
           onClick={this.handleTrashIconClick}
         />
       </li>

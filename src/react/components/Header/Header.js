@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-import './header.css'
+import css from './header.css'
 import BlueButton from '../BlueButton'
 
 class Header extends Component {
@@ -14,13 +14,13 @@ class Header extends Component {
   }
   render() {
     return (
-      <header className='header'>
+      <header className={css.header}>
         <Link to='/'><span>Rental Property Calculator</span></Link>
-        <div className='authButtons'>
+        <div className={css.authButtons}>
           {this.props.isAuthenticated
             ? <BlueButton onClick={this.props.logoutUser}>Logout</BlueButton>
             : <div>
-              <BlueButton id='loginButton'
+              <BlueButton id={css.loginButton}
                 onClick={this.onLoginClick}>Login</BlueButton>
               <BlueButton
                 onClick={this.onRegisterClick}>Register</BlueButton>

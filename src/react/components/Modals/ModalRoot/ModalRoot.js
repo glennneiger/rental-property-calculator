@@ -9,7 +9,6 @@ import {
 import SaveAsModal from '../SaveAsModal'
 import SaveChangesModal from '../SaveChangesModal'
 import DeleteCalculationModal from '../DeleteCalculationModal'
-import './modalRoot.css'
 
 const MODAL_COMPONENTS = {
   [MODAL_SAVE_AS]: SaveAsModal,

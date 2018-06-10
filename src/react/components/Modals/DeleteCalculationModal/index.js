@@ -16,8 +16,11 @@ import {
 const getCurrentlySelectedId = state => {
   const calculationList = state.calculationList
   const currentTitle = state.currentCalculation.title
-
-  return (calculationList.find(calc => calc.title === currentTitle)).id
+  let currentId
+  if (currentTitle) {
+    currentId = (calculationList.find(calc => calc.title === currentTitle)).id
+  }
+  return currentId
 }
 
 const mapStateToProps = state => ({

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import './guestSidebar.css'
+import css from './guestSidebar.css'
 import BlueButton from '../BlueButton'
 
 class GuestSidebar extends Component {
@@ -13,7 +13,7 @@ class GuestSidebar extends Component {
   }
   render() {
     return (
-      <div className='guestSidebar'>
+      <div className={css.guestSidebar}>
         <BlueButton onClick={this.onLoginClick}>Login</BlueButton>
         <p>or</p>
         <BlueButton onClick={this.onRegisterClick}>Register</BlueButton>

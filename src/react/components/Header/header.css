@@ -20,10 +20,10 @@
   margin-left: var(--sidebarWidth);
 }
 
-.header .authButtons {
+.authButtons {
   margin-right: 20px;
 }
 
-.header #loginButton {
+#loginButton {
   margin-right: 20px;
 }

@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 
 import Calculator from '../Calculator'
 import Sidebar from '../Sidebar'
-import './calculatorPage.css'
+import css from './calculatorPage.css'
 
 const CalculatorPage = ({
   isLoggedIn
 }) => {
   return (
-    <div className='calculatorPage'>
+    <div className={css.calculatorPage}>
       <Sidebar isLoggedIn={isLoggedIn} />
       <Calculator />
     </div>

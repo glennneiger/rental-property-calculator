@@ -1,16 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import './futureResults.css'
+import css from './futureResults.css'
 import YearResult from '../YearResult'
 
 const FutureResults = ({
   yearsForResults
 }) => {
   return (
-    <div className='futureResults'>
+    <div className={css.futureResults}>
       {yearsForResults.length === 1
-        ? <p className='enterAmortization'>
+        ? <p className={css.enterAmortization}>
           Enter an amortization period to see your results.
         </p>
         : yearsForResults.map(year => (

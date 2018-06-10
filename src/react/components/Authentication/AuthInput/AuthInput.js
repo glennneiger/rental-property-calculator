@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import './authInput.css'
+import css from './authInput.css'
 
 const AuthInput = ({
   error,
@@ -14,7 +14,7 @@ const AuthInput = ({
   value
 }) => {
   return (
-    <div className='authInput'>
+    <div className={css.authInput}>
       <label htmlFor={name}>{label}</label>
       <input
         type={type}
@@ -27,7 +27,7 @@ const AuthInput = ({
         })} />
       {
         error &&
-          (<div className='invalidMessage'>{error}</div>)
+          (<div className={css.invalidMessage}>{error}</div>)
       }
     </div>
   )

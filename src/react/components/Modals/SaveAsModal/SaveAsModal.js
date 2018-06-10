@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Modal from 'react-modal'
 
 import TextInput from '../../TextInput'
-import '../modal.css'
+import css from '../modal.css'
 import BlueButton from '../../BlueButton'
 
 class SaveAsModal extends Component {
@@ -57,7 +57,7 @@ class SaveAsModal extends Component {
     return (
       <Modal
         isOpen={true}
-        className='modal'
+        className={css.modal}
         shouldCloseOnEsc={true}
         shouldCloseOnOverlayClick={true}
         onRequestClose={this.props.hideModal}
@@ -69,7 +69,7 @@ class SaveAsModal extends Component {
           value={this.state.value}
           onChange={this.handleChange}
         />
-        <div className='buttons'>
+        <div className={css.buttons}>
           <BlueButton onClick={this.handleSaveClick}>Save</BlueButton>
           <BlueButton onClick={this.handleCancelClick}>Cancel</BlueButton>
         </div>

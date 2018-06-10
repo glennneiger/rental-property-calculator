@@ -17,13 +17,13 @@
   outline: none;
 }
 
-.modal .buttons {
+.buttons {
   display: flex;
   flex-direction: row;
   justify-content: space-around
 }
 
-.modal .buttons button {
+.buttons button {
   border: 1px solid black;
 }
 

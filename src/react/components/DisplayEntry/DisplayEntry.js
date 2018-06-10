@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import './displayEntry.css'
 import {
   NUMBER_PRECISION_DISPLAY
 } from '../../../constants'

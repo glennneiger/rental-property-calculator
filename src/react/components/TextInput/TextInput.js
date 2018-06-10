@@ -1,8 +1,8 @@
 import React from 'react'
 
-import './textInput.css'
+import css from './textInput.css'
 
 const TextInput = props =>
-  <input className='textInput' {...props} />
+  <input className={css.textInput} {...props} />
 
 export default TextInput

@@ -1,7 +1,7 @@
 import React from 'react'
-import './calculatorInput.css'
 import PropTypes from 'prop-types'
 
+import css from './calculatorInput.css'
 import TextInput from '../TextInput'
 import { INPUT_ID_AMORTIZATION_PERIOD } from '../../../constants'
 
@@ -31,7 +31,7 @@ const CalculatorInput = ({
   }
   const totalWidth = textInputWidth + LABEL_WIDTH
   return (
-    <div className='calculatorInput' style={{ width: totalWidth }}>
+    <div className={css.calculatorInput} style={{ width: totalWidth }}>
       <label htmlFor={inputId}>{label}:</label>
       <TextInput type={'text'}
         id={inputId}
