@@ -1,7 +1,43 @@
+@import "../../../styles.css";
+
 .calculatorInput {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
   padding: 18px 12px;
   font-size: 1.2em;
+  width: 100%;
+}
+
+.calculatorInput label {
+  font-size: 0.8em;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+/* Tablet - portrait */
+@media (--tablet-portrait) {
+  .calculatorInput {
+    width: 50%;
+  }
+}
+
+/* Tablet - landscape */
+@media (--tablet-landscape) {
+  .calculatorInput {
+    width: 33%;
+  }
+}
+
+/* Desktop */
+@media (--desktop) {
+  .calculatorInput {
+    width: 25%;
+  }
+}
+
+/* Large */
+@media (--large) {
+  .calculatorInput {
+    width: 20%;
+  }
 }

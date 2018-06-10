@@ -5,9 +5,6 @@ import css from './calculatorInput.css'
 import TextInput from '../TextInput'
 import { INPUT_ID_AMORTIZATION_PERIOD } from '../../../constants'
 
-const DEFAULT_TOTAL_WIDTH = 100
-const LABEL_WIDTH = 185
-
 const CalculatorInput = ({
   content,
   inputId,
@@ -15,7 +12,7 @@ const CalculatorInput = ({
   label,
   section,
   setChangesMade,
-  textInputWidth = DEFAULT_TOTAL_WIDTH,
+  textInputWidth,
   updateInput
 }) => {
   const handleChange = event => {
@@ -29,15 +26,15 @@ const CalculatorInput = ({
     updateInput(value, section, inputId)
     setChangesMade(true)
   }
-  const totalWidth = textInputWidth + LABEL_WIDTH
   return (
-    <div className={css.calculatorInput} style={{ width: totalWidth }}>
-      <label htmlFor={inputId}>{label}:</label>
+    <div className={css.calculatorInput}>
+      <label htmlFor={inputId}>{label}</label>
       <TextInput type={'text'}
         id={inputId}
         style={{ width: textInputWidth }}
         value={content}
         onChange={handleChange}
+        width={textInputWidth}
       />
     </div>
   )
