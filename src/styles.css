@@ -19,3 +19,9 @@
   --userSidebarULVerticalPadding: 4px;
   --userSidebarULVerticalMargin: 12px;
 }
+
+@custom-media --phone (max-width: 767px);
+@custom-media --tablet-portrait (min-width: 768px);
+@custom-media --tablet-landscape (min-width: 1024px);
+@custom-media --desktop (min-width: 1224px);
+@custom-media --large (min-width: 1824px);

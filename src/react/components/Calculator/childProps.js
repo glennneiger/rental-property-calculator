@@ -52,7 +52,7 @@ const generalInfoInputProps = [
     inputId: INPUT_ID_STREET_ADDRESS,
     inputType: 'text',
     label: 'Street Address',
-    textInputWidth: 300
+    textInputWidth: 210
   },
   {
     inputId: INPUT_ID_UNIT_NUMBER,
