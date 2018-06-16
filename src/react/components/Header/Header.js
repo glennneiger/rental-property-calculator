@@ -15,7 +15,7 @@ class Header extends Component {
   render() {
     return (
       <header className={css.header}>
-        <Link to='/'><span>Rental Property Calculator</span></Link>
+        <Link to='/'>Rental Property Calculator</Link>
         <div className={css.authButtons}>
           {this.props.isAuthenticated
             ? <BlueButton onClick={this.props.logoutUser}>Logout</BlueButton>

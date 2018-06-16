@@ -11,13 +11,10 @@
 
 .header a {
   text-decoration: none;
-  color: var(--textColorLight)
-}
-
-.header span {
-  white-space: nowrap;
+  color: var(--textColorLight);
   font-size: 30px;
   margin-left: var(--sidebarWidth);
+  white-space: nowrap;
 }
 
 .authButtons {
