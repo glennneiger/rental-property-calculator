@@ -17,6 +17,14 @@
   white-space: nowrap;
 }
 
+.menuToggler {
+  position: absolute;
+  cursor: pointer;
+  left: 12px;
+  min-width: 24px;
+  min-height: 24px;
+}
+
 .authButtons {
   display: none;
 }

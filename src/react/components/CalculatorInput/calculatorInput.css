@@ -14,7 +14,7 @@
   margin-bottom: 4px;
 }
 
-@media (--tablet-portrait-up) {
+@media (min-width: 850px) {
   .calculatorInput {
     width: 50%;
   }
