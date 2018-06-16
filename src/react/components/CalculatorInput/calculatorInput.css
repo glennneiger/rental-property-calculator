@@ -20,7 +20,7 @@
   }
 }
 
-@media (--tablet-landscape-up) {
+@media (min-width: 1024px) {
   .calculatorInput {
     width: 33%;
   }

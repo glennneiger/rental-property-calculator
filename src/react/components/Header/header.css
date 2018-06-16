@@ -1,4 +1,5 @@
 @import "../../../styles.css";
+/* TODO: continue styling for mobile first design */
 
 .header {
   background-color: var(--primaryColor);
@@ -12,7 +13,7 @@
 .header a {
   text-decoration: none;
   color: var(--textColorLight);
-  font-size: 1.5em;
+  font-size: 1.8em;
   white-space: nowrap;
 }
 
@@ -20,18 +21,15 @@
   display: none;
 }
 
-@media (--tablet-portrait-up) {
+@media (--tablet-landscape-up) {
   .header {
     justify-content: space-between;
   }
 
   .header a {
-    font-size: 1.8em;
     margin-left: var(--sidebarWidth);
   }
-}
 
-@media (min-width: 850px) {
   .authButtons {
     display: block;
     margin-right: 20px;
@@ -40,8 +38,4 @@
   #loginButton {
     margin-right: 20px;
   }
-}
-
-@media (--desktop-up) {
-
 }
