@@ -14,25 +14,25 @@
   margin-bottom: 4px;
 }
 
-@media (--tablet-portrait) {
+@media (--tablet-portrait-up) {
   .calculatorInput {
     width: 50%;
   }
 }
 
-@media (--tablet-landscape) {
+@media (--tablet-landscape-up) {
   .calculatorInput {
     width: 33%;
   }
 }
 
-@media (--desktop) {
+@media (--desktop-up) {
   .calculatorInput {
     width: 25%;
   }
 }
 
-@media (--large) {
+@media (--large-up) {
   .calculatorInput {
     width: 20%;
   }

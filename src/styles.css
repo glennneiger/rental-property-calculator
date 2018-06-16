@@ -20,8 +20,8 @@
   --userSidebarULVerticalMargin: 12px;
 }
 
-@custom-media --phone (max-width: 767px);
-@custom-media --tablet-portrait (min-width: 768px);
-@custom-media --tablet-landscape (min-width: 1024px);
-@custom-media --desktop (min-width: 1224px);
-@custom-media --large (min-width: 1824px);
+@custom-media --phone-only (max-width: 767px);
+@custom-media --tablet-portrait-up (min-width: 768px);
+@custom-media --tablet-landscape-up (min-width: 1024px);
+@custom-media --desktop-up (min-width: 1224px);
+@custom-media --large-up (min-width: 1824px);

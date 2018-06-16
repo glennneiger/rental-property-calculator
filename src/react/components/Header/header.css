@@ -6,21 +6,42 @@
   height: var(--headerHeight);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .header a {
   text-decoration: none;
   color: var(--textColorLight);
-  font-size: 30px;
-  margin-left: var(--sidebarWidth);
+  font-size: 1.5em;
   white-space: nowrap;
 }
 
 .authButtons {
-  margin-right: 20px;
+  display: none;
 }
 
-#loginButton {
-  margin-right: 20px;
+@media (--tablet-portrait-up) {
+  .header {
+    justify-content: space-between;
+  }
+
+  .header a {
+    font-size: 1.8em;
+    margin-left: var(--sidebarWidth);
+  }
+}
+
+@media (min-width: 850px) {
+  .authButtons {
+    display: block;
+    margin-right: 20px;
+  }
+
+  #loginButton {
+    margin-right: 20px;
+  }
+}
+
+@media (--desktop-up) {
+
 }
