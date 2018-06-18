@@ -17,7 +17,7 @@
   white-space: nowrap;
 }
 
-.menuToggler {
+.sidebarToggler {
   position: absolute;
   cursor: pointer;
   left: 12px;

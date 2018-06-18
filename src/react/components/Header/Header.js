@@ -7,8 +7,10 @@ import css from './header.css'
 import BlueButton from '../BlueButton'
 
 class Header extends Component {
-  handleToggleMenuClick = () => {
-    console.log('menu clicked')
+  handleToggleSidebarClick = () => {
+    this.props.sidebarVisible
+      ? this.props.hideSidebar()
+      : this.props.showSidebar()
   }
   onLoginClick = () => {
     this.props.history.push('/login')
@@ -16,12 +18,13 @@ class Header extends Component {
   onRegisterClick = () => {
     this.props.history.push('/register')
   }
+  // render different icon depending on if sidebarVisible is true or false
   render() {
     return (
       <header className={css.header}>
         <FaBars
-          className={css.menuToggler}
-          onClick={this.handleToggleMenuClick}
+          className={css.sidebarToggler}
+          onClick={this.handleToggleSidebarClick}
         />
         <Link to='/'>Rental Property Calculator</Link>
         <div className={css.authButtons}>
@@ -40,9 +43,12 @@ class Header extends Component {
 }
 
 Header.propTypes = {
+  hideSidebar: PropTypes.func.isRequired,
   history: PropTypes.object,
   isAuthenticated: PropTypes.bool.isRequired,
-  logoutUser: PropTypes.func.isRequired
+  logoutUser: PropTypes.func.isRequired,
+  showSidebar: PropTypes.func.isRequired,
+  sidebarVisible: PropTypes.bool.isRequired
 }
 
 export default Header
