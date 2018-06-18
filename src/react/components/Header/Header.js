@@ -20,6 +20,9 @@ class Header extends Component {
     this.props.history.push('/register')
   }
   render() {
+    const title = (this.props.screenWidth > 420)
+      ? 'Rental Property Calculator'
+      : 'Calculator'
     return (
       <header className={css.header}>
         {this.props.sidebarVisible
@@ -32,7 +35,7 @@ class Header extends Component {
             onClick={this.handleToggleSidebarClick}
           />
         }
-        <Link to='/'>Rental Property Calculator</Link>
+        <Link to='/'>{title}</Link>
         <div className={css.authButtons}>
           {this.props.isAuthenticated
             ? <BlueButton onClick={this.props.logoutUser}>Logout</BlueButton>
@@ -54,6 +57,7 @@ Header.propTypes = {
   history: PropTypes.object,
   isAuthenticated: PropTypes.bool.isRequired,
   logoutUser: PropTypes.func.isRequired,
+  screenWidth: PropTypes.number.isRequired,
   showSidebar: PropTypes.func.isRequired,
   sidebarVisible: PropTypes.bool.isRequired
 }

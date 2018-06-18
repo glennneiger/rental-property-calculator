@@ -10,6 +10,7 @@ import {
 
 const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated,
+  screenWidth: state.ui.screenWidth,
   sidebarVisible: state.sidebarVisible
 })
 
