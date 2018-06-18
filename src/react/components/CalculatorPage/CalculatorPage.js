@@ -6,18 +6,21 @@ import Sidebar from '../Sidebar'
 import css from './calculatorPage.css'
 
 const CalculatorPage = ({
-  isLoggedIn
+  sidebarVisible
 }) => {
   return (
     <div className={css.calculatorPage}>
-      <Sidebar isLoggedIn={isLoggedIn} />
+      {sidebarVisible
+        ? <Sidebar />
+        : null
+      }
       <Calculator />
     </div>
   )
 }
 
 CalculatorPage.propTypes = {
-  isLoggedIn: PropTypes.bool
+  sidebarVisible: PropTypes.bool.isRequired
 }
 
 export default CalculatorPage

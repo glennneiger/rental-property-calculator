@@ -32,7 +32,6 @@ class Header extends Component {
             onClick={this.handleToggleSidebarClick}
           />
         }
-
         <Link to='/'>Rental Property Calculator</Link>
         <div className={css.authButtons}>
           {this.props.isAuthenticated
@@ -42,7 +41,8 @@ class Header extends Component {
                 onClick={this.onLoginClick}>Login</BlueButton>
               <BlueButton
                 onClick={this.onRegisterClick}>Register</BlueButton>
-            </div>}
+            </div>
+          }
         </div>
       </header>
     )
