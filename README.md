@@ -2,8 +2,6 @@
 
 ## Description
 
-This project is a work in progress and currently some features are incomplete.
-
 Rental Property Calculator is a web app that is useful for analyzing rental properties for investing purposes. It allows you to see your properties value, cash flow, equity buildup, return on investment, return on equity, and cash on cash return for years during your mortgage and after the property is paid off.
 
 The application has a login system to save and view your analysis in the future.
