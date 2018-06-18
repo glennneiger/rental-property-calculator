@@ -1,6 +1,12 @@
 module.exports = {
   plugins: {
     'postcss-import': {},
-    'postcss-cssnext': {}
+    'postcss-cssnext': {
+      features: {
+        customProperties: {
+          warnings: false
+        }
+      }
+    }
   }
 }
