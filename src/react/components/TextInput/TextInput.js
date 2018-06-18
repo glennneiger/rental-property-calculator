@@ -3,10 +3,8 @@ import PropTypes from 'prop-types'
 
 import css from './textInput.css'
 
-const DEFAULT_WIDTH = 160
-
 const TextInput = props => {
-  const width = props.width ? props.width : DEFAULT_WIDTH
+  const width = props.width ? props.width : null
   return (
     <input className={css.textInput} {...props} style={{ width }} />
   )

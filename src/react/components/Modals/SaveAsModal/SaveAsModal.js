@@ -68,7 +68,6 @@ class SaveAsModal extends Component {
         <TextInput type='text'
           value={this.state.value}
           onChange={this.handleChange}
-          width={450}
         />
         <div className={css.buttons}>
           <BlueButton onClick={this.handleSaveClick}>Save</BlueButton>

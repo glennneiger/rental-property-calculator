@@ -1,12 +1,14 @@
+@import "../../../styles.css";
+
 .modal {
   position: fixed;
-  width: 500px;
-  height: 150px;
+  width: 80%;
+  padding: 20px;
+  left: 10%;
+  top: 40%;
+  height: 200px;
   background-color: white;
   border: 3px solid black;
-  left: 32%;
-  top: 25%;
-  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -32,10 +34,26 @@
 }
 
 .modal input {
-  width: 450px;
+  width: 95%;
   padding-left: 8px;
 }
 
-/* TODO: mobile first design of these modals
-600px and smaller, take up most of the screen?
-Then apply more styling for bigger and bigger screens. */
+@media (--tablet-portrait-up) {
+  .modal {
+    width: 500px;
+    left: 15%;
+    top: 25%;
+  }
+
+  .modal input {
+    width: 450px;
+    padding-left: 8px;
+  }
+}
+
+@media (--tablet-landscape-up) {
+  .modal {
+    width: 500px;
+    left: 32%;
+  }
+}
