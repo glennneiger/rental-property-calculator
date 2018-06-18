@@ -87,6 +87,10 @@ class UserSidebar extends Component {
           onClick={this.handleNewCalcClick}>
           New Calculation
         </BlueButton>
+        <BlueButton id={css.logoutButton}
+          onClick={this.props.logoutUser}>
+          Logout
+        </BlueButton>
       </div>
     )
   }
@@ -99,6 +103,7 @@ UserSidebar.propTypes = {
   clearAllCalculatorFields: PropTypes.func.isRequired,
   currentTitle: PropTypes.string,
   getAllCalculations: PropTypes.func.isRequired,
+  logoutUser: PropTypes.func.isRequired,
   saveCalculation: PropTypes.func.isRequired,
   setCurrentTitle: PropTypes.func.isRequired,
   showModal: PropTypes.func.isRequired
