@@ -34,7 +34,7 @@
 }
 
 .modal input {
-  width: 95%;
+  width: 98%;
   padding-left: 8px;
 }
 
@@ -44,16 +44,10 @@
     left: 15%;
     top: 25%;
   }
-
-  .modal input {
-    width: 450px;
-    padding-left: 8px;
-  }
 }
 
 @media (--tablet-landscape-up) {
   .modal {
-    width: 500px;
-    left: 32%;
+    left: 25%;
   }
 }
