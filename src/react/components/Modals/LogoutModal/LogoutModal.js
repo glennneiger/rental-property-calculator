@@ -7,8 +7,7 @@ import BlueButton from '../../BlueButton'
 
 class LogoutModal extends Component {
   handleLogoutClick = () => {
-    console.log('LOGGED OUT!')
-    // this.props.logoutUser
+    this.props.logoutUser()
     this.props.hideModal()
   }
   handleCancelClick = () => {
@@ -36,7 +35,8 @@ class LogoutModal extends Component {
 }
 
 LogoutModal.propTypes = {
-  hideModal: PropTypes.func.isRequired
+  hideModal: PropTypes.func.isRequired,
+  logoutUser: PropTypes.func.isRequired
 }
 
 export default LogoutModal
