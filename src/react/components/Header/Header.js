@@ -6,6 +6,7 @@ import FaClose from 'react-icons/lib/fa/close'
 
 import css from './header.css'
 import BlueButton from '../BlueButton'
+import { MODAL_CONFIRM_LOGOUT } from '../../../constants'
 
 class Header extends Component {
   handleToggleSidebarClick = () => {
@@ -13,10 +14,13 @@ class Header extends Component {
       ? this.props.hideSidebar()
       : this.props.showSidebar()
   }
-  onLoginClick = () => {
+  handleLogoutClick = () => {
+    this.props.showModal(MODAL_CONFIRM_LOGOUT)
+  }
+  handleLoginClick = () => {
     this.props.history.push('/login')
   }
-  onRegisterClick = () => {
+  handleRegisterClick = () => {
     this.props.history.push('/register')
   }
   render() {
@@ -38,12 +42,12 @@ class Header extends Component {
         <Link to='/'>{title}</Link>
         <div className={css.authButtons}>
           {this.props.isAuthenticated
-            ? <BlueButton onClick={this.props.logoutUser}>Logout</BlueButton>
+            ? <BlueButton onClick={this.handleLogoutClick}>Logout</BlueButton>
             : <div>
               <BlueButton id={css.loginButton}
-                onClick={this.onLoginClick}>Login</BlueButton>
+                onClick={this.handleLoginClick}>Login</BlueButton>
               <BlueButton
-                onClick={this.onRegisterClick}>Register</BlueButton>
+                onClick={this.handleRegisterClick}>Register</BlueButton>
             </div>
           }
         </div>
@@ -58,6 +62,7 @@ Header.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
   logoutUser: PropTypes.func.isRequired,
   screenWidth: PropTypes.number.isRequired,
+  showModal: PropTypes.func.isRequired,
   showSidebar: PropTypes.func.isRequired,
   sidebarVisible: PropTypes.bool.isRequired
 }
