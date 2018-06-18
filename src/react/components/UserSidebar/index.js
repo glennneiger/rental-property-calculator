@@ -11,6 +11,7 @@ import {
 } from '../../../actions/currentCalculation'
 import { clearAllCalculatorFields } from '../../../actions/calculatorFields'
 import { showModal } from '../../../actions/modal'
+import { logoutUser } from '../../../actions/auth'
 
 const mapStateToProps = state => ({
   calculation: state.calculator,
@@ -22,6 +23,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   clearAllCalculatorFields: () => {
     dispatch(clearAllCalculatorFields())
+  },
+  logoutUser: () => {
+    dispatch(logoutUser())
   },
   saveCalculation: (
     title,
