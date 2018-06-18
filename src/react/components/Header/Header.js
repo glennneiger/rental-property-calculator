@@ -25,6 +25,20 @@ class Header extends Component {
   componentWillUnmount = () => {
     this.unlisten()
   }
+  getToggleSidebarIcon = () => {
+    if (this.state.currentPath === '/') {
+      return (this.props.sidebarVisible
+        ? <FaClose
+          className={css.sidebarToggler}
+          onClick={this.handleToggleSidebarClick}
+        />
+        : <FaBars
+          className={css.sidebarToggler}
+          onClick={this.handleToggleSidebarClick}
+        />)
+    }
+    return null
+  }
   handleToggleSidebarClick = () => {
     this.props.sidebarVisible
       ? this.props.hideSidebar()
@@ -43,20 +57,10 @@ class Header extends Component {
     const title = (this.props.screenWidth > 420)
       ? 'Rental Property Calculator'
       : 'Calculator'
+
     return (
       <header className={css.header}>
-        {this.state.currentPath === '/'
-          ? (this.props.sidebarVisible
-            ? <FaClose
-              className={css.sidebarToggler}
-              onClick={this.handleToggleSidebarClick}
-            />
-            : <FaBars
-              className={css.sidebarToggler}
-              onClick={this.handleToggleSidebarClick}
-            />)
-          : null
-        }
+        {this.getToggleSidebarIcon()}
         <Link to='/'>{title}</Link>
         <div className={css.authButtons}>
           {this.props.isAuthenticated
