@@ -1,3 +1,5 @@
+@import "../../../styles.css";
+
 .isInvalid {
   border: 1px solid red;
 }
@@ -12,7 +14,7 @@
 }
 
 .authenticationForm {
-  width: 500px;
+  width: 80%;
   margin: 50px auto;
 }
 
@@ -42,4 +44,10 @@
 
 .authenticationPage p {
   margin-top: 8px;
+}
+
+@media (--tablet-portrait-up) {
+  .authenticationForm {
+    width: 500px;
+  }
 }
