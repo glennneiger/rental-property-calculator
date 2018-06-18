@@ -35,3 +35,7 @@
   width: 450px;
   padding-left: 8px;
 }
+
+/* TODO: mobile first design of these modals
+600px and smaller, take up most of the screen?
+Then apply more styling for bigger and bigger screens. */
