@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import css from './authInput.css'
+import css from '../authentication.css'
 
 const AuthInput = ({
   error,
