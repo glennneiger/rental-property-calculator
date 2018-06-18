@@ -1,23 +1,33 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import Calculator from '../Calculator'
 import Sidebar from '../Sidebar'
 import css from './calculatorPage.css'
 
-const CalculatorPage = ({
-  isLoggedIn
-}) => {
-  return (
-    <div className={css.calculatorPage}>
-      <Sidebar isLoggedIn={isLoggedIn} />
-      <Calculator />
-    </div>
-  )
+class CalculatorPage extends Component {
+  constructor(props) {
+    super(props)
+  }
+  render() {
+    return (
+      <div className={css.calculatorPage}>
+        {this.props.sidebarVisible
+          ? <Sidebar />
+          : null
+        }
+        {this.props.screenWidth < 600 && this.props.sidebarVisible
+          ? null
+          : <Calculator />
+        }
+      </div>
+    )
+  }
 }
 
 CalculatorPage.propTypes = {
-  isLoggedIn: PropTypes.bool
+  screenWidth: PropTypes.number.isRequired,
+  sidebarVisible: PropTypes.bool.isRequired
 }
 
 export default CalculatorPage

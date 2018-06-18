@@ -6,24 +6,51 @@
   height: var(--headerHeight);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .header a {
   text-decoration: none;
-  color: var(--textColorLight)
+  color: var(--textColorLight);
+  font-size: 1.8em;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -ms-user-select: none;
 }
 
-.header span {
-  white-space: nowrap;
-  font-size: 30px;
-  margin-left: var(--sidebarWidth);
+.sidebarToggler {
+  position: absolute;
+  cursor: pointer;
+  left: 12px;
+  min-width: 24px;
+  min-height: 24px;
 }
 
 .authButtons {
-  margin-right: 20px;
+  display: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -ms-user-select: none;
 }
 
-#loginButton {
-  margin-right: 20px;
+@media (--tablet-landscape-up) {
+  .header {
+    justify-content: space-between;
+  }
+
+  .header a {
+    margin-left: var(--sidebarWidth);
+  }
+
+  .authButtons {
+    display: block;
+    margin-right: 20px;
+  }
+
+  #loginButton {
+    margin-right: 20px;
+  }
 }

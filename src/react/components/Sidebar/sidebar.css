@@ -1,8 +1,14 @@
 @import "../../../styles.css";
 
 .sidebar {
-  width: var(--sidebarWidth);
-  min-width: var(--sidebarWidth);
+  width: 100%;
   background-color: var(--sidebarColor);
   padding: var(--sidebarPadding);
+}
+
+@media (--tablet-portrait-up) {
+  .sidebar {
+    width: var(--sidebarWidth);
+    min-width: var(--sidebarWidth);
+  }
 }

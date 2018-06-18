@@ -5,7 +5,12 @@ import {
 } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 
+import { screenResize } from './actions/ui'
 import { reducer } from './reducers'
+
+window.addEventListener('resize', () => {
+  store.dispatch(screenResize(window.innerWidth))
+})
 
 const initialState = {}
 
