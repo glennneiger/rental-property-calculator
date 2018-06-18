@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import FaBars from 'react-icons/lib/fa/bars'
+import FaClose from 'react-icons/lib/fa/close'
 
 import css from './header.css'
 import BlueButton from '../BlueButton'
@@ -18,14 +19,20 @@ class Header extends Component {
   onRegisterClick = () => {
     this.props.history.push('/register')
   }
-  // render different icon depending on if sidebarVisible is true or false
   render() {
     return (
       <header className={css.header}>
-        <FaBars
-          className={css.sidebarToggler}
-          onClick={this.handleToggleSidebarClick}
-        />
+        {this.props.sidebarVisible
+          ? <FaClose
+            className={css.sidebarToggler}
+            onClick={this.handleToggleSidebarClick}
+          />
+          : <FaBars
+            className={css.sidebarToggler}
+            onClick={this.handleToggleSidebarClick}
+          />
+        }
+
         <Link to='/'>Rental Property Calculator</Link>
         <div className={css.authButtons}>
           {this.props.isAuthenticated
