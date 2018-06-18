@@ -105,7 +105,6 @@ UserSidebar.propTypes = {
   getAllCalculations: PropTypes.func.isRequired,
   logoutUser: PropTypes.func.isRequired,
   saveCalculation: PropTypes.func.isRequired,
-  // screenWidth: PropTypes.number.isRequired,
   setCurrentTitle: PropTypes.func.isRequired,
   showModal: PropTypes.func.isRequired
 }
