@@ -15,6 +15,10 @@
   color: var(--textColorLight);
   font-size: 1.8em;
   white-space: nowrap;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -ms-user-select: none;
 }
 
 .sidebarToggler {
