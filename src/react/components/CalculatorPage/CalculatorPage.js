@@ -9,20 +9,6 @@ class CalculatorPage extends Component {
   constructor(props) {
     super(props)
   }
-  componentDidMount = () => {
-    window.addEventListener('resize', this.updateWidth)
-  }
-  componentWillUnmount = () => {
-    window.removeEventListener('resize', this.updateWidth)
-  }
-  componentWillMount = () => {
-    this.updateWidth()
-  }
-  updateWidth = () => {
-    this.setState({
-      width: window.innerWidth
-    })
-  }
   render() {
     return (
       <div className={css.calculatorPage}>
@@ -30,7 +16,7 @@ class CalculatorPage extends Component {
           ? <Sidebar />
           : null
         }
-        {this.state.width < 600 && this.props.sidebarVisible
+        {this.props.screenWidth < 600 && this.props.sidebarVisible
           ? null
           : <Calculator />
         }
@@ -40,6 +26,7 @@ class CalculatorPage extends Component {
 }
 
 CalculatorPage.propTypes = {
+  screenWidth: PropTypes.number.isRequired,
   sidebarVisible: PropTypes.bool.isRequired
 }
 

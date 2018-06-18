@@ -6,6 +6,7 @@ import calculationList from './calculationList'
 import currentCalculation from './currentCalculation'
 import modal from './modal'
 import sidebarVisible from './sidebarVisible'
+import ui from './ui'
 
 export const reducer = combineReducers({
   auth,
@@ -14,5 +15,6 @@ export const reducer = combineReducers({
   currentCalculation,
   errors,
   modal,
-  sidebarVisible
+  sidebarVisible,
+  ui
 })
