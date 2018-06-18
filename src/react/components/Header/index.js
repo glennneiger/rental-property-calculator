@@ -7,6 +7,7 @@ import {
   hideSidebar,
   showSidebar
 } from '../../../actions/sidebarVisible'
+import { showModal } from '../../../actions/modal'
 
 const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated,
@@ -20,6 +21,9 @@ const mapDispatchToProps = dispatch => ({
   },
   logoutUser: () => {
     dispatch(logoutUser())
+  },
+  showModal: (modalType, modalProps) => {
+    dispatch(showModal(modalType, modalProps))
   },
   showSidebar: () => {
     dispatch(showSidebar())

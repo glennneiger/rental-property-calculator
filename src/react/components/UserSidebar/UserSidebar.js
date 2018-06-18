@@ -5,6 +5,7 @@ import ListCalculation from '../ListCalculation'
 import css from './userSidebar.css'
 import BlueButton from '../BlueButton'
 import {
+  MODAL_CONFIRM_LOGOUT,
   MODAL_SAVE_AS,
   MODAL_SAVE_CHANGES
 } from '../../../constants'
@@ -15,6 +16,9 @@ class UserSidebar extends Component {
   }
   componentDidMount() {
     this.props.getAllCalculations()
+  }
+  handleLogoutClick = () => {
+    this.props.showModal(MODAL_CONFIRM_LOGOUT)
   }
   handleNewCalcClick = () => {
     const {
@@ -88,7 +92,7 @@ class UserSidebar extends Component {
           New Calculation
         </BlueButton>
         <BlueButton id={css.logoutButton}
-          onClick={this.props.logoutUser}>
+          onClick={this.handleLogoutClick}>
           Logout
         </BlueButton>
       </div>
@@ -103,7 +107,6 @@ UserSidebar.propTypes = {
   clearAllCalculatorFields: PropTypes.func.isRequired,
   currentTitle: PropTypes.string,
   getAllCalculations: PropTypes.func.isRequired,
-  logoutUser: PropTypes.func.isRequired,
   saveCalculation: PropTypes.func.isRequired,
   setCurrentTitle: PropTypes.func.isRequired,
   showModal: PropTypes.func.isRequired
