@@ -10,6 +10,16 @@ import {
   setCurrentTitle
 } from './currentCalculation'
 
+const titleCompare = (a, b) => {
+  if (a.title < b.title) {
+    return -1
+  }
+  if (a.title > b.title) {
+    return 1
+  }
+  return 0
+}
+
 export const getAllCalculations = () => dispatch => {
   let idsAndTitles = []
   axios.get('/api/calculation/')
@@ -18,6 +28,7 @@ export const getAllCalculations = () => dispatch => {
         id: calculation._id,
         title: calculation.title
       }))
+      idsAndTitles.sort(titleCompare)
       dispatch({
         type: GET_ALL_CALCULATIONS,
         payload: idsAndTitles
