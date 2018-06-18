@@ -1,4 +1,5 @@
 import {
+  CALCULATOR_INPUT_WIDTH_DEFAULT,
   INPUT_ID_AFTER_REPAIR_VALUE,
   INPUT_ID_AMORTIZATION_PERIOD,
   INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH,
@@ -57,7 +58,8 @@ const generalInfoInputProps = [
   {
     inputId: INPUT_ID_UNIT_NUMBER,
     inputType: 'text',
-    label: 'Unit Number'
+    label: 'Unit Number',
+    textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
     inputId: INPUT_ID_CITY,
@@ -68,7 +70,8 @@ const generalInfoInputProps = [
   {
     inputId: INPUT_ID_PROVINCE_OR_STATE,
     inputType: 'text',
-    label: 'Province/State'
+    label: 'Province/State',
+    textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
     inputId: INPUT_ID_COUNTRY,
@@ -79,12 +82,14 @@ const generalInfoInputProps = [
   {
     inputId: INPUT_ID_POSTAL_OR_ZIP_CODE,
     inputType: 'text',
-    label: 'Postal/Zip Code'
+    label: 'Postal/Zip Code',
+    textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
     inputId: INPUT_ID_SQUARE_FEET,
     inputType: 'number',
-    label: 'Square Feet'
+    label: 'Square Feet',
+    textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   }
 ]
 
@@ -92,47 +97,56 @@ const initialPurchaseInputProps = [
   {
     inputId: INPUT_ID_PURCHASE_PRICE,
     inputType: 'number',
-    label: 'Purchase Price'
+    label: 'Purchase Price',
+    textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
     inputId: INPUT_ID_DOWN_PAYMENT,
     inputType: 'number',
-    label: 'Down Payment'
+    label: 'Down Payment',
+    textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
     inputId: INPUT_ID_LOAN_AMOUNT,
     inputType: 'number',
-    label: 'Loan Amount'
+    label: 'Loan Amount',
+    textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
     inputId: INPUT_ID_INTEREST_RATE,
     inputType: 'number',
-    label: 'Interest Rate (%)'
+    label: 'Interest Rate (%)',
+    textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
     inputId: INPUT_ID_AMORTIZATION_PERIOD,
     inputType: 'number',
-    label: 'Amortization Period (years)'
+    label: 'Amortization Period (years)',
+    textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
     inputId: INPUT_ID_AFTER_REPAIR_VALUE,
     inputType: 'number',
-    label: 'After Repair Value'
+    label: 'After Repair Value',
+    textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
     inputId: INPUT_ID_REPAIR_COSTS,
     inputType: 'number',
-    label: 'Repair Costs'
+    label: 'Repair Costs',
+    textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
     inputId: INPUT_ID_CLOSING_COSTS,
     inputType: 'number',
-    label: 'Closing Costs'
+    label: 'Closing Costs',
+    textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
     inputId: INPUT_ID_OTHER_INITIAL_COSTS,
     inputType: 'number',
-    label: 'Other Initial Costs'
+    label: 'Other Initial Costs',
+    textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   }
 ]
 
@@ -141,12 +155,14 @@ export const incomeInputProps = [
   {
     inputId: INPUT_ID_RENTAL_INCOME,
     inputType: 'number',
-    label: 'Rental Income'
+    label: 'Rental Income',
+    textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
     inputId: INPUT_ID_OTHER_INCOME,
     inputType: 'number',
-    label: 'Other Income'
+    label: 'Other Income',
+    textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   }
 ]
 
@@ -155,72 +171,85 @@ export const expensesInputProps = [
   {
     inputId: INPUT_ID_MORTGAGE,
     inputType: 'number',
-    label: 'Mortgage'
+    label: 'Mortgage',
+    textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
     inputId: INPUT_ID_ELECTRICITY,
     inputType: 'number',
-    label: 'Electricity'
+    label: 'Electricity',
+    textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
     inputId: INPUT_ID_WATER_AND_SEWER,
     inputType: 'number',
-    label: 'Water and Sewer'
+    label: 'Water and Sewer',
+    textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
     inputId: INPUT_ID_PRIVATE_MORTGAGE_INSURANCE,
     inputType: 'number',
-    label: 'Private Mortgage Insurance'
+    label: 'Private Mortgage Insurance',
+    textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
     inputId: INPUT_ID_GARBAGE,
     inputType: 'number',
-    label: 'Garbage'
+    label: 'Garbage',
+    textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
     inputId: INPUT_ID_HOA,
     inputType: 'number',
-    label: 'HOA Fees'
+    label: 'HOA Fees',
+    textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
     inputId: INPUT_ID_INSURANCE,
     inputType: 'number',
-    label: 'Insurance'
+    label: 'Insurance',
+    textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
     inputId: INPUT_ID_PROPERTY_TAX,
     inputType: 'number',
     label: 'Property Tax (%)',
-    percentOfPropertyValue: true
+    percentOfPropertyValue: true,
+    textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
     inputId: INPUT_ID_VACANCY,
     inputType: 'number',
     label: 'Vacancy (%)',
-    percentOfRent: true
+    percentOfRent: true,
+    textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
     inputId: INPUT_ID_REPAIRS_AND_MAINTENANCE,
     inputType: 'number',
     label: 'Repairs & Maintenance (%)',
-    percentOfRent: true
+    percentOfRent: true,
+    textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
     inputId: INPUT_ID_CAP_EX,
     inputType: 'number',
     label: 'Cap. Ex. (%)',
-    percentOfRent: true
+    percentOfRent: true,
+    textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
     inputId: INPUT_ID_MANAGEMENT,
     inputType: 'number',
     label: 'Management (%)',
-    percentOfRent: true
+    percentOfRent: true,
+    textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
     inputId: INPUT_ID_OTHER_EXPENSES,
     inputType: 'number',
-    label: 'Other Expenses'
+    label: 'Other Expenses',
+    textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   }
 ]
 
@@ -228,17 +257,20 @@ export const futureProjectionsInputProps = [
   {
     inputId: INPUT_ID_PROPERTY_VALUE_GROWTH,
     inputType: 'number',
-    label: 'Annual Property Value Growth (%)'
+    label: 'Annual Property Value Growth (%)',
+    textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
     inputId: INPUT_ID_ANNUAL_INCOME_GROWTH,
     inputType: 'number',
-    label: 'Annual Income Growth (%)'
+    label: 'Annual Income Growth (%)',
+    textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
     inputId: INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH,
     inputType: 'number',
-    label: 'Annual Constant Expenses Growth (%)'
+    label: 'Annual Constant Expenses Growth (%)',
+    textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   }
 ]
 

@@ -1,3 +1,5 @@
+export const CALCULATOR_INPUT_WIDTH_DEFAULT = 160
+
 export const INPUT_ID_AFTER_REPAIR_VALUE = 'afterRepairValueInput'
 export const INPUT_ID_AMORTIZATION_PERIOD = 'amortizationPeriodInput'
 export const INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH =

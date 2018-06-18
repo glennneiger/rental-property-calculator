@@ -11,7 +11,6 @@ import {
 } from '../../../actions/currentCalculation'
 import { clearAllCalculatorFields } from '../../../actions/calculatorFields'
 import { showModal } from '../../../actions/modal'
-import { logoutUser } from '../../../actions/auth'
 
 const mapStateToProps = state => ({
   calculation: state.calculator,
