@@ -24,9 +24,6 @@ const mapDispatchToProps = dispatch => ({
   clearAllCalculatorFields: () => {
     dispatch(clearAllCalculatorFields())
   },
-  logoutUser: () => {
-    dispatch(logoutUser())
-  },
   saveCalculation: (
     title,
     calculation,
