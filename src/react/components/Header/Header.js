@@ -9,6 +9,22 @@ import BlueButton from '../BlueButton'
 import { MODAL_CONFIRM_LOGOUT } from '../../../constants'
 
 class Header extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      currentPath: this.props.location.pathname
+    }
+  }
+  componentWillMount = () => {
+    this.unlisten = this.props.history.listen(location => {
+      this.setState({
+        currentPath: location.pathname
+      })
+    })
+  }
+  componentWillUnmount = () => {
+    this.unlisten()
+  }
   handleToggleSidebarClick = () => {
     this.props.sidebarVisible
       ? this.props.hideSidebar()
@@ -29,15 +45,17 @@ class Header extends Component {
       : 'Calculator'
     return (
       <header className={css.header}>
-        {this.props.sidebarVisible
-          ? <FaClose
-            className={css.sidebarToggler}
-            onClick={this.handleToggleSidebarClick}
-          />
-          : <FaBars
-            className={css.sidebarToggler}
-            onClick={this.handleToggleSidebarClick}
-          />
+        {this.state.currentPath === '/'
+          ? (this.props.sidebarVisible
+            ? <FaClose
+              className={css.sidebarToggler}
+              onClick={this.handleToggleSidebarClick}
+            />
+            : <FaBars
+              className={css.sidebarToggler}
+              onClick={this.handleToggleSidebarClick}
+            />)
+          : null
         }
         <Link to='/'>{title}</Link>
         <div className={css.authButtons}>
@@ -60,6 +78,7 @@ Header.propTypes = {
   hideSidebar: PropTypes.func.isRequired,
   history: PropTypes.object,
   isAuthenticated: PropTypes.bool.isRequired,
+  location: PropTypes.object.isRequired,
   logoutUser: PropTypes.func.isRequired,
   screenWidth: PropTypes.number.isRequired,
   showModal: PropTypes.func.isRequired,
