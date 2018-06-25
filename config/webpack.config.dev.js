@@ -169,7 +169,13 @@ module.exports = {
                 }
               },
               {
-                loader: require.resolve('postcss-loader')
+                loader: require.resolve('postcss-loader'),
+                options: {
+                  plugins: () => [
+                    require('postcss-nested'),
+                    require('postcss-flexbugs-fixes')
+                  ]
+                }
               }
             ]
           },

@@ -62,6 +62,11 @@ class Header extends Component {
       <header className={css.header}>
         {this.getToggleSidebarIcon()}
         <Link to='/'>{title}</Link>
+        <div className='userInfo'>
+          <i className='fa fa-user-circle-o' style={{
+            fontSize: '32px'
+          }}/>
+        </div>
         <div className={css.authButtons}>
           {this.props.isAuthenticated
             ? <BlueButton onClick={this.handleLogoutClick}>Logout</BlueButton>

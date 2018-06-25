@@ -28,13 +28,21 @@
   display: none;
 }
 
+/* .userInfo {
+  .fa {
+    background-color: green;
+  }
+} */
+
 @media (--tablet-landscape-up) {
   .header {
     justify-content: space-between;
   }
 
-  .header a {
-    margin-left: var(--sidebarWidth);
+  .header {
+    & a {
+      margin-left: var(--sidebarWidth)
+    }
   }
 
   .authButtons {
