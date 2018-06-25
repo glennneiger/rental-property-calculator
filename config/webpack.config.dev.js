@@ -173,7 +173,13 @@ module.exports = {
                 options: {
                   plugins: () => [
                     require('postcss-nested'),
-                    require('postcss-flexbugs-fixes')
+                    require('postcss-flexbugs-fixes'),
+                    require('stylelint'),
+                    {
+                      config: {
+                        extends: 'stylelint-config-recommended'
+                      }
+                    }
                   ]
                 }
               }

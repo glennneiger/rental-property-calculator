@@ -28,9 +28,10 @@
   display: none;
 }
 
+/* Not working */
 /* .userInfo {
   .fa {
-    background-color: green;
+    font-size: 40px;
   }
 } */
 
