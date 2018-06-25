@@ -9,7 +9,8 @@ import {
 } from '../../../actions/currentCalculation'
 
 const mapStateToProps = (state, ownProps) => ({
-  content: state.calculator[ownProps.section][ownProps.inputId]
+  content: state.calculator[ownProps.section][ownProps.inputId],
+  sidebarVisible: state.sidebarVisible
 })
 
 const mapDispatchToProps = dispatch => ({

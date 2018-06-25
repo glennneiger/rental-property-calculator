@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 
 import css from './calculatorInput.css'
 import TextInput from '../TextInput'
@@ -12,6 +13,7 @@ const CalculatorInput = ({
   label,
   section,
   setChangesMade,
+  sidebarVisible,
   textInputWidth,
   updateInput
 }) => {
@@ -27,7 +29,11 @@ const CalculatorInput = ({
     setChangesMade(true)
   }
   return (
-    <div className={css.calculatorInput}>
+    <div className={classNames({
+      [css.calculatorInput]: true,
+      [css.calculatorInputNoSidebar]: !sidebarVisible,
+      [css.calculatorInputWithSidebar]: sidebarVisible
+    })}>
       <label htmlFor={inputId}>{label}</label>
       <TextInput type={'text'}
         id={inputId}
@@ -50,6 +56,7 @@ CalculatorInput.propTypes = {
   label: PropTypes.string.isRequired,
   section: PropTypes.string.isRequired,
   setChangesMade: PropTypes.func.isRequired,
+  sidebarVisible: PropTypes.bool.isRequired,
   textInputWidth: PropTypes.number,
   updateInput: PropTypes.func.isRequired
 }

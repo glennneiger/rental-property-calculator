@@ -14,8 +14,14 @@
   margin-bottom: 4px;
 }
 
+@media (min-width: 650px) {
+  .calculatorInputNoSidebar {
+    width: 50%;
+  }
+}
+
 @media (min-width: 850px) {
-  .calculatorInput {
+  .calculatorInputWithSidebar {
     width: 50%;
   }
 }
