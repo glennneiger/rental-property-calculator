@@ -30,16 +30,25 @@
   display: none;
 }
 
-/* Not working */
 .userInfo {
-  & .fa {
-    display: none;
-  }
+  display: none;
 }
 
 @media (--tablet-landscape-up) {
   .header {
     justify-content: space-between;
+  }
+
+  .userInfo {
+    display: flex;
+
+    & .userImage {
+      font-size: 30px;
+    }
+
+    & .usernameAndEmail {
+      margin-left: 12px;
+    }
   }
 
   .header {

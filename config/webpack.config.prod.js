@@ -1,6 +1,5 @@
 'use strict';
 
-const autoprefixer = require('autoprefixer');
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -189,12 +188,6 @@ module.exports = {
                     },
                     {
                       loader: require.resolve('postcss-loader'),
-                      options: {
-                        plugins: () => [
-                          require('postcss-nested'),
-                          require('postcss-flexbugs-fixes')
-                        ]
-                      }
                     },
                   ],
                 },
