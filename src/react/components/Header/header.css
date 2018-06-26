@@ -9,11 +9,13 @@
   justify-content: center;
 }
 
-.header a {
-  text-decoration: none;
-  color: var(--textColorLight);
-  font-size: 1.8em;
-  white-space: nowrap;
+.header {
+  & a {
+    text-decoration: none;
+    color: var(--textColorLight);
+    font-size: 1.8em;
+    white-space: nowrap;
+  }
 }
 
 .sidebarToggler {
@@ -29,11 +31,11 @@
 }
 
 /* Not working */
-/* .userInfo {
-  .fa {
-    font-size: 40px;
+.userInfo {
+  & .fa {
+    display: none;
   }
-} */
+}
 
 @media (--tablet-landscape-up) {
   .header {

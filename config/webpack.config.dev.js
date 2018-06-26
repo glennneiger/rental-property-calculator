@@ -169,19 +169,7 @@ module.exports = {
                 }
               },
               {
-                loader: require.resolve('postcss-loader'),
-                options: {
-                  plugins: () => [
-                    require('postcss-nested'),
-                    require('postcss-flexbugs-fixes'),
-                    require('stylelint'),
-                    {
-                      config: {
-                        extends: 'stylelint-config-recommended'
-                      }
-                    }
-                  ]
-                }
+                loader: require.resolve('postcss-loader')
               }
             ]
           },
