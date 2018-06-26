@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import FaBars from 'react-icons/lib/fa/bars'
 import FaClose from 'react-icons/lib/fa/close'
+import classNames from 'classnames'
 
 import css from './header.css'
 import BlueButton from '../BlueButton'
@@ -62,6 +63,13 @@ class Header extends Component {
       <header className={css.header}>
         {this.getToggleSidebarIcon()}
         <Link to='/'>{title}</Link>
+        <div className={css.userInfo}>
+          <i className={classNames(
+            'fa fa-user-circle-o',
+            css.userImage
+          )} />
+          <p>{this.props.username}</p>
+        </div>
         <div className={css.authButtons}>
           {this.props.isAuthenticated
             ? <BlueButton onClick={this.handleLogoutClick}>Logout</BlueButton>
@@ -84,6 +92,7 @@ Header.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
   location: PropTypes.object.isRequired,
   logoutUser: PropTypes.func.isRequired,
+  username: PropTypes.string.isRequired,
   screenWidth: PropTypes.number.isRequired,
   showModal: PropTypes.func.isRequired,
   showSidebar: PropTypes.func.isRequired,

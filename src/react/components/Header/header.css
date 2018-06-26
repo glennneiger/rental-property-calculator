@@ -9,11 +9,13 @@
   justify-content: center;
 }
 
-.header a {
-  text-decoration: none;
-  color: var(--textColorLight);
-  font-size: 1.8em;
-  white-space: nowrap;
+.header {
+  & a {
+    text-decoration: none;
+    color: var(--textColorLight);
+    font-size: 1.8em;
+    white-space: nowrap;
+  }
 }
 
 .sidebarToggler {
@@ -28,13 +30,33 @@
   display: none;
 }
 
+.userInfo {
+  display: none;
+}
+
 @media (--tablet-landscape-up) {
   .header {
     justify-content: space-between;
   }
 
-  .header a {
-    margin-left: var(--sidebarWidth);
+  .userInfo {
+    display: flex;
+    align-items: center;
+
+    & .userImage {
+      font-size: 30px;
+    }
+
+    & p {
+      margin-left: 12px;
+      font-size: 22px;
+    }
+  }
+
+  .header {
+    & a {
+      margin-left: var(--sidebarWidth)
+    }
   }
 
   .authButtons {

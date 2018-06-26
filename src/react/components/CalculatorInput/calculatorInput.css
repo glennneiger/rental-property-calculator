@@ -8,10 +8,12 @@
   width: 100%;
 }
 
-.calculatorInput label {
-  font-size: 0.8em;
-  font-weight: bold;
-  margin-bottom: 4px;
+.calculatorInput {
+  & label {
+    font-size: 0.8em;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
 }
 
 @media (min-width: 650px) {
