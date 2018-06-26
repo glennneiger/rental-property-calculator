@@ -11,6 +11,7 @@ import { showModal } from '../../../actions/modal'
 
 const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated,
+  username: state.auth.user.name,
   screenWidth: state.ui.screenWidth,
   sidebarVisible: state.sidebarVisible
 })

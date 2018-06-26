@@ -41,13 +41,15 @@
 
   .userInfo {
     display: flex;
+    align-items: center;
 
     & .userImage {
       font-size: 30px;
     }
 
-    & .usernameAndEmail {
+    & p {
       margin-left: 12px;
+      font-size: 22px;
     }
   }
 

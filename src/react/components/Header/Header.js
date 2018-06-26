@@ -68,10 +68,7 @@ class Header extends Component {
             'fa fa-user-circle-o',
             css.userImage
           )} />
-          <div className={css.usernameAndEmail}>
-            <p>Username</p>
-            <p>Email</p>
-          </div>
+          <p>{this.props.username}</p>
         </div>
         <div className={css.authButtons}>
           {this.props.isAuthenticated
@@ -95,6 +92,7 @@ Header.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
   location: PropTypes.object.isRequired,
   logoutUser: PropTypes.func.isRequired,
+  username: PropTypes.string.isRequired,
   screenWidth: PropTypes.number.isRequired,
   showModal: PropTypes.func.isRequired,
   showSidebar: PropTypes.func.isRequired,
