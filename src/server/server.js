@@ -2,6 +2,7 @@ import express from 'express'
 import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
 import passport from 'passport'
+import path from 'path'
 
 const users = require('./routes/api/users.js')
 const profile = require('./routes/api/profile.js')
@@ -24,6 +25,14 @@ require('./config/passport')(passport)
 app.use('/api/users', users)
 app.use('/api/profile', profile)
 app.use('/api/calculation', calculation)
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('build'))
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../../build', 'index.html'))
+  })
+}
 
 const port = process.env.PORT || 3001
 

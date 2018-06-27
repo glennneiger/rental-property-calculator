@@ -63,13 +63,16 @@ class Header extends Component {
       <header className={css.header}>
         {this.getToggleSidebarIcon()}
         <Link to='/'>{title}</Link>
-        <div className={css.userInfo}>
-          <i className={classNames(
-            'fa fa-user-circle-o',
-            css.userImage
-          )} />
-          <p>{this.props.username}</p>
-        </div>
+        {this.props.isAuthenticated
+          ? <div className={css.userInfo}>
+            <i className={classNames(
+              'fa fa-user-circle-o',
+              css.userImage
+            )} />
+            <p>{this.props.username}</p>
+          </div>
+          : null
+        }
         <div className={css.authButtons}>
           {this.props.isAuthenticated
             ? <BlueButton onClick={this.handleLogoutClick}>Logout</BlueButton>
@@ -92,7 +95,7 @@ Header.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
   location: PropTypes.object.isRequired,
   logoutUser: PropTypes.func.isRequired,
-  username: PropTypes.string.isRequired,
+  username: PropTypes.string,
   screenWidth: PropTypes.number.isRequired,
   showModal: PropTypes.func.isRequired,
   showSidebar: PropTypes.func.isRequired,
