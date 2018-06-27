@@ -92,7 +92,7 @@ Header.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
   location: PropTypes.object.isRequired,
   logoutUser: PropTypes.func.isRequired,
-  username: PropTypes.string.isRequired,
+  username: PropTypes.string,
   screenWidth: PropTypes.number.isRequired,
   showModal: PropTypes.func.isRequired,
   showSidebar: PropTypes.func.isRequired,

@@ -69,8 +69,9 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
-    "start": "node scripts/start.js",
-    "server": "babel-watch src/server/server.js",
+    "start": "node src/server/server.js",
+    "start:watch": "babel-watch src/server/server.js",
+    "client": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "mocha --compilers js:babel-core/register --opts mocha.opts --no-deprecation",
     "test:watch": "mocha --watch --compilers js:babel-core/register --opts mocha.opts --no-deprecation",
