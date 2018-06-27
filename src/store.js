@@ -4,6 +4,7 @@ import {
   createStore
 } from 'redux'
 import thunkMiddleware from 'redux-thunk'
+import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly'
 
 import { screenResize } from './actions/ui'
 import { reducer } from './reducers'
@@ -18,9 +19,8 @@ const initialState = {}
 const store = createStore(
   reducer,
   initialState,
-  compose(
-    applyMiddleware(thunkMiddleware),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  composeWithDevTools(
+    applyMiddleware(thunkMiddleware)
   )
 )
 
