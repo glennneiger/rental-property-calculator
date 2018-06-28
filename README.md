@@ -18,5 +18,5 @@ Unit testing is done using [Mocha](https://github.com/mochajs/mocha) and [Chai](
 
 1. Clone or download this repository.  Navigate to the project root.
 2. Install dependencies: `npm i`
-3. In one terminal window, start client: `npm run start`
-4. In another terminal window, start server: `npm run server`
+3. In one terminal window, start server: `npm run start`
+4. In another terminal window, start client: `npm run client`
