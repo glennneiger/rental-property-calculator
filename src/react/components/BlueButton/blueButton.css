@@ -1,8 +1,8 @@
 @import "../../../styles.css";
 
 .blueButton {
-  background-color: #2196F3;
-  color: white;
+  background-color: var(--buttonColor);
+  color: var(--textColorLight);
   padding: var(--blueButtonVerticalPadding) 16px;
   margin: var(--blueButtonVerticalMargin) 0px;
   border: 1px solid white;
