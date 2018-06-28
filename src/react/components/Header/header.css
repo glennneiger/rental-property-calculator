@@ -18,6 +18,10 @@
   }
 }
 
+.title {
+  font-family: 'Dosis', sans-serif;
+}
+
 .sidebarToggler {
   position: absolute;
   cursor: pointer;
@@ -44,12 +48,12 @@
     align-items: center;
 
     & .userImage {
-      font-size: 30px;
+      font-size: 28px;
     }
 
     & p {
-      margin-left: 12px;
-      font-size: 22px;
+      margin-left: 8px;
+      font-size: 18px;
     }
   }
 

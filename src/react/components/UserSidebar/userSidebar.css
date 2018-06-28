@@ -19,7 +19,7 @@
 }
 
 .userSidebar h2, .userSidebar p {
-  font-family: 'Patua One', Arial;
+  font-weight: bold;
 }
 
 #newCalcButton {

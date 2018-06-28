@@ -10,7 +10,7 @@ import LoginPage from '../Authentication/LoginPage'
 import RegisterPage from '../Authentication/RegisterPage'
 import { setAuthToken } from '../../../utils/authUtils'
 import store from '../../../store'
-import './app.css'
+import css from './app.css'
 import {
   logoutUser,
   setCurrentUser
@@ -36,7 +36,7 @@ class App extends Component {
   }
   render() {
     return (
-      <div className='app' id='app'>
+      <div className={css.app} id='app'>
         <ModalRoot />
         <Header />
         <Route exact path='/' component={CalculatorPage} />
