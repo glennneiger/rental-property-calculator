@@ -11,7 +11,6 @@
 }
 
 .listCalculation span {
-  font-family: Arial, Helvetica, sans-serif;
   text-overflow: ellipsis;
   margin-right: 2px;
   overflow: hidden

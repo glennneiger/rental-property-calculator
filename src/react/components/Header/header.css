@@ -18,6 +18,10 @@
   }
 }
 
+.title {
+  font-family: 'Dosis', sans-serif;
+}
+
 .sidebarToggler {
   position: absolute;
   cursor: pointer;

@@ -62,7 +62,11 @@ class Header extends Component {
     return (
       <header className={css.header}>
         {this.getToggleSidebarIcon()}
-        <Link to='/'>{title}</Link>
+        <Link to='/'>
+          <span className={css.title}>
+            {title}
+          </span>
+        </Link>
         {this.props.isAuthenticated
           ? <div className={css.userInfo}>
             <i className={classNames(
