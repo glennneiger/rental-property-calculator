@@ -16,7 +16,7 @@ import {
   getMonthlyMortgage,
   getOtherInitialCosts,
   getRepairCosts
-} from '../../src/utils/stateGetters'
+} from './stateGetters'
 import {
   INPUT_ID_AFTER_REPAIR_VALUE,
   INPUT_ID_AMORTIZATION_PERIOD,
@@ -58,7 +58,7 @@ import {
   TITLE_INITIAL_PURCHASE,
   TITLE_MONTHLY_EXPENSES,
   TITLE_MONTHLY_INCOME
-} from '../../src/constants'
+} from '../constants'
 
 const AFTER_REPAIR_VALUE = 140000.25
 const AFTER_REPAIR_VALUE_STRING = '140000.25'
