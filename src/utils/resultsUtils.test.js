@@ -2,7 +2,7 @@ import { expect } from 'chai'
 
 import {
   getYearsForResults
-} from '../../src/utils/resultsUtils'
+} from './resultsUtils'
 
 describe('utils/resultsUtils', () => {
   describe('getYearsForResults', () => {

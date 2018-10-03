@@ -29,7 +29,7 @@ import {
   calculateYearCashFlow,
   getCompoundedValue,
   makeValidGrowthRate
-} from '../../src/utils/calculationUtils'
+} from './calculationUtils'
 import {
   INPUT_ID_CAP_EX,
   INPUT_ID_ELECTRICITY,
@@ -46,7 +46,7 @@ import {
   INPUT_ID_REPAIRS_AND_MAINTENANCE,
   INPUT_ID_VACANCY,
   INPUT_ID_WATER_AND_SEWER
-} from '../../src/constants'
+} from '../constants'
 
 const DEFAULT_MONTHLY_INCOME = {
   [INPUT_ID_RENTAL_INCOME]: 1800,
