@@ -14,11 +14,11 @@ The front end tech stack includes [React](https://github.com/facebook/react), [R
 
 The server is written using [Express](https://github.com/expressjs/express).
 
-Unit testing is done using [Mocha](https://github.com/mochajs/mocha) and [Chai](https://github.com/chaijs/chai).
+Testing is done using [Jest](https://github.com/facebook/jest) and [Chai](https://github.com/chaijs/chai).
 
 ## How to run
 
 1. Clone or download this repository.  Navigate to the project root.
 2. Install dependencies: `npm i`
-3. In one terminal window, start server: `npm run start`
-4. In another terminal window, start client: `npm run client`
+3. In one terminal window, start the server: `npm run start`
+4. In another terminal window, start the client: `npm run client`
