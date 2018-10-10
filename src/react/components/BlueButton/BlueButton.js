@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import css from './blueButton.css'
+import './blueButton.css'
 
 const BlueButton = props =>
-  <button className={css.blueButton} {...props}>
+  <button className='blueButton' {...props}>
     {props.children}
   </button>
 
