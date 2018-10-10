@@ -71,7 +71,7 @@
     "start": "babel-watch src/server/server.js",
     "client": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "jest --silent --coverage",
+    "test": "jest --silent",
     "test:watch": "mocha --watch --compilers js:babel-core/register --opts mocha.opts --no-deprecation",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run build"
   },
