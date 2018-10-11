@@ -15,10 +15,6 @@ describe('<BlueButton />', () => {
     )
   })
 
-  // it('has correct className for styling', () => {
-  //   expect(wrapper).to.have.className('blueButton')
-  // })
-
   it('has children props as children of the button', () => {
     expect(wrapper.find('button').prop('children')).to.equal(exampleChild)
   })

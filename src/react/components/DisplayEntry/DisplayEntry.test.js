@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
 import DisplayEntry from '.'
-import { NUMBER_PRECISION_DISPLAY } from '../../../constants';
+import { NUMBER_PRECISION_DISPLAY } from '../../../constants'
 
 describe('<DisplayEntry />', () => {
   const mockContent = 40000.2534
