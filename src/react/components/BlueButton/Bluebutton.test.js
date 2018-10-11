@@ -10,11 +10,9 @@ describe('<BlueButton />', () => {
   const exampleButtonName = 'my button'
 
   beforeEach(() => {
-    wrapper = shallow(<BlueButton name={ exampleButtonName } children={ exampleChild }/>)
-  })
-
-  it('has correct className for styling', () => {
-    expect(wrapper).to.have.className('blueButton')
+    wrapper = shallow(
+      <BlueButton name={ exampleButtonName } children={ exampleChild }/>
+    )
   })
 
   it('has children props as children of the button', () => {
