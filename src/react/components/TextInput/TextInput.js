@@ -13,4 +13,5 @@ const TextInput = props => {
 TextInput.propTypes = {
   width: PropTypes.number
 }
+
 export default TextInput
