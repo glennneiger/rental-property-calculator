@@ -15,7 +15,15 @@ describe('<CalculatorInputSection />', () => {
   const wrapper = shallow(<CalculatorInputSection { ...baseProps } />)
 
   it('renders one h2 containing the title prop', () => {
-    expect(wrapper.find('h2')).to.have.length(1)
-    expect(wrapper.find('h2').prop('children')).to.equal(mockTitle)
+    const headers = wrapper.find('h2')
+
+    expect(headers).to.have.length(1)
+    expect(headers).to.have.text(mockTitle)
+  })
+  it('renders one div containing the children prop', () => {
+    const childDiv = wrapper.children().find('div')
+
+    expect(childDiv).to.have.length(1)
+    expect(childDiv).to.have.text(mockChildren)
   })
 })
