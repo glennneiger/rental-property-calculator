@@ -26,4 +26,10 @@ describe('<CalculatorInputSection />', () => {
     expect(childDiv).to.have.length(1)
     expect(childDiv).to.have.text(mockChildren)
   })
+  test('container div has correct className for styling', () => {
+    expect(wrapper).to.have.className('calculatorInputSection')
+  })
+  test('inputs div has correct className for styling', () => {
+    expect(wrapper.children().find('div')).to.have.className('inputs')
+  })
 })
