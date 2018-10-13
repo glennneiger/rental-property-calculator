@@ -5,6 +5,7 @@ import { expect } from 'chai'
 import CalculatorInputSection from '.'
 
 describe('<CalculatorInputSection />', () => {
+  let wrapper
   const mockChildren = 'Calculator input section children'
   const mockTitle = 'Monthly Income'
   const baseProps = {
@@ -12,7 +13,9 @@ describe('<CalculatorInputSection />', () => {
     title: mockTitle
   }
 
-  const wrapper = shallow(<CalculatorInputSection { ...baseProps } />)
+  beforeAll(() => {
+    wrapper = shallow(<CalculatorInputSection { ...baseProps } />)
+  })
 
   it('renders one h2 containing the title prop', () => {
     const headers = wrapper.find('h2')
