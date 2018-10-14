@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import css from './calculatorInputSection.css'
+import css from './calculatorInputSection.css';
 
 const CalculatorInputSection = ({
   children,
@@ -13,11 +13,11 @@ const CalculatorInputSection = ({
       {children}
     </div>
   </div>
-)
+);
 
 CalculatorInputSection.propTypes = {
   children: PropTypes.array,
   title: PropTypes.string.isRequired
-}
+};
 
-export default CalculatorInputSection
+export default CalculatorInputSection;

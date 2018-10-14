@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import Modal from 'react-modal'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import Modal from 'react-modal';
 
-import css from '../modal.css'
-import BlueButton from '../../BlueButton'
+import css from '../modal.css';
+import BlueButton from '../../BlueButton';
 
 class DeleteCalculationModal extends Component {
   handleDeleteClick = () => {
@@ -15,18 +15,18 @@ class DeleteCalculationModal extends Component {
       idToDelete,
       setChangesMade,
       setCurrentTitle
-    } = this.props
+    } = this.props;
 
     if (idToDelete === currentlySelectedId) {
-      setChangesMade(false)
-      setCurrentTitle(null)
-      clearAllCalculatorFields()
+      setChangesMade(false);
+      setCurrentTitle(null);
+      clearAllCalculatorFields();
     }
-    deleteCalculationWithId(idToDelete)
-    hideModal()
+    deleteCalculationWithId(idToDelete);
+    hideModal();
   }
   handleKeepClick = () => {
-    this.props.hideModal()
+    this.props.hideModal();
   }
   render() {
     return (
@@ -45,7 +45,7 @@ class DeleteCalculationModal extends Component {
           <BlueButton onClick={this.handleKeepClick}>Keep</BlueButton>
         </div>
       </Modal>
-    )
+    );
   }
 }
 
@@ -58,6 +58,6 @@ DeleteCalculationModal.propTypes = {
   setChangesMade: PropTypes.func.isRequired,
   setCurrentTitle: PropTypes.func.isRequired,
   titleToDelete: PropTypes.string.isRequired
-}
+};
 
-export default DeleteCalculationModal
+export default DeleteCalculationModal;

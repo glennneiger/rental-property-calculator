@@ -1,8 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-import css from '../authentication.css'
+import css from '../authentication.css';
 
 const AuthInput = ({
   error,
@@ -30,8 +30,8 @@ const AuthInput = ({
           (<div className={css.invalidMessage}>{error}</div>)
       }
     </div>
-  )
-}
+  );
+};
 
 AuthInput.propTypes = {
   error: PropTypes.string,
@@ -41,10 +41,10 @@ AuthInput.propTypes = {
   placeholder: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired
-}
+};
 
 AuthInput.defaultProps = {
   type: 'text'
-}
+};
 
-export default AuthInput
+export default AuthInput;

@@ -1,41 +1,41 @@
-import axios from 'axios'
+import axios from 'axios';
 
 import {
   DELETE_CALCULATION_WITH_ID,
   GET_ALL_CALCULATIONS,
   LOAD_CALCULATION
-} from './constants'
+} from './constants';
 import {
   setChangesMade,
   setCurrentTitle
-} from './currentCalculation'
+} from './currentCalculation';
 
 const titleCompare = (a, b) => {
   if (a.title < b.title) {
-    return -1
+    return -1;
   }
   if (a.title > b.title) {
-    return 1
+    return 1;
   }
-  return 0
-}
+  return 0;
+};
 
 export const getAllCalculations = () => dispatch => {
-  let idsAndTitles = []
+  let idsAndTitles = [];
   axios.get('/api/calculation/')
     .then(res => {
       idsAndTitles = res.data.map(calculation => ({
         id: calculation._id,
         title: calculation.title
-      }))
-      idsAndTitles.sort(titleCompare)
+      }));
+      idsAndTitles.sort(titleCompare);
       dispatch({
         type: GET_ALL_CALCULATIONS,
         payload: idsAndTitles
-      })
+      });
     })
-    .catch(err => console.log(err))
-}
+    .catch(err => console.log(err));
+};
 
 export const getCalculationById = calculationId => dispatch => {
   axios.get(`/api/calculation/${calculationId}`)
@@ -43,12 +43,12 @@ export const getCalculationById = calculationId => dispatch => {
       dispatch({
         type: LOAD_CALCULATION,
         payload: res.data.calculation
-      })
-      dispatch(setChangesMade(false))
-      dispatch(setCurrentTitle(res.data.title))
+      });
+      dispatch(setChangesMade(false));
+      dispatch(setCurrentTitle(res.data.title));
     })
-    .catch(err => console.log(err))
-}
+    .catch(err => console.log(err));
+};
 
 export const saveCalculation = (
   title,
@@ -60,19 +60,19 @@ export const saveCalculation = (
   const calcRequest = {
     title,
     calculation
-  }
+  };
   axios.post('/api/calculation', calcRequest)
     .then(() => {
       if (changesMade !== null) {
-        dispatch(setChangesMade(changesMade))
+        dispatch(setChangesMade(changesMade));
       }
       if (setTitle) {
-        dispatch(setCurrentTitle(newCurrentTitle))
+        dispatch(setCurrentTitle(newCurrentTitle));
       }
-      dispatch(getAllCalculations())
+      dispatch(getAllCalculations());
     })
-    .catch(err => console.log(err))
-}
+    .catch(err => console.log(err));
+};
 
 export const deleteCalculationWithId = calculationId => dispatch => {
   axios.delete(`/api/calculation/${calculationId}`)
@@ -82,7 +82,7 @@ export const deleteCalculationWithId = calculationId => dispatch => {
         payload: {
           calculationId
         }
-      })
+      });
     })
-    .catch(err => console.log(err))
-}
+    .catch(err => console.log(err));
+};

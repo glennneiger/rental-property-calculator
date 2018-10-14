@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import Modal from 'react-modal'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import Modal from 'react-modal';
 
-import css from '../modal.css'
-import BlueButton from '../../BlueButton'
-import { MODAL_SAVE_AS } from '../../../../constants'
+import css from '../modal.css';
+import BlueButton from '../../BlueButton';
+import { MODAL_SAVE_AS } from '../../../../constants';
 
 /* Modal used when navigating away from a calculation with unsaved changes.
  * Examples: Clicking a ListCalculation, pressing New Calculation button */
@@ -20,28 +20,28 @@ class SaveChangesModal extends Component {
       idToGet,
       saveCalculation,
       showModal
-    } = this.props
+    } = this.props;
 
-    let changesMade = false
-    let setTitle = true
-    let newCurrentTitle = currentTitle
+    let changesMade = false;
+    let setTitle = true;
+    let newCurrentTitle = currentTitle;
     if (!currentTitle) {
       showModal(MODAL_SAVE_AS, {
         calculationToSave,
         idToGet,
         creatingNewCalculation
-      })
+      });
     } else {
       if (idToGet) {
-        getCalculationById(idToGet)
-        changesMade = null
-        setTitle = false
+        getCalculationById(idToGet);
+        changesMade = null;
+        setTitle = false;
       }
       if (creatingNewCalculation) {
-        changesMade = false
-        setTitle = true
-        newCurrentTitle = null
-        clearAllCalculatorFields()
+        changesMade = false;
+        setTitle = true;
+        newCurrentTitle = null;
+        clearAllCalculatorFields();
       }
       saveCalculation(
         currentTitle,
@@ -49,8 +49,8 @@ class SaveChangesModal extends Component {
         changesMade,
         setTitle,
         newCurrentTitle
-      )
-      hideModal()
+      );
+      hideModal();
     }
   }
   handleDontSaveClick = () => {
@@ -62,19 +62,19 @@ class SaveChangesModal extends Component {
       idToGet,
       setChangesMade,
       setCurrentTitle
-    } = this.props
+    } = this.props;
     if (idToGet) {
-      getCalculationById(idToGet)
+      getCalculationById(idToGet);
     }
     if (creatingNewCalculation) {
-      clearAllCalculatorFields()
-      setCurrentTitle(null)
-      setChangesMade(false)
+      clearAllCalculatorFields();
+      setCurrentTitle(null);
+      setChangesMade(false);
     }
-    hideModal()
+    hideModal();
   }
   handleCancelClick = () => {
-    this.props.hideModal()
+    this.props.hideModal();
   }
   render() {
     return (
@@ -100,7 +100,7 @@ class SaveChangesModal extends Component {
           <BlueButton onClick={this.handleCancelClick}>Cancel</BlueButton>
         </div>
       </Modal>
-    )
+    );
   }
 }
 
@@ -116,6 +116,6 @@ SaveChangesModal.propTypes = {
   setChangesMade: PropTypes.func.isRequired,
   setCurrentTitle: PropTypes.func.isRequired,
   showModal: PropTypes.func.isRequired
-}
+};
 
-export default SaveChangesModal
+export default SaveChangesModal;

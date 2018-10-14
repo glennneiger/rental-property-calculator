@@ -40,7 +40,7 @@ import {
   TITLE_INITIAL_PURCHASE,
   TITLE_MONTHLY_EXPENSES,
   TITLE_MONTHLY_INCOME
-} from '../../../constants'
+} from '../../../constants';
 
 const generalInfoInputProps = [
   {
@@ -91,7 +91,7 @@ const generalInfoInputProps = [
     label: 'Square Feet',
     textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   }
-]
+];
 
 const initialPurchaseInputProps = [
   {
@@ -148,7 +148,7 @@ const initialPurchaseInputProps = [
     label: 'Other Initial Costs',
     textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   }
-]
+];
 
 /* Only add stuff here to calculate income */
 export const incomeInputProps = [
@@ -164,7 +164,7 @@ export const incomeInputProps = [
     label: 'Other Income',
     textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   }
-]
+];
 
 /* Only add stuff here to calculate expenses */
 export const expensesInputProps = [
@@ -251,7 +251,7 @@ export const expensesInputProps = [
     label: 'Other Expenses',
     textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   }
-]
+];
 
 export const futureProjectionsInputProps = [
   {
@@ -272,7 +272,7 @@ export const futureProjectionsInputProps = [
     label: 'Annual Constant Expenses Growth (%)',
     textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   }
-]
+];
 
 export const inputSectionData = [
   {
@@ -295,4 +295,4 @@ export const inputSectionData = [
     title: TITLE_FUTURE_PROJECTIONS,
     childProps: futureProjectionsInputProps
   }
-]
+];

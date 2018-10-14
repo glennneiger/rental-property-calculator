@@ -1,8 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import css from './futureResults.css'
-import YearResult from '../YearResult'
+import css from './futureResults.css';
+import YearResult from '../YearResult';
 
 const FutureResults = ({
   yearsForResults
@@ -19,11 +19,11 @@ const FutureResults = ({
             year={year} />
         ))}
     </div>
-  )
-}
+  );
+};
 
 FutureResults.propTypes = {
   yearsForResults: PropTypes.array.isRequired
-}
+};
 
-export default FutureResults
+export default FutureResults;

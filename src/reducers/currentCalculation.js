@@ -1,12 +1,12 @@
 import {
   SET_CHANGES_MADE,
   SET_CURRENT_TITLE
-} from '../actions/constants'
+} from '../actions/constants';
 
 const initialState = {
   changesMade: false,
   title: null
-}
+};
 
 const currentCalculation = (state = initialState, action) => {
   switch (action.type) {
@@ -14,15 +14,15 @@ const currentCalculation = (state = initialState, action) => {
     return {
       ...state,
       changesMade: action.payload
-    }
+    };
   case SET_CURRENT_TITLE:
     return {
       ...state,
       title: action.payload
-    }
+    };
   default:
-    return state
+    return state;
   }
-}
+};
 
-export default currentCalculation
+export default currentCalculation;

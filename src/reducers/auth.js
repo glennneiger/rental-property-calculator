@@ -1,12 +1,12 @@
 import {
   SET_CURRENT_USER
-} from '../actions/constants'
-import { isEmpty } from '../utils/validationUtils'
+} from '../actions/constants';
+import { isEmpty } from '../utils/validationUtils';
 
 const initialState = {
   isAuthenticated: false,
   user: {}
-}
+};
 
 const auth = (state = initialState, action) => {
   switch (action.type) {
@@ -15,10 +15,10 @@ const auth = (state = initialState, action) => {
       ...state,
       isAuthenticated: !isEmpty(action.payload),
       user: action.payload
-    }
+    };
   default:
-    return state
+    return state;
   }
-}
+};
 
-export default auth
+export default auth;

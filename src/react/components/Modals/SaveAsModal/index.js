@@ -1,24 +1,24 @@
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
 import {
   getCalculationById,
   saveCalculation
-} from '../../../../actions/calculationList'
-import { hideModal } from '../../../../actions/modal'
-import SaveAsModal from './SaveAsModal'
+} from '../../../../actions/calculationList';
+import { hideModal } from '../../../../actions/modal';
+import SaveAsModal from './SaveAsModal';
 import {
   clearAllCalculatorFields
-} from '../../../../actions/calculatorFields'
+} from '../../../../actions/calculatorFields';
 
 const mapDispatchToProps = dispatch => ({
   clearAllCalculatorFields: () => {
-    dispatch(clearAllCalculatorFields())
+    dispatch(clearAllCalculatorFields());
   },
   getCalculationById: idToGet => {
-    dispatch(getCalculationById(idToGet))
+    dispatch(getCalculationById(idToGet));
   },
   hideModal: () => {
-    dispatch(hideModal())
+    dispatch(hideModal());
   },
   saveCalculation: (
     title,
@@ -32,11 +32,11 @@ const mapDispatchToProps = dispatch => ({
       changesMade,
       setTitle,
       newCurrentTitle
-    ))
+    ));
   }
-})
+});
 
 export default connect(
   null,
   mapDispatchToProps
-)(SaveAsModal)
+)(SaveAsModal);

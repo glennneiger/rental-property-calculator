@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import css from './yearResult.css'
+import css from './yearResult.css';
 import {
   RESULTS_CASH_FLOW,
   RESULTS_CASH_ON_CASH_RETURN,
@@ -9,8 +9,8 @@ import {
   RESULTS_PROPERTY_VALUE,
   RESULTS_RETURN_ON_EQUITY,
   RESULTS_RETURN_ON_INVESTMENT
-} from '../../../constants'
-import DisplayEntry from '../DisplayEntry'
+} from '../../../constants';
+import DisplayEntry from '../DisplayEntry';
 
 const YearResult = ({
   result,
@@ -53,7 +53,7 @@ const YearResult = ({
       prefix: '',
       suffix: '%'
     }
-  ]
+  ];
   return (
     <div className={css.yearResult}>
       <h3>Year {year}</h3>
@@ -66,12 +66,12 @@ const YearResult = ({
         ))
       }
     </div>
-  )
-}
+  );
+};
 
 YearResult.propTypes = {
   result: PropTypes.object.isRequired,
   year: PropTypes.number.isRequired
-}
+};
 
-export default YearResult
+export default YearResult;

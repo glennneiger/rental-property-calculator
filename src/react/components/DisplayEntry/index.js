@@ -1,3 +1,3 @@
-import DisplayEntry from './DisplayEntry'
+import DisplayEntry from './DisplayEntry';
 
-export default DisplayEntry
+export default DisplayEntry;

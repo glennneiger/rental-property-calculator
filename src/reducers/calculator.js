@@ -2,25 +2,25 @@ import {
   CLEAR_ALL_FIELDS,
   LOAD_CALCULATION,
   UPDATE_INPUT
-} from '../actions/constants'
+} from '../actions/constants';
 import {
   inputSectionData
-} from '../react/components/Calculator/childProps'
+} from '../react/components/Calculator/childProps';
 
 const getInitialState = () => {
-  let initialState = {}
+  let initialState = {};
   inputSectionData.forEach(inputSection => {
-    const section = inputSection.title
+    const section = inputSection.title;
     inputSection.childProps.forEach(props => {
-      const input = props.inputId
+      const input = props.inputId;
       if (!initialState[section]) {
-        initialState[section] = {}
+        initialState[section] = {};
       }
-      initialState[section][input] = ''
-    })
-  })
-  return initialState
-}
+      initialState[section][input] = '';
+    });
+  });
+  return initialState;
+};
 
 /*
  * Reducer that handles a single calculator section
@@ -31,11 +31,11 @@ const calculatorSection = (state, action) => {
     return {
       ...state,
       [action.payload.inputId]: action.payload.value
-    }
+    };
   default:
-    return state
+    return state;
   }
-}
+};
 
 const calculator = (state = getInitialState(), action) => {
   switch (action.type) {
@@ -46,14 +46,14 @@ const calculator = (state = getInitialState(), action) => {
         state[action.payload.section],
         action
       )
-    }
+    };
   case LOAD_CALCULATION:
-    return action.payload
+    return action.payload;
   case CLEAR_ALL_FIELDS:
-    return getInitialState()
+    return getInitialState();
   default:
-    return state
+    return state;
   }
-}
+};
 
-export default calculator
+export default calculator;

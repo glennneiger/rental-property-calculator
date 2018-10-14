@@ -1,25 +1,25 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Route } from 'react-router-dom'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Route } from 'react-router-dom';
 
 const renderMergedProps = (component, ...rest) => {
-  const finalProps = Object.assign({}, ...rest)
+  const finalProps = Object.assign({}, ...rest);
   return (
     React.createElement(component, finalProps)
-  )
-}
+  );
+};
 
 const PropsRoute = ({
   component,
   ...rest
 }) => (
   <Route {...rest} render={routeProps => {
-    return renderMergedProps(component, routeProps, rest)
+    return renderMergedProps(component, routeProps, rest);
   }} />
-)
+);
 
 PropsRoute.propTypes = {
   component: PropTypes.func.isRequired
-}
+};
 
-export default PropsRoute
+export default PropsRoute;

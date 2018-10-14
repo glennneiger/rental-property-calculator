@@ -1,9 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import {
   NUMBER_PRECISION_DISPLAY
-} from '../../../constants'
+} from '../../../constants';
 
 const DisplayEntry = ({
   content,
@@ -14,13 +14,13 @@ const DisplayEntry = ({
   <p>
     {`${title}: ${prefix}${content.toFixed(NUMBER_PRECISION_DISPLAY)}${suffix}`}
   </p>
-)
+);
 
 DisplayEntry.propTypes = {
   content: PropTypes.number.isRequired,
   prefix: PropTypes.string.isRequired,
   suffix: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired
-}
+};
 
-export default DisplayEntry
+export default DisplayEntry;

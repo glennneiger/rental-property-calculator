@@ -1,8 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import css from './result.css'
-import FutureResults from '../FutureResults'
+import css from './result.css';
+import FutureResults from '../FutureResults';
 
 const Result = ({
   initialEquity,
@@ -14,11 +14,11 @@ const Result = ({
     <p>Initial Equity: {initialEquity}</p>
     <FutureResults />
   </div>
-)
+);
 
 Result.propTypes = {
   initialEquity: PropTypes.number.isRequired,
   initialInvestment: PropTypes.number.isRequired
-}
+};
 
-export default Result
+export default Result;

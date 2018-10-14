@@ -1,3 +1,3 @@
-import PropsRoute from './PropsRoute'
+import PropsRoute from './PropsRoute';
 
-export default PropsRoute
+export default PropsRoute;
