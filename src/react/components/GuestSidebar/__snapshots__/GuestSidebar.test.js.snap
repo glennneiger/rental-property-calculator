@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<GuestSidebar /> renders correctly 1`] = `
+<div
+  className="guestSidebar"
+>
+  <button
+    className="blueButton"
+    onClick={[Function]}
+  >
+    Login
+  </button>
+  <p>
+    or
+  </p>
+  <button
+    className="blueButton"
+    onClick={[Function]}
+  >
+    Register
+  </button>
+  <p>
+    to save your analysis
+  </p>
+</div>
+`;
