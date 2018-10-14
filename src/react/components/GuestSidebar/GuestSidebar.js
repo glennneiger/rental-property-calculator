@@ -5,12 +5,20 @@ import css from './guestSidebar.css';
 import BlueButton from '../BlueButton';
 
 class GuestSidebar extends Component {
-  onLoginClick = () => {
+  constructor(props) {
+    super(props);
+    this.onLoginClick = this.onLoginClick.bind(this);
+    this.onRegisterClick = this.onRegisterClick.bind(this);
+  }
+
+  onLoginClick() {
     this.props.history.push('/login');
   }
-  onRegisterClick = () => {
+
+  onRegisterClick() {
     this.props.history.push('/register');
   }
+
   render() {
     return (
       <div className={css.guestSidebar}>
