@@ -1,37 +1,37 @@
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
-import SaveChangesModal from './SaveChangesModal'
+import SaveChangesModal from './SaveChangesModal';
 import {
   getCalculationById,
   saveCalculation
-} from '../../../../actions/calculationList'
+} from '../../../../actions/calculationList';
 import {
   hideModal,
   showModal
-} from '../../../../actions/modal'
+} from '../../../../actions/modal';
 import {
   clearAllCalculatorFields
-} from '../../../../actions/calculatorFields'
+} from '../../../../actions/calculatorFields';
 import {
   setChangesMade,
   setCurrentTitle
-} from '../../../../actions/currentCalculation'
+} from '../../../../actions/currentCalculation';
 
 const mapDispatchToProps = dispatch => ({
   setChangesMade: changesMade => {
-    dispatch(setChangesMade(changesMade))
+    dispatch(setChangesMade(changesMade));
   },
   setCurrentTitle: newCurrentTitle => {
-    dispatch(setCurrentTitle(newCurrentTitle))
+    dispatch(setCurrentTitle(newCurrentTitle));
   },
   clearAllCalculatorFields: () => {
-    dispatch(clearAllCalculatorFields())
+    dispatch(clearAllCalculatorFields());
   },
   getCalculationById: calculationId => {
-    dispatch(getCalculationById(calculationId))
+    dispatch(getCalculationById(calculationId));
   },
   hideModal: () => {
-    dispatch(hideModal())
+    dispatch(hideModal());
   },
   saveCalculation: (
     title,
@@ -46,14 +46,14 @@ const mapDispatchToProps = dispatch => ({
       changesMade,
       setTitle,
       newCurrentTitle
-    ))
+    ));
   },
   showModal: (modalType, modalProps) => {
-    dispatch(showModal(modalType, modalProps))
+    dispatch(showModal(modalType, modalProps));
   }
-})
+});
 
 export default connect(
   null,
   mapDispatchToProps
-)(SaveChangesModal)
+)(SaveChangesModal);

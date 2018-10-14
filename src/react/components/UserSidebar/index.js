@@ -1,27 +1,27 @@
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
-import UserSidebar from './UserSidebar'
+import UserSidebar from './UserSidebar';
 import {
   getAllCalculations,
   saveCalculation
-} from '../../../actions/calculationList'
+} from '../../../actions/calculationList';
 import {
   setChangesMade,
   setCurrentTitle
-} from '../../../actions/currentCalculation'
-import { clearAllCalculatorFields } from '../../../actions/calculatorFields'
-import { showModal } from '../../../actions/modal'
+} from '../../../actions/currentCalculation';
+import { clearAllCalculatorFields } from '../../../actions/calculatorFields';
+import { showModal } from '../../../actions/modal';
 
 const mapStateToProps = state => ({
   calculation: state.calculator,
   calculationList: state.calculationList,
   changesMade: state.currentCalculation.changesMade,
   currentTitle: state.currentCalculation.title
-})
+});
 
 const mapDispatchToProps = dispatch => ({
   clearAllCalculatorFields: () => {
-    dispatch(clearAllCalculatorFields())
+    dispatch(clearAllCalculatorFields());
   },
   saveCalculation: (
     title,
@@ -36,23 +36,23 @@ const mapDispatchToProps = dispatch => ({
       changesMade,
       setTitle,
       newCurrentTitle
-    ))
+    ));
   },
   setChangesMade: changesMade => {
-    dispatch(setChangesMade(changesMade))
+    dispatch(setChangesMade(changesMade));
   },
   setCurrentTitle: currentTitle => {
-    dispatch(setCurrentTitle(currentTitle))
+    dispatch(setCurrentTitle(currentTitle));
   },
   getAllCalculations: () => {
-    dispatch(getAllCalculations())
+    dispatch(getAllCalculations());
   },
   showModal: (modalType, modalProps) => {
-    dispatch(showModal(modalType, modalProps))
+    dispatch(showModal(modalType, modalProps));
   }
-})
+});
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(UserSidebar)
+)(UserSidebar);

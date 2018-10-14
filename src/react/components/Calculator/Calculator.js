@@ -1,12 +1,12 @@
-import React from 'react'
+import React from 'react';
 
-import Result from '../Result'
-import CalculatorInputSection from '../CalculatorInputSection'
-import CalculatorInput from '../CalculatorInput'
+import Result from '../Result';
+import CalculatorInputSection from '../CalculatorInputSection';
+import CalculatorInput from '../CalculatorInput';
 import {
   inputSectionData
-} from './childProps'
-import css from './calculator.css'
+} from './childProps';
+import css from './calculator.css';
 
 const Calculator = () => {
   return (
@@ -32,7 +32,7 @@ const Calculator = () => {
       ))}
       <Result />
     </div>
-  )
-}
+  );
+};
 
-export default Calculator
+export default Calculator;

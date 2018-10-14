@@ -1,9 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import css from './sidebar.css'
-import GuestSidebar from '../GuestSidebar'
-import UserSidebar from '../UserSidebar'
+import css from './sidebar.css';
+import GuestSidebar from '../GuestSidebar';
+import UserSidebar from '../UserSidebar';
 
 const Sidebar = ({
   auth
@@ -15,11 +15,11 @@ const Sidebar = ({
         : <GuestSidebar />
       }
     </div>
-  )
-}
+  );
+};
 
 Sidebar.propTypes = {
   auth: PropTypes.object.isRequired
-}
+};
 
-export default Sidebar
+export default Sidebar;

@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-import Calculator from '../Calculator'
-import Sidebar from '../Sidebar'
-import css from './calculatorPage.css'
+import Calculator from '../Calculator';
+import Sidebar from '../Sidebar';
+import css from './calculatorPage.css';
 
 class CalculatorPage extends Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
   render() {
     return (
@@ -21,13 +21,13 @@ class CalculatorPage extends Component {
           : <Calculator />
         }
       </div>
-    )
+    );
   }
 }
 
 CalculatorPage.propTypes = {
   screenWidth: PropTypes.number.isRequired,
   sidebarVisible: PropTypes.bool.isRequired
-}
+};
 
-export default CalculatorPage
+export default CalculatorPage;

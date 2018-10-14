@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-import css from './guestSidebar.css'
-import BlueButton from '../BlueButton'
+import css from './guestSidebar.css';
+import BlueButton from '../BlueButton';
 
 class GuestSidebar extends Component {
   onLoginClick = () => {
-    this.props.history.push('/login')
+    this.props.history.push('/login');
   }
   onRegisterClick = () => {
-    this.props.history.push('/register')
+    this.props.history.push('/register');
   }
   render() {
     return (
@@ -19,12 +19,12 @@ class GuestSidebar extends Component {
         <BlueButton onClick={this.onRegisterClick}>Register</BlueButton>
         <p>to save your analysis</p>
       </div>
-    )
+    );
   }
 }
 
 GuestSidebar.propTypes = {
   history: PropTypes.object
-}
+};
 
-export default GuestSidebar
+export default GuestSidebar;

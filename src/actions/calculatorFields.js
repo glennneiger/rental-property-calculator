@@ -1,7 +1,7 @@
 import {
   CLEAR_ALL_FIELDS,
   UPDATE_INPUT
-} from './constants'
+} from './constants';
 
 export const updateInput = (value, section, inputId) => ({
   type: UPDATE_INPUT,
@@ -10,8 +10,8 @@ export const updateInput = (value, section, inputId) => ({
     section,
     inputId
   }
-})
+});
 
 export const clearAllCalculatorFields = () => ({
   type: CLEAR_ALL_FIELDS
-})
+});

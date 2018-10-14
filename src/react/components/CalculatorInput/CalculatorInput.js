@@ -1,10 +1,10 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-import css from './calculatorInput.css'
-import TextInput from '../TextInput'
-import { INPUT_ID_AMORTIZATION_PERIOD } from '../../../constants'
+import css from './calculatorInput.css';
+import TextInput from '../TextInput';
+import { INPUT_ID_AMORTIZATION_PERIOD } from '../../../constants';
 
 const CalculatorInput = ({
   content,
@@ -18,16 +18,16 @@ const CalculatorInput = ({
   updateInput
 }) => {
   const handleChange = event => {
-    const value = event.target.value
+    const value = event.target.value;
     if (inputType === 'number' && !value.match(/^\d*\.?\d{0,2}$/)) {
-      return
+      return;
     }
     if (inputId === INPUT_ID_AMORTIZATION_PERIOD && value.length > 3) {
-      return
+      return;
     }
-    updateInput(value, section, inputId)
-    setChangesMade(true)
-  }
+    updateInput(value, section, inputId);
+    setChangesMade(true);
+  };
   return (
     <div className={classNames({
       [css.calculatorInput]: true,
@@ -43,8 +43,8 @@ const CalculatorInput = ({
         width={textInputWidth}
       />
     </div>
-  )
-}
+  );
+};
 
 CalculatorInput.propTypes = {
   content: PropTypes.oneOfType([
@@ -59,6 +59,6 @@ CalculatorInput.propTypes = {
   sidebarVisible: PropTypes.bool.isRequired,
   textInputWidth: PropTypes.number,
   updateInput: PropTypes.func.isRequired
-}
+};
 
-export default CalculatorInput
+export default CalculatorInput;

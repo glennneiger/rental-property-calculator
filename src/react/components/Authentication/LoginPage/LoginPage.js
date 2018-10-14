@@ -1,47 +1,47 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-import AuthInput from '../AuthInput'
-import css from '../authentication.css'
-import BlueButton from '../../BlueButton'
+import AuthInput from '../AuthInput';
+import css from '../authentication.css';
+import BlueButton from '../../BlueButton';
 
 class LoginPage extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       email: '',
       password: '',
       errors: {}
-    }
+    };
   }
   componentDidMount = () => {
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push('/')
+      this.props.history.push('/');
     }
-    this.props.clearErrors()
+    this.props.clearErrors();
   }
   componentWillReceiveProps = nextProps => {
     if (nextProps.auth.isAuthenticated) {
-      this.props.history.push('/')
+      this.props.history.push('/');
     }
   }
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
-    })
+    });
   }
   handleSubmit = event => {
-    event.preventDefault()
+    event.preventDefault();
 
     const userData = {
       email: this.state.email,
       password: this.state.password
-    }
-    this.props.loginUser(userData)
+    };
+    this.props.loginUser(userData);
   }
   render() {
-    const { errors } = this.props
+    const { errors } = this.props;
     return (
       <div className={css.authenticationPage}>
         <form onSubmit={this.handleSubmit}>
@@ -70,7 +70,7 @@ class LoginPage extends Component {
         </form>
 
       </div>
-    )
+    );
   }
 }
 
@@ -80,6 +80,6 @@ LoginPage.propTypes = {
   errors: PropTypes.object.isRequired,
   history: PropTypes.object,
   loginUser: PropTypes.func.isRequired
-}
+};
 
-export default LoginPage
+export default LoginPage;

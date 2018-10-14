@@ -1,17 +1,17 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import Modal from 'react-modal'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import Modal from 'react-modal';
 
-import TextInput from '../../TextInput'
-import css from '../modal.css'
-import BlueButton from '../../BlueButton'
+import TextInput from '../../TextInput';
+import css from '../modal.css';
+import BlueButton from '../../BlueButton';
 
 class SaveAsModal extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       value: ''
-    }
+    };
   }
   handleSaveClick = () => {
     const {
@@ -21,20 +21,20 @@ class SaveAsModal extends Component {
       hideModal,
       idToGet,
       saveCalculation
-    } = this.props
+    } = this.props;
 
-    let changesMade = false
-    let setTitle = true
-    let newCurrentTitle = this.state.value
+    let changesMade = false;
+    let setTitle = true;
+    let newCurrentTitle = this.state.value;
     if (idToGet) {
-      getCalculationById(idToGet)
-      changesMade = null
-      setTitle = false
+      getCalculationById(idToGet);
+      changesMade = null;
+      setTitle = false;
     }
     if (creatingNewCalculation) {
-      changesMade = false
-      setTitle = false
-      this.props.clearAllCalculatorFields()
+      changesMade = false;
+      setTitle = false;
+      this.props.clearAllCalculatorFields();
     }
     saveCalculation(
       this.state.value,
@@ -42,16 +42,16 @@ class SaveAsModal extends Component {
       changesMade,
       setTitle,
       newCurrentTitle
-    )
-    hideModal()
+    );
+    hideModal();
   }
   handleCancelClick = () => {
-    this.props.hideModal()
+    this.props.hideModal();
   }
   handleChange = event => {
     this.setState({
       value: event.target.value
-    })
+    });
   }
   render() {
     return (
@@ -75,7 +75,7 @@ class SaveAsModal extends Component {
           <BlueButton onClick={this.handleCancelClick}>Cancel</BlueButton>
         </div>
       </Modal>
-    )
+    );
   }
 }
 
@@ -87,6 +87,6 @@ SaveAsModal.propTypes = {
   hideModal: PropTypes.func.isRequired,
   idToGet: PropTypes.string,
   saveCalculation: PropTypes.func.isRequired
-}
+};
 
-export default SaveAsModal
+export default SaveAsModal;

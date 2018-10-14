@@ -1,30 +1,30 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import PropTypes from 'prop-types'
-import FaBars from 'react-icons/lib/fa/bars'
-import FaClose from 'react-icons/lib/fa/close'
-import classNames from 'classnames'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import FaBars from 'react-icons/lib/fa/bars';
+import FaClose from 'react-icons/lib/fa/close';
+import classNames from 'classnames';
 
-import css from './header.css'
-import BlueButton from '../BlueButton'
-import { MODAL_CONFIRM_LOGOUT } from '../../../constants'
+import css from './header.css';
+import BlueButton from '../BlueButton';
+import { MODAL_CONFIRM_LOGOUT } from '../../../constants';
 
 class Header extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       currentPath: this.props.location.pathname
-    }
+    };
   }
   componentWillMount = () => {
     this.unlisten = this.props.history.listen(location => {
       this.setState({
         currentPath: location.pathname
-      })
-    })
+      });
+    });
   }
   componentWillUnmount = () => {
-    this.unlisten()
+    this.unlisten();
   }
   getToggleSidebarIcon = () => {
     if (this.state.currentPath === '/') {
@@ -36,28 +36,28 @@ class Header extends Component {
         : <FaBars
           className={css.sidebarToggler}
           onClick={this.handleToggleSidebarClick}
-        />)
+        />);
     }
-    return null
+    return null;
   }
   handleToggleSidebarClick = () => {
     this.props.sidebarVisible
       ? this.props.hideSidebar()
-      : this.props.showSidebar()
+      : this.props.showSidebar();
   }
   handleLogoutClick = () => {
-    this.props.showModal(MODAL_CONFIRM_LOGOUT)
+    this.props.showModal(MODAL_CONFIRM_LOGOUT);
   }
   handleLoginClick = () => {
-    this.props.history.push('/login')
+    this.props.history.push('/login');
   }
   handleRegisterClick = () => {
-    this.props.history.push('/register')
+    this.props.history.push('/register');
   }
   render() {
     const title = (this.props.screenWidth > 420)
       ? 'Rental Property Calculator'
-      : 'Calculator'
+      : 'Calculator';
 
     return (
       <header className={css.header}>
@@ -89,7 +89,7 @@ class Header extends Component {
           }
         </div>
       </header>
-    )
+    );
   }
 }
 
@@ -104,6 +104,6 @@ Header.propTypes = {
   showModal: PropTypes.func.isRequired,
   showSidebar: PropTypes.func.isRequired,
   sidebarVisible: PropTypes.bool.isRequired
-}
+};
 
-export default Header
+export default Header;

@@ -1,17 +1,17 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import Modal from 'react-modal'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import Modal from 'react-modal';
 
-import css from '../modal.css'
-import BlueButton from '../../BlueButton'
+import css from '../modal.css';
+import BlueButton from '../../BlueButton';
 
 class LogoutModal extends Component {
   handleLogoutClick = () => {
-    this.props.logoutUser()
-    this.props.hideModal()
+    this.props.logoutUser();
+    this.props.hideModal();
   }
   handleCancelClick = () => {
-    this.props.hideModal()
+    this.props.hideModal();
   }
   render() {
     return (
@@ -30,13 +30,13 @@ class LogoutModal extends Component {
           <BlueButton onClick={this.handleCancelClick}>Cancel</BlueButton>
         </div>
       </Modal>
-    )
+    );
   }
 }
 
 LogoutModal.propTypes = {
   hideModal: PropTypes.func.isRequired,
   logoutUser: PropTypes.func.isRequired
-}
+};
 
-export default LogoutModal
+export default LogoutModal;

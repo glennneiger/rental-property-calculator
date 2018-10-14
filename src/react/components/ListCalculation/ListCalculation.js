@@ -1,17 +1,17 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import FaTrashO from 'react-icons/lib/fa/trash-o'
-import classNames from 'classnames'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import FaTrashO from 'react-icons/lib/fa/trash-o';
+import classNames from 'classnames';
 
 import {
   MODAL_CONFIRM_DELETE_CALCULATION,
   MODAL_SAVE_CHANGES
-} from '../../../constants'
-import css from './listCalculation.css'
+} from '../../../constants';
+import css from './listCalculation.css';
 
 class ListCalculation extends Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
   handleClick = () => {
     if (this.props.changesMade) {
@@ -19,21 +19,21 @@ class ListCalculation extends Component {
         currentTitle: this.props.currentTitle,
         idToGet: this.props.id,
         calculationToSave: this.props.calculation
-      })
+      });
     } else {
-      this.props.getCalculationById(this.props.id)
+      this.props.getCalculationById(this.props.id);
     }
   }
   handleTrashIconClick = event => {
-    event.stopPropagation()
+    event.stopPropagation();
     this.props.showModal(MODAL_CONFIRM_DELETE_CALCULATION, {
       titleToDelete: this.props.title,
       idToDelete: this.props.id
-    })
+    });
   }
   render() {
-    const { currentTitle, title } = this.props
-    const selected = (currentTitle === title) ? true : false
+    const { currentTitle, title } = this.props;
+    const selected = (currentTitle === title) ? true : false;
     return (
       <li
         onClick={this.handleClick}
@@ -47,7 +47,7 @@ class ListCalculation extends Component {
           onClick={this.handleTrashIconClick}
         />
       </li>
-    )
+    );
   }
 }
 
@@ -59,6 +59,6 @@ ListCalculation.propTypes = {
   id: PropTypes.string.isRequired,
   showModal: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired
-}
+};
 
-export default ListCalculation
+export default ListCalculation;

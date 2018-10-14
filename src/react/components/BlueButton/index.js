@@ -1,3 +1,3 @@
-import BlueButton from './BlueButton'
+import BlueButton from './BlueButton';
 
-export default BlueButton
+export default BlueButton;

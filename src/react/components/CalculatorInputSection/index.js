@@ -1,3 +1,3 @@
-import CalculatorInputSection from './CalculatorInputSection'
+import CalculatorInputSection from './CalculatorInputSection';
 
-export default CalculatorInputSection
+export default CalculatorInputSection;
