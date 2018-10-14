@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { expect } from 'chai';
+import { expect as chaiExpect } from 'chai';
+import ShallowRenderer from 'react-test-renderer/shallow';
 
 import FutureResults from './FutureResults';
 
@@ -14,7 +15,18 @@ describe('<FutureResults />', () => {
     );
   });
 
+  it('renders correctly', () => {
+    const renderer = new ShallowRenderer();
+    renderer.render(
+      <FutureResults yearsForResults={mockYearsForResults} />
+    );
+
+    const tree = renderer.getRenderOutput();
+
+    expect(tree).toMatchSnapshot();
+  });
+
   test('component has correct className for styling', () => {
-    expect(wrapper).to.have.className('futureResults');
+    chaiExpect(wrapper).to.have.className('futureResults');
   });
 });
