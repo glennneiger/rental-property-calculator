@@ -1,6 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<FutureResults /> renders correctly 1`] = `
+exports[`<FutureResults /> renders correctly with a single year for result 1`] = `
+<div
+  className="futureResults"
+>
+  <p
+    className="enterAmortization"
+  >
+    Enter an amortization period to see your results.
+  </p>
+</div>
+`;
+
+exports[`<FutureResults /> renders correctly with more than 1 year for result 1`] = `
 <div
   className="futureResults"
 >
