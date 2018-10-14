@@ -1,5 +1,8 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import {
+  mount,
+  shallow
+} from 'enzyme';
 import { expect as chaiExpect } from 'chai';
 import renderer from 'react-test-renderer';
 
@@ -68,5 +71,25 @@ describe('<GuestSidebar />', () => {
     const tree = renderer.create(<GuestSidebar />).toJSON();
 
     expect(tree).toMatchSnapshot();
+  });
+});
+
+describe('handleLoginClick', () => {
+  it('properly pushes login URL to history array', () => {
+    const wrapper = mount(<GuestSidebar history={[]} />);
+
+    wrapper.instance().handleLoginClick();
+
+    chaiExpect(wrapper.props().history).to.deep.equal(['/login']);
+  });
+});
+
+describe('handleRegisterClick', () => {
+  it('properly pushes login URL to history array', () => {
+    const wrapper = mount(<GuestSidebar history={[]} />);
+
+    wrapper.instance().handleRegisterClick();
+
+    chaiExpect(wrapper.props().history).to.deep.equal(['/register']);
   });
 });
