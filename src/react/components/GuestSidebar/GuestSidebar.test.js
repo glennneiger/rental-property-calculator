@@ -34,15 +34,17 @@ describe('<GuestSidebar />', () => {
   });
 
   it('calls correct function when Login BlueButton is clicked', () => {
-    const onLoginClickSpy = jest.spyOn(GuestSidebar.prototype, 'onLoginClick')
-      .mockImplementation();
+    const handleLoginClickSpy = jest.spyOn(
+      GuestSidebar.prototype,
+      'handleLoginClick'
+    ).mockImplementation();
 
     const component = shallow(<GuestSidebar />);
 
     component.find('BlueButton').at(0).simulate('click');
 
-    expect(onLoginClickSpy).toHaveBeenCalledTimes(1);
+    expect(handleLoginClickSpy).toHaveBeenCalledTimes(1);
 
-    onLoginClickSpy.mockRestore();
+    handleLoginClickSpy.mockRestore();
   });
 });

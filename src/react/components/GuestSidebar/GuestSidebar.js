@@ -7,24 +7,24 @@ import BlueButton from '../BlueButton';
 class GuestSidebar extends Component {
   constructor(props) {
     super(props);
-    this.onLoginClick = this.onLoginClick.bind(this);
-    this.onRegisterClick = this.onRegisterClick.bind(this);
+    this.handleLoginClick = this.handleLoginClick.bind(this);
+    this.handleRegisterClick = this.handleRegisterClick.bind(this);
   }
 
-  onLoginClick() {
+  handleLoginClick() {
     this.props.history.push('/login');
   }
 
-  onRegisterClick() {
+  handleRegisterClick() {
     this.props.history.push('/register');
   }
 
   render() {
     return (
       <div className={css.guestSidebar}>
-        <BlueButton onClick={this.onLoginClick}>Login</BlueButton>
+        <BlueButton onClick={this.handleLoginClick}>Login</BlueButton>
         <p>or</p>
-        <BlueButton onClick={this.onRegisterClick}>Register</BlueButton>
+        <BlueButton onClick={this.handleRegisterClick}>Register</BlueButton>
         <p>to save your analysis</p>
       </div>
     );
