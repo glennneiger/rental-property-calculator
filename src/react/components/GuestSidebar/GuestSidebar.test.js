@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { expect as chaiExpect } from 'chai';
+import renderer from 'react-test-renderer';
 
 import GuestSidebar from './GuestSidebar';
 
@@ -61,5 +62,11 @@ describe('<GuestSidebar />', () => {
     expect(handleRegisterClickSpy).toHaveBeenCalledTimes(1);
 
     handleRegisterClickSpy.mockRestore();
+  });
+
+  it('renders correctly', () => {
+    const tree = renderer.create(<GuestSidebar />).toJSON();
+
+    expect(tree).toMatchSnapshot();
   });
 });
