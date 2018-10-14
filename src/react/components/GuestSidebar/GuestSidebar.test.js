@@ -47,4 +47,19 @@ describe('<GuestSidebar />', () => {
 
     handleLoginClickSpy.mockRestore();
   });
+
+  it('calls correct function when Register BlueButton is clicked', () => {
+    const handleRegisterClickSpy = jest.spyOn(
+      GuestSidebar.prototype,
+      'handleRegisterClick'
+    ).mockImplementation();
+
+    const component = shallow(<GuestSidebar />);
+
+    component.find('BlueButton').at(1).simulate('click');
+
+    expect(handleRegisterClickSpy).toHaveBeenCalledTimes(1);
+
+    handleRegisterClickSpy.mockRestore();
+  });
 });
