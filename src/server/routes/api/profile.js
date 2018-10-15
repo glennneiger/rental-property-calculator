@@ -1,12 +1,10 @@
-import express from 'express'
-import mongoose from 'mongoose'
-import passport from 'passport'
+import express from 'express';
+import passport from 'passport';
 
-import Profile from '../../models/Profile'
-import User from '../../models/User'
-import { validateProfileInput } from '../../validation/profile'
+import Profile from '../../models/Profile';
+import { validateProfileInput } from '../../validation/profile';
 
-const router = express.Router()
+const router = express.Router();
 
 // @route   GET api/profile/test
 // @desc    Tests profile route
@@ -14,8 +12,8 @@ const router = express.Router()
 router.get('/test', (req, res) => {
   return res.json({
     msg: 'Profile Works'
-  })
-})
+  });
+});
 
 // @route   GET api/profile
 // @desc    Get current user's profile
@@ -24,17 +22,17 @@ router.get(
   '/',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    const errors = {}
+    const errors = {};
     Profile.findOne({ user: req.user.id })
       .populate('user', ['name', 'date'])
       .then(profile => {
         if (!profile) {
-          errors.noProfile = 'No profile exists for this user'
-          return res.status(404).json(errors)
+          errors.noProfile = 'No profile exists for this user';
+          return res.status(404).json(errors);
         }
-        return res.json(profile)
+        return res.json(profile);
       })
-      .catch(err => res.status(404).json(err))
+      .catch(err => res.status(404).json(err));
   }
 )
 
@@ -45,16 +43,16 @@ router.post(
   '/',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    const { errors, isValid } = validateProfileInput(req.body)
+    const { errors, isValid } = validateProfileInput(req.body);
 
     if (!isValid) {
-      return res.status(400).json(errors)
+      return res.status(400).json(errors);
     }
 
-    const profileFields = {}
-    profileFields.user = req.user.id
+    const profileFields = {};
+    profileFields.user = req.user.id;
     if (req.body.handle) {
-      profileFields.handle = req.body.handle
+      profileFields.handle = req.body.handle;
     }
 
     Profile.findOne({ user: req.user.id })
@@ -65,23 +63,23 @@ router.post(
             { user: req.user.id },
             { $set: profileFields },
             { new: true }
-          ).then(updatedProfile => res.json(updatedProfile))
+          ).then(updatedProfile => res.json(updatedProfile));
         } else {
           // Create profile for user
           Profile.findOne({ handle: profileFields.handle })
             .then(profileWithHandle => {
               if (profileWithHandle) {
-                errors.handle = 'That handle is taken.'
-                return res.status(400).json(errors)
+                errors.handle = 'That handle is taken.';
+                return res.status(400).json(errors);
               }
 
               new Profile(profileFields).save().then(newProfile => {
-                return res.json(newProfile)
-              })
-            })
+                return res.json(newProfile);
+              });
+            });
         }
-      })
+      });
   }
-)
+);
 
-module.exports = router
+module.exports = router;

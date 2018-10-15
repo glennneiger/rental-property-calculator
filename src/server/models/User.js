@@ -1,7 +1,7 @@
-import mongoose from 'mongoose'
-const Schema = mongoose.Schema
+import mongoose from 'mongoose';
+const Schema = mongoose.Schema;
 
-import { MODEL_USERS } from '../../constants'
+import { MODEL_USERS } from '../../constants';
 
 const UserSchema = new Schema({
   name: {
@@ -20,6 +20,6 @@ const UserSchema = new Schema({
     type: Date,
     default: Date.now
   }
-})
+});
 
-export default mongoose.model(MODEL_USERS, UserSchema)
+export default mongoose.model(MODEL_USERS, UserSchema);

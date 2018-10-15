@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CalculatorPage /> renders correctly with Sidebar and Calculator showing 1`] = `
+<div
+  className="calculatorPage"
+>
+  <Connect(Sidebar) />
+  <Calculator />
+</div>
+`;
+
+exports[`<CalculatorPage /> renders correctly with only Calculator showing 1`] = `
+<div
+  className="calculatorPage"
+>
+  <Calculator />
+</div>
+`;
+
+exports[`<CalculatorPage /> renders correctly with only Sidebar showing 1`] = `
+<div
+  className="calculatorPage"
+>
+  <Connect(Sidebar) />
+</div>
+`;

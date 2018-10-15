@@ -65,6 +65,13 @@ export const RESULTS_RETURN_ON_INVESTMENT = 'returnOnInvestment';
 
 export const SALT_ROUNDS = 10;
 
+/**
+ * Max width at which the Sidebar is rendered side-by-side with
+ * the Calculator. Below this, if the Sidebar is showing, it takes
+ * up the whole screen (the Calculator is not rendered).
+ */
+export const SIDEBAR_MAX_SCREEN_WIDTH = 600;
+
 export const TITLE_FUTURE_PROJECTIONS = 'Future Projections';
 export const TITLE_GENERAL_INFO = 'General Info';
 export const TITLE_INITIAL_PURCHASE = 'Initial Purchase';

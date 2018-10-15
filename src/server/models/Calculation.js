@@ -1,5 +1,5 @@
-import mongoose from 'mongoose'
-const Schema = mongoose.Schema
+import mongoose from 'mongoose';
+const Schema = mongoose.Schema;
 
 import {
   INPUT_ID_AFTER_REPAIR_VALUE,
@@ -44,7 +44,7 @@ import {
   TITLE_INITIAL_PURCHASE,
   TITLE_MONTHLY_EXPENSES,
   TITLE_MONTHLY_INCOME
-} from '../../constants'
+} from '../../constants';
 
 const CalculationSchema = new Schema({
   user: {
@@ -207,6 +207,6 @@ const CalculationSchema = new Schema({
       }
     }
   }
-})
+});
 
-export default mongoose.model(MODEL_CALCULATIONS, CalculationSchema)
+export default mongoose.model(MODEL_CALCULATIONS, CalculationSchema);

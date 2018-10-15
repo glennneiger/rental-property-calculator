@@ -1,10 +1,10 @@
-import mongoose from 'mongoose'
-const Schema = mongoose.Schema
+import mongoose from 'mongoose';
+const Schema = mongoose.Schema;
 
 import {
   MODEL_PROFILE,
   MODEL_USERS
-} from '../../constants'
+} from '../../constants';
 
 const ProfileSchema = new Schema({
   user: {
@@ -20,6 +20,6 @@ const ProfileSchema = new Schema({
     type: Date,
     default: Date.now
   }
-})
+});
 
-export default mongoose.model(MODEL_PROFILE, ProfileSchema)
+export default mongoose.model(MODEL_PROFILE, ProfileSchema);
