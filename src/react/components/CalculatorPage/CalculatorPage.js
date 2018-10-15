@@ -6,9 +6,6 @@ import Sidebar from '../Sidebar';
 import css from './calculatorPage.css';
 
 class CalculatorPage extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <div className={css.calculatorPage}>
