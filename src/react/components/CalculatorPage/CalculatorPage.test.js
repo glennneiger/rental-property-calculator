@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { expect as chaiExpect } from 'chai';
+import ShallowRenderer from 'react-test-renderer/shallow';
 
 import CalculatorPage from './CalculatorPage';
 import Sidebar from '../Sidebar';
@@ -47,5 +48,38 @@ describe('<CalculatorPage />', () => {
     );
 
     chaiExpect(wrapper.find('Calculator')).to.have.length(0);
+  });
+
+  it('renders correctly with Sidebar and Calculator showing', () => {
+    const renderer = new ShallowRenderer();
+    renderer.render(
+      <CalculatorPage screenWidth={mockWideScreenWidth} sidebarVisible={true} />
+    );
+
+    const tree = renderer.getRenderOutput();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders correctly with only Calculator showing', () => {
+    const renderer = new ShallowRenderer();
+    renderer.render(
+      <CalculatorPage screenWidth={mockWideScreenWidth} sidebarVisible={false} />
+    );
+
+    const tree = renderer.getRenderOutput();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders correctly with only Sidebar showing', () => {
+    const renderer = new ShallowRenderer();
+    renderer.render(
+      <CalculatorPage screenWidth={mockNarrowScreenWidth} sidebarVisible={true} />
+    );
+
+    const tree = renderer.getRenderOutput();
+
+    expect(tree).toMatchSnapshot();
   });
 });
