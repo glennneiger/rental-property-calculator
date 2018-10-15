@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Calculator from '../Calculator';
 import Sidebar from '../Sidebar';
 import css from './calculatorPage.css';
+import { SIDEBAR_MAX_SCREEN_WIDTH } from '../../../constants';
 
 class CalculatorPage extends Component {
   render() {
@@ -13,7 +14,8 @@ class CalculatorPage extends Component {
           ? <Sidebar />
           : null
         }
-        {this.props.screenWidth < 600 && this.props.sidebarVisible
+        {this.props.screenWidth < SIDEBAR_MAX_SCREEN_WIDTH
+          && this.props.sidebarVisible
           ? null
           : <Calculator />
         }

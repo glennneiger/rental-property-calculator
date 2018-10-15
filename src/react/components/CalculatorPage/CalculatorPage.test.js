@@ -4,10 +4,11 @@ import { expect as chaiExpect } from 'chai';
 
 import CalculatorPage from './CalculatorPage';
 import Sidebar from '../Sidebar';
+import { SIDEBAR_MAX_SCREEN_WIDTH } from '../../../constants';
 
 describe('<CalculatorPage />', () => {
   const mockWideScreenWidth = 1920;
-  const mockNarrowScreenWidth = 500;
+  const mockNarrowScreenWidth = SIDEBAR_MAX_SCREEN_WIDTH - 100;
 
   it('has proper className for styling', () => {
     const wrapper = shallow(<CalculatorPage sidebarVisible={true} />);
