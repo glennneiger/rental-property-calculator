@@ -31,7 +31,7 @@ if (localStorage.jwtToken) {
 }
 
 class App extends Component {
-  componentDidMount = () => {
+  componentDidMount() {
     Modal.setAppElement('#app');
   }
   render() {
