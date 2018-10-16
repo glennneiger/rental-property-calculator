@@ -6,8 +6,6 @@ import ShallowRenderer from 'react-test-renderer/shallow';
 import App from './App';
 import Header from '../Header';
 
-jest.mock('react-modal');
-
 describe('<App />', () => {
   let componentDidMountMock;
 
