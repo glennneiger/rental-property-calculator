@@ -1,6 +1,7 @@
 import React from 'react';
 import { expect as chaiExpect } from 'chai';
 import { shallow } from 'enzyme';
+import ShallowRenderer from 'react-test-renderer/shallow';
 
 import App from './App';
 import Header from '../Header';
@@ -43,5 +44,14 @@ describe('<App />', () => {
     const wrapper = shallow(<App />);
 
     chaiExpect(wrapper.find(Header)).to.have.length(1);
+  });
+
+  it('renders properly', () => {
+    const renderer = new ShallowRenderer();
+    renderer.render(<App />);
+
+    const tree = renderer.getRenderOutput();
+
+    expect(tree).toMatchSnapshot();
   });
 });
