@@ -3,7 +3,7 @@ import { expect as chaiExpect } from 'chai';
 import { shallow } from 'enzyme';
 
 import App from './App';
-import ModalRoot from '../Modals/ModalRoot/ModalRoot';
+import Header from '../Header';
 
 jest.mock('react-modal');
 
@@ -37,5 +37,11 @@ describe('<App />', () => {
     const wrapper = shallow(<App />);
 
     chaiExpect(wrapper.find('Route')).to.have.length(3);
+  });
+
+  it('renders a header component', () => {
+    const wrapper = shallow(<App />);
+
+    chaiExpect(wrapper.find(Header)).to.have.length(1);
   });
 });
