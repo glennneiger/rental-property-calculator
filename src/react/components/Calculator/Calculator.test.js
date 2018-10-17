@@ -10,6 +10,22 @@ import Result from '../Result';
 
 const originalInputSectionData = childProps.inputSectionData;
 
+const mockTitle = 'General Info';
+const mockInputProps = [
+  {
+    inputId: 1,
+    inputType: 'text',
+    label: 'Neighborhood',
+    textInputWidth: 200
+  },
+  {
+    inputId: 2,
+    inputType: 'text',
+    label: 'Street Address',
+    textInputWidth: 210
+  }
+];
+
 describe('<Calculator />', () => {
   it('has proper className for styling', () => {
     const wrapper = shallow(<Calculator />);
@@ -34,22 +50,6 @@ describe('<Calculator />', () => {
   });
 
   it('renders correct number of CalculatorInputs', () => {
-    const mockTitle = 'General Info';
-    const mockInputProps = [
-      {
-        inputId: 1,
-        inputType: 'text',
-        label: 'Neighborhood',
-        textInputWidth: 200
-      },
-      {
-        inputId: 2,
-        inputType: 'text',
-        label: 'Street Address',
-        textInputWidth: 210
-      }
-    ];
-
     childProps.inputSectionData = [
       {
         title: mockTitle,
@@ -69,5 +69,20 @@ describe('<Calculator />', () => {
     const wrapper = shallow(<Calculator />);
 
     chaiExpect(wrapper.find(Result)).to.have.length(1);
+  });
+
+  it('it renders dividers', () => {
+    childProps.inputSectionData = [
+      {
+        title: mockTitle,
+        childProps: mockInputProps
+      }
+    ];
+
+    const wrapper = shallow(<Calculator />);
+
+    chaiExpect(wrapper.contains(<div className='divider' />)).to.equal(true);
+    
+    childProps.inputSectionData = originalInputSectionData;
   });
 });

@@ -10,7 +10,7 @@ import css from './calculator.css';
 
 const Calculator = () => (
   <div className={css.calculator}>
-    {inputSectionData.map((section, index) => (
+    {inputSectionData.map(section => (
       <div key={section.title}>
         <CalculatorInputSection
           title={section.title}>
@@ -22,11 +22,7 @@ const Calculator = () => (
             />
           ))}
         </CalculatorInputSection>
-        {
-          index !== section.childProps.length - 1
-            ? <div className={css.divider} />
-            : null
-        }
+        {<div className={css.divider} />}
       </div>
     ))}
     <Result />
