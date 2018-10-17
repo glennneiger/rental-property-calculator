@@ -1,0 +1,304 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Calculator /> renders properly with current inputSectionData 1`] = `
+<div
+  className="calculator"
+>
+  <div>
+    <CalculatorInputSection
+      title="General Info"
+    >
+      <Connect(CalculatorInput)
+        inputId="neighborhoodInput"
+        inputType="text"
+        label="Neighborhood"
+        section="General Info"
+        textInputWidth={200}
+      />
+      <Connect(CalculatorInput)
+        inputId="streetAddressInput"
+        inputType="text"
+        label="Street Address"
+        section="General Info"
+        textInputWidth={210}
+      />
+      <Connect(CalculatorInput)
+        inputId="unitNumberInput"
+        inputType="text"
+        label="Unit Number"
+        section="General Info"
+        textInputWidth={160}
+      />
+      <Connect(CalculatorInput)
+        inputId="cityInput"
+        inputType="text"
+        label="City"
+        section="General Info"
+        textInputWidth={200}
+      />
+      <Connect(CalculatorInput)
+        inputId="provinceOrStateInput"
+        inputType="text"
+        label="Province/State"
+        section="General Info"
+        textInputWidth={160}
+      />
+      <Connect(CalculatorInput)
+        inputId="countryInput"
+        inputType="text"
+        label="Country"
+        section="General Info"
+        textInputWidth={200}
+      />
+      <Connect(CalculatorInput)
+        inputId="postalOrZipCodeInput"
+        inputType="text"
+        label="Postal/Zip Code"
+        section="General Info"
+        textInputWidth={160}
+      />
+      <Connect(CalculatorInput)
+        inputId="squareFeetInput"
+        inputType="number"
+        label="Square Feet"
+        section="General Info"
+        textInputWidth={160}
+      />
+    </CalculatorInputSection>
+    <div
+      className="divider"
+    />
+  </div>
+  <div>
+    <CalculatorInputSection
+      title="Initial Purchase"
+    >
+      <Connect(CalculatorInput)
+        inputId="purchasePriceInput"
+        inputType="number"
+        label="Purchase Price"
+        section="Initial Purchase"
+        textInputWidth={160}
+      />
+      <Connect(CalculatorInput)
+        inputId="downPaymentInput"
+        inputType="number"
+        label="Down Payment"
+        section="Initial Purchase"
+        textInputWidth={160}
+      />
+      <Connect(CalculatorInput)
+        inputId="loanAmountInput"
+        inputType="number"
+        label="Loan Amount"
+        section="Initial Purchase"
+        textInputWidth={160}
+      />
+      <Connect(CalculatorInput)
+        inputId="interestRateInput"
+        inputType="number"
+        label="Interest Rate (%)"
+        section="Initial Purchase"
+        textInputWidth={160}
+      />
+      <Connect(CalculatorInput)
+        inputId="amortizationPeriodInput"
+        inputType="number"
+        label="Amortization Period (years)"
+        section="Initial Purchase"
+        textInputWidth={160}
+      />
+      <Connect(CalculatorInput)
+        inputId="afterRepairValueInput"
+        inputType="number"
+        label="After Repair Value"
+        section="Initial Purchase"
+        textInputWidth={160}
+      />
+      <Connect(CalculatorInput)
+        inputId="repairCostsInput"
+        inputType="number"
+        label="Repair Costs"
+        section="Initial Purchase"
+        textInputWidth={160}
+      />
+      <Connect(CalculatorInput)
+        inputId="closingCostsInput"
+        inputType="number"
+        label="Closing Costs"
+        section="Initial Purchase"
+        textInputWidth={160}
+      />
+      <Connect(CalculatorInput)
+        inputId="otherInitialCostsInput"
+        inputType="number"
+        label="Other Initial Costs"
+        section="Initial Purchase"
+        textInputWidth={160}
+      />
+    </CalculatorInputSection>
+    <div
+      className="divider"
+    />
+  </div>
+  <div>
+    <CalculatorInputSection
+      title="Monthly Income"
+    >
+      <Connect(CalculatorInput)
+        inputId="rentalIncomeInput"
+        inputType="number"
+        label="Rental Income"
+        section="Monthly Income"
+        textInputWidth={160}
+      />
+      <Connect(CalculatorInput)
+        inputId="otherIncomeInput"
+        inputType="number"
+        label="Other Income"
+        section="Monthly Income"
+        textInputWidth={160}
+      />
+    </CalculatorInputSection>
+    <div
+      className="divider"
+    />
+  </div>
+  <div>
+    <CalculatorInputSection
+      title="Monthly Expenses"
+    >
+      <Connect(CalculatorInput)
+        inputId="mortgageInput"
+        inputType="number"
+        label="Mortgage"
+        section="Monthly Expenses"
+        textInputWidth={160}
+      />
+      <Connect(CalculatorInput)
+        inputId="electricityInput"
+        inputType="number"
+        label="Electricity"
+        section="Monthly Expenses"
+        textInputWidth={160}
+      />
+      <Connect(CalculatorInput)
+        inputId="waterAndSewerInput"
+        inputType="number"
+        label="Water and Sewer"
+        section="Monthly Expenses"
+        textInputWidth={160}
+      />
+      <Connect(CalculatorInput)
+        inputId="privateMortgageInsuranceInput"
+        inputType="number"
+        label="Private Mortgage Insurance"
+        section="Monthly Expenses"
+        textInputWidth={160}
+      />
+      <Connect(CalculatorInput)
+        inputId="garbageInput"
+        inputType="number"
+        label="Garbage"
+        section="Monthly Expenses"
+        textInputWidth={160}
+      />
+      <Connect(CalculatorInput)
+        inputId="hoaInput"
+        inputType="number"
+        label="HOA Fees"
+        section="Monthly Expenses"
+        textInputWidth={160}
+      />
+      <Connect(CalculatorInput)
+        inputId="insuranceInput"
+        inputType="number"
+        label="Insurance"
+        section="Monthly Expenses"
+        textInputWidth={160}
+      />
+      <Connect(CalculatorInput)
+        inputId="propertyTaxInput"
+        inputType="number"
+        label="Property Tax (%)"
+        percentOfPropertyValue={true}
+        section="Monthly Expenses"
+        textInputWidth={160}
+      />
+      <Connect(CalculatorInput)
+        inputId="vacancyInput"
+        inputType="number"
+        label="Vacancy (%)"
+        percentOfRent={true}
+        section="Monthly Expenses"
+        textInputWidth={160}
+      />
+      <Connect(CalculatorInput)
+        inputId="r&mInput"
+        inputType="number"
+        label="Repairs & Maintenance (%)"
+        percentOfRent={true}
+        section="Monthly Expenses"
+        textInputWidth={160}
+      />
+      <Connect(CalculatorInput)
+        inputId="capExInput"
+        inputType="number"
+        label="Cap. Ex. (%)"
+        percentOfRent={true}
+        section="Monthly Expenses"
+        textInputWidth={160}
+      />
+      <Connect(CalculatorInput)
+        inputId="managementInput"
+        inputType="number"
+        label="Management (%)"
+        percentOfRent={true}
+        section="Monthly Expenses"
+        textInputWidth={160}
+      />
+      <Connect(CalculatorInput)
+        inputId="otherExpensesInput"
+        inputType="number"
+        label="Other Expenses"
+        section="Monthly Expenses"
+        textInputWidth={160}
+      />
+    </CalculatorInputSection>
+    <div
+      className="divider"
+    />
+  </div>
+  <div>
+    <CalculatorInputSection
+      title="Future Projections"
+    >
+      <Connect(CalculatorInput)
+        inputId="propertyValueGrowthInput"
+        inputType="number"
+        label="Annual Property Value Growth (%)"
+        section="Future Projections"
+        textInputWidth={160}
+      />
+      <Connect(CalculatorInput)
+        inputId="annualIncomeGrowthInput"
+        inputType="number"
+        label="Annual Income Growth (%)"
+        section="Future Projections"
+        textInputWidth={160}
+      />
+      <Connect(CalculatorInput)
+        inputId="annualExpensesGrowthInput"
+        inputType="number"
+        label="Annual Constant Expenses Growth (%)"
+        section="Future Projections"
+        textInputWidth={160}
+      />
+    </CalculatorInputSection>
+    <div
+      className="divider"
+    />
+  </div>
+  <Connect(Result) />
+</div>
+`;
