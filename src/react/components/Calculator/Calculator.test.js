@@ -2,10 +2,11 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { expect as chaiExpect } from 'chai';
 import ShallowRenderer from 'react-test-renderer/shallow';
+
 import * as childProps from './childProps';
 import CalculatorInput from '../CalculatorInput';
-
 import Calculator from './Calculator';
+import Result from '../Result';
 
 const originalInputSectionData = childProps.inputSectionData;
 
@@ -62,5 +63,11 @@ describe('<Calculator />', () => {
       .to.have.length(mockInputProps.length);
 
     childProps.inputSectionData = originalInputSectionData;
+  });
+
+  it('renders Result component', () => {
+    const wrapper = shallow(<Calculator />);
+
+    chaiExpect(wrapper.find(Result)).to.have.length(1);
   });
 });
