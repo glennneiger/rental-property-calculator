@@ -59,8 +59,6 @@ describe('<CalculatorInput />', () => {
 });
 
 describe('handleChange', () => {
-  
-
   it('executes to the end given proper parameters', () => {
     const mockSetChangesMade = jest.fn();
     const mockUpdateInput = jest.fn();
