@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -6,18 +6,21 @@ import css from './calculatorInput.css';
 import TextInput from '../TextInput';
 import { INPUT_ID_AMORTIZATION_PERIOD } from '../../../constants';
 
-const CalculatorInput = ({
-  content,
-  inputId,
-  inputType = 'number',
-  label,
-  section,
-  setChangesMade,
-  sidebarVisible,
-  textInputWidth,
-  updateInput
-}) => {
-  const handleChange = event => {
+class CalculatorInput extends Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    const {
+      inputId,
+      inputType,
+      section,
+      setChangesMade,
+      updateInput
+    } = this.props;
+
     const value = event.target.value;
     if (inputType === 'number' && !value.match(/^\d*\.?\d{0,2}$/)) {
       return;
@@ -27,24 +30,34 @@ const CalculatorInput = ({
     }
     updateInput(value, section, inputId);
     setChangesMade(true);
-  };
-  return (
-    <div className={classNames({
-      [css.calculatorInput]: true,
-      [css.calculatorInputNoSidebar]: !sidebarVisible,
-      [css.calculatorInputWithSidebar]: sidebarVisible
-    })}>
-      <label htmlFor={inputId}>{label}</label>
-      <TextInput type={'text'}
-        id={inputId}
-        style={{ width: textInputWidth }}
-        value={content}
-        onChange={handleChange}
-        width={textInputWidth}
-      />
-    </div>
-  );
-};
+  }
+
+  render() {
+    const {
+      content,
+      inputId,
+      label,
+      sidebarVisible,
+      textInputWidth
+    } = this.props;
+    return (
+      <div className={classNames({
+        [css.calculatorInput]: true,
+        [css.calculatorInputNoSidebar]: !sidebarVisible,
+        [css.calculatorInputWithSidebar]: sidebarVisible
+      })}>
+        <label htmlFor={inputId}>{label}</label>
+        <TextInput type={'text'}
+          id={inputId}
+          style={{ width: textInputWidth }}
+          value={content}
+          onChange={this.handleChange}
+          width={textInputWidth}
+        />
+      </div>
+    );
+  }
+}
 
 CalculatorInput.propTypes = {
   content: PropTypes.oneOfType([
