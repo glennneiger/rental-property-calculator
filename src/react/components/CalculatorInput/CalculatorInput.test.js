@@ -4,22 +4,26 @@ import { expect as chaiExpect } from 'chai';
 
 import CalculatorInput from './CalculatorInput';
 
-describe('<CalculatorInput />', () => {
-  const mockLabel = 'Purchase Price';
-  const mockContent = 100000;
-  const mockInputId = '1';
-  const baseProps = {
-    content: mockContent,
-    inputId: mockInputId,
-    inputType: 'number',
-    label: mockLabel,
-    section: 'Initial Purchase',
-    setChangesMade: jest.fn(),
-    sidebarVisible: true,
-    textInputWidth: 200,
-    updateInput: jest.fn()
-  };
+const mockLabel = 'Purchase Price';
+const mockContent = 100000;
+const mockInputId = '1';
 
+const mockSetChangesMade = jest.fn();
+const mockUpdateInput = jest.fn();
+
+const baseProps = {
+  content: mockContent,
+  inputId: mockInputId,
+  inputType: 'number',
+  label: mockLabel,
+  section: 'Initial Purchase',
+  setChangesMade: mockSetChangesMade,
+  sidebarVisible: true,
+  textInputWidth: 200,
+  updateInput: mockUpdateInput
+};
+
+describe('<CalculatorInput />', () => {
   it('has proper className for styling with sidebar visible', () => {
     const wrapper = shallow(<CalculatorInput { ...baseProps } />);
 
@@ -53,5 +57,20 @@ describe('<CalculatorInput />', () => {
     const wrapper = shallow(<CalculatorInput { ...baseProps } />);
 
     chaiExpect(wrapper.find('TextInput')).to.have.length(1);
+  });
+});
+
+describe('handleChange', () => {
+  const mockEvent = {
+    target: {
+      value: '1'
+    }
+  };
+  it('executes to the end given proper parameters', () => {
+    const wrapper = shallow(<CalculatorInput { ...baseProps }/>);
+    wrapper.instance().handleChange(mockEvent);
+
+    expect(mockSetChangesMade).toHaveBeenCalledTimes(1);
+    expect(mockUpdateInput).toHaveBeenCalledTimes(1);
   });
 });
