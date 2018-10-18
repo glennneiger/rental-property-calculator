@@ -3,13 +3,11 @@ import { shallow } from 'enzyme';
 import { expect as chaiExpect } from 'chai';
 
 import CalculatorInput from './CalculatorInput';
+import { INPUT_ID_AMORTIZATION_PERIOD } from '../../../constants';
 
 const mockLabel = 'Purchase Price';
 const mockContent = 100000;
 const mockInputId = '1';
-
-const mockSetChangesMade = jest.fn();
-const mockUpdateInput = jest.fn();
 
 const baseProps = {
   content: mockContent,
@@ -17,10 +15,10 @@ const baseProps = {
   inputType: 'number',
   label: mockLabel,
   section: 'Initial Purchase',
-  setChangesMade: mockSetChangesMade,
+  setChangesMade: jest.fn(),
   sidebarVisible: true,
   textInputWidth: 200,
-  updateInput: mockUpdateInput
+  updateInput: jest.fn()
 };
 
 describe('<CalculatorInput />', () => {
@@ -61,16 +59,72 @@ describe('<CalculatorInput />', () => {
 });
 
 describe('handleChange', () => {
-  const mockEvent = {
-    target: {
-      value: '1'
-    }
-  };
+  
+
   it('executes to the end given proper parameters', () => {
-    const wrapper = shallow(<CalculatorInput { ...baseProps }/>);
+    const mockSetChangesMade = jest.fn();
+    const mockUpdateInput = jest.fn();
+
+    const mockProps = {
+      ...baseProps,
+      setChangesMade: mockSetChangesMade,
+      updateInput: mockUpdateInput
+    };
+
+    const wrapper = shallow(<CalculatorInput { ...mockProps }/>);
+    const mockEvent = {
+      target: {
+        value: '1'
+      }
+    };
     wrapper.instance().handleChange(mockEvent);
 
     expect(mockSetChangesMade).toHaveBeenCalledTimes(1);
     expect(mockUpdateInput).toHaveBeenCalledTimes(1);
+  });
+
+  it('returns early given a non number for a number input', () => {
+    const mockSetChangesMade = jest.fn();
+    const mockUpdateInput = jest.fn();
+
+    const mockProps = {
+      ...baseProps,
+      setChangesMade: mockSetChangesMade,
+      updateInput: mockUpdateInput
+    };
+
+    const wrapper = shallow(<CalculatorInput { ...mockProps }/>);
+    const mockEvent = {
+      target: {
+        value: 'b'
+      }
+    };
+    wrapper.instance().handleChange(mockEvent);
+
+    expect(mockSetChangesMade).toHaveBeenCalledTimes(0);
+    expect(mockUpdateInput).toHaveBeenCalledTimes(0);
+  });
+
+  it('returns early if value is too long for amortization input', () => {
+    const mockSetChangesMade = jest.fn();
+    const mockUpdateInput = jest.fn();
+
+    const mockProps = {
+      ...baseProps,
+      inputId: INPUT_ID_AMORTIZATION_PERIOD,
+      setChangesMade: mockSetChangesMade,
+      updateInput: mockUpdateInput
+    };
+
+    const wrapper = shallow(<CalculatorInput { ...mockProps }/>);
+    const mockEvent = {
+      target: {
+        value: '1234'
+      }
+    };
+    wrapper.instance().handleChange(mockEvent);
+
+    expect(mockSetChangesMade).toHaveBeenCalledTimes(0);
+    expect(mockUpdateInput).toHaveBeenCalledTimes(0);
   });
 });
