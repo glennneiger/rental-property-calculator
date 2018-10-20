@@ -8,21 +8,17 @@ import {
   setChangesMade
 } from '../../../actions/currentCalculation';
 
-const mapStateToProps = (state, ownProps) => ({
+const actions = {
+  setChangesMade,
+  updateInput
+};
+
+export const mapStateToProps = (state, ownProps) => ({
   content: state.calculator[ownProps.section][ownProps.inputId],
   sidebarVisible: state.sidebarVisible
 });
 
-const mapDispatchToProps = dispatch => ({
-  updateInput(value, section, inputId) {
-    dispatch(updateInput(value, section, inputId));
-  },
-  setChangesMade(changesMade) {
-    dispatch(setChangesMade(changesMade));
-  }
-});
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  actions
 )(CalculatorInput);
