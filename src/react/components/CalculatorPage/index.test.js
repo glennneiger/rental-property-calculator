@@ -1,4 +1,4 @@
-import { expect } from 'chai';
+import { expect as chaiExpect } from 'chai';
 
 import { mapStateToProps } from '.';
 
@@ -13,9 +13,10 @@ describe('mapStateToProps', () => {
       }
     };
 
-    expect(mapStateToProps(mockState)).to.deep.equal({
-      screenWidth: mockScreenWidth,
-      sidebarVisible: mockSidebarVisible
-    });
+    chaiExpect(mapStateToProps(mockState))
+      .to.deep.equal({
+        screenWidth: mockScreenWidth,
+        sidebarVisible: mockSidebarVisible
+      });
   });
 });
