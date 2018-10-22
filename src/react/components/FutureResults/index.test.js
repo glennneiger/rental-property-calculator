@@ -27,5 +27,7 @@ describe('mapStateToProps', () => {
 
     chaiExpect(mapStateToProps(mockState))
       .to.deep.equal(mockProps);
+
+    resultsUtils.getYearsForResults.mockReset();
   });
 });
