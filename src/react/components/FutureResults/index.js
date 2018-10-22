@@ -8,7 +8,7 @@ import {
   TITLE_INITIAL_PURCHASE
 } from '../../../constants';
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   yearsForResults: getYearsForResults(
     state.calculator[TITLE_INITIAL_PURCHASE][INPUT_ID_AMORTIZATION_PERIOD]
   )
