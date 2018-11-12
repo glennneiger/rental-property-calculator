@@ -12,7 +12,7 @@ import {
 import { clearAllCalculatorFields } from '../../../actions/calculatorFields';
 import { showModal } from '../../../actions/modal';
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   calculation: state.calculator,
   calculationList: state.calculationList,
   changesMade: state.currentCalculation.changesMade,
