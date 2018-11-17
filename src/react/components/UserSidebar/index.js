@@ -14,10 +14,10 @@ import { showModal } from '../../../actions/modal';
 
 const actions = {
   clearAllCalculatorFields,
+  getAllCalculations,
   saveCalculation,
   setChangesMade,
   setCurrentTitle,
-  getAllCalculations,
   showModal
 };
 
