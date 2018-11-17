@@ -8,9 +8,15 @@ import {
   inputSectionData
 } from './childProps';
 import css from './calculator.css';
+import classNames from 'classnames';
 
-const Calculator = () => (
-  <div className={css.calculator}>
+const Calculator = ({
+  sidebarVisible
+}) => (
+  <div className={classNames({
+    [css.calculator]: true,
+    [css.calculatorWithSidebar]: sidebarVisible
+  })}>
     {inputSectionData.map(section => (
       <div key={section.title}>
         <CalculatorInputSection
