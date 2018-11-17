@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import Calculator from './Calculator';
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   sidebarVisible: state.sidebarVisible
 });
 
