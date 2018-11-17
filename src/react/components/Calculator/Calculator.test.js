@@ -33,6 +33,12 @@ describe('<Calculator />', () => {
     chaiExpect(wrapper).to.have.className('calculator');
   });
 
+  it('has proper styling when sidebar is visible', () => {
+    const wrapper = shallow(<Calculator sidebarVisible={true} />);
+
+    chaiExpect(wrapper).to.have.className('calculator calculatorWithSidebar');
+  });
+
   it('renders properly with current inputSectionData', () => {
     const renderer = new ShallowRenderer();
     renderer.render(<Calculator />);
