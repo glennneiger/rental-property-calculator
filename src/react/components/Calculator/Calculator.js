@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Result from '../Result';
 import CalculatorInputSection from '../CalculatorInputSection';
@@ -28,5 +29,9 @@ const Calculator = () => (
     <Result />
   </div>
 );
+
+Calculator.propTypes = {
+  sidebarVisible: PropTypes.sidebarVisible
+};
 
 export default Calculator;

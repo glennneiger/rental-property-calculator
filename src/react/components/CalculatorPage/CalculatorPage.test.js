@@ -5,6 +5,7 @@ import ShallowRenderer from 'react-test-renderer/shallow';
 
 import CalculatorPage from './CalculatorPage';
 import Sidebar from '../Sidebar';
+import Calculator from '../Calculator';
 import { SIDEBAR_MAX_SCREEN_WIDTH } from '../../../constants';
 
 describe('<CalculatorPage />', () => {
@@ -38,7 +39,7 @@ describe('<CalculatorPage />', () => {
       <CalculatorPage screenWidth={mockWideScreenWidth} sidebarVisible={true} />
     );
 
-    chaiExpect(wrapper.find('Calculator')).to.have.length(1);
+    chaiExpect(wrapper.find(Calculator)).to.have.length(1);
   });
 
   it('does not render Calculator when screenWidth is less than' +
@@ -47,7 +48,7 @@ describe('<CalculatorPage />', () => {
       <CalculatorPage screenWidth={mockNarrowScreenWidth} sidebarVisible={true} />
     );
 
-    chaiExpect(wrapper.find('Calculator')).to.have.length(0);
+    chaiExpect(wrapper.find(Calculator)).to.have.length(0);
   });
 
   it('renders correctly with Sidebar and Calculator showing', () => {
