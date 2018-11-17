@@ -12,6 +12,15 @@ import {
 import { clearAllCalculatorFields } from '../../../actions/calculatorFields';
 import { showModal } from '../../../actions/modal';
 
+const actions = {
+  clearAllCalculatorFields,
+  saveCalculation,
+  setChangesMade,
+  setCurrentTitle,
+  getAllCalculations,
+  showModal
+};
+
 export const mapStateToProps = state => ({
   calculation: state.calculator,
   calculationList: state.calculationList,
@@ -19,40 +28,7 @@ export const mapStateToProps = state => ({
   currentTitle: state.currentCalculation.title
 });
 
-const mapDispatchToProps = dispatch => ({
-  clearAllCalculatorFields: () => {
-    dispatch(clearAllCalculatorFields());
-  },
-  saveCalculation: (
-    title,
-    calculation,
-    changesMade,
-    setTitle,
-    newCurrentTitle
-  ) => {
-    dispatch(saveCalculation(
-      title,
-      calculation,
-      changesMade,
-      setTitle,
-      newCurrentTitle
-    ));
-  },
-  setChangesMade: changesMade => {
-    dispatch(setChangesMade(changesMade));
-  },
-  setCurrentTitle: currentTitle => {
-    dispatch(setCurrentTitle(currentTitle));
-  },
-  getAllCalculations: () => {
-    dispatch(getAllCalculations());
-  },
-  showModal: (modalType, modalProps) => {
-    dispatch(showModal(modalType, modalProps));
-  }
-});
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  actions
 )(UserSidebar);
