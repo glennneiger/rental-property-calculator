@@ -37,7 +37,6 @@
 
 @media (--desktop-up) {
   .calculatorInput {
-    /* width: 25%; */
     width: 33%;
   }
 }
