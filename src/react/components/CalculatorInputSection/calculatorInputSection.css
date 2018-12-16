@@ -1,7 +1,7 @@
 @import "../../../styles.css";
 
 .calculatorInputSection {
-  padding: var(--calculatorInputSectionPadding);
+  padding: 24px;
 }
 
 .calculatorInputSection h2 {

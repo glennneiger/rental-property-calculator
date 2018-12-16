@@ -59,7 +59,6 @@
 
   .header {
     & a {
-      /* margin-left: var(--sidebarWidth) */
       margin-left: calc(var(--calculatorContentPadding) + var(--calculatorInputSectionPadding));
     }
   }
