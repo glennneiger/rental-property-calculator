@@ -37,7 +37,7 @@ const Calculator = ({
 );
 
 Calculator.propTypes = {
-  sidebarVisible: PropTypes.sidebarVisible
+  sidebarVisible: PropTypes.bool.isRequired
 };
 
 export default Calculator;
