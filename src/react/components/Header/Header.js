@@ -3,11 +3,9 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import FaBars from 'react-icons/lib/fa/bars';
 import FaClose from 'react-icons/lib/fa/close';
-import classNames from 'classnames';
 
 import css from './header.css';
-import BlueButton from '../BlueButton';
-import { MODAL_CONFIRM_LOGOUT } from '../../../constants';
+import HeaderAuthInfo from '../HeaderAuthInfo';
 
 class Header extends Component {
   constructor(props) {
@@ -45,15 +43,6 @@ class Header extends Component {
       ? this.props.hideSidebar()
       : this.props.showSidebar();
   }
-  handleLogoutClick = () => {
-    this.props.showModal(MODAL_CONFIRM_LOGOUT);
-  }
-  handleLoginClick = () => {
-    this.props.history.push('/login');
-  }
-  handleRegisterClick = () => {
-    this.props.history.push('/register');
-  }
   render() {
     const title = (this.props.screenWidth > 420)
       ? 'Rental Property Calculator'
@@ -67,27 +56,7 @@ class Header extends Component {
             {title}
           </span>
         </Link>
-        {this.props.isAuthenticated
-          ? <div className={css.userInfo}>
-            <i className={classNames(
-              'fa fa-user-circle-o',
-              css.userImage
-            )} />
-            <p>{this.props.username}</p>
-          </div>
-          : null
-        }
-        <div className={css.authButtons}>
-          {this.props.isAuthenticated
-            ? <BlueButton onClick={this.handleLogoutClick}>Logout</BlueButton>
-            : <div>
-              <BlueButton id={css.loginButton}
-                onClick={this.handleLoginClick}>Login</BlueButton>
-              <BlueButton
-                onClick={this.handleRegisterClick}>Register</BlueButton>
-            </div>
-          }
-        </div>
+        <HeaderAuthInfo />
       </header>
     );
   }
@@ -96,12 +65,8 @@ class Header extends Component {
 Header.propTypes = {
   hideSidebar: PropTypes.func.isRequired,
   history: PropTypes.object,
-  isAuthenticated: PropTypes.bool.isRequired,
   location: PropTypes.object.isRequired,
-  logoutUser: PropTypes.func.isRequired,
-  username: PropTypes.string,
   screenWidth: PropTypes.number.isRequired,
-  showModal: PropTypes.func.isRequired,
   showSidebar: PropTypes.func.isRequired,
   sidebarVisible: PropTypes.bool.isRequired
 };

@@ -30,45 +30,14 @@
   min-height: 24px;
 }
 
-.authButtons {
-  display: none;
-}
-
-.userInfo {
-  display: none;
-}
-
 @media (--tablet-landscape-up) {
   .header {
     justify-content: space-between;
-  }
-
-  .userInfo {
-    display: flex;
-    align-items: center;
-
-    & .userImage {
-      font-size: 28px;
-    }
-
-    & p {
-      margin-left: 8px;
-      font-size: 18px;
-    }
   }
 
   .header {
     & a {
       margin-left: calc(var(--calculatorContentPadding) + var(--calculatorInputSectionPadding));
     }
-  }
-
-  .authButtons {
-    display: block;
-    margin-right: 20px;
-  }
-
-  #loginButton {
-    margin-right: 20px;
   }
 }
