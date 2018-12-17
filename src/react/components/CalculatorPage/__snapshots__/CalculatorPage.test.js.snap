@@ -5,7 +5,7 @@ exports[`<CalculatorPage /> renders correctly with Sidebar and Calculator showin
   className="calculatorPage"
 >
   <Connect(Sidebar) />
-  <Calculator />
+  <Connect(Calculator) />
 </div>
 `;
 
@@ -13,7 +13,7 @@ exports[`<CalculatorPage /> renders correctly with only Calculator showing 1`] =
 <div
   className="calculatorPage"
 >
-  <Calculator />
+  <Connect(Calculator) />
 </div>
 `;
 

@@ -2,7 +2,7 @@
 
 exports[`<Calculator /> renders properly with current inputSectionData 1`] = `
 <div
-  className="calculator"
+  className="calculator calculatorWithSidebar"
 >
   <div>
     <CalculatorInputSection

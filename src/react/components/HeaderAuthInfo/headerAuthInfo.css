@@ -1,0 +1,41 @@
+@import "../../../styles.css";
+
+.authButtons {
+  display: none;
+}
+
+.userInfo {
+  display: none;
+}
+
+@media(--tablet-landscape-up) {
+  .headerAuthInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .userInfo {
+    display: flex;
+    align-items: center;
+
+    & .userImage {
+      font-size: 28px;
+    }
+
+    & p {
+      margin-left: 8px;
+      font-size: 18px;
+    }
+  }
+
+  .authButtons {
+    display: block;
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+
+  #loginButton {
+    margin-right: 20px;
+  }
+}

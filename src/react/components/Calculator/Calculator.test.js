@@ -28,14 +28,20 @@ const mockInputProps = [
 
 describe('<Calculator />', () => {
   it('has proper className for styling', () => {
-    const wrapper = shallow(<Calculator />);
+    const wrapper = shallow(<Calculator sidebarVisible={false} />);
 
     chaiExpect(wrapper).to.have.className('calculator');
   });
 
+  it('has proper styling when sidebar is visible', () => {
+    const wrapper = shallow(<Calculator sidebarVisible={true} />);
+
+    chaiExpect(wrapper).to.have.className('calculator calculatorWithSidebar');
+  });
+
   it('renders properly with current inputSectionData', () => {
     const renderer = new ShallowRenderer();
-    renderer.render(<Calculator />);
+    renderer.render(<Calculator sidebarVisible={true} />);
 
     const tree = renderer.getRenderOutput();
 
@@ -43,7 +49,7 @@ describe('<Calculator />', () => {
   });
 
   it('renders the correct number of CalculatorInputSections', () => {
-    const wrapper = shallow(<Calculator />);
+    const wrapper = shallow(<Calculator sidebarVisible={true} />);
 
     chaiExpect(wrapper.find('CalculatorInputSection'))
       .to.have.length(childProps.inputSectionData.length);
@@ -57,7 +63,7 @@ describe('<Calculator />', () => {
       }
     ];
 
-    const wrapper = shallow(<Calculator />);
+    const wrapper = shallow(<Calculator sidebarVisible={true} />);
 
     chaiExpect(wrapper.find(CalculatorInput))
       .to.have.length(mockInputProps.length);
@@ -66,7 +72,7 @@ describe('<Calculator />', () => {
   });
 
   it('renders Result component', () => {
-    const wrapper = shallow(<Calculator />);
+    const wrapper = shallow(<Calculator sidebarVisible={true} />);
 
     chaiExpect(wrapper.find(Result)).to.have.length(1);
   });
@@ -79,7 +85,7 @@ describe('<Calculator />', () => {
       }
     ];
 
-    const wrapper = shallow(<Calculator />);
+    const wrapper = shallow(<Calculator sidebarVisible={true} />);
 
     chaiExpect(wrapper.contains(<div className='divider' />)).to.equal(true);
     

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Result from '../Result';
 import CalculatorInputSection from '../CalculatorInputSection';
@@ -7,9 +8,15 @@ import {
   inputSectionData
 } from './childProps';
 import css from './calculator.css';
+import classNames from 'classnames';
 
-const Calculator = () => (
-  <div className={css.calculator}>
+const Calculator = ({
+  sidebarVisible
+}) => (
+  <div className={classNames({
+    [css.calculator]: true,
+    [css.calculatorWithSidebar]: sidebarVisible
+  })}>
     {inputSectionData.map(section => (
       <div key={section.title}>
         <CalculatorInputSection
@@ -28,5 +35,9 @@ const Calculator = () => (
     <Result />
   </div>
 );
+
+Calculator.propTypes = {
+  sidebarVisible: PropTypes.bool.isRequired
+};
 
 export default Calculator;

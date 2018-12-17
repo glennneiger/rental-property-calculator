@@ -7,7 +7,7 @@
   --modalBackgroundColor: #ffffff;
   --mainBackgroundColor: #e9f3f8;
   --sidebarColor: #95a3b3;
-  --sidebarWidth: 300px;
+  --sidebarWidth: 250px;
   --headerHeight: 50px;
   --sidebarPadding: 20px;
   --savedCalcTitleFontSize: 18px;
@@ -17,6 +17,8 @@
   --blueButtonFontSize: 14px;
   --userSidebarULVerticalPadding: 4px;
   --userSidebarULVerticalMargin: 12px;
+  --calculatorContentPadding: var(--sidebarWidth);
+  --calculatorInputSectionPadding: 24px;
 }
 
 @custom-media --phone-only (max-width: 600px);
