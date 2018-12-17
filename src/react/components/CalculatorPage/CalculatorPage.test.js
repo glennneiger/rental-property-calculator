@@ -13,7 +13,7 @@ describe('<CalculatorPage />', () => {
   const mockNarrowScreenWidth = SIDEBAR_MAX_SCREEN_WIDTH - 100;
 
   it('has proper className for styling', () => {
-    const wrapper = shallow(<CalculatorPage sidebarVisible={true} />);
+    const wrapper = shallow(<CalculatorPage screenWidth={mockWideScreenWidth} sidebarVisible={true} />);
 
     chaiExpect(wrapper).to.have.className('calculatorPage');
   });

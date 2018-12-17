@@ -6,7 +6,7 @@ import CalculatorInputSection from '.';
 
 describe('<CalculatorInputSection />', () => {
   let wrapper;
-  const mockChildren = 'Calculator input section children';
+  const mockChildren = ['Calculator input section children'];
   const mockTitle = 'Monthly Income';
   const baseProps = {
     children: mockChildren,
