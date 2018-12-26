@@ -5,6 +5,7 @@ import {
 } from 'enzyme';
 import { expect as chaiExpect } from 'chai';
 import renderer from 'react-test-renderer';
+import { createMemoryHistory } from 'history';
 
 import GuestSidebar from './GuestSidebar';
 
@@ -76,20 +77,20 @@ describe('<GuestSidebar />', () => {
 
 describe('handleLoginClick', () => {
   it('properly pushes login URL to history array', () => {
-    const wrapper = mount(<GuestSidebar history={[]} />);
+    const wrapper = mount(<GuestSidebar history={createMemoryHistory()} />);
 
     wrapper.instance().handleLoginClick();
 
-    chaiExpect(wrapper.props().history).to.deep.equal(['/login']);
+    chaiExpect(wrapper.props().history.location.pathname).to.equal('/login');
   });
 });
 
 describe('handleRegisterClick', () => {
   it('properly pushes login URL to history array', () => {
-    const wrapper = mount(<GuestSidebar history={[]} />);
+    const wrapper = mount(<GuestSidebar history={createMemoryHistory()} />);
 
     wrapper.instance().handleRegisterClick();
 
-    chaiExpect(wrapper.props().history).to.deep.equal(['/register']);
+    chaiExpect(wrapper.props().history.location.pathname).to.equal('/register');
   });
 });
