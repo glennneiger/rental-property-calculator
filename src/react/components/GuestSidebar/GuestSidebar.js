@@ -32,7 +32,7 @@ class GuestSidebar extends Component {
 }
 
 GuestSidebar.propTypes = {
-  history: PropTypes.array
+  history: PropTypes.object
 };
 
 export default GuestSidebar;

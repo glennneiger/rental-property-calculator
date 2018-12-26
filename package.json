@@ -34,6 +34,7 @@
     "extract-text-webpack-plugin": "3.0.2",
     "file-loader": "1.1.5",
     "fs-extra": "3.0.1",
+    "history": "^4.7.2",
     "html-webpack-plugin": "2.29.0",
     "jsonwebtoken": "^8.2.1",
     "jwt-decode": "^2.2.0",
@@ -71,7 +72,7 @@
     "start": "babel-watch src/server/server.js",
     "client": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "jest --silent --coverage",
+    "test": "jest --coverage",
     "test:watch": "mocha --watch --compilers js:babel-core/register --opts mocha.opts --no-deprecation",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run build"
   },
