@@ -2,14 +2,6 @@ import { connect } from 'react-redux';
 
 import YearResult from './YearResult';
 import {
-  RESULTS_CASH_FLOW,
-  RESULTS_CASH_ON_CASH_RETURN,
-  RESULTS_EQUITY,
-  RESULTS_PROPERTY_VALUE,
-  RESULTS_RETURN_ON_EQUITY,
-  RESULTS_RETURN_ON_INVESTMENT
-} from '../../../constants';
-import {
   calculateCashOnCashReturn as calculateCashOnCashReturnUtil,
   calculateConstantExpensesForYear as calculateConstantExpensesForYearUtil,
   calculateEquityForYear as calculateEquityForYearUtil,
@@ -238,20 +230,44 @@ const calculateReturnOnInvestmentForYear = (state, year) => {
 const mapStateToProps = (state, ownProps) => {
   const year = ownProps.year;
   return {
-    result: {
-      [RESULTS_CASH_FLOW]: calculateCashFlowForYear(state, year),
-      [RESULTS_CASH_ON_CASH_RETURN]: calculateCashOnCashReturnForYear(
-        state,
-        year
-      ),
-      [RESULTS_PROPERTY_VALUE]: calculatePropertyValueForYear(state, year),
-      [RESULTS_EQUITY]: calculateEquityForYear(state, year),
-      [RESULTS_RETURN_ON_EQUITY]: calculateReturnOnEquityForYear(state, year),
-      [RESULTS_RETURN_ON_INVESTMENT]: calculateReturnOnInvestmentForYear(
-        state,
-        year
-      )
-    }
+    displayEntries: [
+      {
+        title: 'Cash Flow',
+        content: calculateCashFlowForYear(state, year),
+        prefix: '$',
+        suffix: ''
+      },
+      {
+        title: 'Cash on Cash Return',
+        content: calculateCashOnCashReturnForYear(state, year),
+        prefix: '',
+        suffix: '%'
+      },
+      {
+        title: 'Property Value',
+        content: calculatePropertyValueForYear(state, year),
+        prefix: '$',
+        suffix: ''
+      },
+      {
+        title: 'Equity',
+        content: calculateEquityForYear(state, year),
+        prefix: '$',
+        suffix: ''
+      },
+      {
+        title: 'Return on Equity',
+        content: calculateReturnOnEquityForYear(state, year),
+        prefix: '',
+        suffix: '%'
+      },
+      {
+        title: 'Return on Investment',
+        content: calculateReturnOnInvestmentForYear(state, year),
+        prefix: '',
+        suffix: '%'
+      }
+    ]
   };
 };
 
