@@ -2,14 +2,6 @@ import { connect } from 'react-redux';
 
 import YearResult from './YearResult';
 import {
-  RESULTS_CASH_FLOW,
-  RESULTS_CASH_ON_CASH_RETURN,
-  RESULTS_EQUITY,
-  RESULTS_PROPERTY_VALUE,
-  RESULTS_RETURN_ON_EQUITY,
-  RESULTS_RETURN_ON_INVESTMENT
-} from '../../../constants';
-import {
   calculateCashOnCashReturn as calculateCashOnCashReturnUtil,
   calculateConstantExpensesForYear as calculateConstantExpensesForYearUtil,
   calculateEquityForYear as calculateEquityForYearUtil,
