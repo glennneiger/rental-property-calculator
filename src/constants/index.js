@@ -40,6 +40,42 @@ export const INPUT_ID_WATER_AND_SEWER = 'waterAndSewerInput';
 
 export const INTERVAL_YEAR_RESULTS = 5;
 
+export const LABEL_AFTER_REPAIR_VALUE = 'After Repair Value';
+export const LABEL_AMORTIZATION_PERIOD = 'Amortization Period (years)';
+export const LABEL_CAP_EX = 'Cap. Ex. (%)';
+export const LABEL_CITY = 'City';
+export const LABEL_CLOSING_COSTS = 'Closing Costs';
+export const LABEL_CONSTANT_EXPENSES_GROWTH = 'Annual Constant Expenses Growth (%)';
+export const LABEL_COUNTRY = 'Country';
+export const LABEL_DOWN_PAYMENT = 'Down Payment';
+export const LABEL_ELECTRICITY = 'Electricity';
+export const LABEL_GARBAGE = 'Garbage';
+export const LABEL_HOA = 'HOA Fees';
+export const LABEL_INCOME_GROWTH = 'Annual Income Growth (%)';
+export const LABEL_INSURANCE = 'Insurance';
+export const LABEL_INTEREST_RATE = 'Interest Rate (%)';
+export const LABEL_LOAN_AMOUNT = 'Loan Amount';
+export const LABEL_MANAGEMENT = 'Management (%)';
+export const LABEL_MORTGAGE = 'Mortgage';
+export const LABEL_NEIGHBORHOOD = 'Neighborhood';
+export const LABEL_OTHER_EXPENSES = 'Other Expenses';
+export const LABEL_OTHER_INCOME = 'Other Income';
+export const LABEL_OTHER_INITIAL_COSTS = 'Other Initial Costs';
+export const LABEL_POSTAL_OR_ZIP_CODE = 'Postal/Zip Code';
+export const LABEL_PRIVATE_MORTGAGE_INSURANCE = 'Private Mortgage Insurance';
+export const LABEL_PROPERTY_TAX = 'Property Tax (%)';
+export const LABEL_PROPERTY_VALUE_GROWTH = 'Annual Property Value Growth (%)';
+export const LABEL_PROVINCE_OR_STATE = 'Province/State';
+export const LABEL_PURCHASE_PRICE = 'Purchase Price';
+export const LABEL_RENTAL_INCOME = 'Rental Income';
+export const LABEL_REPAIR_COSTS = 'Repair Costs';
+export const LABEL_REPAIRS_AND_MAINTENANCE = 'Repairs & Maintenance (%)';
+export const LABEL_SQUARE_FEET = 'Square Feet';
+export const LABEL_STREET_ADDRESS = 'Street Address';
+export const LABEL_UNIT_NUMBER = 'Unit Number';
+export const LABEL_VACANCY = 'Vacancy (%)';
+export const LABEL_WATER_AND_SEWER = 'Water and Sewer';
+
 export const MILLISECONDS_PER_SECOND = 1000;
 
 export const MODAL_CONFIRM_DELETE_CALCULATION =
