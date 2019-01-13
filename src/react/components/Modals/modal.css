@@ -3,7 +3,7 @@
 .modal {
   position: fixed;
   width: 80%;
-  padding: 20px;
+  padding: 36px 20px 24px 20px;
   left: 10%;
   top: 40%;
   height: 200px;
@@ -14,6 +14,7 @@
   justify-content: space-between;
   border-radius: 5px;
   font-family: 'Open Sans', sans-serif;
+  text-align: center;
 }
 
 .modal:focus {
@@ -28,6 +29,7 @@
 
 .buttons button {
   border: 1px solid black;
+  width: 88px;
 }
 
 .modal p {
