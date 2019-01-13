@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import FaBars from 'react-icons/lib/fa/bars';
-import FaClose from 'react-icons/lib/fa/close';
+import { FaBars, FaWindowClose } from 'react-icons/fa';
 
 import css from './header.css';
 import HeaderAuthInfo from '../HeaderAuthInfo';
@@ -27,7 +26,7 @@ class Header extends Component {
   getToggleSidebarIcon = () => {
     if (this.state.currentPath === '/') {
       return (this.props.sidebarVisible
-        ? <FaClose
+        ? <FaWindowClose
           className={css.sidebarToggler}
           onClick={this.handleToggleSidebarClick}
         />

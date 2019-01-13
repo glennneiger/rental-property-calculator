@@ -18,8 +18,7 @@
 }
 
 .trashIcon {
-  min-width: 16px;
-  min-height: 16px;
+  font-size: 0.9em;
   color: #919191;
 }
 

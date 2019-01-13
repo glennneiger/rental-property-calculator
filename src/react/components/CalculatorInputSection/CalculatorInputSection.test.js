@@ -14,7 +14,7 @@ describe('<CalculatorInputSection />', () => {
   };
 
   beforeAll(() => {
-    wrapper = shallow(<CalculatorInputSection { ...baseProps } />);
+    wrapper = shallow(<CalculatorInputSection {...baseProps} />);
   });
 
   it('renders one h2 containing the title prop', () => {

@@ -22,3 +22,10 @@ Testing is done using [Jest](https://github.com/facebook/jest) and [Chai](https:
 2. Install dependencies: `npm i`
 3. In one terminal window, start the server: `npm run start`
 4. In another terminal window, start the client: `npm run client`
+
+
+## Testing
+
+Run tests: `npm test`
+
+Tests can also be run and debugged inside VS Code using the **vscode-jest-tests** configuration (open the Debug panel from the Activity Bar and select that configuration in the dropdown at the top).

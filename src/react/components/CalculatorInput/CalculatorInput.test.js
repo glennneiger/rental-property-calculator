@@ -8,6 +8,7 @@ import { INPUT_ID_AMORTIZATION_PERIOD } from '../../../constants';
 const mockLabel = 'Purchase Price';
 const mockContent = 100000;
 const mockInputId = '1';
+const mockInputDescription = 'How much it cost';
 
 const baseProps = {
   content: mockContent,
@@ -23,7 +24,7 @@ const baseProps = {
 
 describe('<CalculatorInput />', () => {
   it('has proper className for styling with sidebar visible', () => {
-    const wrapper = shallow(<CalculatorInput { ...baseProps } />);
+    const wrapper = shallow(<CalculatorInput {...baseProps} />);
 
     chaiExpect(wrapper)
       .to.have.className('calculatorInput calculatorInputWithSidebar');
@@ -31,14 +32,14 @@ describe('<CalculatorInput />', () => {
 
   it('has proper className for styling with sidebar not visible', () => {
     const mockProps = { ...baseProps, sidebarVisible: false };
-    const wrapper = shallow(<CalculatorInput { ...mockProps } />);
+    const wrapper = shallow(<CalculatorInput {...mockProps} />);
 
     chaiExpect(wrapper)
       .to.have.className('calculatorInput calculatorInputNoSidebar');
   });
 
   it('renders a label for the given input', () => {
-    const wrapper = shallow(<CalculatorInput { ...baseProps } />);
+    const wrapper = shallow(<CalculatorInput {...baseProps} />);
 
     chaiExpect(wrapper.find('label')).to.have.length(1);
     chaiExpect(wrapper.find('label').at(0).prop('htmlFor'))
@@ -46,15 +47,38 @@ describe('<CalculatorInput />', () => {
   });
 
   it('has the correct text in the label', () => {
-    const wrapper = shallow(<CalculatorInput { ...baseProps } />);
+    const wrapper = shallow(<CalculatorInput {...baseProps} />);
 
     chaiExpect(wrapper.find('label').at(0).text()).to.equal(mockLabel);
   });
 
   it('renders a TextInput', () => {
-    const wrapper = shallow(<CalculatorInput { ...baseProps } />);
+    const wrapper = shallow(<CalculatorInput {...baseProps} />);
 
     chaiExpect(wrapper.find('TextInput')).to.have.length(1);
+  });
+
+  it('has an input description when one is provided through props', () => {
+    const props = {
+      ...baseProps,
+      inputDescription: mockInputDescription
+    };
+    const wrapper = shallow(<CalculatorInput {...props} />);
+    const mouseHoverDetectionRegion = wrapper.find('OverlayTrigger');
+    const infoIcon = mouseHoverDetectionRegion.find('FaInfoCircle');
+    const inputDescriptionTooltip = mouseHoverDetectionRegion.prop('overlay');
+
+    chaiExpect(mouseHoverDetectionRegion).to.have.length(1);
+    chaiExpect(infoIcon).to.have.length(1);
+    chaiExpect(inputDescriptionTooltip.type.name).to.equal('Tooltip');
+    chaiExpect(inputDescriptionTooltip.props.children)
+      .to.equal(mockInputDescription);
+  });
+
+  it('does not render an info icon when no input description provided', () => {
+    const wrapper = shallow(<CalculatorInput {...baseProps} />);
+
+    chaiExpect(wrapper.find('FontAwesomeIcon')).to.have.length(0);
   });
 });
 
@@ -69,7 +93,7 @@ describe('handleChange', () => {
       updateInput: mockUpdateInput
     };
 
-    const wrapper = shallow(<CalculatorInput { ...mockProps }/>);
+    const wrapper = shallow(<CalculatorInput {...mockProps} />);
     const mockEvent = {
       target: {
         value: '1'
@@ -91,7 +115,7 @@ describe('handleChange', () => {
       updateInput: mockUpdateInput
     };
 
-    const wrapper = shallow(<CalculatorInput { ...mockProps }/>);
+    const wrapper = shallow(<CalculatorInput {...mockProps} />);
     const mockEvent = {
       target: {
         value: 'b'
@@ -114,7 +138,7 @@ describe('handleChange', () => {
       updateInput: mockUpdateInput
     };
 
-    const wrapper = shallow(<CalculatorInput { ...mockProps }/>);
+    const wrapper = shallow(<CalculatorInput {...mockProps} />);
     const mockEvent = {
       target: {
         value: '1234'

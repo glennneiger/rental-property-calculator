@@ -1,5 +1,8 @@
 import {
   CALCULATOR_INPUT_WIDTH_DEFAULT,
+  INPUT_DESCRIPTION_DOWN_PAYMENT,
+  INPUT_DESCRIPTION_LOAN_AMOUNT,
+  INPUT_DESCRIPTION_PURCHASE_PRICE,
   INPUT_ID_AFTER_REPAIR_VALUE,
   INPUT_ID_AMORTIZATION_PERIOD,
   INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH,
@@ -130,18 +133,21 @@ const generalInfoInputProps = [
 
 const initialPurchaseInputProps = [
   {
+    inputDescription: INPUT_DESCRIPTION_PURCHASE_PRICE,
     inputId: INPUT_ID_PURCHASE_PRICE,
     inputType: 'number',
     label: LABEL_PURCHASE_PRICE,
     textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
+    inputDescription: INPUT_DESCRIPTION_DOWN_PAYMENT,
     inputId: INPUT_ID_DOWN_PAYMENT,
     inputType: 'number',
     label: LABEL_DOWN_PAYMENT,
     textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
+    inputDescription: INPUT_DESCRIPTION_LOAN_AMOUNT,
     inputId: INPUT_ID_LOAN_AMOUNT,
     inputType: 'number',
     label: LABEL_LOAN_AMOUNT,

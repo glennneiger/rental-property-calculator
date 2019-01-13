@@ -16,7 +16,8 @@ const FutureResults = ({
         : yearsForResults.map(year => (
           <YearResult
             key={year}
-            year={year} />
+            year={year}
+          />
         ))}
     </div>
   );

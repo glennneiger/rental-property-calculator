@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import FaTrashO from 'react-icons/lib/fa/trash-o';
+import { FaTrash } from 'react-icons/fa';
 import classNames from 'classnames';
 
 import {
@@ -42,7 +42,7 @@ class ListCalculation extends Component {
           [css.isSelected]: selected
         })}>
         <span>{this.props.title}</span>
-        <FaTrashO
+        <FaTrash
           className={css.trashIcon}
           onClick={this.handleTrashIconClick}
         />

@@ -9,12 +9,21 @@
   font-family: 'Raleway', sans-serif;
 }
 
-.calculatorInput {
+.labelInfoContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+
   & label {
     font-size: 0.8em;
     font-weight: bold;
-    margin-bottom: 4px;
   }
+}
+
+.inputDescriptionInfoIcon {
+  width: 0.8em;
+  margin-left: 5px;
+  color: var(--iconColorGrey);
 }
 
 @media (min-width: 650px) {

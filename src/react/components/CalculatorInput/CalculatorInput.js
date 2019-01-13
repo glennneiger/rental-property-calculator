@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { FaInfoCircle } from 'react-icons/fa';
+import OverlayTrigger from 'react-bootstrap/lib/OverlayTrigger';
+import Tooltip from 'react-bootstrap/lib/Tooltip';
 
 import css from './calculatorInput.css';
 import TextInput from '../TextInput';
@@ -35,6 +38,7 @@ class CalculatorInput extends Component {
   render() {
     const {
       content,
+      inputDescription,
       inputId,
       label,
       sidebarVisible,
@@ -46,7 +50,19 @@ class CalculatorInput extends Component {
         [css.calculatorInputNoSidebar]: !sidebarVisible,
         [css.calculatorInputWithSidebar]: sidebarVisible
       })}>
-        <label htmlFor={inputId}>{label}</label>
+        <div className={css.labelInfoContainer}>
+          <label htmlFor={inputId}>{label}</label>
+          {inputDescription
+            ? <OverlayTrigger overlay={
+              <Tooltip id={content}>
+                {inputDescription}
+              </Tooltip>
+            }
+            placement='top'>
+              <FaInfoCircle className={css.inputDescriptionInfoIcon} />
+            </OverlayTrigger>
+            : null}
+        </div>
         <TextInput type={'text'}
           id={inputId}
           style={{ width: textInputWidth }}
@@ -64,6 +80,7 @@ CalculatorInput.propTypes = {
     PropTypes.string,
     PropTypes.number
   ]).isRequired,
+  inputDescription: PropTypes.string,
   inputId: PropTypes.string.isRequired,
   inputType: PropTypes.string,
   label: PropTypes.string.isRequired,

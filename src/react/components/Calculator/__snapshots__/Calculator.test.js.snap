@@ -74,6 +74,7 @@ exports[`<Calculator /> renders properly with current inputSectionData 1`] = `
       title="Initial Purchase"
     >
       <Connect(CalculatorInput)
+        inputDescription="Full purchase price of the property"
         inputId="purchasePriceInput"
         inputType="number"
         label="Purchase Price"
@@ -81,6 +82,7 @@ exports[`<Calculator /> renders properly with current inputSectionData 1`] = `
         textInputWidth={160}
       />
       <Connect(CalculatorInput)
+        inputDescription="Initial payment towards the purchase price"
         inputId="downPaymentInput"
         inputType="number"
         label="Down Payment"
@@ -88,6 +90,7 @@ exports[`<Calculator /> renders properly with current inputSectionData 1`] = `
         textInputWidth={160}
       />
       <Connect(CalculatorInput)
+        inputDescription="Purchase price minus down payment; the amount of money borrowed to buy the property"
         inputId="loanAmountInput"
         inputType="number"
         label="Loan Amount"

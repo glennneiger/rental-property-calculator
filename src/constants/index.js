@@ -1,5 +1,15 @@
 export const CALCULATOR_INPUT_WIDTH_DEFAULT = 160;
 
+// A few example input descriptions
+// TODO: generate content for the rest of the input descriptions
+export const INPUT_DESCRIPTION_DOWN_PAYMENT =
+  'Initial payment towards the purchase price';
+export const INPUT_DESCRIPTION_LOAN_AMOUNT =
+  'Purchase price minus down payment; ' +
+  'the amount of money borrowed to buy the property';
+export const INPUT_DESCRIPTION_PURCHASE_PRICE =
+  'Full purchase price of the property';
+
 export const INPUT_ID_AFTER_REPAIR_VALUE = 'afterRepairValueInput';
 export const INPUT_ID_AMORTIZATION_PERIOD = 'amortizationPeriodInput';
 export const INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH =
