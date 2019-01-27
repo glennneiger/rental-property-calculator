@@ -18,11 +18,11 @@ import {
 /* Initial equity = down payment + after repair value + purchase price */
 const calculateInitialEquity = state => {
   const calculatorFields = state.calculator;
-  const initialPurchase = calculatorFields[TITLE_INITIAL_PURCHASE];
+  const { inputs } = calculatorFields[TITLE_INITIAL_PURCHASE];
 
-  const downPayment = initialPurchase[INPUT_ID_DOWN_PAYMENT];
-  const afterRepairValue = initialPurchase[INPUT_ID_AFTER_REPAIR_VALUE];
-  const purchasePrice = initialPurchase[INPUT_ID_PURCHASE_PRICE];
+  const downPayment = inputs[INPUT_ID_DOWN_PAYMENT];
+  const afterRepairValue = inputs[INPUT_ID_AFTER_REPAIR_VALUE];
+  const purchasePrice = inputs[INPUT_ID_PURCHASE_PRICE];
 
   return calculateInitialEquityUtil(
     downPayment,
@@ -36,13 +36,13 @@ const calculateInitialEquity = state => {
  */
 const calculateInitialInvestment = state => {
   const calculatorFields = state.calculator;
-  const initialPurchase = calculatorFields[TITLE_INITIAL_PURCHASE];
+  const { inputs } = calculatorFields[TITLE_INITIAL_PURCHASE];
 
-  const downPayment = initialPurchase[INPUT_ID_DOWN_PAYMENT];
+  const downPayment = inputs[INPUT_ID_DOWN_PAYMENT];
 
-  const repairCosts = initialPurchase[INPUT_ID_REPAIR_COSTS];
-  const closingCosts = initialPurchase[INPUT_ID_CLOSING_COSTS];
-  const otherCosts = initialPurchase[INPUT_ID_OTHER_INITIAL_COSTS];
+  const repairCosts = inputs[INPUT_ID_REPAIR_COSTS];
+  const closingCosts = inputs[INPUT_ID_CLOSING_COSTS];
+  const otherCosts = inputs[INPUT_ID_OTHER_INITIAL_COSTS];
 
   return calculateInitialInvestmentUtil(
     downPayment,

@@ -14,7 +14,7 @@ const actions = {
 };
 
 export const mapStateToProps = (state, ownProps) => ({
-  content: state.calculator[ownProps.section][ownProps.inputId],
+  content: state.calculator[ownProps.section].inputs[ownProps.inputId],
   sidebarVisible: state.sidebarVisible
 });
 

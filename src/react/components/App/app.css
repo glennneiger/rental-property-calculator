@@ -1,7 +1,9 @@
+@import "../../../styles.css";
+
 .app {
-  font-family: 'Open Sans', sans-serif;
+  font-family: var(--mainFontFamily);
 }
 
 button, input {
-  font-family: 'Open Sans', sans-serif;
+  font-family: var(--mainFontFamily);
 }

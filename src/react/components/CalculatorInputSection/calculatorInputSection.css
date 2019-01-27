@@ -2,6 +2,7 @@
 
 .calculatorInputSection {
   padding: 24px;
+  font-size: 18px;
 }
 
 .calculatorInputSection h2 {
@@ -15,4 +16,20 @@
   flex-wrap: wrap;
   align-content: space-between;
   align-items: flex-end;
+  font-family: var(--calculatorInputFontFamily);
+}
+
+.sectionNotes {
+  width: 100%;
+  padding: 18px 12px 0px 12px;
+  font-family: var(--calculatorInputFontFamily);
+}
+
+.sectionNotesTitleContainer {
+  display: flex;
+}
+
+.sectionNotesTitle {
+  font-size: var(--calculatorInputTitleSize);
+  font-weight: var(--calculatorInputTitleWeight);
 }

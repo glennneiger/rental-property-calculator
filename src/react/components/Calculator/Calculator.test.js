@@ -4,6 +4,7 @@ import { expect as chaiExpect } from 'chai';
 import ShallowRenderer from 'react-test-renderer/shallow';
 
 import * as childProps from './childProps';
+import CalculatorInputSection from '../CalculatorInputSection';
 import CalculatorInput from '../CalculatorInput';
 import Calculator from './Calculator';
 import Result from '../Result';
@@ -51,7 +52,7 @@ describe('<Calculator />', () => {
   it('renders the correct number of CalculatorInputSections', () => {
     const wrapper = shallow(<Calculator sidebarVisible={true} />);
 
-    chaiExpect(wrapper.find('CalculatorInputSection'))
+    chaiExpect(wrapper.find(CalculatorInputSection))
       .to.have.length(childProps.inputSectionData.length);
   });
 
@@ -87,8 +88,9 @@ describe('<Calculator />', () => {
 
     const wrapper = shallow(<Calculator sidebarVisible={true} />);
 
-    chaiExpect(wrapper.contains(<div className='divider' />)).to.equal(true);
-    
+    chaiExpect(wrapper.contains(<div className='divider' />))
+      .to.equal(true);
+
     childProps.inputSectionData = originalInputSectionData;
   });
 });

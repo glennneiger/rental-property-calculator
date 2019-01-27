@@ -10,7 +10,7 @@ import {
 
 export const mapStateToProps = state => ({
   yearsForResults: getYearsForResults(
-    state.calculator[TITLE_INITIAL_PURCHASE][INPUT_ID_AMORTIZATION_PERIOD]
+    state.calculator[TITLE_INITIAL_PURCHASE].inputs[INPUT_ID_AMORTIZATION_PERIOD]
   )
 });
 

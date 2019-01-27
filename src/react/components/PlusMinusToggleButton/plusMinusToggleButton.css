@@ -1,0 +1,30 @@
+@import "../../../styles.css";
+
+.expandCollapseIcon {
+  color: var(--inputLabelIconColor);
+  font-size: var(--inputLabelIconSize);
+  margin-left: var(--inputLabelIconMarginLeft);
+}
+
+/* Transition specifications; correspond with CSSTransition 'classNames' prop.
+  ':global' prefix prevents css module loader from changing class names,
+  which is necessary for these classes to apply correctly to CSSTransitions */
+  :global .expandNotesEditorButtonAnimation-enter {
+    transform: rotate(var(--notesEditorButtonRotation));
+  }
+  :global .collapseNotesEditorButtonAnimation-enter {
+    transform: rotate(calc(-1 * var(--notesEditorButtonRotation)));
+  }
+  :global .expandNotesEditorButtonAnimation-enter-active,
+  :global .collapseNotesEditorButtonAnimation-enter-active {
+    transform: rotate(0);
+    transition: transform var(--notesEditorTransitionLength);
+  }
+  /* Hide previous icon as the new one comes in, so the animations
+  and positioning of the 2 separate icons don't interfere */
+  :global .expandNotesEditorButtonAnimation-exit,
+  :global .expandNotesEditorButtonAnimation-exit-active,
+  :global .collapseNotesEditorButtonAnimation-exit,
+  :global .collapseNotesEditorButtonAnimation-exit-active {
+    display: none;
+  }

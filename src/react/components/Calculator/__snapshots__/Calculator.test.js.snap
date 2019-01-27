@@ -5,7 +5,7 @@ exports[`<Calculator /> renders properly with current inputSectionData 1`] = `
   className="calculator calculatorWithSidebar"
 >
   <div>
-    <CalculatorInputSection
+    <Connect(CalculatorInputSection)
       title="General Info"
     >
       <Connect(CalculatorInput)
@@ -64,13 +64,13 @@ exports[`<Calculator /> renders properly with current inputSectionData 1`] = `
         section="General Info"
         textInputWidth={160}
       />
-    </CalculatorInputSection>
+    </Connect(CalculatorInputSection)>
     <div
       className="divider"
     />
   </div>
   <div>
-    <CalculatorInputSection
+    <Connect(CalculatorInputSection)
       title="Initial Purchase"
     >
       <Connect(CalculatorInput)
@@ -139,13 +139,13 @@ exports[`<Calculator /> renders properly with current inputSectionData 1`] = `
         section="Initial Purchase"
         textInputWidth={160}
       />
-    </CalculatorInputSection>
+    </Connect(CalculatorInputSection)>
     <div
       className="divider"
     />
   </div>
   <div>
-    <CalculatorInputSection
+    <Connect(CalculatorInputSection)
       title="Monthly Income"
     >
       <Connect(CalculatorInput)
@@ -162,13 +162,13 @@ exports[`<Calculator /> renders properly with current inputSectionData 1`] = `
         section="Monthly Income"
         textInputWidth={160}
       />
-    </CalculatorInputSection>
+    </Connect(CalculatorInputSection)>
     <div
       className="divider"
     />
   </div>
   <div>
-    <CalculatorInputSection
+    <Connect(CalculatorInputSection)
       title="Monthly Expenses"
     >
       <Connect(CalculatorInput)
@@ -267,13 +267,13 @@ exports[`<Calculator /> renders properly with current inputSectionData 1`] = `
         section="Monthly Expenses"
         textInputWidth={160}
       />
-    </CalculatorInputSection>
+    </Connect(CalculatorInputSection)>
     <div
       className="divider"
     />
   </div>
   <div>
-    <CalculatorInputSection
+    <Connect(CalculatorInputSection)
       title="Future Projections"
     >
       <Connect(CalculatorInput)
@@ -297,7 +297,7 @@ exports[`<Calculator /> renders properly with current inputSectionData 1`] = `
         section="Future Projections"
         textInputWidth={160}
       />
-    </CalculatorInputSection>
+    </Connect(CalculatorInputSection)>
     <div
       className="divider"
     />

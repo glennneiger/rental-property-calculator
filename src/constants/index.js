@@ -99,6 +99,14 @@ export const MODEL_PROFILE = 'profile';
 export const MODEL_USERS = 'users';
 
 export const MONTHS_PER_YEAR = 12;
+
+/**
+ * Needs to equal css variable --notesEditorTransitionLength.
+ * Unfortunately it needs to be defined in 2 places (JS and CSS)
+ * because of how react-transition-group works.
+ */
+export const NOTES_EDITOR_TRANSITION_LENGTH = 150;
+
 export const NUMBER_PRECISION_DISPLAY = 2;
 export const NUMBER_SYSTEM_DECIMAL = 10;
 

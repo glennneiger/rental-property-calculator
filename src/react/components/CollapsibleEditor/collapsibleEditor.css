@@ -1,0 +1,78 @@
+@import "../../../styles.css";
+
+.editor {
+  height: var(--notesEditorHeight);
+  margin-bottom: var(--notesEditorMarginBottom);
+
+  & strong {
+    font-weight: bold;
+  }
+
+  & em {
+    font-style: italic;
+  }
+}
+
+/* Makes toolbar and editor backgrounds white */
+.editor > * {
+  background-color: white;
+}
+
+/* Fixes a bug where react-quill doesn't work in Safari.
+More here: https://stackoverflow.com/a/31831776/7481610 */
+[contenteditable] {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+:global .ql-editor {
+  font-family: var(--mainFontFamily);
+  font-size: 1.2em;
+}
+
+/* Transition specifications; correspond with CSSTransition 'classNames' prop.
+  ':global' prefix prevents css module loader from changing class names,
+  which is necessary for these classes to apply correctly to CSSTransitions */
+:global .expandCollapseNotesEditorAnimation-enter {
+  height: 0;
+  margin-bottom: 0;
+  opacity: 0;
+}
+:global .expandCollapseNotesEditorAnimation-exit {
+  height: var(--notesEditorHeight);
+  margin-bottom: var(--notesEditorMarginBottom);
+  opacity: 1;
+}
+:global .expandCollapseNotesEditorAnimation-enter-active {
+  height: var(--notesEditorHeight);
+  margin-bottom: var(--notesEditorMarginBottom);
+  opacity: 1;
+  transition: height var(--notesEditorTransitionLength) ease-in-out,
+    opacity var(--notesEditorTransitionLength) ease-in,
+    margin-bottom var(--notesEditorTransitionLength);
+}
+:global .expandCollapseNotesEditorAnimation-exit-active {
+  height: 0;
+  margin-bottom: 0;
+  opacity: 0;
+  transition: height var(--notesEditorTransitionLength) ease-in-out,
+    opacity var(--notesEditorTransitionLength) ease-in,
+    margin-bottom var(--notesEditorTransitionLength);
+}
+
+/* Hide scrollbar and prevent text from overflowing the editor
+during animations */
+:global .expandCollapseNotesEditorAnimation-enter,
+:global .expandCollapseNotesEditorAnimation-enter-active,
+:global .expandCollapseNotesEditorAnimation-exit,
+:global .expandCollapseNotesEditorAnimation-exit-active {
+  /* Hides scrollbar */
+  & :global .ql-editor {
+    overflow-y: hidden;
+  }
+
+  /* Hides overflowing text */
+  & :global .ql-container {
+    overflow-y: hidden;
+  }
+}

@@ -1,38 +1,87 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { expect } from 'chai';
 
-import CalculatorInputSection from '.';
+import CalculatorInputSection from './CalculatorInputSection';
+import CollapsibleEditor from '../CollapsibleEditor';
 
 describe('<CalculatorInputSection />', () => {
-  let wrapper;
   const mockChildren = ['Calculator input section children'];
   const mockTitle = 'Monthly Income';
+  const mockSetNotesContent = jest.fn();
+  const mockToggleNotesEditorCollapsed = jest.fn();
   const baseProps = {
     children: mockChildren,
-    title: mockTitle
+    notesEditorCollapsed: true,
+    notesText: '',
+    setNotesContent: mockSetNotesContent,
+    title: mockTitle,
+    toggleNotesEditorCollapsed: mockToggleNotesEditorCollapsed
   };
 
-  beforeAll(() => {
-    wrapper = shallow(<CalculatorInputSection {...baseProps} />);
-  });
+  it('has the correct className for styling', () => {
+    const wrapper = shallow(<CalculatorInputSection {...baseProps} />);
 
-  it('renders one h2 containing the title prop', () => {
+    expect(wrapper.hasClass('calculatorInputSection')).toBeTruthy();
+  });
+  it('renders the title in an h2', () => {
+    const wrapper = shallow(<CalculatorInputSection {...baseProps} />);
     const headers = wrapper.find('h2');
 
-    expect(headers).to.have.length(1);
-    expect(headers).to.have.text(mockTitle);
+    expect(headers).toHaveLength(1);
+    expect(headers.text()).toBe(mockTitle);
   });
-  it('renders one div containing the children prop', () => {
-    const childDiv = wrapper.children().find('div');
+  it('renders the child inputs in a div', () => {
+    const wrapper = shallow(<CalculatorInputSection {...baseProps} />);
+    const childDiv = wrapper.find('div.inputs');
 
-    expect(childDiv).to.have.length(1);
-    expect(childDiv).to.have.text(mockChildren);
+    expect(childDiv).toHaveLength(1);
+    expect(childDiv.text()).toBe(mockChildren.toString());
   });
-  test('container div has correct className for styling', () => {
-    expect(wrapper).to.have.className('calculatorInputSection');
+  it('contains an editor for taking notes', () => {
+    const wrapper = shallow(<CalculatorInputSection {...baseProps} />);
+
+    expect(wrapper.find(CollapsibleEditor)).toHaveLength(1);
   });
-  test('inputs div has correct className for styling', () => {
-    expect(wrapper.children().find('div')).to.have.className('inputs');
+  it('contains a button to toggle the notes editor visibility', () => {
+    const wrapper = shallow(<CalculatorInputSection {...baseProps} />);
+
+    expect(wrapper.find('PlusMinusToggleButton')).toHaveLength(1);
+  });
+  test('handleExpandCollapseNotesClicked calls toggleNotesEditorCollapsed', () => {
+    const wrapper = shallow(<CalculatorInputSection {...baseProps} />);
+    wrapper.instance().handleExpandCollapseNotesClicked();
+
+    expect(mockToggleNotesEditorCollapsed).toHaveBeenCalledWith(baseProps.title);
+
+    mockToggleNotesEditorCollapsed.mockClear();
+  });
+  test('handleNotesEditorTextChange calls setNotesContent', () => {
+    const wrapper = shallow(<CalculatorInputSection {...baseProps} />);
+    const mockText = 'Notes about stuff';
+    wrapper.instance().handleNotesEditorTextChange(mockText);
+
+    expect(mockSetNotesContent).toHaveBeenCalledWith(mockText, mockTitle);
+
+    mockSetNotesContent.mockClear();
+  });
+  test('getNotesEditorExpandCollapseIcon returns plus when editor collapsed', () => {
+    const props = {
+      ...baseProps,
+      notesEditorCollapsed: true
+    };
+    const wrapper = shallow(<CalculatorInputSection {...props} />);
+    const icon = wrapper.instance().getNotesEditorExpandCollapseIcon();
+
+    expect(icon.type.displayName).toBe('FaPlusSquare');
+  });
+  test('getNotesEditorExpandCollapseIcon returns minus when editor expanded', () => {
+    const props = {
+      ...baseProps,
+      notesEditorCollapsed: false
+    };
+    const wrapper = shallow(<CalculatorInputSection {...props} />);
+    const icon = wrapper.instance().getNotesEditorExpandCollapseIcon();
+
+    expect(icon.type.displayName).toBe('FaMinusSquare');
   });
 });

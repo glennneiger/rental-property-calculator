@@ -13,7 +13,10 @@ describe('mapStateToProps', () => {
     const mockState = {
       calculator: {
         [TITLE_INITIAL_PURCHASE]: {
-          [INPUT_ID_AMORTIZATION_PERIOD]: mockYearsForResults
+          notes: {},
+          inputs: {
+            [INPUT_ID_AMORTIZATION_PERIOD]: mockYearsForResults
+          }
         }
       }
     };

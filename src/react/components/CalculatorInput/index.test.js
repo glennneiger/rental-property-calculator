@@ -1,5 +1,4 @@
 import { expect } from 'chai';
-import { shallow } from 'enzyme';
 
 import { mapStateToProps } from '.';
 
@@ -14,7 +13,10 @@ describe('mapStateToProps', () => {
     const mockState = {
       calculator: {
         [mockSection]: {
-          [mockInputId]: mockContent
+          notes: {},
+          inputs: {
+            [mockInputId]: mockContent
+          }
         }
       },
       sidebarVisible: mockSidebarVisible

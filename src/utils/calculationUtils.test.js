@@ -62,11 +62,16 @@ const DEFAULT_MONTHLY_EXPENSES = {
   [INPUT_ID_GARBAGE]: 50,
   [INPUT_ID_HOA]: 100,
   [INPUT_ID_INSURANCE]: 100,
-  [INPUT_ID_PROPERTY_TAX]: 1, // percent of property value
-  [INPUT_ID_VACANCY]: 5, // percent of rental income
-  [INPUT_ID_REPAIRS_AND_MAINTENANCE]: 5, // percent of rental income
-  [INPUT_ID_CAP_EX]: 5, // percent of rental income
-  [INPUT_ID_MANAGEMENT]: 5, // percent of rental income
+  // percent of property value
+  [INPUT_ID_PROPERTY_TAX]: 1,
+  // percent of rental income
+  [INPUT_ID_VACANCY]: 5,
+  // percent of rental income
+  [INPUT_ID_REPAIRS_AND_MAINTENANCE]: 5,
+  // percent of rental income
+  [INPUT_ID_CAP_EX]: 5,
+  // percent of rental income
+  [INPUT_ID_MANAGEMENT]: 5,
   [INPUT_ID_OTHER_EXPENSES]: 20
 };
 
