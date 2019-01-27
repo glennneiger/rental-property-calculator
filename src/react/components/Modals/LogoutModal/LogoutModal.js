@@ -7,6 +7,7 @@ import BlueButton from '../../BlueButton';
 
 class LogoutModal extends Component {
   handleLogoutClick = () => {
+    this.props.clearAllCalculatorFields();
     this.props.logoutUser();
     this.props.hideModal();
   }
@@ -35,6 +36,7 @@ class LogoutModal extends Component {
 }
 
 LogoutModal.propTypes = {
+  clearAllCalculatorFields: PropTypes.func.isRequired,
   hideModal: PropTypes.func.isRequired,
   logoutUser: PropTypes.func.isRequired
 };

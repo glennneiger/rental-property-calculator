@@ -3,17 +3,17 @@ import { connect } from 'react-redux';
 import LogoutModal from './LogoutModal';
 import { hideModal } from '../../../../actions/modal';
 import { logoutUser } from '../../../../actions/auth';
+import {
+  clearAllCalculatorFields
+} from '../../../../actions/calculatorFields';
 
-const mapDispatchToProps = dispatch => ({
-  hideModal: () => {
-    dispatch(hideModal());
-  },
-  logoutUser: () => {
-    dispatch(logoutUser());
-  }
-});
+const actions = {
+  clearAllCalculatorFields,
+  hideModal,
+  logoutUser
+};
 
 export default connect(
   null,
-  mapDispatchToProps
+  actions
 )(LogoutModal);
