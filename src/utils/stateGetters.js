@@ -21,7 +21,7 @@ import {
 
 export const getAnnualConstantExpensesGrowth = state => {
   const futureProjections = state.calculator[TITLE_FUTURE_PROJECTIONS];
-  const annualConstantExpensesGrowth = futureProjections[
+  const annualConstantExpensesGrowth = futureProjections.inputs[
     INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH
   ];
   return annualConstantExpensesGrowth
@@ -32,7 +32,7 @@ export const getAnnualConstantExpensesGrowth = state => {
 export const getAfterRepairValue = state => {
   const initialPurchase = state.calculator[TITLE_INITIAL_PURCHASE];
 
-  const propertyValue = initialPurchase[INPUT_ID_AFTER_REPAIR_VALUE];
+  const propertyValue = initialPurchase.inputs[INPUT_ID_AFTER_REPAIR_VALUE];
   return propertyValue
     ? parseFloat(propertyValue, NUMBER_SYSTEM_DECIMAL)
     : 0;
@@ -41,7 +41,7 @@ export const getAfterRepairValue = state => {
 export const getAnnualPropertyValueGrowth = state => {
   const futureProjections = state.calculator[TITLE_FUTURE_PROJECTIONS];
 
-  const annualPropertyValueGrowth = futureProjections[
+  const annualPropertyValueGrowth = futureProjections.inputs[
     INPUT_ID_PROPERTY_VALUE_GROWTH
   ];
   return annualPropertyValueGrowth
@@ -52,7 +52,7 @@ export const getAnnualPropertyValueGrowth = state => {
 export const getAnnualIncomeGrowth = state => {
   const futureProjections = state.calculator[TITLE_FUTURE_PROJECTIONS];
 
-  const annualIncomeGrowth = futureProjections[INPUT_ID_ANNUAL_INCOME_GROWTH];
+  const annualIncomeGrowth = futureProjections.inputs[INPUT_ID_ANNUAL_INCOME_GROWTH];
   return annualIncomeGrowth
     ? parseFloat(annualIncomeGrowth)
     : 0;
@@ -61,7 +61,7 @@ export const getAnnualIncomeGrowth = state => {
 export const getAmortizationPeriod = state => {
   const initialPurchase = state.calculator[TITLE_INITIAL_PURCHASE];
 
-  const amortizationPeriod = initialPurchase[INPUT_ID_AMORTIZATION_PERIOD];
+  const amortizationPeriod = initialPurchase.inputs[INPUT_ID_AMORTIZATION_PERIOD];
   return amortizationPeriod
     ? parseInt(amortizationPeriod)
     : 0;
@@ -70,7 +70,7 @@ export const getAmortizationPeriod = state => {
 export const getDownPayment = state => {
   const initialPurchase = state.calculator[TITLE_INITIAL_PURCHASE];
 
-  const downPayment = initialPurchase[INPUT_ID_DOWN_PAYMENT];
+  const downPayment = initialPurchase.inputs[INPUT_ID_DOWN_PAYMENT];
   return downPayment
     ? parseFloat(downPayment)
     : 0;
@@ -79,7 +79,7 @@ export const getDownPayment = state => {
 export const getRepairCosts = state => {
   const initialPurchase = state.calculator[TITLE_INITIAL_PURCHASE];
 
-  const repairCosts = initialPurchase[INPUT_ID_REPAIR_COSTS];
+  const repairCosts = initialPurchase.inputs[INPUT_ID_REPAIR_COSTS];
   return repairCosts
     ? parseFloat(repairCosts)
     : 0;
@@ -88,7 +88,7 @@ export const getRepairCosts = state => {
 export const getClosingCosts = state => {
   const initialPurchase = state.calculator[TITLE_INITIAL_PURCHASE];
 
-  const closingCosts = initialPurchase[INPUT_ID_CLOSING_COSTS];
+  const closingCosts = initialPurchase.inputs[INPUT_ID_CLOSING_COSTS];
   return closingCosts
     ? parseFloat(closingCosts)
     : 0;
@@ -97,7 +97,7 @@ export const getClosingCosts = state => {
 export const getOtherInitialCosts = state => {
   const initialPurchase = state.calculator[TITLE_INITIAL_PURCHASE];
 
-  const otherCosts = initialPurchase[INPUT_ID_OTHER_INITIAL_COSTS];
+  const otherCosts = initialPurchase.inputs[INPUT_ID_OTHER_INITIAL_COSTS];
   return otherCosts
     ? parseFloat(otherCosts)
     : 0;
@@ -106,7 +106,7 @@ export const getOtherInitialCosts = state => {
 export const getInitialPurchasePrice = state => {
   const initialPurchase = state.calculator[TITLE_INITIAL_PURCHASE];
 
-  const purchasePrice = initialPurchase[INPUT_ID_PURCHASE_PRICE];
+  const purchasePrice = initialPurchase.inputs[INPUT_ID_PURCHASE_PRICE];
   return purchasePrice
     ? parseFloat(purchasePrice)
     : 0;
@@ -115,7 +115,7 @@ export const getInitialPurchasePrice = state => {
 export const getMonthlyMortgage = state => {
   const monthlyExpenses = state.calculator[TITLE_MONTHLY_EXPENSES];
 
-  const monthlyMortgage = monthlyExpenses[INPUT_ID_MORTGAGE];
+  const monthlyMortgage = monthlyExpenses.inputs[INPUT_ID_MORTGAGE];
   return monthlyMortgage
     ? parseFloat(monthlyMortgage)
     : 0;
@@ -124,7 +124,7 @@ export const getMonthlyMortgage = state => {
 export const getInterestRate = state => {
   const initialPurchase = state.calculator[TITLE_INITIAL_PURCHASE];
 
-  const interestRate = initialPurchase[INPUT_ID_INTEREST_RATE];
+  const interestRate = initialPurchase.inputs[INPUT_ID_INTEREST_RATE];
   return interestRate
     ? parseFloat(interestRate)
     : 0;
@@ -133,7 +133,7 @@ export const getInterestRate = state => {
 export const getInitialLoanAmount = state => {
   const initialPurchase = state.calculator[TITLE_INITIAL_PURCHASE];
 
-  const initialLoanAmount = initialPurchase[INPUT_ID_LOAN_AMOUNT];
+  const initialLoanAmount = initialPurchase.inputs[INPUT_ID_LOAN_AMOUNT];
   return initialLoanAmount
     ? parseFloat(initialLoanAmount)
     : 0;

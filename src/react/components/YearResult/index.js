@@ -35,7 +35,7 @@ import {
   getRepairCosts
 } from '../../../utils/stateGetters';
 
-const calculatePercentageExpensesForYear = (state, year) => {
+function calculatePercentageExpensesForYear(state, year) {
   const annualIncomeGrowth = getAnnualIncomeGrowth(state);
   const annualPVGrowth = getAnnualPropertyValueGrowth(state);
   const monthlyIncome = getMonthlyIncome(state);
@@ -50,9 +50,9 @@ const calculatePercentageExpensesForYear = (state, year) => {
     propertyValue,
     year
   );
-};
+}
 
-const calculateConstantExpensesForYear = (state, year) => {
+function calculateConstantExpensesForYear(state, year) {
   const monthlyExpenses = getMonthlyExpenses(state);
   const annualConstantExpensesGrowth = getAnnualConstantExpensesGrowth(state);
 
@@ -61,9 +61,9 @@ const calculateConstantExpensesForYear = (state, year) => {
     monthlyExpenses,
     year
   );
-};
+}
 
-const calculateExpensesForYear = (state, year) => {
+function calculateExpensesForYear(state, year) {
   const percentageExpensesForYear = calculatePercentageExpensesForYear(
     state,
     year
@@ -76,9 +76,9 @@ const calculateExpensesForYear = (state, year) => {
     constantExpensesForYear,
     percentageExpensesForYear
   );
-};
+}
 
-const calculateIncomeForYear = (state, year) => {
+function calculateIncomeForYear(state, year) {
   const monthlyIncome = getMonthlyIncome(state);
   const annualIncomeGrowth = getAnnualIncomeGrowth(state);
 
@@ -87,9 +87,9 @@ const calculateIncomeForYear = (state, year) => {
     monthlyIncome,
     annualIncomeGrowth
   );
-};
+}
 
-const calculateMortgageForYear = (state, year) => {
+function calculateMortgageForYear(state, year) {
   const annualConstantExpensesGrowth = getAnnualConstantExpensesGrowth(state);
   const monthlyExpenses = getMonthlyExpenses(state);
 
@@ -98,10 +98,10 @@ const calculateMortgageForYear = (state, year) => {
     monthlyExpenses,
     year
   );
-};
+}
 
 /* Cash flow = Income - Expenses */
-const calculateCashFlowForYear = (state, year) => {
+function calculateCashFlowForYear(state, year) {
   const amortizationPeriod = getAmortizationPeriod(state);
   const incomeForYear = calculateIncomeForYear(state, year);
   const expensesForYear = calculateExpensesForYear(state, year);
@@ -114,11 +114,11 @@ const calculateCashFlowForYear = (state, year) => {
     yearCashFlow += calculateMortgageForYear(state, year);
   }
   return yearCashFlow;
-};
+}
 
 /* Initial investment =
   down payment + repair costs + closing costs + other initial costs */
-const calculateInitialInvestment = state => {
+function calculateInitialInvestment(state) {
   const downPayment = getDownPayment(state);
   const repairCosts = getRepairCosts(state);
   const closingCosts = getClosingCosts(state);
@@ -130,10 +130,10 @@ const calculateInitialInvestment = state => {
     closingCosts,
     otherCosts
   );
-};
+}
 
 /* Cash on cash return = (cash flow / initialInvestment) * 100% */
-const calculateCashOnCashReturnForYear = (state, year) => {
+function calculateCashOnCashReturnForYear(state, year) {
   const yearCashFlow = calculateCashFlowForYear(state, year);
   const initialInvestment = calculateInitialInvestment(state);
 
@@ -141,9 +141,9 @@ const calculateCashOnCashReturnForYear = (state, year) => {
     yearCashFlow,
     initialInvestment
   );
-};
+}
 
-const calculatePropertyValueForYear = (state, year) => {
+function calculatePropertyValueForYear(state, year) {
   const propertyValue = getAfterRepairValue(state);
   const annualPVGrowth = getAnnualPropertyValueGrowth(state);
 
@@ -152,9 +152,9 @@ const calculatePropertyValueForYear = (state, year) => {
     annualPVGrowth,
     year
   );
-};
+}
 
-const calculateRemainingLoanBalanceForYear = (state, year) => {
+function calculateRemainingLoanBalanceForYear(state, year) {
   const initialLoanAmount = getInitialLoanAmount(state);
   const interestRate = getInterestRate(state);
   const amortizationPeriod = getAmortizationPeriod(state);
@@ -165,10 +165,10 @@ const calculateRemainingLoanBalanceForYear = (state, year) => {
     amortizationPeriod,
     year
   );
-};
+}
 
 /* Initial equity = down payment + after repair value + purchase price */
-const calculateInitialEquity = state => {
+function calculateInitialEquity(state) {
   const downPayment = getDownPayment(state);
   const afterRepairValue = getAfterRepairValue(state);
   const purchasePrice = getInitialPurchasePrice(state);
@@ -178,9 +178,9 @@ const calculateInitialEquity = state => {
     afterRepairValue,
     purchasePrice
   );
-};
+}
 
-const calculateEquityForYear = (state, year) => {
+function calculateEquityForYear(state, year) {
   const initialEquity = calculateInitialEquity(state);
   const amortizationPeriod = getAmortizationPeriod(state);
   if (year === 0) {
@@ -201,9 +201,9 @@ const calculateEquityForYear = (state, year) => {
     loanAmount,
     remainingBalance
   );
-};
+}
 
-const calculateReturnOnEquityForYear = (state, year) => {
+function calculateReturnOnEquityForYear(state, year) {
   const cashFlowForYear = calculateCashFlowForYear(state, year);
   const equityForYear = calculateEquityForYear(state, year);
 
@@ -211,9 +211,9 @@ const calculateReturnOnEquityForYear = (state, year) => {
     cashFlowForYear,
     equityForYear
   );
-};
+}
 
-const calculateReturnOnInvestmentForYear = (state, year) => {
+function calculateReturnOnInvestmentForYear(state, year) {
   const cashFlowForYear = parseFloat(calculateCashFlowForYear(state, year));
   const equityCurrentYear = parseFloat(calculateEquityForYear(state, year));
   const equityPreviousYear = parseFloat(calculateEquityForYear(state, year - 1));
@@ -225,9 +225,9 @@ const calculateReturnOnInvestmentForYear = (state, year) => {
     equityGainedForYear,
     initialInvestment
   );
-};
+}
 
-const mapStateToProps = (state, ownProps) => {
+function mapStateToProps(state, ownProps) {
   const year = ownProps.year;
   return {
     displayEntries: [
@@ -269,7 +269,7 @@ const mapStateToProps = (state, ownProps) => {
       }
     ]
   };
-};
+}
 
 export default connect(
   mapStateToProps

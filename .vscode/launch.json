@@ -6,6 +6,19 @@
   "configurations": [
     {
       "type": "node",
+      "request": "launch",
+      "name": "debug-server",
+      "program": "${workspaceFolder}/src/server/server.js",
+      "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/babel-node",
+      "runtimeArgs": [
+        "--nolazy"
+      ],
+      "env": {
+        "BABEL_ENV": "debug"
+      },
+    },
+    {
+      "type": "node",
       "name": "vscode-jest-tests",
       "request": "launch",
       "args": [
