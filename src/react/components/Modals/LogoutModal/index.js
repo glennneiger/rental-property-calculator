@@ -7,19 +7,13 @@ import {
   clearAllCalculatorFields
 } from '../../../../actions/calculatorFields';
 
-const mapDispatchToProps = dispatch => ({
-  clearAllCalculatorFields: () => {
-    dispatch(clearAllCalculatorFields());
-  },
-  hideModal: () => {
-    dispatch(hideModal());
-  },
-  logoutUser: () => {
-    dispatch(logoutUser());
-  }
-});
+const actions = {
+  clearAllCalculatorFields,
+  hideModal,
+  logoutUser
+};
 
 export default connect(
   null,
-  mapDispatchToProps
+  actions
 )(LogoutModal);
