@@ -9,7 +9,6 @@ import {
   setChangesMade,
   setCurrentTitle
 } from './currentCalculation';
-import { formatClientCalculationForServer } from '../utils/calculationUtils';
 
 const titleCompare = (a, b) => {
   if (a.title < b.title) {
@@ -60,7 +59,7 @@ export const saveCalculation = (
 ) => dispatch => {
   const calcRequest = {
     title,
-    calculation: formatClientCalculationForServer(calculation)
+    calculation
   };
   axios.post('/api/calculation', calcRequest)
     .then(() => {

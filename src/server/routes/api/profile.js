@@ -34,7 +34,7 @@ router.get(
       })
       .catch(err => res.status(404).json(err));
   }
-);
+)
 
 // @route   POST api/profile
 // @desc    Create or edit user profile

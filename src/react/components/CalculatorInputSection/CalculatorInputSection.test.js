@@ -7,14 +7,12 @@ import CollapsibleEditor from '../CollapsibleEditor';
 describe('<CalculatorInputSection />', () => {
   const mockChildren = ['Calculator input section children'];
   const mockTitle = 'Monthly Income';
-  const mockSetChangesMade = jest.fn();
   const mockSetNotesContent = jest.fn();
   const mockToggleNotesEditorCollapsed = jest.fn();
   const baseProps = {
     children: mockChildren,
     notesEditorCollapsed: true,
     notesText: '',
-    setChangesMade: mockSetChangesMade,
     setNotesContent: mockSetNotesContent,
     title: mockTitle,
     toggleNotesEditorCollapsed: mockToggleNotesEditorCollapsed
@@ -65,15 +63,6 @@ describe('<CalculatorInputSection />', () => {
     expect(mockSetNotesContent).toHaveBeenCalledWith(mockText, mockTitle);
 
     mockSetNotesContent.mockClear();
-  });
-  test('handleNotesEditorTextChange calls setChangesMade', () => {
-    const wrapper = shallow(<CalculatorInputSection {...baseProps} />);
-    const mockText = 'Notes about stuff';
-    wrapper.instance().handleNotesEditorTextChange(mockText);
-
-    expect(mockSetChangesMade).toHaveBeenCalledWith(true);
-
-    mockSetChangesMade.mockClear();
   });
   test('getNotesEditorExpandCollapseIcon returns plus when editor collapsed', () => {
     const props = {

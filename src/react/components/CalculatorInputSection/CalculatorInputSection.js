@@ -22,9 +22,8 @@ class CalculatorInputSection extends Component {
   }
 
   handleNotesEditorTextChange(text) {
-    const { title: section, setNotesContent, setChangesMade } = this.props;
+    const { title: section, setNotesContent } = this.props;
     setNotesContent(text, section);
-    setChangesMade(true);
   }
 
   getNotesEditorExpandCollapseIcon() {
@@ -63,8 +62,7 @@ class CalculatorInputSection extends Component {
 CalculatorInputSection.propTypes = {
   children: PropTypes.array,
   notesEditorCollapsed: PropTypes.bool.isRequired,
-  notesText: PropTypes.string.isRequired,
-  setChangesMade: PropTypes.func.isRequired,
+  notesText: PropTypes.string,
   setNotesContent: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   toggleNotesEditorCollapsed: PropTypes.func.isRequired

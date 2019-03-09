@@ -23,7 +23,6 @@ Testing is done using [Jest](https://github.com/facebook/jest), [Chai](https://g
 3. In one terminal window, start the server: `npm run start`
 4. In another terminal window, start the client: `npm run client`
 
-Client-side debugging is done using browser developer tools. Server-side debugging can be done in VS Code by using the **debug server** configuration (launch the same way as for [debugging tests](###Testing)).
 
 ### Testing
 

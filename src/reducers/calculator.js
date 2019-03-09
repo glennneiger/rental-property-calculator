@@ -8,7 +8,6 @@ import {
 import {
   inputSectionData
 } from '../react/components/Calculator/childProps';
-import { formatServerCalculationForClient } from '../utils/calculationUtils';
 
 export function getInitialState() {
   let initialState = {};
@@ -85,7 +84,7 @@ function calculator(state = getInitialState(), action) {
       )
     };
   case LOAD_CALCULATION:
-    return formatServerCalculationForClient(action.payload);
+    return action.payload;
   case CLEAR_ALL_FIELDS:
     return getInitialState();
   default:
