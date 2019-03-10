@@ -24,7 +24,7 @@ router.post(
       title: req.body.title
     }).then(calculation => {
       if (calculation) {
-        Calculation.findOneAndUpdate(
+        return Calculation.findOneAndUpdate(
           {
             user: req.user.id,
             title: req.body.title
@@ -32,12 +32,12 @@ router.post(
           { $set: newCalculation },
           { new: true }
         ).then(updatedCalculation => res.json(updatedCalculation));
-      } else {
-        new Calculation(newCalculation).save()
-          .then(savedCalc => res.json(savedCalc))
-          .catch(err => console.log(err));
       }
-    }).catch(err => console.log(err));
+      return new Calculation(newCalculation).save()
+        .then(savedCalc => res.json(savedCalc));
+    }).catch(err => {
+      console.log(err);
+    });
   }
 );
 
