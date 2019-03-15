@@ -1,8 +1,11 @@
 {
+  "plugins": [
+    "@babel/plugin-proposal-function-bind",
+    "@babel/plugin-proposal-class-properties"
+  ],
   "presets": [
-    "react",
-    "env",
-    "stage-0"
+    "@babel/react",
+    "@babel/env"
   ],
   // Enable VS Code breakpoints in server debugging:
   "env": {

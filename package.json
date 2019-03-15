@@ -16,9 +16,6 @@
     "babel-core": "6.26.0",
     "babel-eslint": "7.2.3",
     "babel-loader": "7.1.2",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react-app": "^3.1.1",
-    "babel-preset-stage-0": "^6.24.1",
     "babel-runtime": "6.26.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
@@ -80,6 +77,10 @@
     "whatwg-fetch": "2.0.3"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "7.3.4",
+    "@babel/plugin-proposal-function-bind": "7.2.0",
+    "@babel/preset-env": "7.3.4",
+    "@babel/preset-react": "7.0.0",
     "babel-cli": "6.26.0",
     "babel-jest": "^20.0.3",
     "babel-watch": "^2.0.7",
@@ -90,7 +91,7 @@
     "enzyme-adapter-react-16": "^1.6.0",
     "eslint-plugin-jest": "^21.24.1",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^23.6.0",
+    "jest": "24.5.0",
     "npm-run-all": "^4.1.2",
     "postcss-cssnext": "^3.1.0",
     "postcss-import": "^11.1.0",
@@ -119,11 +120,6 @@
     "moduleNameMapper": {
       "\\.(css|less|sass|scss)$": "identity-obj-proxy"
     }
-  },
-  "babel": {
-    "presets": [
-      "react-app"
-    ]
   },
   "eslintConfig": {
     "extends": "react-app"
