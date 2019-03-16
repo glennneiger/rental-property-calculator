@@ -3,7 +3,6 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import passport from 'passport';
 import path from 'path';
-import Calculation from './models/Calculation.js';
 
 const users = require('./routes/api/users.js');
 const profile = require('./routes/api/profile.js');
@@ -17,12 +16,7 @@ app.use(bodyParser.json());
 const db = require('./config/keys.js').mongoURI;
 
 mongoose.connect(db, { useNewUrlParser: true })
-  .then(() => {
-    console.log('Mongoose connected to MongoDB');
-    // Calculation.remove({}, function (err) {
-    //   console.log('collection removed');
-    // });
-  })
+  .then(() => console.log('Mongoose connected to MongoDB'))
   .catch(err => console.log(err));
 
 app.use(passport.initialize());

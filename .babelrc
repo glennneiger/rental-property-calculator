@@ -7,7 +7,6 @@
     "@babel/react",
     "@babel/env"
   ],
-  // Enable VS Code breakpoints in server debugging:
   "env": {
     "debug": {
       "sourceMaps": "inline",

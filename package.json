@@ -7,16 +7,12 @@
     "client": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "jest --coverage",
-    "test:watch": "mocha --watch --compilers js:babel-core/register --opts mocha.opts --no-deprecation",
+    "test:watch": "mocha --watch --compilers js:@babel/register --opts mocha.opts --no-deprecation",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run build"
   },
   "dependencies": {
     "autoprefixer": "7.1.6",
     "axios": "^0.18.0",
-    "babel-core": "6.26.0",
-    "babel-eslint": "7.2.3",
-    "babel-loader": "7.1.2",
-    "babel-runtime": "6.26.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "case-sensitive-paths-webpack-plugin": "2.1.1",
@@ -77,13 +73,19 @@
     "whatwg-fetch": "2.0.3"
   },
   "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/runtime": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "7.3.4",
     "@babel/plugin-proposal-function-bind": "7.2.0",
     "@babel/preset-env": "7.3.4",
     "@babel/preset-react": "7.0.0",
-    "babel-cli": "6.26.0",
-    "babel-jest": "^20.0.3",
-    "babel-watch": "^2.0.7",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^9.0.0",
+    "babel-jest": "^23.4.2",
+    "babel-loader": "^8.0.0",
+    "babel-register": "6.26.0",
+    "babel-watch": "7.0.0",
     "chai": "^4.1.2",
     "chai-enzyme": "^1.0.0-beta.1",
     "coveralls": "^3.0.2",
@@ -100,7 +102,9 @@
     "stylelint-config-recommended": "^2.1.0"
   },
   "jest": {
-    "setupTestFrameworkScriptFile": "<rootDir>/buildScripts/testSetup.js",
+    "setupFilesAfterEnv": [
+      "<rootDir>/buildScripts/testSetup.js"
+    ],
     "collectCoverage": true,
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}",
