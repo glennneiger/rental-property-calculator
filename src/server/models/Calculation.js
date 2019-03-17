@@ -13,8 +13,14 @@ const CalculationSchema = new Schema({
     required: true
   },
   calculation: {
-    // TODO: This type should be clearly defined, not just a general Object
-    type: Object
+    type: Map,
+    of: {
+      inputs: {
+        type: Map,
+        of: String
+      },
+      notes: String
+    }
   }
 });
 
