@@ -7,7 +7,7 @@
   width: 100%;
 }
 
-.labelInfoContainer {
+/* .labelInfoContainer {
   display: flex;
   align-items: center;
   margin-bottom: 4px;
@@ -16,7 +16,7 @@
     font-size: 0.8em;
     font-weight: bold;
   }
-}
+} */
 
 .inputDescriptionInfoIcon {
   color: var(--inputLabelIconColor);

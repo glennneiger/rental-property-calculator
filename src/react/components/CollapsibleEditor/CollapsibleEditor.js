@@ -1,9 +1,9 @@
-import React from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 import ReactQuill from 'react-quill';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
-import css from './collapsibleEditor.css';
+const css = require('./collapsibleEditor.css');
 import { NOTES_EDITOR_TRANSITION_LENGTH } from '../../../constants';
 
 /**
@@ -86,11 +86,11 @@ const CollapsibleEditor = ({
   }</TransitionGroup>;
 };
 
-CollapsibleEditor.propTypes = {
-  content: PropTypes.string,
-  handleChange: PropTypes.func.isRequired,
-  isCollapsed: PropTypes.bool.isRequired,
-  width: PropTypes.number.isRequired
-};
+// CollapsibleEditor.propTypes = {
+//   content: PropTypes.string,
+//   handleChange: PropTypes.func.isRequired,
+//   isCollapsed: PropTypes.bool.isRequired,
+//   width: PropTypes.number.isRequired
+// };
 
 export default CollapsibleEditor;

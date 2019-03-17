@@ -1,7 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 
-import css from './futureResults.css';
+import * as css from './collapsibleEditor.css';
+const css = require('./futureResults.css');
 import YearResult from '../YearResult';
 
 const FutureResults = ({
@@ -23,8 +24,8 @@ const FutureResults = ({
   );
 };
 
-FutureResults.propTypes = {
-  yearsForResults: PropTypes.array.isRequired
-};
+// FutureResults.propTypes = {
+//   yearsForResults: PropTypes.array.isRequired
+// };
 
 export default FutureResults;

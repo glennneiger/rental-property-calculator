@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { FaBars, FaWindowClose } from 'react-icons/fa';
 
-import css from './header.css';
+const css = require('./header.css');
 import HeaderAuthInfo from '../HeaderAuthInfo';
 
-class Header extends Component {
+class Header extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -61,13 +61,13 @@ class Header extends Component {
   }
 }
 
-Header.propTypes = {
-  hideSidebar: PropTypes.func.isRequired,
-  history: PropTypes.object,
-  location: PropTypes.object.isRequired,
-  screenWidth: PropTypes.number.isRequired,
-  showSidebar: PropTypes.func.isRequired,
-  sidebarVisible: PropTypes.bool.isRequired
-};
+// Header.propTypes = {
+//   hideSidebar: PropTypes.func.isRequired,
+//   history: PropTypes.object,
+//   location: PropTypes.object.isRequired,
+//   screenWidth: PropTypes.number.isRequired,
+//   showSidebar: PropTypes.func.isRequired,
+//   sidebarVisible: PropTypes.bool.isRequired
+// };
 
 export default Header;

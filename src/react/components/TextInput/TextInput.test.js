@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
 
@@ -13,7 +13,7 @@ describe('<TextInput />', () => {
       width: mockWidth
     };
     wrapper = shallow(
-      <TextInput { ...mockProps }/>
+      <TextInput {...mockProps} />
     );
 
     expect(wrapper.find('input').prop('style')).to.deep.equal({ width: mockWidth });
@@ -30,7 +30,7 @@ describe('<TextInput />', () => {
     const mockProps = {
       height: mockHeight
     };
-    wrapper = shallow(<TextInput { ...mockProps }/>);
+    wrapper = shallow(<TextInput {...mockProps} />);
 
     expect(wrapper.find('input').prop('height')).to.equal(mockHeight);
   });

@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 
-import css from '../modal.css';
+const css = require('../modal.css');
 import BlueButton from '../../BlueButton';
 import { MODAL_SAVE_AS } from '../../../../constants';
 
 /* Modal used when navigating away from a calculation with unsaved changes.
  * Examples: Clicking a ListCalculation, pressing New Calculation button */
-class SaveChangesModal extends Component {
+class SaveChangesModal extends React.Component {
   handleSaveClick = () => {
     const {
       calculationToSave,
@@ -87,7 +87,7 @@ class SaveChangesModal extends Component {
       >
         {this.props.currentTitle
           ? <p>
-            You have unsaved changes to "{ this.props.currentTitle }".
+            You have unsaved changes to "{this.props.currentTitle}".
             Would you like to save?
           </p>
           : <p>You have unsaved changes.
@@ -104,18 +104,18 @@ class SaveChangesModal extends Component {
   }
 }
 
-SaveChangesModal.propTypes = {
-  calculationToSave: PropTypes.object.isRequired,
-  clearAllCalculatorFields: PropTypes.func.isRequired,
-  creatingNewCalculation: PropTypes.bool,
-  currentTitle: PropTypes.string,
-  getCalculationById: PropTypes.func.isRequired,
-  hideModal: PropTypes.func.isRequired,
-  idToGet: PropTypes.string,
-  saveCalculation: PropTypes.func.isRequired,
-  setChangesMade: PropTypes.func.isRequired,
-  setCurrentTitle: PropTypes.func.isRequired,
-  showModal: PropTypes.func.isRequired
-};
+// SaveChangesModal.propTypes = {
+//   calculationToSave: PropTypes.object.isRequired,
+//   clearAllCalculatorFields: PropTypes.func.isRequired,
+//   creatingNewCalculation: PropTypes.bool,
+//   currentTitle: PropTypes.string,
+//   getCalculationById: PropTypes.func.isRequired,
+//   hideModal: PropTypes.func.isRequired,
+//   idToGet: PropTypes.string,
+//   saveCalculation: PropTypes.func.isRequired,
+//   setChangesMade: PropTypes.func.isRequired,
+//   setCurrentTitle: PropTypes.func.isRequired,
+//   showModal: PropTypes.func.isRequired
+// };
 
 export default SaveChangesModal;

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
 
@@ -41,7 +41,7 @@ describe('<YearResult />', () => {
   });
   it('properly renders display entries', () => {
     wrapper = shallow(
-      <YearResult displayEntries={mockDisplayEntries} year={mockYear}/>
+      <YearResult displayEntries={mockDisplayEntries} year={mockYear} />
     );
 
     expect(wrapper.find('DisplayEntry')).to.have.length(2);

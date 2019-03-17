@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { Route } from 'react-router-dom';
-import jwtDecode from 'jwt-decode';
-import Modal from 'react-modal';
+import * as jwtDecode from 'jwt-decode';
+import * as Modal from 'react-modal';
 
 import Header from '../Header';
 import ModalRoot from '../Modals/ModalRoot';
@@ -10,7 +10,7 @@ import LoginPage from '../Authentication/LoginPage';
 import RegisterPage from '../Authentication/RegisterPage';
 import { setAuthToken } from '../../../utils/authUtils';
 import store from '../../../store';
-import css from './app.css';
+const css = require('./app.css');
 import {
   logoutUser,
   setCurrentUser
@@ -30,7 +30,7 @@ if (localStorage.jwtToken) {
   }
 }
 
-class App extends Component {
+class App extends React.Component {
   componentDidMount() {
     Modal.setAppElement('#app');
   }

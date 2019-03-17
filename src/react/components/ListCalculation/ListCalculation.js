@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 import { FaTrash } from 'react-icons/fa';
 import classNames from 'classnames';
@@ -7,9 +7,9 @@ import {
   MODAL_CONFIRM_DELETE_CALCULATION,
   MODAL_SAVE_CHANGES
 } from '../../../constants';
-import css from './listCalculation.css';
+const css = require('./listCalculation.css');
 
-class ListCalculation extends Component {
+class ListCalculation extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -51,14 +51,14 @@ class ListCalculation extends Component {
   }
 }
 
-ListCalculation.propTypes = {
-  calculation: PropTypes.object,
-  changesMade: PropTypes.bool.isRequired,
-  currentTitle: PropTypes.string,
-  getCalculationById: PropTypes.func.isRequired,
-  id: PropTypes.string.isRequired,
-  showModal: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired
-};
+// ListCalculation.propTypes = {
+//   calculation: PropTypes.object,
+//   changesMade: PropTypes.bool.isRequired,
+//   currentTitle: PropTypes.string,
+//   getCalculationById: PropTypes.func.isRequired,
+//   id: PropTypes.string.isRequired,
+//   showModal: PropTypes.func.isRequired,
+//   title: PropTypes.string.isRequired
+// };
 
 export default ListCalculation;

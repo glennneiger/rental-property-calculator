@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 
 import Calculator from '../Calculator';
 import Sidebar from '../Sidebar';
-import css from './calculatorPage.css';
+const css = require('./calculatorPage.css');
 import { SIDEBAR_MAX_SCREEN_WIDTH } from '../../../constants';
 
-class CalculatorPage extends Component {
+class CalculatorPage extends React.Component {
   render() {
     return (
       <div className={css.calculatorPage}>
@@ -24,9 +24,9 @@ class CalculatorPage extends Component {
   }
 }
 
-CalculatorPage.propTypes = {
-  screenWidth: PropTypes.number.isRequired,
-  sidebarVisible: PropTypes.bool.isRequired
-};
+// CalculatorPage.propTypes = {
+//   screenWidth: PropTypes.number.isRequired,
+//   sidebarVisible: PropTypes.bool.isRequired
+// };
 
 export default CalculatorPage;

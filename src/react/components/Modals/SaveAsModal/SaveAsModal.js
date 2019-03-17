@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 
 import TextInput from '../../TextInput';
-import css from '../modal.css';
+const css = require('../modal.css');
 import BlueButton from '../../BlueButton';
 
-class SaveAsModal extends Component {
+class SaveAsModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -79,14 +79,14 @@ class SaveAsModal extends Component {
   }
 }
 
-SaveAsModal.propTypes = {
-  calculationToSave: PropTypes.object.isRequired,
-  clearAllCalculatorFields: PropTypes.func.isRequired,
-  creatingNewCalculation: PropTypes.bool,
-  getCalculationById: PropTypes.func.isRequired,
-  hideModal: PropTypes.func.isRequired,
-  idToGet: PropTypes.string,
-  saveCalculation: PropTypes.func.isRequired
-};
+// SaveAsModal.propTypes = {
+//   calculationToSave: PropTypes.object.isRequired,
+//   clearAllCalculatorFields: PropTypes.func.isRequired,
+//   creatingNewCalculation: PropTypes.bool,
+//   getCalculationById: PropTypes.func.isRequired,
+//   hideModal: PropTypes.func.isRequired,
+//   idToGet: PropTypes.string,
+//   saveCalculation: PropTypes.func.isRequired
+// };
 
 export default SaveAsModal;

@@ -1,7 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 
-import css from './yearResult.css';
+const css = require('./yearResult.css');
+import * as css from './yearResult.css';
 import DisplayEntry from '../DisplayEntry';
 
 const YearResult = ({
@@ -23,9 +24,9 @@ const YearResult = ({
   );
 };
 
-YearResult.propTypes = {
-  displayEntries: PropTypes.array.isRequired,
-  year: PropTypes.number.isRequired
-};
+// YearResult.propTypes = {
+//   displayEntries: PropTypes.array.isRequired,
+//   year: PropTypes.number.isRequired
+// };
 
 export default YearResult;

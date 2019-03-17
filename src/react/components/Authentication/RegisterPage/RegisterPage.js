@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import AuthInput from '../AuthInput';
-import css from '../authentication.css';
+const css = require('../authentication.css');
 import BlueButton from '../../BlueButton';
 
-class RegisterPage extends Component {
+class RegisterPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -88,12 +88,12 @@ class RegisterPage extends Component {
   }
 }
 
-RegisterPage.propTypes = {
-  auth: PropTypes.object.isRequired,
-  clearErrors: PropTypes.func.isRequired,
-  errors: PropTypes.object.isRequired,
-  history: PropTypes.object,
-  registerUser: PropTypes.func.isRequired
-};
+// RegisterPage.propTypes = {
+//   auth: PropTypes.object.isRequired,
+//   clearErrors: PropTypes.func.isRequired,
+//   errors: PropTypes.object.isRequired,
+//   history: PropTypes.object,
+//   registerUser: PropTypes.func.isRequired
+// };
 
 export default RegisterPage;

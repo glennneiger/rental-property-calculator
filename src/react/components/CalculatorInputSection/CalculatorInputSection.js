@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 import { FaMinusSquare, FaPlusSquare } from 'react-icons/fa';
 
-import css from './calculatorInputSection.css';
+import * as css from './calculatorInputSection.css';
+const css = require('./calculatorInputSection.css');
 import { LABEL_NOTES } from '../../../constants/userFacingStrings';
 import CollapsibleEditor from '../CollapsibleEditor';
 import PlusMinusToggleButton from '../PlusMinusToggleButton';
 
-class CalculatorInputSection extends Component {
+class CalculatorInputSection extends React.Component {
   constructor(props) {
     super(props);
     this.handleExpandCollapseNotesClicked = this.handleExpandCollapseNotesClicked
@@ -60,14 +61,14 @@ class CalculatorInputSection extends Component {
   }
 }
 
-CalculatorInputSection.propTypes = {
-  children: PropTypes.array,
-  notesEditorCollapsed: PropTypes.bool.isRequired,
-  notesText: PropTypes.string.isRequired,
-  setChangesMade: PropTypes.func.isRequired,
-  setNotesContent: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
-  toggleNotesEditorCollapsed: PropTypes.func.isRequired
-};
+// CalculatorInputSection.propTypes = {
+//   children: PropTypes.array,
+//   notesEditorCollapsed: PropTypes.bool.isRequired,
+//   notesText: PropTypes.string.isRequired,
+//   setChangesMade: PropTypes.func.isRequired,
+//   setNotesContent: PropTypes.func.isRequired,
+//   title: PropTypes.string.isRequired,
+//   toggleNotesEditorCollapsed: PropTypes.func.isRequired
+// };
 
 export default CalculatorInputSection;

@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 
-import css from '../modal.css';
+const css = require('../modal.css');
 import BlueButton from '../../BlueButton';
 
-class DeleteCalculationModal extends Component {
+class DeleteCalculationModal extends React.Component {
   handleDeleteClick = () => {
     const {
       clearAllCalculatorFields,
@@ -49,15 +49,15 @@ class DeleteCalculationModal extends Component {
   }
 }
 
-DeleteCalculationModal.propTypes = {
-  clearAllCalculatorFields: PropTypes.func.isRequired,
-  currentlySelectedId: PropTypes.string,
-  deleteCalculationWithId: PropTypes.func.isRequired,
-  hideModal: PropTypes.func.isRequired,
-  idToDelete: PropTypes.string.isRequired,
-  setChangesMade: PropTypes.func.isRequired,
-  setCurrentTitle: PropTypes.func.isRequired,
-  titleToDelete: PropTypes.string.isRequired
-};
+// DeleteCalculationModal.propTypes = {
+//   clearAllCalculatorFields: PropTypes.func.isRequired,
+//   currentlySelectedId: PropTypes.string,
+//   deleteCalculationWithId: PropTypes.func.isRequired,
+//   hideModal: PropTypes.func.isRequired,
+//   idToDelete: PropTypes.string.isRequired,
+//   setChangesMade: PropTypes.func.isRequired,
+//   setCurrentTitle: PropTypes.func.isRequired,
+//   titleToDelete: PropTypes.string.isRequired
+// };
 
 export default DeleteCalculationModal;

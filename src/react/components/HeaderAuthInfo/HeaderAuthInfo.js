@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
 import BlueButton from '../BlueButton';
-import css from './headerAuthInfo.css';
+const css = require('./headerAuthInfo.css');
 import { MODAL_CONFIRM_LOGOUT } from '../../../constants';
 
-class NameAndAuthButtons extends Component {
+class NameAndAuthButtons extends React.Component {
   handleLogoutClick = () => {
     this.props.showModal(MODAL_CONFIRM_LOGOUT);
   }
@@ -46,12 +46,12 @@ class NameAndAuthButtons extends Component {
   }
 }
 
-NameAndAuthButtons.propTypes = {
-  history: PropTypes.object,
-  isAuthenticated: PropTypes.bool.isRequired,
-  logoutUser: PropTypes.func.isRequired,
-  showModal: PropTypes.func.isRequired,
-  username: PropTypes.string
-};
+// NameAndAuthButtons.propTypes = {
+//   history: PropTypes.object,
+//   isAuthenticated: PropTypes.bool.isRequired,
+//   logoutUser: PropTypes.func.isRequired,
+//   showModal: PropTypes.func.isRequired,
+//   username: PropTypes.string
+// };
 
 export default NameAndAuthButtons;

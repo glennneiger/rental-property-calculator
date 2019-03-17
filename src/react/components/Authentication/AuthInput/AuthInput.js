@@ -1,8 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import css from '../authentication.css';
+const css = require('../authentication.css');
 
 const AuthInput = ({
   error,
@@ -27,21 +27,21 @@ const AuthInput = ({
         })} />
       {
         error &&
-          (<div className={css.invalidMessage}>{error}</div>)
+        (<div className={css.invalidMessage}>{error}</div>)
       }
     </div>
   );
 };
 
-AuthInput.propTypes = {
-  error: PropTypes.string,
-  handleChange: PropTypes.func.isRequired,
-  label: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  placeholder: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired
-};
+// AuthInput.propTypes = {
+//   error: PropTypes.string,
+//   handleChange: PropTypes.func.isRequired,
+//   label: PropTypes.string.isRequired,
+//   name: PropTypes.string.isRequired,
+//   placeholder: PropTypes.string.isRequired,
+//   type: PropTypes.string.isRequired,
+//   value: PropTypes.string.isRequired
+// };
 
 AuthInput.defaultProps = {
   type: 'text'

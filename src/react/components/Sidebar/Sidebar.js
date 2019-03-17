@@ -1,7 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 
-import css from './sidebar.css';
+const css = require('./sidebar.css');
 import GuestSidebar from '../GuestSidebar';
 import UserSidebar from '../UserSidebar';
 
@@ -10,7 +10,7 @@ const Sidebar = ({
 }) => {
   return (
     <div className={css.sidebar}>
-      { auth.isAuthenticated
+      {auth.isAuthenticated
         ? <UserSidebar />
         : <GuestSidebar />
       }
@@ -18,8 +18,8 @@ const Sidebar = ({
   );
 };
 
-Sidebar.propTypes = {
-  auth: PropTypes.object.isRequired
-};
+// Sidebar.propTypes = {
+//   auth: PropTypes.object.isRequired
+// };
 
 export default Sidebar;

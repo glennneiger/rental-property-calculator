@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
 
@@ -11,7 +11,7 @@ describe('<BlueButton />', () => {
 
   beforeEach(() => {
     wrapper = shallow(
-      <BlueButton name={ exampleButtonName } children={ exampleChild }/>
+      <BlueButton name={exampleButtonName} children={exampleChild} />
     );
   });
 

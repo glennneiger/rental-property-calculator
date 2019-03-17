@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import * as React from 'react';
+import * as classNames from 'classnames';
 import { FaInfoCircle } from 'react-icons/fa';
-import OverlayTrigger from 'react-bootstrap/lib/OverlayTrigger';
-import Tooltip from 'react-bootstrap/lib/Tooltip';
+import * as OverlayTrigger from 'react-bootstrap/lib/OverlayTrigger';
+import * as Tooltip from 'react-bootstrap/lib/Tooltip';
 
-import css from './calculatorInput.css';
+const css = require('./calculatorInput.css');
 import TextInput from '../TextInput';
 import { INPUT_ID_AMORTIZATION_PERIOD } from '../../../constants';
 
-class CalculatorInput extends Component {
+class CalculatorInput extends React.Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
@@ -75,20 +74,20 @@ class CalculatorInput extends Component {
   }
 }
 
-CalculatorInput.propTypes = {
-  content: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number
-  ]).isRequired,
-  inputDescription: PropTypes.string,
-  inputId: PropTypes.string.isRequired,
-  inputType: PropTypes.string,
-  label: PropTypes.string.isRequired,
-  section: PropTypes.string.isRequired,
-  setChangesMade: PropTypes.func.isRequired,
-  sidebarVisible: PropTypes.bool.isRequired,
-  textInputWidth: PropTypes.number,
-  updateInput: PropTypes.func.isRequired
-};
+// CalculatorInput.propTypes = {
+//   content: PropTypes.oneOfType([
+//     PropTypes.string,
+//     PropTypes.number
+//   ]).isRequired,
+//   inputDescription: PropTypes.string,
+//   inputId: PropTypes.string.isRequired,
+//   inputType: PropTypes.string,
+//   label: PropTypes.string.isRequired,
+//   section: PropTypes.string.isRequired,
+//   setChangesMade: PropTypes.func.isRequired,
+//   sidebarVisible: PropTypes.bool.isRequired,
+//   textInputWidth: PropTypes.number,
+//   updateInput: PropTypes.func.isRequired
+// };
 
 export default CalculatorInput;

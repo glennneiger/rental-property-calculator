@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 
-import css from '../modal.css';
+const css = require('../modal.css');
 import BlueButton from '../../BlueButton';
 
-class LogoutModal extends Component {
+class LogoutModal extends React.Component {
   handleLogoutClick = () => {
     this.props.clearAllCalculatorFields();
     this.props.logoutUser();
@@ -35,10 +35,10 @@ class LogoutModal extends Component {
   }
 }
 
-LogoutModal.propTypes = {
-  clearAllCalculatorFields: PropTypes.func.isRequired,
-  hideModal: PropTypes.func.isRequired,
-  logoutUser: PropTypes.func.isRequired
-};
+// LogoutModal.propTypes = {
+//   clearAllCalculatorFields: PropTypes.func.isRequired,
+//   hideModal: PropTypes.func.isRequired,
+//   logoutUser: PropTypes.func.isRequired
+// };
 
 export default LogoutModal;

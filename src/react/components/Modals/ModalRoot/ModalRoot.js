@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -31,9 +31,9 @@ const ModalRoot = ({
   return <SpecificModal {...modalProps} />;
 };
 
-ModalRoot.propTypes = {
-  modalType: PropTypes.string,
-  modalProps: PropTypes.object
-};
+// ModalRoot.propTypes = {
+//   modalType: PropTypes.string,
+//   modalProps: PropTypes.object
+// };
 
 export default ModalRoot;

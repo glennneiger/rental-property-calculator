@@ -1,9 +1,9 @@
-import React from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 import { FaMinusSquare, FaPlusSquare } from 'react-icons/fa';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
-import css from './plusMinusToggleButton.css';
+const css = require('./plusMinusToggleButton.css');
 import { NOTES_EDITOR_TRANSITION_LENGTH } from '../../../constants';
 
 const PlusMinusToggleButton = ({ handleClick, isCollapsed }) => (
@@ -22,9 +22,9 @@ const PlusMinusToggleButton = ({ handleClick, isCollapsed }) => (
   }</TransitionGroup>
 );
 
-PlusMinusToggleButton.propTypes = {
-  handleClick: PropTypes.func.isRequired,
-  isCollapsed: PropTypes.bool.isRequired
-};
+// PlusMinusToggleButton.propTypes = {
+//   handleClick: PropTypes.func.isRequired,
+//   isCollapsed: PropTypes.bool.isRequired
+// };
 
 export default PlusMinusToggleButton;

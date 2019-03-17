@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 
 import ListCalculation from '../ListCalculation';
-import css from './userSidebar.css';
+const css = require('./userSidebar.css');
 import BlueButton from '../BlueButton';
 import {
   MODAL_CONFIRM_LOGOUT,
@@ -10,7 +10,7 @@ import {
   MODAL_SAVE_CHANGES
 } from '../../../constants';
 
-class UserSidebar extends Component {
+class UserSidebar extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -100,16 +100,16 @@ class UserSidebar extends Component {
   }
 }
 
-UserSidebar.propTypes = {
-  calculation: PropTypes.object.isRequired,
-  calculationList: PropTypes.array.isRequired,
-  changesMade: PropTypes.bool.isRequired,
-  clearAllCalculatorFields: PropTypes.func.isRequired,
-  currentTitle: PropTypes.string,
-  getAllCalculations: PropTypes.func.isRequired,
-  saveCalculation: PropTypes.func.isRequired,
-  setCurrentTitle: PropTypes.func.isRequired,
-  showModal: PropTypes.func.isRequired
-};
+// UserSidebar.propTypes = {
+//   calculation: PropTypes.object.isRequired,
+//   calculationList: PropTypes.array.isRequired,
+//   changesMade: PropTypes.bool.isRequired,
+//   clearAllCalculatorFields: PropTypes.func.isRequired,
+//   currentTitle: PropTypes.string,
+//   getAllCalculations: PropTypes.func.isRequired,
+//   saveCalculation: PropTypes.func.isRequired,
+//   setCurrentTitle: PropTypes.func.isRequired,
+//   showModal: PropTypes.func.isRequired
+// };
 
 export default UserSidebar;

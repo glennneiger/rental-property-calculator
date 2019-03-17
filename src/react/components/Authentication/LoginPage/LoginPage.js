@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import AuthInput from '../AuthInput';
-import css from '../authentication.css';
+const css = require('../authentication.css');
 import BlueButton from '../../BlueButton';
 
-class LoginPage extends Component {
+class LoginPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -74,12 +74,12 @@ class LoginPage extends Component {
   }
 }
 
-LoginPage.propTypes = {
-  auth: PropTypes.object.isRequired,
-  clearErrors: PropTypes.func.isRequired,
-  errors: PropTypes.object.isRequired,
-  history: PropTypes.object,
-  loginUser: PropTypes.func.isRequired
-};
+// LoginPage.propTypes = {
+//   auth: PropTypes.object.isRequired,
+//   clearErrors: PropTypes.func.isRequired,
+//   errors: PropTypes.object.isRequired,
+//   history: PropTypes.object,
+//   loginUser: PropTypes.func.isRequired
+// };
 
 export default LoginPage;

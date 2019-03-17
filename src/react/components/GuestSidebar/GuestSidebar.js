@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 
-import css from './guestSidebar.css';
+const css = require('./guestSidebar.css');
 import BlueButton from '../BlueButton';
 
-class GuestSidebar extends Component {
+class GuestSidebar extends React.Component {
   constructor(props) {
     super(props);
     this.handleLoginClick = this.handleLoginClick.bind(this);
@@ -31,8 +31,8 @@ class GuestSidebar extends Component {
   }
 }
 
-GuestSidebar.propTypes = {
-  history: PropTypes.object
-};
+// GuestSidebar.propTypes = {
+//   history: PropTypes.object
+// };
 
 export default GuestSidebar;

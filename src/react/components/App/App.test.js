@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { expect as chaiExpect } from 'chai';
 import { shallow } from 'enzyme';
 import ShallowRenderer from 'react-test-renderer/shallow';
