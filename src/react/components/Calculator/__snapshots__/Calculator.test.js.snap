@@ -98,6 +98,7 @@ exports[`<Calculator /> renders properly with current inputSectionData 1`] = `
         textInputWidth={160}
       />
       <Connect(CalculatorInput)
+        inputDescription="Annual interest rate of the mortgage loan"
         inputId="interestRateInput"
         inputType="number"
         label="Interest Rate (%)"
@@ -105,6 +106,7 @@ exports[`<Calculator /> renders properly with current inputSectionData 1`] = `
         textInputWidth={160}
       />
       <Connect(CalculatorInput)
+        inputDescription="Length of time it will take to pay off the entire mortgage"
         inputId="amortizationPeriodInput"
         inputType="number"
         label="Amortization Period (years)"
@@ -112,6 +114,7 @@ exports[`<Calculator /> renders properly with current inputSectionData 1`] = `
         textInputWidth={160}
       />
       <Connect(CalculatorInput)
+        inputDescription="The market value of the property after you have purchased it and made any initial repairs"
         inputId="afterRepairValueInput"
         inputType="number"
         label="After Repair Value"
@@ -119,6 +122,7 @@ exports[`<Calculator /> renders properly with current inputSectionData 1`] = `
         textInputWidth={160}
       />
       <Connect(CalculatorInput)
+        inputDescription="The price of any initial repairs to the property immediately after purchase"
         inputId="repairCostsInput"
         inputType="number"
         label="Repair Costs"
@@ -126,6 +130,7 @@ exports[`<Calculator /> renders properly with current inputSectionData 1`] = `
         textInputWidth={160}
       />
       <Connect(CalculatorInput)
+        inputDescription="Various costs to finish the purchase transaction; Lawyer fees, inspections, appraisals, PMI, title insurance, title search, etc."
         inputId="closingCostsInput"
         inputType="number"
         label="Closing Costs"
@@ -133,6 +138,7 @@ exports[`<Calculator /> renders properly with current inputSectionData 1`] = `
         textInputWidth={160}
       />
       <Connect(CalculatorInput)
+        inputDescription="Any costs that don't fall in another category that are incurred when acquiring the property"
         inputId="otherInitialCostsInput"
         inputType="number"
         label="Other Initial Costs"
@@ -149,6 +155,7 @@ exports[`<Calculator /> renders properly with current inputSectionData 1`] = `
       title="Monthly Income"
     >
       <Connect(CalculatorInput)
+        inputDescription="Monthly gross rental income collected from tenants"
         inputId="rentalIncomeInput"
         inputType="number"
         label="Rental Income"
@@ -156,6 +163,7 @@ exports[`<Calculator /> renders properly with current inputSectionData 1`] = `
         textInputWidth={160}
       />
       <Connect(CalculatorInput)
+        inputDescription="Monthly gross income from other sources related to the property; Laundry, parking, etc."
         inputId="otherIncomeInput"
         inputType="number"
         label="Other Income"
@@ -172,6 +180,7 @@ exports[`<Calculator /> renders properly with current inputSectionData 1`] = `
       title="Monthly Expenses"
     >
       <Connect(CalculatorInput)
+        inputDescription="Monthly mortgage payment (both principle and interest). Calculated from the loan amount, interest rate and amortization period"
         inputId="mortgageInput"
         inputType="number"
         label="Mortgage"
@@ -179,6 +188,7 @@ exports[`<Calculator /> renders properly with current inputSectionData 1`] = `
         textInputWidth={160}
       />
       <Connect(CalculatorInput)
+        inputDescription="Monthly electricity cost for the property"
         inputId="electricityInput"
         inputType="number"
         label="Electricity"
@@ -186,6 +196,7 @@ exports[`<Calculator /> renders properly with current inputSectionData 1`] = `
         textInputWidth={160}
       />
       <Connect(CalculatorInput)
+        inputDescription="Monthly water and sewer cost for the property"
         inputId="waterAndSewerInput"
         inputType="number"
         label="Water and Sewer"
@@ -193,6 +204,7 @@ exports[`<Calculator /> renders properly with current inputSectionData 1`] = `
         textInputWidth={160}
       />
       <Connect(CalculatorInput)
+        inputDescription="Monthly PMI cost. PMI will be purchased if your down payment is under 20%. Otherwise, leave this blank"
         inputId="privateMortgageInsuranceInput"
         inputType="number"
         label="Private Mortgage Insurance"
@@ -200,6 +212,7 @@ exports[`<Calculator /> renders properly with current inputSectionData 1`] = `
         textInputWidth={160}
       />
       <Connect(CalculatorInput)
+        inputDescription="Monthly garbage collection cost for the property"
         inputId="garbageInput"
         inputType="number"
         label="Garbage"
@@ -207,6 +220,7 @@ exports[`<Calculator /> renders properly with current inputSectionData 1`] = `
         textInputWidth={160}
       />
       <Connect(CalculatorInput)
+        inputDescription="Monthly Homeowners Assocation fees. Usually only relevant if living in a community of some sort, like in a condo. Otherwise, leave this blank"
         inputId="hoaInput"
         inputType="number"
         label="HOA Fees"
@@ -214,6 +228,7 @@ exports[`<Calculator /> renders properly with current inputSectionData 1`] = `
         textInputWidth={160}
       />
       <Connect(CalculatorInput)
+        inputDescription="Monthly property insurance, such as landlord insurance and flood insurance"
         inputId="insuranceInput"
         inputType="number"
         label="Insurance"
@@ -221,6 +236,7 @@ exports[`<Calculator /> renders properly with current inputSectionData 1`] = `
         textInputWidth={160}
       />
       <Connect(CalculatorInput)
+        inputDescription="Yearly percentage of the home value that is paid by the county for property taxes"
         inputId="propertyTaxInput"
         inputType="number"
         label="Property Tax (%)"
@@ -229,6 +245,7 @@ exports[`<Calculator /> renders properly with current inputSectionData 1`] = `
         textInputWidth={160}
       />
       <Connect(CalculatorInput)
+        inputDescription="Percentage of the monthly rent set aside for expected vacancies for the property"
         inputId="vacancyInput"
         inputType="number"
         label="Vacancy (%)"
@@ -237,6 +254,7 @@ exports[`<Calculator /> renders properly with current inputSectionData 1`] = `
         textInputWidth={160}
       />
       <Connect(CalculatorInput)
+        inputDescription="Percentage of the monthly rent set aside for expected minor repairs and maintenance for the property"
         inputId="r&mInput"
         inputType="number"
         label="Repairs & Maintenance (%)"
@@ -245,6 +263,7 @@ exports[`<Calculator /> renders properly with current inputSectionData 1`] = `
         textInputWidth={160}
       />
       <Connect(CalculatorInput)
+        inputDescription="Percentage of the monthly rent set aside for expected major repairs, such as a new roof, hot water heater, or furnace"
         inputId="capExInput"
         inputType="number"
         label="Cap. Ex. (%)"
@@ -253,6 +272,7 @@ exports[`<Calculator /> renders properly with current inputSectionData 1`] = `
         textInputWidth={160}
       />
       <Connect(CalculatorInput)
+        inputDescription="Percentage of the monthly rent set aside to pay a property manager, if one is needed or may be needed in the future"
         inputId="managementInput"
         inputType="number"
         label="Management (%)"
@@ -261,6 +281,7 @@ exports[`<Calculator /> renders properly with current inputSectionData 1`] = `
         textInputWidth={160}
       />
       <Connect(CalculatorInput)
+        inputDescription="Any monthly expenses that don't fall under any of the other categories"
         inputId="otherExpensesInput"
         inputType="number"
         label="Other Expenses"
@@ -277,6 +298,7 @@ exports[`<Calculator /> renders properly with current inputSectionData 1`] = `
       title="Future Projections"
     >
       <Connect(CalculatorInput)
+        inputDescription="Expected yearly appreciation of the property"
         inputId="propertyValueGrowthInput"
         inputType="number"
         label="Annual Property Value Growth (%)"
@@ -284,6 +306,7 @@ exports[`<Calculator /> renders properly with current inputSectionData 1`] = `
         textInputWidth={160}
       />
       <Connect(CalculatorInput)
+        inputDescription="Expected yearly increase of the rent + other income"
         inputId="annualIncomeGrowthInput"
         inputType="number"
         label="Annual Income Growth (%)"
@@ -291,6 +314,7 @@ exports[`<Calculator /> renders properly with current inputSectionData 1`] = `
         textInputWidth={160}
       />
       <Connect(CalculatorInput)
+        inputDescription="Expected yearly increase of expenses that are NOT calculated as a percentage of the property value or rent"
         inputId="annualExpensesGrowthInput"
         inputType="number"
         label="Annual Constant Expenses Growth (%)"

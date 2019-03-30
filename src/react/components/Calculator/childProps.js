@@ -3,6 +3,30 @@ import {
   INPUT_DESCRIPTION_DOWN_PAYMENT,
   INPUT_DESCRIPTION_LOAN_AMOUNT,
   INPUT_DESCRIPTION_PURCHASE_PRICE,
+  INPUT_DESCRIPTION_AFTER_REPAIR_VALUE,
+  INPUT_DESCRIPTION_CAP_EX,
+  INPUT_DESCRIPTION_CLOSING_COSTS,
+  INPUT_DESCRIPTION_INTEREST_RATE,
+  INPUT_DESCRIPTION_AMORTIZATION_PERIOD,
+  INPUT_DESCRIPTION_OTHER_INCOME,
+  INPUT_DESCRIPTION_OTHER_INITIAL_COSTS,
+  INPUT_DESCRIPTION_RENTAL_INCOME,
+  INPUT_DESCRIPTION_REPAIR_COSTS,
+  INPUT_DESCRIPTION_MORTGAGE,
+  INPUT_DESCRIPTION_ELECTRICITY,
+  INPUT_DESCRIPTION_WATER_AND_SEWER,
+  INPUT_DESCRIPTION_PRIVATE_MORTGAGE_INSURANCE,
+  INPUT_DESCRIPTION_GARBAGE,
+  INPUT_DESCRIPTION_HOA,
+  INPUT_DESCRIPTION_INSURANCE,
+  INPUT_DESCRIPTION_PROPERTY_TAX,
+  INPUT_DESCRIPTION_VACANCY,
+  INPUT_DESCRIPTION_REPAIRS_AND_MAINTENANCE,
+  INPUT_DESCRIPTION_MANAGEMENT,
+  INPUT_DESCRIPTION_OTHER_EXPENSES,
+  INPUT_DESCRIPTION_PROPERTY_VALUE_GROWTH,
+  INPUT_DESCRIPTION_ANNUAL_INCOME_GROWTH,
+  INPUT_DESCRIPTION_ANNUAL_CONSTANT_EXPENSES_GROWTH,
   INPUT_ID_AFTER_REPAIR_VALUE,
   INPUT_ID_AMORTIZATION_PERIOD,
   INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH,
@@ -154,36 +178,42 @@ const initialPurchaseInputProps = [
     textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
+    inputDescription: INPUT_DESCRIPTION_INTEREST_RATE,
     inputId: INPUT_ID_INTEREST_RATE,
     inputType: 'number',
     label: LABEL_INTEREST_RATE,
     textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
+    inputDescription: INPUT_DESCRIPTION_AMORTIZATION_PERIOD,
     inputId: INPUT_ID_AMORTIZATION_PERIOD,
     inputType: 'number',
     label: LABEL_AMORTIZATION_PERIOD,
     textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
+    inputDescription: INPUT_DESCRIPTION_AFTER_REPAIR_VALUE,
     inputId: INPUT_ID_AFTER_REPAIR_VALUE,
     inputType: 'number',
     label: LABEL_AFTER_REPAIR_VALUE,
     textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
+    inputDescription: INPUT_DESCRIPTION_REPAIR_COSTS,
     inputId: INPUT_ID_REPAIR_COSTS,
     inputType: 'number',
     label: LABEL_REPAIR_COSTS,
     textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
+    inputDescription: INPUT_DESCRIPTION_CLOSING_COSTS,
     inputId: INPUT_ID_CLOSING_COSTS,
     inputType: 'number',
     label: LABEL_CLOSING_COSTS,
     textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
+    inputDescription: INPUT_DESCRIPTION_OTHER_INITIAL_COSTS,
     inputId: INPUT_ID_OTHER_INITIAL_COSTS,
     inputType: 'number',
     label: LABEL_OTHER_INITIAL_COSTS,
@@ -194,12 +224,14 @@ const initialPurchaseInputProps = [
 /* Only add stuff here to calculate income */
 export const incomeInputProps = [
   {
+    inputDescription: INPUT_DESCRIPTION_RENTAL_INCOME,
     inputId: INPUT_ID_RENTAL_INCOME,
     inputType: 'number',
     label: LABEL_RENTAL_INCOME,
     textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
+    inputDescription: INPUT_DESCRIPTION_OTHER_INCOME,
     inputId: INPUT_ID_OTHER_INCOME,
     inputType: 'number',
     label: LABEL_OTHER_INCOME,
@@ -210,48 +242,56 @@ export const incomeInputProps = [
 /* Only add stuff here to calculate expenses */
 export const expensesInputProps = [
   {
+    inputDescription: INPUT_DESCRIPTION_MORTGAGE,
     inputId: INPUT_ID_MORTGAGE,
     inputType: 'number',
     label: LABEL_MORTGAGE,
     textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
+    inputDescription: INPUT_DESCRIPTION_ELECTRICITY,
     inputId: INPUT_ID_ELECTRICITY,
     inputType: 'number',
     label: LABEL_ELECTRICITY,
     textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
+    inputDescription: INPUT_DESCRIPTION_WATER_AND_SEWER,
     inputId: INPUT_ID_WATER_AND_SEWER,
     inputType: 'number',
     label: LABEL_WATER_AND_SEWER,
     textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
+    inputDescription: INPUT_DESCRIPTION_PRIVATE_MORTGAGE_INSURANCE,
     inputId: INPUT_ID_PRIVATE_MORTGAGE_INSURANCE,
     inputType: 'number',
     label: LABEL_PRIVATE_MORTGAGE_INSURANCE,
     textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
+    inputDescription: INPUT_DESCRIPTION_GARBAGE,
     inputId: INPUT_ID_GARBAGE,
     inputType: 'number',
     label: LABEL_GARBAGE,
     textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
+    inputDescription: INPUT_DESCRIPTION_HOA,
     inputId: INPUT_ID_HOA,
     inputType: 'number',
     label: LABEL_HOA,
     textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
+    inputDescription: INPUT_DESCRIPTION_INSURANCE,
     inputId: INPUT_ID_INSURANCE,
     inputType: 'number',
     label: LABEL_INSURANCE,
     textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
+    inputDescription: INPUT_DESCRIPTION_PROPERTY_TAX,
     inputId: INPUT_ID_PROPERTY_TAX,
     inputType: 'number',
     label: LABEL_PROPERTY_TAX,
@@ -259,6 +299,7 @@ export const expensesInputProps = [
     textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
+    inputDescription: INPUT_DESCRIPTION_VACANCY,
     inputId: INPUT_ID_VACANCY,
     inputType: 'number',
     label: LABEL_VACANCY,
@@ -266,6 +307,7 @@ export const expensesInputProps = [
     textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
+    inputDescription: INPUT_DESCRIPTION_REPAIRS_AND_MAINTENANCE,
     inputId: INPUT_ID_REPAIRS_AND_MAINTENANCE,
     inputType: 'number',
     label: LABEL_REPAIRS_AND_MAINTENANCE,
@@ -273,6 +315,7 @@ export const expensesInputProps = [
     textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
+    inputDescription: INPUT_DESCRIPTION_CAP_EX,
     inputId: INPUT_ID_CAP_EX,
     inputType: 'number',
     label: LABEL_CAP_EX,
@@ -280,6 +323,7 @@ export const expensesInputProps = [
     textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
+    inputDescription: INPUT_DESCRIPTION_MANAGEMENT,
     inputId: INPUT_ID_MANAGEMENT,
     inputType: 'number',
     label: LABEL_MANAGEMENT,
@@ -287,6 +331,7 @@ export const expensesInputProps = [
     textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
+    inputDescription: INPUT_DESCRIPTION_OTHER_EXPENSES,
     inputId: INPUT_ID_OTHER_EXPENSES,
     inputType: 'number',
     label: LABEL_OTHER_EXPENSES,
@@ -296,18 +341,21 @@ export const expensesInputProps = [
 
 export const futureProjectionsInputProps = [
   {
+    inputDescription: INPUT_DESCRIPTION_PROPERTY_VALUE_GROWTH,
     inputId: INPUT_ID_PROPERTY_VALUE_GROWTH,
     inputType: 'number',
     label: LABEL_PROPERTY_VALUE_GROWTH,
     textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
+    inputDescription: INPUT_DESCRIPTION_ANNUAL_INCOME_GROWTH,
     inputId: INPUT_ID_ANNUAL_INCOME_GROWTH,
     inputType: 'number',
     label: LABEL_INCOME_GROWTH,
     textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
+    inputDescription: INPUT_DESCRIPTION_ANNUAL_CONSTANT_EXPENSES_GROWTH,
     inputId: INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH,
     inputType: 'number',
     label: LABEL_CONSTANT_EXPENSES_GROWTH,
