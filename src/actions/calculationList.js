@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 import {
   DELETE_CALCULATION_WITH_ID,
@@ -71,6 +72,7 @@ export const saveCalculation = (
         dispatch(setCurrentTitle(newCurrentTitle));
       }
       dispatch(getAllCalculations());
+      toast('Saved calculation successfully');
     })
     .catch(err => console.log(err));
 };

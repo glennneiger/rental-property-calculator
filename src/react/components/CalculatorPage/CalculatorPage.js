@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { ToastContainer } from 'react-toastify';
 
 import Calculator from '../Calculator';
 import Sidebar from '../Sidebar';
@@ -19,6 +20,7 @@ class CalculatorPage extends Component {
           ? null
           : <Calculator />
         }
+        <ToastContainer />
       </div>
     );
   }
