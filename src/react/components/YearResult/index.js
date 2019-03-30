@@ -21,7 +21,6 @@ import {
 import {
   getAfterRepairValue,
   getAmortizationPeriod,
-  getAnnualConstantExpensesGrowth,
   getAnnualIncomeGrowth,
   getAnnualPropertyValueGrowth,
   getClosingCosts,
@@ -34,6 +33,9 @@ import {
   getOtherInitialCosts,
   getRepairCosts
 } from '../../../utils/stateGetters';
+import {
+  getAnnualConstantExpensesGrowth
+} from '../../../utils/selectors';
 
 function calculatePercentageExpensesForYear(state, year) {
   const annualIncomeGrowth = getAnnualIncomeGrowth(state);

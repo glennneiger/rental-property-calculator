@@ -1,7 +1,7 @@
 import {
   INPUT_ID_AFTER_REPAIR_VALUE,
   INPUT_ID_AMORTIZATION_PERIOD,
-  INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH,
+  // INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH,
   INPUT_ID_ANNUAL_INCOME_GROWTH,
   INPUT_ID_CLOSING_COSTS,
   INPUT_ID_DOWN_PAYMENT,
@@ -19,15 +19,15 @@ import {
   TITLE_MONTHLY_INCOME
 } from '../constants';
 
-export const getAnnualConstantExpensesGrowth = state => {
-  const futureProjections = state.calculator[TITLE_FUTURE_PROJECTIONS];
-  const annualConstantExpensesGrowth = futureProjections.inputs[
-    INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH
-  ];
-  return annualConstantExpensesGrowth
-    ? parseFloat(annualConstantExpensesGrowth)
-    : 0;
-};
+// export const getAnnualConstantExpensesGrowth = state => {
+//   const futureProjections = state.calculator[TITLE_FUTURE_PROJECTIONS];
+//   const annualConstantExpensesGrowth = futureProjections.inputs[
+//     INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH
+//   ];
+//   return annualConstantExpensesGrowth
+//     ? parseFloat(annualConstantExpensesGrowth)
+//     : 0;
+// };
 
 export const getAfterRepairValue = state => {
   const initialPurchase = state.calculator[TITLE_INITIAL_PURCHASE];
