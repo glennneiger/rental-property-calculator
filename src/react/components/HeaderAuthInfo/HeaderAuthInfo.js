@@ -6,7 +6,7 @@ import BlueButton from '../BlueButton';
 import css from './headerAuthInfo.css';
 import { MODAL_CONFIRM_LOGOUT } from '../../../constants';
 
-class NameAndAuthButtons extends Component {
+class HeaderAuthInfo extends Component {
   handleLogoutClick = () => {
     this.props.showModal(MODAL_CONFIRM_LOGOUT);
   }
@@ -46,7 +46,7 @@ class NameAndAuthButtons extends Component {
   }
 }
 
-NameAndAuthButtons.propTypes = {
+HeaderAuthInfo.propTypes = {
   history: PropTypes.object,
   isAuthenticated: PropTypes.bool.isRequired,
   logoutUser: PropTypes.func.isRequired,
@@ -54,4 +54,4 @@ NameAndAuthButtons.propTypes = {
   username: PropTypes.string
 };
 
-export default NameAndAuthButtons;
+export default HeaderAuthInfo;
