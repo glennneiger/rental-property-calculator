@@ -1,19 +1,19 @@
 import {
-  INPUT_ID_AFTER_REPAIR_VALUE,
-  INPUT_ID_AMORTIZATION_PERIOD,
+  // INPUT_ID_AFTER_REPAIR_VALUE,
+  // INPUT_ID_AMORTIZATION_PERIOD,
   // INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH,
-  INPUT_ID_ANNUAL_INCOME_GROWTH,
+  // INPUT_ID_ANNUAL_INCOME_GROWTH,
   INPUT_ID_CLOSING_COSTS,
-  INPUT_ID_DOWN_PAYMENT,
+  // INPUT_ID_DOWN_PAYMENT,
   INPUT_ID_INTEREST_RATE,
   INPUT_ID_LOAN_AMOUNT,
   INPUT_ID_MORTGAGE,
   INPUT_ID_OTHER_INITIAL_COSTS,
-  INPUT_ID_PROPERTY_VALUE_GROWTH,
+  // INPUT_ID_PROPERTY_VALUE_GROWTH,
   INPUT_ID_PURCHASE_PRICE,
   INPUT_ID_REPAIR_COSTS,
-  NUMBER_SYSTEM_DECIMAL,
-  TITLE_FUTURE_PROJECTIONS,
+  // NUMBER_SYSTEM_DECIMAL,
+  // TITLE_FUTURE_PROJECTIONS,
   TITLE_INITIAL_PURCHASE,
   TITLE_MONTHLY_EXPENSES,
   TITLE_MONTHLY_INCOME
@@ -29,52 +29,52 @@ import {
 //     : 0;
 // };
 
-export const getAfterRepairValue = state => {
-  const initialPurchase = state.calculator[TITLE_INITIAL_PURCHASE];
+// export const getAfterRepairValue = state => {
+//   const initialPurchase = state.calculator[TITLE_INITIAL_PURCHASE];
 
-  const propertyValue = initialPurchase.inputs[INPUT_ID_AFTER_REPAIR_VALUE];
-  return propertyValue
-    ? parseFloat(propertyValue, NUMBER_SYSTEM_DECIMAL)
-    : 0;
-};
+//   const propertyValue = initialPurchase.inputs[INPUT_ID_AFTER_REPAIR_VALUE];
+//   return propertyValue
+//     ? parseFloat(propertyValue, NUMBER_SYSTEM_DECIMAL)
+//     : 0;
+// };
 
-export const getAnnualPropertyValueGrowth = state => {
-  const futureProjections = state.calculator[TITLE_FUTURE_PROJECTIONS];
+// export const getAnnualPropertyValueGrowth = state => {
+//   const futureProjections = state.calculator[TITLE_FUTURE_PROJECTIONS];
 
-  const annualPropertyValueGrowth = futureProjections.inputs[
-    INPUT_ID_PROPERTY_VALUE_GROWTH
-  ];
-  return annualPropertyValueGrowth
-    ? parseFloat(annualPropertyValueGrowth)
-    : 0;
-};
+//   const annualPropertyValueGrowth = futureProjections.inputs[
+//     INPUT_ID_PROPERTY_VALUE_GROWTH
+//   ];
+//   return annualPropertyValueGrowth
+//     ? parseFloat(annualPropertyValueGrowth)
+//     : 0;
+// };
 
-export const getAnnualIncomeGrowth = state => {
-  const futureProjections = state.calculator[TITLE_FUTURE_PROJECTIONS];
+// export const getAnnualIncomeGrowth = state => {
+//   const futureProjections = state.calculator[TITLE_FUTURE_PROJECTIONS];
 
-  const annualIncomeGrowth = futureProjections.inputs[INPUT_ID_ANNUAL_INCOME_GROWTH];
-  return annualIncomeGrowth
-    ? parseFloat(annualIncomeGrowth)
-    : 0;
-};
+//   const annualIncomeGrowth = futureProjections.inputs[INPUT_ID_ANNUAL_INCOME_GROWTH];
+//   return annualIncomeGrowth
+//     ? parseFloat(annualIncomeGrowth)
+//     : 0;
+// };
 
-export const getAmortizationPeriod = state => {
-  const initialPurchase = state.calculator[TITLE_INITIAL_PURCHASE];
+// export const getAmortizationPeriod = state => {
+//   const initialPurchase = state.calculator[TITLE_INITIAL_PURCHASE];
 
-  const amortizationPeriod = initialPurchase.inputs[INPUT_ID_AMORTIZATION_PERIOD];
-  return amortizationPeriod
-    ? parseInt(amortizationPeriod)
-    : 0;
-};
+//   const amortizationPeriod = initialPurchase.inputs[INPUT_ID_AMORTIZATION_PERIOD];
+//   return amortizationPeriod
+//     ? parseInt(amortizationPeriod)
+//     : 0;
+// };
 
-export const getDownPayment = state => {
-  const initialPurchase = state.calculator[TITLE_INITIAL_PURCHASE];
+// export const getDownPayment = state => {
+//   const initialPurchase = state.calculator[TITLE_INITIAL_PURCHASE];
 
-  const downPayment = initialPurchase.inputs[INPUT_ID_DOWN_PAYMENT];
-  return downPayment
-    ? parseFloat(downPayment)
-    : 0;
-};
+//   const downPayment = initialPurchase.inputs[INPUT_ID_DOWN_PAYMENT];
+//   return downPayment
+//     ? parseFloat(downPayment)
+//     : 0;
+// };
 
 export const getRepairCosts = state => {
   const initialPurchase = state.calculator[TITLE_INITIAL_PURCHASE];
