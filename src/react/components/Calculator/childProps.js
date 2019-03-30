@@ -3,6 +3,14 @@ import {
   INPUT_DESCRIPTION_DOWN_PAYMENT,
   INPUT_DESCRIPTION_LOAN_AMOUNT,
   INPUT_DESCRIPTION_PURCHASE_PRICE,
+  INPUT_DESCRIPTION_AFTER_REPAIR_VALUE,
+  INPUT_DESCRIPTION_CLOSING_COSTS,
+  INPUT_DESCRIPTION_INTEREST_RATE,
+  INPUT_DESCRIPTION_AMORTIZATION_PERIOD,
+  INPUT_DESCRIPTION_OTHER_INCOME,
+  INPUT_DESCRIPTION_OTHER_INITIAL_COSTS,
+  INPUT_DESCRIPTION_RENTAL_INCOME,
+  INPUT_DESCRIPTION_REPAIR_COSTS,
   INPUT_ID_AFTER_REPAIR_VALUE,
   INPUT_ID_AMORTIZATION_PERIOD,
   INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH,
@@ -154,36 +162,42 @@ const initialPurchaseInputProps = [
     textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
+    inputDescription: INPUT_DESCRIPTION_INTEREST_RATE,
     inputId: INPUT_ID_INTEREST_RATE,
     inputType: 'number',
     label: LABEL_INTEREST_RATE,
     textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
+    inputDescription: INPUT_DESCRIPTION_AMORTIZATION_PERIOD,
     inputId: INPUT_ID_AMORTIZATION_PERIOD,
     inputType: 'number',
     label: LABEL_AMORTIZATION_PERIOD,
     textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
+    inputDescription: INPUT_DESCRIPTION_AFTER_REPAIR_VALUE,
     inputId: INPUT_ID_AFTER_REPAIR_VALUE,
     inputType: 'number',
     label: LABEL_AFTER_REPAIR_VALUE,
     textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
+    inputDescription: INPUT_DESCRIPTION_REPAIR_COSTS,
     inputId: INPUT_ID_REPAIR_COSTS,
     inputType: 'number',
     label: LABEL_REPAIR_COSTS,
     textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
+    inputDescription: INPUT_DESCRIPTION_CLOSING_COSTS,
     inputId: INPUT_ID_CLOSING_COSTS,
     inputType: 'number',
     label: LABEL_CLOSING_COSTS,
     textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
+    inputDescription: INPUT_DESCRIPTION_OTHER_INITIAL_COSTS,
     inputId: INPUT_ID_OTHER_INITIAL_COSTS,
     inputType: 'number',
     label: LABEL_OTHER_INITIAL_COSTS,
@@ -194,12 +208,14 @@ const initialPurchaseInputProps = [
 /* Only add stuff here to calculate income */
 export const incomeInputProps = [
   {
+    inputDescription: INPUT_DESCRIPTION_RENTAL_INCOME,
     inputId: INPUT_ID_RENTAL_INCOME,
     inputType: 'number',
     label: LABEL_RENTAL_INCOME,
     textInputWidth: CALCULATOR_INPUT_WIDTH_DEFAULT
   },
   {
+    inputDescription: INPUT_DESCRIPTION_OTHER_INCOME,
     inputId: INPUT_ID_OTHER_INCOME,
     inputType: 'number',
     label: LABEL_OTHER_INCOME,

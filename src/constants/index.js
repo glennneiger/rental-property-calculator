@@ -1,7 +1,7 @@
 export const CALCULATOR_INPUT_WIDTH_DEFAULT = 160;
 
-// A few example input descriptions
 // TODO: generate content for the rest of the input descriptions
+// Initial Costs
 export const INPUT_DESCRIPTION_DOWN_PAYMENT =
   'Initial payment towards the purchase price';
 export const INPUT_DESCRIPTION_LOAN_AMOUNT =
@@ -9,6 +9,28 @@ export const INPUT_DESCRIPTION_LOAN_AMOUNT =
   'the amount of money borrowed to buy the property';
 export const INPUT_DESCRIPTION_PURCHASE_PRICE =
   'Full purchase price of the property';
+export const INPUT_DESCRIPTION_INTEREST_RATE =
+  'Annual interest rate of your mortgage loan';
+export const INPUT_DESCRIPTION_AMORTIZATION_PERIOD =
+  'Length of time it will take to pay off the entire mortgage';
+export const INPUT_DESCRIPTION_AFTER_REPAIR_VALUE =
+  'The market value of the property after you have purchased it and made ' +
+  'any initial repairs';
+export const INPUT_DESCRIPTION_REPAIR_COSTS =
+  'The price of any initial repairs to the property immediately after purchase';
+export const INPUT_DESCRIPTION_CLOSING_COSTS =
+  'Various costs to finish the purchase transaction; Lawyer fees, inspections, ' +
+  'appraisals, PMI, title insurance, title search, etc.';
+export const INPUT_DESCRIPTION_OTHER_INITIAL_COSTS =
+  'Any costs that don\'t fall in another category that are incurred when ' +
+  'acquiring the property';
+
+// Income
+export const INPUT_DESCRIPTION_RENTAL_INCOME =
+  'Monthly gross rental income collected from tenants';
+export const INPUT_DESCRIPTION_OTHER_INCOME =
+  'Monthly gross income from other sources related to the property; ' +
+  'Laundry, parking, etc.';
 
 export const INPUT_ID_AFTER_REPAIR_VALUE = 'afterRepairValueInput';
 export const INPUT_ID_AMORTIZATION_PERIOD = 'amortizationPeriodInput';
@@ -55,7 +77,8 @@ export const LABEL_AMORTIZATION_PERIOD = 'Amortization Period (years)';
 export const LABEL_CAP_EX = 'Cap. Ex. (%)';
 export const LABEL_CITY = 'City';
 export const LABEL_CLOSING_COSTS = 'Closing Costs';
-export const LABEL_CONSTANT_EXPENSES_GROWTH = 'Annual Constant Expenses Growth (%)';
+export const LABEL_CONSTANT_EXPENSES_GROWTH =
+  'Annual Constant Expenses Growth (%)';
 export const LABEL_COUNTRY = 'Country';
 export const LABEL_DOWN_PAYMENT = 'Down Payment';
 export const LABEL_ELECTRICITY = 'Electricity';
