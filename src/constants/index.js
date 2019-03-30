@@ -10,7 +10,7 @@ export const INPUT_DESCRIPTION_LOAN_AMOUNT =
 export const INPUT_DESCRIPTION_PURCHASE_PRICE =
   'Full purchase price of the property';
 export const INPUT_DESCRIPTION_INTEREST_RATE =
-  'Annual interest rate of your mortgage loan';
+  'Annual interest rate of the mortgage loan';
 export const INPUT_DESCRIPTION_AMORTIZATION_PERIOD =
   'Length of time it will take to pay off the entire mortgage';
 export const INPUT_DESCRIPTION_AFTER_REPAIR_VALUE =
@@ -25,12 +25,57 @@ export const INPUT_DESCRIPTION_OTHER_INITIAL_COSTS =
   'Any costs that don\'t fall in another category that are incurred when ' +
   'acquiring the property';
 
-// Income
+// Monthly Income
 export const INPUT_DESCRIPTION_RENTAL_INCOME =
   'Monthly gross rental income collected from tenants';
 export const INPUT_DESCRIPTION_OTHER_INCOME =
   'Monthly gross income from other sources related to the property; ' +
   'Laundry, parking, etc.';
+
+// Monthly Expenses
+export const INPUT_DESCRIPTION_MORTGAGE =
+  'Monthly mortgage payment (both principle and interest). ' +
+  'Calculated from the loan amount, interest rate and amortization period';
+export const INPUT_DESCRIPTION_ELECTRICITY =
+  'Monthly electricity cost for the property';
+export const INPUT_DESCRIPTION_WATER_AND_SEWER =
+  'Monthly water and sewer cost for the property';
+export const INPUT_DESCRIPTION_PRIVATE_MORTGAGE_INSURANCE =
+  'Monthly PMI cost. PMI will be purchased if your down payment ' +
+  'is under 20%. Otherwise, leave this blank';
+export const INPUT_DESCRIPTION_GARBAGE =
+  'Monthly garbage collection cost for the property';
+export const INPUT_DESCRIPTION_HOA =
+  'Monthly Homeowners Assocation fees. Usually only relevant if ' +
+  'living in a community of some sort, like in a condo. Otherwise, ' +
+  'leave this blank';
+export const INPUT_DESCRIPTION_INSURANCE =
+  'Monthly property insurance, such as landlord insurance and flood insurance';
+export const INPUT_DESCRIPTION_PROPERTY_TAX =
+  'Yearly percentage of the home value that is paid by the county for ' +
+  'property taxes';
+export const INPUT_DESCRIPTION_VACANCY =
+  'Percentage of the monthly rent set aside for expected vacancies for the property';
+export const INPUT_DESCRIPTION_REPAIRS_AND_MAINTENANCE =
+  'Percentage of the monthly rent set aside for expected minor repairs ' +
+  'and maintenance for the property';
+export const INPUT_DESCRIPTION_CAP_EX =
+  'Percentage of the monthly rent set aside for expected major repairs, such as ' +
+  'a new roof, hot water heater, or furnace';
+export const INPUT_DESCRIPTION_MANAGEMENT =
+  'Percentage of the monthly rent set aside to pay a property manager, ' +
+  'if one is needed or may be needed in the future';
+export const INPUT_DESCRIPTION_OTHER_EXPENSES =
+  'Any monthly expenses that don\'t fall under any of the other categories';
+
+// Future Projections
+export const INPUT_DESCRIPTION_PROPERTY_VALUE_GROWTH =
+  'Expected yearly appreciation of the property';
+export const INPUT_DESCRIPTION_ANNUAL_INCOME_GROWTH =
+  'Expected yearly increase of the rent + other income';
+export const INPUT_DESCRIPTION_ANNUAL_CONSTANT_EXPENSES_GROWTH =
+  'Expected yearly increase of expenses that are NOT calculated ' +
+  'as a percentage of the property value or rent';
 
 export const INPUT_ID_AFTER_REPAIR_VALUE = 'afterRepairValueInput';
 export const INPUT_ID_AMORTIZATION_PERIOD = 'amortizationPeriodInput';
