@@ -1,6 +1,5 @@
 export const CALCULATOR_INPUT_WIDTH_DEFAULT = 160;
 
-// TODO: generate content for the rest of the input descriptions
 // Initial Costs
 export const INPUT_DESCRIPTION_DOWN_PAYMENT =
   'Initial payment towards the purchase price';
