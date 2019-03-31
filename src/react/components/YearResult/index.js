@@ -17,23 +17,13 @@ import {
   calculateReturnOnInvestmentForYear as calculateReturnOnInvestmentForYearUtil,
   calculateYearCashFlow as calculateYearCashFlowUtil
 } from '../../../utils/calculationUtils';
-import {
-  getClosingCosts,
-  getInitialLoanAmount,
-  getInitialPurchasePrice,
-  getInterestRate,
-  getMonthlyExpenses,
-  getMonthlyIncome,
-  getOtherInitialCosts,
-  getRepairCosts
-} from '../../../utils/stateGetters';
-import * as selectors from '../../../utils/selectors';
+import * as selectors from '../../../selectors';
 
 function calculatePercentageExpensesForYear(state, year) {
   const annualIncomeGrowth = selectors.getAnnualIncomeGrowth(state);
   const annualPVGrowth = selectors.getAnnualPropertyValueGrowth(state);
-  const monthlyIncome = getMonthlyIncome(state);
-  const monthlyExpenses = getMonthlyExpenses(state);
+  const monthlyIncome = selectors.getMonthlyIncome(state);
+  const monthlyExpenses = selectors.getMonthlyExpenses(state);
   const propertyValue = selectors.getAfterRepairValue(state);
 
   return calculatePercentageExpensesForYearUtil(
@@ -47,7 +37,7 @@ function calculatePercentageExpensesForYear(state, year) {
 }
 
 function calculateConstantExpensesForYear(state, year) {
-  const monthlyExpenses = getMonthlyExpenses(state);
+  const monthlyExpenses = selectors.getMonthlyExpenses(state);
   const annualConstantExpensesGrowth = selectors.getAnnualConstantExpensesGrowth(
     state
   );
@@ -75,7 +65,7 @@ function calculateExpensesForYear(state, year) {
 }
 
 function calculateIncomeForYear(state, year) {
-  const monthlyIncome = getMonthlyIncome(state);
+  const monthlyIncome = selectors.getMonthlyIncome(state);
   const annualIncomeGrowth = selectors.getAnnualIncomeGrowth(state);
 
   return calculateIncomeForYearUtil(
@@ -89,7 +79,7 @@ function calculateMortgageForYear(state, year) {
   const annualConstantExpensesGrowth = selectors.getAnnualConstantExpensesGrowth(
     state
   );
-  const monthlyExpenses = getMonthlyExpenses(state);
+  const monthlyExpenses = selectors.getMonthlyExpenses(state);
 
   return calculateMortgageForYearUtil(
     annualConstantExpensesGrowth,
@@ -118,9 +108,9 @@ function calculateCashFlowForYear(state, year) {
   down payment + repair costs + closing costs + other initial costs */
 function calculateInitialInvestment(state) {
   const downPayment = selectors.getDownPayment(state);
-  const repairCosts = getRepairCosts(state);
-  const closingCosts = getClosingCosts(state);
-  const otherCosts = getOtherInitialCosts(state);
+  const repairCosts = selectors.getRepairCosts(state);
+  const closingCosts = selectors.getClosingCosts(state);
+  const otherCosts = selectors.getOtherInitialCosts(state);
 
   return calculateInitialInvestmentUtil(
     downPayment,
@@ -153,8 +143,8 @@ function calculatePropertyValueForYear(state, year) {
 }
 
 function calculateRemainingLoanBalanceForYear(state, year) {
-  const initialLoanAmount = getInitialLoanAmount(state);
-  const interestRate = getInterestRate(state);
+  const initialLoanAmount = selectors.getInitialLoanAmount(state);
+  const interestRate = selectors.getInterestRate(state);
   const amortizationPeriod = selectors.getAmortizationPeriod(state);
 
   return calculateRemainingLoanBalanceForYearUtil(
@@ -169,7 +159,7 @@ function calculateRemainingLoanBalanceForYear(state, year) {
 function calculateInitialEquity(state) {
   const downPayment = selectors.getDownPayment(state);
   const afterRepairValue = selectors.getAfterRepairValue(state);
-  const purchasePrice = getInitialPurchasePrice(state);
+  const purchasePrice = selectors.getInitialPurchasePrice(state);
 
   return calculateInitialEquityUtil(
     downPayment,
@@ -189,7 +179,7 @@ function calculateEquityForYear(state, year) {
   }
   const propertyValueForYear = calculatePropertyValueForYear(state, year);
   const initialPropertyValue = selectors.getAfterRepairValue(state);
-  const loanAmount = getInitialLoanAmount(state);
+  const loanAmount = selectors.getInitialLoanAmount(state);
   const remainingBalance = calculateRemainingLoanBalanceForYear(state, year);
 
   return calculateEquityForYearUtil(
