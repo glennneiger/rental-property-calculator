@@ -20,7 +20,7 @@ class CalculatorPage extends Component {
           ? null
           : <Calculator />
         }
-        <ToastContainer autoClose={3000} position={toast.POSITION.BOTTOM_CENTER} />
+        <ToastContainer autoClose={3000} position={toast.POSITION.BOTTOM_RIGHT} />
       </div>
     );
   }
