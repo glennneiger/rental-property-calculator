@@ -6,106 +6,76 @@ import * as constants from '../constants';
 
 export const getMonthlyIncome = state => calculatorSectionsSelectorFactory(
   constants.TITLE_MONTHLY_INCOME
-)(
-  state
-);
+)(state);
 
 export const getMonthlyExpenses = state => calculatorSectionsSelectorFactory(
   constants.TITLE_MONTHLY_EXPENSES
-)(
-  state
-);
+)(state);
 
 export const getAnnualConstantExpensesGrowth = state =>
   calculatorFieldsSelectorFactory(
     constants.TITLE_FUTURE_PROJECTIONS,
     constants.INPUT_ID_ANNUAL_CONSTANT_EXPENSES_GROWTH
-  )(
-    state
-  );
+  )(state);
 
 export const getAfterRepairValue = state => calculatorFieldsSelectorFactory(
   constants.TITLE_INITIAL_PURCHASE,
   constants.INPUT_ID_AFTER_REPAIR_VALUE,
   val => parseFloat(val, constants.NUMBER_SYSTEM_DECIMAL)
-)(
-  state
-);
+)(state);
 
 export const getAnnualPropertyValueGrowth = state => calculatorFieldsSelectorFactory(
   constants.TITLE_FUTURE_PROJECTIONS,
   constants.INPUT_ID_PROPERTY_VALUE_GROWTH
-)(
-  state
-);
+)(state);
 
 export const getAnnualIncomeGrowth = state => calculatorFieldsSelectorFactory(
   constants.TITLE_FUTURE_PROJECTIONS,
   constants.INPUT_ID_ANNUAL_INCOME_GROWTH
-)(
-  state
-);
+)(state);
 
 export const getAmortizationPeriod = state => calculatorFieldsSelectorFactory(
   constants.TITLE_INITIAL_PURCHASE,
   constants.INPUT_ID_AMORTIZATION_PERIOD,
   parseInt
-)(
-  state
-);
+)(state);
 
 export const getDownPayment = state => calculatorFieldsSelectorFactory(
   constants.TITLE_INITIAL_PURCHASE,
   constants.INPUT_ID_DOWN_PAYMENT
-)(
-  state
-);
+)(state);
 
 export const getRepairCosts = state => calculatorFieldsSelectorFactory(
   constants.TITLE_INITIAL_PURCHASE,
   constants.INPUT_ID_REPAIR_COSTS
-)(
-  state
-);
+)(state);
 
 export const getClosingCosts = state => calculatorFieldsSelectorFactory(
   constants.TITLE_INITIAL_PURCHASE,
   constants.INPUT_ID_CLOSING_COSTS
-)(
-  state
-);
+)(state);
 
 export const getOtherInitialCosts = state => calculatorFieldsSelectorFactory(
   constants.TITLE_INITIAL_PURCHASE,
   constants.INPUT_ID_OTHER_INITIAL_COSTS
-)(
-  state
-);
+)(state);
 
 export const getInitialPurchasePrice = state => calculatorFieldsSelectorFactory(
   constants.TITLE_INITIAL_PURCHASE,
   constants.INPUT_ID_PURCHASE_PRICE
-)(
-  state
-);
+)(state);
 
 export const getMonthlyMortgage = state => calculatorFieldsSelectorFactory(
   constants.TITLE_MONTHLY_EXPENSES,
   constants.INPUT_ID_MORTGAGE
-)(
-  state
-);
+)(state);
 
 export const getInterestRate = state => calculatorFieldsSelectorFactory(
   constants.TITLE_INITIAL_PURCHASE,
   constants.INPUT_ID_INTEREST_RATE
-)(
-  state
-);
+)(state);
 
 export const getInitialLoanAmount = state => calculatorFieldsSelectorFactory(
   constants.TITLE_INITIAL_PURCHASE,
   constants.INPUT_ID_LOAN_AMOUNT
-)(
-  state
-);
+)(state);
