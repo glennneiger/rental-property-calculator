@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 
 import Calculator from '../Calculator';
 import Sidebar from '../Sidebar';
@@ -20,7 +20,7 @@ class CalculatorPage extends Component {
           ? null
           : <Calculator />
         }
-        <ToastContainer />
+        <ToastContainer autoClose={3000} position={toast.POSITION.BOTTOM_CENTER} />
       </div>
     );
   }

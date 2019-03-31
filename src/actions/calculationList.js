@@ -71,8 +71,8 @@ export const saveCalculation = (
       if (setTitle) {
         dispatch(setCurrentTitle(newCurrentTitle));
       }
+      toast.info('Calculation saved');
       dispatch(getAllCalculations());
-      toast('Saved calculation successfully');
     })
     .catch(err => console.log(err));
 };
