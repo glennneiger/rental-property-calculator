@@ -87,7 +87,7 @@ class SaveChangesModal extends Component {
       >
         {this.props.currentTitle
           ? <p>
-            You have unsaved changes to "{ this.props.currentTitle }".
+            You have unsaved changes to "{this.props.currentTitle}".
             Would you like to save?
           </p>
           : <p>You have unsaved changes.

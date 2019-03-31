@@ -6,6 +6,30 @@ exports[`<CalculatorPage /> renders correctly with Sidebar and Calculator showin
 >
   <Connect(Sidebar) />
   <Connect(Calculator) />
+  <ToastContainer
+    autoClose={3000}
+    bodyClassName={null}
+    className={null}
+    closeButton={
+      <CloseButton
+        ariaLabel="close"
+      />
+    }
+    closeOnClick={true}
+    draggable={true}
+    draggablePercent={80}
+    hideProgressBar={false}
+    newestOnTop={false}
+    pauseOnFocusLoss={true}
+    pauseOnHover={true}
+    position="bottom-right"
+    progressClassName={null}
+    progressStyle={null}
+    rtl={false}
+    style={null}
+    toastClassName={null}
+    transition={[Function]}
+  />
 </div>
 `;
 
@@ -14,6 +38,30 @@ exports[`<CalculatorPage /> renders correctly with only Calculator showing 1`] =
   className="calculatorPage"
 >
   <Connect(Calculator) />
+  <ToastContainer
+    autoClose={3000}
+    bodyClassName={null}
+    className={null}
+    closeButton={
+      <CloseButton
+        ariaLabel="close"
+      />
+    }
+    closeOnClick={true}
+    draggable={true}
+    draggablePercent={80}
+    hideProgressBar={false}
+    newestOnTop={false}
+    pauseOnFocusLoss={true}
+    pauseOnHover={true}
+    position="bottom-right"
+    progressClassName={null}
+    progressStyle={null}
+    rtl={false}
+    style={null}
+    toastClassName={null}
+    transition={[Function]}
+  />
 </div>
 `;
 
@@ -22,5 +70,29 @@ exports[`<CalculatorPage /> renders correctly with only Sidebar showing 1`] = `
   className="calculatorPage"
 >
   <Connect(Sidebar) />
+  <ToastContainer
+    autoClose={3000}
+    bodyClassName={null}
+    className={null}
+    closeButton={
+      <CloseButton
+        ariaLabel="close"
+      />
+    }
+    closeOnClick={true}
+    draggable={true}
+    draggablePercent={80}
+    hideProgressBar={false}
+    newestOnTop={false}
+    pauseOnFocusLoss={true}
+    pauseOnHover={true}
+    position="bottom-right"
+    progressClassName={null}
+    progressStyle={null}
+    rtl={false}
+    style={null}
+    toastClassName={null}
+    transition={[Function]}
+  />
 </div>
 `;
