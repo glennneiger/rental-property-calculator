@@ -84,7 +84,10 @@ class UserSidebar extends Component {
           </ul>
           : <div>No calculations to display</div>}
         <div className={css.saveButtons}>
-          <BlueButton onClick={this.handleSaveClick}>Save</BlueButton>
+          <BlueButton disabled={!this.props.changesMade}
+            onClick={this.handleSaveClick}>
+            Save
+          </BlueButton>
           <BlueButton onClick={this.handleSaveAsClick}>Save As...</BlueButton>
         </div>
         <BlueButton id={css.newCalcButton}
