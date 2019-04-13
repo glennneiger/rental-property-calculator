@@ -63,7 +63,7 @@ class CalculatorInput extends Component {
             </OverlayTrigger>
             : null}
         </div>
-        <TextInput type={'text'}
+        <TextInput type={this.props.inputType}
           id={inputId}
           style={{ width: textInputWidth }}
           value={content}
