@@ -1,48 +1,17 @@
 import { connect } from 'react-redux';
 
 import YearResult from './YearResult';
-import {
-  calculateCashOnCashReturn as calculateCashOnCashReturnUtil,
-  calculateConstantExpensesForYear as calculateConstantExpensesForYearUtil,
-  calculateEquityForYear as calculateEquityForYearUtil,
-  calculateExpensesForYear as calculateExpensesForYearUtil,
-  calculateIncomeForYear as calculateIncomeForYearUtil,
-  calculateInitialEquity as calculateInitialEquityUtil,
-  calculateInitialInvestment as calculateInitialInvestmentUtil,
-  calculateMortgageForYear as calculateMortgageForYearUtil,
-  calculatePercentageExpensesForYear as calculatePercentageExpensesForYearUtil,
-  calculatePropertyValueForYear as calculatePropertyValueForYearUtil,
-  calculateRemainingLoanBalanceForYear
-  as calculateRemainingLoanBalanceForYearUtil,
-  calculateReturnOnEquityForYear as calculateReturnOnEquityForYearUtil,
-  calculateReturnOnInvestmentForYear as calculateReturnOnInvestmentForYearUtil,
-  calculateYearCashFlow as calculateYearCashFlowUtil
-} from '../../../utils/calculationUtils';
-import {
-  getAfterRepairValue,
-  getAmortizationPeriod,
-  getAnnualConstantExpensesGrowth,
-  getAnnualIncomeGrowth,
-  getAnnualPropertyValueGrowth,
-  getClosingCosts,
-  getDownPayment,
-  getInitialLoanAmount,
-  getInitialPurchasePrice,
-  getInterestRate,
-  getMonthlyExpenses,
-  getMonthlyIncome,
-  getOtherInitialCosts,
-  getRepairCosts
-} from '../../../utils/stateGetters';
+import * as calculationUtils from '../../../utils/calculationUtils';
+import * as selectors from '../../../selectors';
 
 function calculatePercentageExpensesForYear(state, year) {
-  const annualIncomeGrowth = getAnnualIncomeGrowth(state);
-  const annualPVGrowth = getAnnualPropertyValueGrowth(state);
-  const monthlyIncome = getMonthlyIncome(state);
-  const monthlyExpenses = getMonthlyExpenses(state);
-  const propertyValue = getAfterRepairValue(state);
+  const annualIncomeGrowth = selectors.getAnnualIncomeGrowth(state);
+  const annualPVGrowth = selectors.getAnnualPropertyValueGrowth(state);
+  const monthlyIncome = selectors.getMonthlyIncome(state);
+  const monthlyExpenses = selectors.getMonthlyExpenses(state);
+  const propertyValue = selectors.getAfterRepairValue(state);
 
-  return calculatePercentageExpensesForYearUtil(
+  return calculationUtils.calculatePercentageExpensesForYear(
     annualIncomeGrowth,
     annualPVGrowth,
     monthlyIncome,
@@ -53,10 +22,12 @@ function calculatePercentageExpensesForYear(state, year) {
 }
 
 function calculateConstantExpensesForYear(state, year) {
-  const monthlyExpenses = getMonthlyExpenses(state);
-  const annualConstantExpensesGrowth = getAnnualConstantExpensesGrowth(state);
+  const monthlyExpenses = selectors.getMonthlyExpenses(state);
+  const annualConstantExpensesGrowth = selectors.getAnnualConstantExpensesGrowth(
+    state
+  );
 
-  return calculateConstantExpensesForYearUtil(
+  return calculationUtils.calculateConstantExpensesForYear(
     annualConstantExpensesGrowth,
     monthlyExpenses,
     year
@@ -72,17 +43,17 @@ function calculateExpensesForYear(state, year) {
     state,
     year
   );
-  return calculateExpensesForYearUtil(
+  return calculationUtils.calculateExpensesForYear(
     constantExpensesForYear,
     percentageExpensesForYear
   );
 }
 
 function calculateIncomeForYear(state, year) {
-  const monthlyIncome = getMonthlyIncome(state);
-  const annualIncomeGrowth = getAnnualIncomeGrowth(state);
+  const monthlyIncome = selectors.getMonthlyIncome(state);
+  const annualIncomeGrowth = selectors.getAnnualIncomeGrowth(state);
 
-  return calculateIncomeForYearUtil(
+  return calculationUtils.calculateIncomeForYear(
     year,
     monthlyIncome,
     annualIncomeGrowth
@@ -90,10 +61,12 @@ function calculateIncomeForYear(state, year) {
 }
 
 function calculateMortgageForYear(state, year) {
-  const annualConstantExpensesGrowth = getAnnualConstantExpensesGrowth(state);
-  const monthlyExpenses = getMonthlyExpenses(state);
+  const annualConstantExpensesGrowth = selectors.getAnnualConstantExpensesGrowth(
+    state
+  );
+  const monthlyExpenses = selectors.getMonthlyExpenses(state);
 
-  return calculateMortgageForYearUtil(
+  return calculationUtils.calculateMortgageForYear(
     annualConstantExpensesGrowth,
     monthlyExpenses,
     year
@@ -102,11 +75,11 @@ function calculateMortgageForYear(state, year) {
 
 /* Cash flow = Income - Expenses */
 function calculateCashFlowForYear(state, year) {
-  const amortizationPeriod = getAmortizationPeriod(state);
+  const amortizationPeriod = selectors.getAmortizationPeriod(state);
   const incomeForYear = calculateIncomeForYear(state, year);
   const expensesForYear = calculateExpensesForYear(state, year);
 
-  let yearCashFlow = calculateYearCashFlowUtil(
+  let yearCashFlow = calculationUtils.calculateYearCashFlow(
     incomeForYear,
     expensesForYear
   );
@@ -119,12 +92,12 @@ function calculateCashFlowForYear(state, year) {
 /* Initial investment =
   down payment + repair costs + closing costs + other initial costs */
 function calculateInitialInvestment(state) {
-  const downPayment = getDownPayment(state);
-  const repairCosts = getRepairCosts(state);
-  const closingCosts = getClosingCosts(state);
-  const otherCosts = getOtherInitialCosts(state);
+  const downPayment = selectors.getDownPayment(state);
+  const repairCosts = selectors.getRepairCosts(state);
+  const closingCosts = selectors.getClosingCosts(state);
+  const otherCosts = selectors.getOtherInitialCosts(state);
 
-  return calculateInitialInvestmentUtil(
+  return calculationUtils.calculateInitialInvestment(
     downPayment,
     repairCosts,
     closingCosts,
@@ -137,17 +110,17 @@ function calculateCashOnCashReturnForYear(state, year) {
   const yearCashFlow = calculateCashFlowForYear(state, year);
   const initialInvestment = calculateInitialInvestment(state);
 
-  return calculateCashOnCashReturnUtil(
+  return calculationUtils.calculateCashOnCashReturn(
     yearCashFlow,
     initialInvestment
   );
 }
 
 function calculatePropertyValueForYear(state, year) {
-  const propertyValue = getAfterRepairValue(state);
-  const annualPVGrowth = getAnnualPropertyValueGrowth(state);
+  const propertyValue = selectors.getAfterRepairValue(state);
+  const annualPVGrowth = selectors.getAnnualPropertyValueGrowth(state);
 
-  return calculatePropertyValueForYearUtil(
+  return calculationUtils.calculatePropertyValueForYear(
     propertyValue,
     annualPVGrowth,
     year
@@ -155,11 +128,11 @@ function calculatePropertyValueForYear(state, year) {
 }
 
 function calculateRemainingLoanBalanceForYear(state, year) {
-  const initialLoanAmount = getInitialLoanAmount(state);
-  const interestRate = getInterestRate(state);
-  const amortizationPeriod = getAmortizationPeriod(state);
+  const initialLoanAmount = selectors.getInitialLoanAmount(state);
+  const interestRate = selectors.getInterestRate(state);
+  const amortizationPeriod = selectors.getAmortizationPeriod(state);
 
-  return calculateRemainingLoanBalanceForYearUtil(
+  return calculationUtils.calculateRemainingLoanBalanceForYear(
     initialLoanAmount,
     interestRate,
     amortizationPeriod,
@@ -169,11 +142,11 @@ function calculateRemainingLoanBalanceForYear(state, year) {
 
 /* Initial equity = down payment + after repair value + purchase price */
 function calculateInitialEquity(state) {
-  const downPayment = getDownPayment(state);
-  const afterRepairValue = getAfterRepairValue(state);
-  const purchasePrice = getInitialPurchasePrice(state);
+  const downPayment = selectors.getDownPayment(state);
+  const afterRepairValue = selectors.getAfterRepairValue(state);
+  const purchasePrice = selectors.getInitialPurchasePrice(state);
 
-  return calculateInitialEquityUtil(
+  return calculationUtils.calculateInitialEquity(
     downPayment,
     afterRepairValue,
     purchasePrice
@@ -182,7 +155,7 @@ function calculateInitialEquity(state) {
 
 function calculateEquityForYear(state, year) {
   const initialEquity = calculateInitialEquity(state);
-  const amortizationPeriod = getAmortizationPeriod(state);
+  const amortizationPeriod = selectors.getAmortizationPeriod(state);
   if (year === 0) {
     return initialEquity;
   }
@@ -190,11 +163,11 @@ function calculateEquityForYear(state, year) {
     return calculatePropertyValueForYear(state, year);
   }
   const propertyValueForYear = calculatePropertyValueForYear(state, year);
-  const initialPropertyValue = getAfterRepairValue(state);
-  const loanAmount = getInitialLoanAmount(state);
+  const initialPropertyValue = selectors.getAfterRepairValue(state);
+  const loanAmount = selectors.getInitialLoanAmount(state);
   const remainingBalance = calculateRemainingLoanBalanceForYear(state, year);
 
-  return calculateEquityForYearUtil(
+  return calculationUtils.calculateEquityForYear(
     initialEquity,
     propertyValueForYear,
     initialPropertyValue,
@@ -207,7 +180,7 @@ function calculateReturnOnEquityForYear(state, year) {
   const cashFlowForYear = calculateCashFlowForYear(state, year);
   const equityForYear = calculateEquityForYear(state, year);
 
-  return calculateReturnOnEquityForYearUtil(
+  return calculationUtils.calculateReturnOnEquityForYear(
     cashFlowForYear,
     equityForYear
   );
@@ -220,7 +193,7 @@ function calculateReturnOnInvestmentForYear(state, year) {
   const equityGainedForYear = equityCurrentYear - equityPreviousYear;
   const initialInvestment = parseFloat(calculateInitialInvestment(state));
 
-  return calculateReturnOnInvestmentForYearUtil(
+  return calculationUtils.calculateReturnOnInvestmentForYear(
     cashFlowForYear,
     equityGainedForYear,
     initialInvestment
