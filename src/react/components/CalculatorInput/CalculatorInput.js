@@ -58,12 +58,12 @@ class CalculatorInput extends Component {
                 {inputDescription}
               </Tooltip>
             }
-            placement='top'>
+              placement='top'>
               <FaInfoCircle className={css.inputDescriptionInfoIcon} />
             </OverlayTrigger>
             : null}
         </div>
-        <TextInput type={'text'}
+        <TextInput type={this.props.inputType}
           id={inputId}
           style={{ width: textInputWidth }}
           value={content}
