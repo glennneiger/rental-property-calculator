@@ -10,3 +10,7 @@
   border-radius: 5px;
   font-size: var(--blueButtonFontSize);
 }
+
+.disabledButton {
+  background-color: grey;
+}
