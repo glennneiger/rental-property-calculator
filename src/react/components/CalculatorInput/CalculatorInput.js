@@ -58,7 +58,7 @@ class CalculatorInput extends Component {
                 {inputDescription}
               </Tooltip>
             }
-              placement='top'>
+            placement='top'>
               <FaInfoCircle className={css.inputDescriptionInfoIcon} />
             </OverlayTrigger>
             : null}
