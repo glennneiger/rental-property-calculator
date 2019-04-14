@@ -39,7 +39,7 @@ class CalculatorPage extends Component {
 }
 
 CalculatorPage.propTypes = {
-  changesMade: PropTypes.bool.isRequired,
+  changesMade: PropTypes.bool,
   screenWidth: PropTypes.number.isRequired,
   sidebarVisible: PropTypes.bool.isRequired
 };
