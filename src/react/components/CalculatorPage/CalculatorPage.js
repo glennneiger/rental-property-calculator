@@ -9,13 +9,16 @@ import { SIDEBAR_MAX_SCREEN_WIDTH } from '../../../constants';
 
 class CalculatorPage extends Component {
   componentDidMount() {
-    window.addEventListener('beforeunload', e => {
-      if (this.props.changesMade) {
-        e.preventDefault();
-        e.returnValue = null;
-        return null;
-      }
-    });
+    window.addEventListener('beforeunload', this.handleUnload);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('beforeunload', this.handleUnload);
+  }
+  handleUnload = e => {
+    if (this.props.changesMade) {
+      e.preventDefault();
+      e.returnValue = null;
+    }
   }
   render() {
     return (
