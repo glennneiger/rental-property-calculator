@@ -7,6 +7,9 @@ describe('mapStateToProps', () => {
     const mockSidebarVisible = true;
     const mockScreenWidth = 500;
     const mockState = {
+      currentCalculation: {
+        changesMade: false
+      },
       sidebarVisible: mockSidebarVisible,
       ui: {
         screenWidth: mockScreenWidth
@@ -15,6 +18,7 @@ describe('mapStateToProps', () => {
 
     chaiExpect(mapStateToProps(mockState))
       .to.deep.equal({
+        changesMade: false,
         screenWidth: mockScreenWidth,
         sidebarVisible: mockSidebarVisible
       });
