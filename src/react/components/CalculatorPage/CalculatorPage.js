@@ -8,6 +8,15 @@ import css from './calculatorPage.css';
 import { SIDEBAR_MAX_SCREEN_WIDTH } from '../../../constants';
 
 class CalculatorPage extends Component {
+  componentDidMount() {
+    window.addEventListener('beforeunload', e => {
+      if (this.props.changesMade) {
+        e.preventDefault();
+        e.returnValue = null;
+        return null;
+      }
+    });
+  }
   render() {
     return (
       <div className={css.calculatorPage}>
@@ -27,6 +36,7 @@ class CalculatorPage extends Component {
 }
 
 CalculatorPage.propTypes = {
+  changesMade: PropTypes.bool.isRequired,
   screenWidth: PropTypes.number.isRequired,
   sidebarVisible: PropTypes.bool.isRequired
 };
