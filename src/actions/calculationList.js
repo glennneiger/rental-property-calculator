@@ -74,7 +74,10 @@ export const saveCalculation = (
       toast.info('Calculation saved');
       dispatch(getAllCalculations());
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+      toast.error("An error occurred - calculation not saved");
+      console.log(err);
+    });
 };
 
 export const deleteCalculationWithId = calculationId => dispatch => {
