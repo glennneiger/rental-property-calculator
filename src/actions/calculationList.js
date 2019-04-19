@@ -11,6 +11,7 @@ import {
   setCurrentTitle,
   setSaveCalculationErrors
 } from './currentCalculation';
+import { hideModal } from './modal';
 import { formatClientCalculationForServer } from '../utils/calculationUtils';
 import { isEmpty } from '../utils/validationUtils';
 
@@ -65,7 +66,7 @@ export const saveCalculation = (
     title,
     calculation: formatClientCalculationForServer(calculation)
   };
-  // TODO: extract all this into method
+  // TODO: extract this client side validation into method
   const errors = {};
 
   if (!title) {
@@ -76,8 +77,6 @@ export const saveCalculation = (
     dispatch(setSaveCalculationErrors(errors));
     return;
   }
-  // TODO: client side validation
-  // if input is empty, say the input is required
   // TODO: server side validation
   // if input is empty, say input is required
   // if name is already taken, ask if they want to overwrite it
@@ -91,6 +90,7 @@ export const saveCalculation = (
       }
       toast.info('Calculation saved');
       dispatch(getAllCalculations());
+      dispatch(hideModal());
     })
     .catch(err => {
       toast.error('An error occurred - calculation not saved');

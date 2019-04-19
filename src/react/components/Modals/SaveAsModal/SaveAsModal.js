@@ -13,12 +13,14 @@ class SaveAsModal extends Component {
       value: ''
     };
   }
+  componentDidMount = () => {
+    this.props.clearSaveCalculationErrors();
+  }
   handleSaveClick = () => {
     const {
       calculationToSave,
       creatingNewCalculation,
       getCalculationById,
-      hideModal,
       idToGet,
       saveCalculation
     } = this.props;
@@ -43,7 +45,6 @@ class SaveAsModal extends Component {
       setTitle,
       newCurrentTitle
     );
-    hideModal();
   }
   handleCancelClick = () => {
     this.props.hideModal();
@@ -83,6 +84,7 @@ class SaveAsModal extends Component {
 SaveAsModal.propTypes = {
   calculationToSave: PropTypes.object.isRequired,
   clearAllCalculatorFields: PropTypes.func.isRequired,
+  clearSaveCalculationErrors: PropTypes.func.isRequired,
   creatingNewCalculation: PropTypes.bool,
   errors: PropTypes.object,
   getCalculationById: PropTypes.func.isRequired,

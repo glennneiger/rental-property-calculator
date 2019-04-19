@@ -9,10 +9,16 @@ import SaveAsModal from './SaveAsModal';
 import {
   clearAllCalculatorFields
 } from '../../../../actions/calculatorFields';
+import {
+  clearSaveCalculationErrors
+} from '../../../../actions/currentCalculation';
 
 const mapDispatchToProps = dispatch => ({
   clearAllCalculatorFields: () => {
     dispatch(clearAllCalculatorFields());
+  },
+  clearSaveCalculationErrors: () => {
+    dispatch(clearSaveCalculationErrors());
   },
   getCalculationById: idToGet => {
     dispatch(getCalculationById(idToGet));

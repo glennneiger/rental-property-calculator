@@ -1,4 +1,5 @@
 import {
+  CLEAR_SAVE_CALCULATION_ERRORS,
   SET_CHANGES_MADE,
   SET_CURRENT_TITLE,
   SET_SAVE_CALCULATION_ERRORS
@@ -17,4 +18,8 @@ export const setCurrentTitle = currentTitle => ({
 export const setSaveCalculationErrors = errors => ({
   type: SET_SAVE_CALCULATION_ERRORS,
   payload: errors
+});
+
+export const clearSaveCalculationErrors = () => ({
+  type: CLEAR_SAVE_CALCULATION_ERRORS
 });

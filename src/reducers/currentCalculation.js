@@ -1,4 +1,5 @@
 import {
+  CLEAR_SAVE_CALCULATION_ERRORS,
   SET_CHANGES_MADE,
   SET_CURRENT_TITLE,
   SET_SAVE_CALCULATION_ERRORS
@@ -12,6 +13,11 @@ const initialState = {
 
 const currentCalculation = (state = initialState, action) => {
   switch (action.type) {
+  case CLEAR_SAVE_CALCULATION_ERRORS:
+    return {
+      ...state,
+      saveCalculationErrors: {}
+    };
   case SET_CHANGES_MADE:
     return {
       ...state,
