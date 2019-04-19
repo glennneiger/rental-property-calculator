@@ -1,11 +1,13 @@
 import {
   SET_CHANGES_MADE,
-  SET_CURRENT_TITLE
+  SET_CURRENT_TITLE,
+  SET_SAVE_CALCULATION_ERRORS
 } from '../actions/constants';
 
 const initialState = {
   changesMade: false,
-  title: null
+  title: null,
+  saveCalculationErrors: {}
 };
 
 const currentCalculation = (state = initialState, action) => {
@@ -19,6 +21,11 @@ const currentCalculation = (state = initialState, action) => {
     return {
       ...state,
       title: action.payload
+    };
+  case SET_SAVE_CALCULATION_ERRORS:
+    return {
+      ...state,
+      saveCalculationErrors: action.payload
     };
   default:
     return state;

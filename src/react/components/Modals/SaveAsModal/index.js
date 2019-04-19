@@ -36,7 +36,11 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
+const mapStateToProps = state => ({
+  errors: state.currentCalculation.saveCalculationErrors
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(SaveAsModal);

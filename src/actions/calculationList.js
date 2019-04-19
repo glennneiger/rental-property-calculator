@@ -8,9 +8,11 @@ import {
 } from './constants';
 import {
   setChangesMade,
-  setCurrentTitle
+  setCurrentTitle,
+  setSaveCalculationErrors
 } from './currentCalculation';
 import { formatClientCalculationForServer } from '../utils/calculationUtils';
+import { isEmpty } from '../utils/validationUtils';
 
 const titleCompare = (a, b) => {
   if (a.title < b.title) {
@@ -63,6 +65,17 @@ export const saveCalculation = (
     title,
     calculation: formatClientCalculationForServer(calculation)
   };
+  // TODO: extract all this into method
+  const errors = {};
+
+  if (!title) {
+    errors.title = 'Title is required';
+  }
+
+  if (!isEmpty(errors)) {
+    dispatch(setSaveCalculationErrors(errors));
+    return;
+  }
   // TODO: client side validation
   // if input is empty, say the input is required
   // TODO: server side validation
