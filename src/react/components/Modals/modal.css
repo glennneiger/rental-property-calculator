@@ -43,6 +43,11 @@
   padding-left: 8px;
 }
 
+.error {
+  color: red;
+  padding: 4px;
+}
+
 @media (--tablet-portrait-up) {
   .modal {
     width: 500px;

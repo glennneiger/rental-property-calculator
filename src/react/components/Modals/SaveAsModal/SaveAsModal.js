@@ -55,6 +55,7 @@ class SaveAsModal extends Component {
     });
   }
   render() {
+    const { errors } = this.props;
     return (
       <Modal
         isOpen={true}
@@ -71,7 +72,7 @@ class SaveAsModal extends Component {
           onChange={this.handleChange}
           autoFocus
         />
-        { this.props.errors.title ? <p>{this.props.errors.title}</p> : null }
+        { errors.title ? <p className={css.error}>{errors.title}</p> : null }
         <div className={css.buttons}>
           <BlueButton onClick={this.handleSaveClick}>Save</BlueButton>
           <BlueButton onClick={this.handleCancelClick}>Cancel</BlueButton>
