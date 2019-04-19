@@ -3,7 +3,7 @@ import jwt_decode from 'jwt-decode';
 
 import {
   CLEAR_ERRORS,
-  GET_ERRORS,
+  GET_AUTH_ERRORS,
   SET_CURRENT_USER
 } from './constants';
 import { setAuthToken } from '../utils/authUtils';
@@ -15,7 +15,7 @@ export const registerUser = (userData, history) => dispatch => {
     })
     .catch(err =>
       dispatch({
-        type: GET_ERRORS,
+        type: GET_AUTH_ERRORS,
         payload: err.response.data
       })
     );
@@ -32,7 +32,7 @@ export const loginUser = userData => dispatch => {
     })
     .catch(err =>
       dispatch({
-        type: GET_ERRORS,
+        type: GET_AUTH_ERRORS,
         payload: err.response.data
       })
     );
@@ -50,6 +50,6 @@ export const setCurrentUser = decodedToken => ({
   payload: decodedToken
 });
 
-export const clearErrors = () => ({
+export const clearAuthErrors = () => ({
   type: CLEAR_ERRORS
 });

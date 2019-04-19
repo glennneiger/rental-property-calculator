@@ -3,18 +3,18 @@ import { withRouter } from 'react-router-dom';
 
 import RegisterPage from './RegisterPage';
 import {
-  clearErrors,
+  clearAuthErrors,
   registerUser
 } from '../../../../actions/auth';
 
 const mapStateToProps = state => ({
   auth: state.auth,
-  errors: state.errors
+  authErrors: state.authErrors
 });
 
 const mapDispatchToProps = dispatch => ({
-  clearErrors: () => {
-    dispatch(clearErrors());
+  clearAuthErrors: () => {
+    dispatch(clearAuthErrors());
   },
   registerUser: (userData, history) => {
     dispatch(registerUser(userData, history));

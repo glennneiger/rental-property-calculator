@@ -63,6 +63,11 @@ export const saveCalculation = (
     title,
     calculation: formatClientCalculationForServer(calculation)
   };
+  // TODO: client side validation
+  // if input is empty, say the input is required
+  // TODO: server side validation
+  // if input is empty, say input is required
+  // if name is already taken, ask if they want to overwrite it
   axios.post('/api/calculation', calcRequest)
     .then(() => {
       if (changesMade !== null) {
@@ -75,7 +80,7 @@ export const saveCalculation = (
       dispatch(getAllCalculations());
     })
     .catch(err => {
-      toast.error("An error occurred - calculation not saved");
+      toast.error('An error occurred - calculation not saved');
       console.log(err);
     });
 };

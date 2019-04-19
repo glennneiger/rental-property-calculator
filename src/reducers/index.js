@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import auth from './auth';
-import errors from './errors';
+import authErrors from './authErrors';
 import calculator from './calculator';
 import calculationList from './calculationList';
 import currentCalculation from './currentCalculation';
@@ -13,7 +13,7 @@ export const reducer = combineReducers({
   calculationList,
   calculator,
   currentCalculation,
-  errors,
+  authErrors,
   modal,
   sidebarVisible,
   ui

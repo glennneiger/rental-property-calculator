@@ -12,14 +12,14 @@ class LoginPage extends Component {
     this.state = {
       email: '',
       password: '',
-      errors: {}
+      authErrors: {}
     };
   }
   componentDidMount = () => {
     if (this.props.auth.isAuthenticated) {
       this.props.history.push('/');
     }
-    this.props.clearErrors();
+    this.props.clearAuthErrors();
   }
   componentWillReceiveProps = nextProps => {
     if (nextProps.auth.isAuthenticated) {
@@ -41,14 +41,14 @@ class LoginPage extends Component {
     this.props.loginUser(userData);
   }
   render() {
-    const { errors } = this.props;
+    const { authErrors } = this.props;
     return (
       <div className={css.authenticationPage}>
         <form onSubmit={this.handleSubmit}>
           <div className={css.authenticationForm}>
             <h1>Login</h1>
             <AuthInput
-              error={errors.email}
+              error={authErrors.email}
               handleChange={this.handleChange}
               label='Email'
               name='email'
@@ -56,7 +56,7 @@ class LoginPage extends Component {
               value={this.state.email}
             />
             <AuthInput
-              error={errors.password}
+              error={authErrors.password}
               handleChange={this.handleChange}
               label='Password'
               name='password'
@@ -76,8 +76,8 @@ class LoginPage extends Component {
 
 LoginPage.propTypes = {
   auth: PropTypes.object.isRequired,
-  clearErrors: PropTypes.func.isRequired,
-  errors: PropTypes.object.isRequired,
+  clearAuthErrors: PropTypes.func.isRequired,
+  authErrors: PropTypes.object.isRequired,
   history: PropTypes.object,
   loginUser: PropTypes.func.isRequired
 };
