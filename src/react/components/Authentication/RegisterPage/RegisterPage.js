@@ -39,14 +39,14 @@ class RegisterPage extends Component {
     this.props.registerUser(newUser, this.props.history);
   }
   render() {
-    const { authErrors } = this.props;
+    const { errors } = this.props;
     return (
       <div className={css.authenticationPage}>
         <form onSubmit={this.handleSubmit}>
           <div className={css.authenticationForm}>
             <h1>Register</h1>
             <AuthInput
-              error={authErrors.name}
+              error={errors.name}
               handleChange={this.handleChange}
               label='Name'
               name='name'
@@ -54,7 +54,7 @@ class RegisterPage extends Component {
               value={this.state.name}
             />
             <AuthInput
-              error={authErrors.email}
+              error={errors.email}
               handleChange={this.handleChange}
               label='Email'
               name='email'
@@ -62,7 +62,7 @@ class RegisterPage extends Component {
               value={this.state.email}
             />
             <AuthInput
-              error={authErrors.password}
+              error={errors.password}
               handleChange={this.handleChange}
               label='Password'
               name='password'
@@ -71,7 +71,7 @@ class RegisterPage extends Component {
               value={this.state.password}
             />
             <AuthInput
-              error={authErrors.password2}
+              error={errors.password2}
               handleChange={this.handleChange}
               label='Confirm Password'
               name='password2'
@@ -91,7 +91,7 @@ class RegisterPage extends Component {
 RegisterPage.propTypes = {
   auth: PropTypes.object.isRequired,
   clearAuthErrors: PropTypes.func.isRequired,
-  authErrors: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired,
   history: PropTypes.object,
   registerUser: PropTypes.func.isRequired
 };

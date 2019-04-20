@@ -10,10 +10,10 @@ import ui from './ui';
 
 export const reducer = combineReducers({
   auth,
+  authErrors,
   calculationList,
   calculator,
   currentCalculation,
-  authErrors,
   modal,
   sidebarVisible,
   ui

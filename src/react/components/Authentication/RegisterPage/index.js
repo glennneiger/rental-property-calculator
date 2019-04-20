@@ -9,7 +9,7 @@ import {
 
 const mapStateToProps = state => ({
   auth: state.auth,
-  authErrors: state.authErrors
+  errors: state.authErrors
 });
 
 const mapDispatchToProps = dispatch => ({
