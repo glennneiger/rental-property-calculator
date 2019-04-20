@@ -13,12 +13,14 @@ class SaveAsModal extends Component {
       value: ''
     };
   }
+  componentDidMount = () => {
+    this.props.clearSaveCalculationErrors();
+  }
   handleSaveClick = () => {
     const {
       calculationToSave,
       creatingNewCalculation,
       getCalculationById,
-      hideModal,
       idToGet,
       saveCalculation
     } = this.props;
@@ -43,7 +45,6 @@ class SaveAsModal extends Component {
       setTitle,
       newCurrentTitle
     );
-    hideModal();
   }
   handleCancelClick = () => {
     this.props.hideModal();
@@ -54,6 +55,7 @@ class SaveAsModal extends Component {
     });
   }
   render() {
+    const { errors } = this.props;
     return (
       <Modal
         isOpen={true}
@@ -70,6 +72,7 @@ class SaveAsModal extends Component {
           onChange={this.handleChange}
           autoFocus
         />
+        { errors.title ? <p className={css.error}>{errors.title}</p> : null }
         <div className={css.buttons}>
           <BlueButton onClick={this.handleSaveClick}>Save</BlueButton>
           <BlueButton onClick={this.handleCancelClick}>Cancel</BlueButton>
@@ -82,7 +85,9 @@ class SaveAsModal extends Component {
 SaveAsModal.propTypes = {
   calculationToSave: PropTypes.object.isRequired,
   clearAllCalculatorFields: PropTypes.func.isRequired,
+  clearSaveCalculationErrors: PropTypes.func.isRequired,
   creatingNewCalculation: PropTypes.bool,
+  errors: PropTypes.object,
   getCalculationById: PropTypes.func.isRequired,
   hideModal: PropTypes.func.isRequired,
   idToGet: PropTypes.string,

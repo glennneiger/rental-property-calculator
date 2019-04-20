@@ -8,9 +8,12 @@ import {
 } from './constants';
 import {
   setChangesMade,
-  setCurrentTitle
+  setCurrentTitle,
+  setSaveCalculationErrors
 } from './currentCalculation';
+import { hideModal } from './modal';
 import { formatClientCalculationForServer } from '../utils/calculationUtils';
+import { isEmpty } from '../utils/validationUtils';
 
 const titleCompare = (a, b) => {
   if (a.title < b.title) {
@@ -63,6 +66,18 @@ export const saveCalculation = (
     title,
     calculation: formatClientCalculationForServer(calculation)
   };
+  const errors = {};
+
+  if (!title) {
+    errors.title = 'Title is required';
+  }
+
+  if (!isEmpty(errors)) {
+    dispatch(setSaveCalculationErrors(errors));
+    return;
+  }
+  // TODO: server side validation
+  // if name is already taken, ask if they want to overwrite it
   axios.post('/api/calculation', calcRequest)
     .then(() => {
       if (changesMade !== null) {
@@ -73,9 +88,11 @@ export const saveCalculation = (
       }
       toast.info('Calculation saved');
       dispatch(getAllCalculations());
+      dispatch(hideModal());
     })
     .catch(err => {
-      toast.error("An error occurred - calculation not saved");
+      toast.error('An error occurred - calculation not saved');
+      dispatch(hideModal());
       console.log(err);
     });
 };

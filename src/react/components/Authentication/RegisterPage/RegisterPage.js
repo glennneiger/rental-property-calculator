@@ -20,7 +20,7 @@ class RegisterPage extends Component {
     if (this.props.auth.isAuthenticated) {
       this.props.history.push('/');
     }
-    this.props.clearErrors();
+    this.props.clearAuthErrors();
   }
   handleChange = event => {
     this.setState({
@@ -90,7 +90,7 @@ class RegisterPage extends Component {
 
 RegisterPage.propTypes = {
   auth: PropTypes.object.isRequired,
-  clearErrors: PropTypes.func.isRequired,
+  clearAuthErrors: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired,
   history: PropTypes.object,
   registerUser: PropTypes.func.isRequired

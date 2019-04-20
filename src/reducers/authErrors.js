@@ -1,13 +1,13 @@
 import {
   CLEAR_ERRORS,
-  GET_ERRORS
+  GET_AUTH_ERRORS
 } from '../actions/constants';
 
 const initialState = {};
 
-const errors = (state = initialState, action) => {
+const authErrors = (state = initialState, action) => {
   switch (action.type) {
-  case GET_ERRORS:
+  case GET_AUTH_ERRORS:
     return action.payload;
   case CLEAR_ERRORS:
     return {};
@@ -16,4 +16,4 @@ const errors = (state = initialState, action) => {
   }
 };
 
-export default errors;
+export default authErrors;

@@ -2,18 +2,18 @@ import { connect } from 'react-redux';
 
 import LoginPage from './LoginPage';
 import {
-  clearErrors,
+  clearAuthErrors,
   loginUser
 } from '../../../../actions/auth';
 
 const mapStateToProps = state => ({
   auth: state.auth,
-  errors: state.errors
+  authErrors: state.authErrors
 });
 
 const mapDispatchToProps = dispatch => ({
-  clearErrors: () => {
-    dispatch(clearErrors());
+  clearAuthErrors: () => {
+    dispatch(clearAuthErrors());
   },
   loginUser: userData => {
     dispatch(loginUser(userData));
