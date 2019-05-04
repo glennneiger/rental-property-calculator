@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "analyze": "npm run build && source-map-explorer build/static/js/main.*",
-    "start": "babel-watch src/server/server.js",
+    "dev": "babel-watch src/server/server.js",
+    "start": "babel-node src/server/server.js", 
     "client": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "jest --coverage",
