@@ -1,6 +1,6 @@
 # Rental Property Calculator
 
-[Website](https://secure-plateau-58035.herokuapp.com/)
+[Website](https://rental-property-calculator.herokuapp.com/)
 
 ## Description
 
